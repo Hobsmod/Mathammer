@@ -1,0 +1,29 @@
+---
+MEQ: !ruby/object:Target
+  name: MEQ
+  stats:
+    Toughness: '4'
+    Save: '3'
+    Invuln: '7'
+    Wounds: '1'
+TEQ: !ruby/object:Target
+  name: TEQ
+  stats:
+    Toughness: '4'
+    Save: '2'
+    Invuln: '5'
+    Wounds: '2'
+ORK: !ruby/object:Target
+  name: ORK
+  stats:
+    Toughness: '4'
+    Save: '6'
+    Invuln: '7'
+    Wounds: '1'
+GEQ: !ruby/object:Target
+  name: GEQ
+  stats:
+    Toughness: '3'
+    Save: '5'
+    Invuln: '7'
+    Wounds: '1'

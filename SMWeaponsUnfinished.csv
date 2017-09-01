@@ -1,0 +1,110 @@
+Weapon,Firetype,Points,Type,Shots,S,AP,D,Rules
+Absolvor Bolt Pistol,Standard,0,Pistol,1,5,-1,1
+Assault Bolter,,Standard,15,,3,5,-1,1
+Assault Cannon,21,,6,6,-1,1
+Assault Plasma Incinerator,16,,2,6,-4,1
+Assault Plasma Incinerator (Supercharge),16,,2,7,-4,2
+Astartes Gernade Launcher (Frag),11,,3.5,3,0,1
+Astartes Gernade Launcher (Krak),11,,1,6,-1,2
+Astartes Shotgun (Long Range),0,,2,4,0,1
+Astartes Shotgun (Short Range),0,,2,5,0,1
+Auto Boltstorm Gauntlets,14,,6,4,0,1
+Auto Bolt Rifle,1,,2,4,0,1
+Bolt Carbine,0,,2,4,0,1
+Bolt Pistol,0,,1,4,0,1
+Bolt Rifle,0,,1.5,4,-1,1
+Boltgun,0,,1.5,4,0,1
+Boltstorm Gauntlet ,25,,3,4,0,1
+Centurion Missile Launcher,25,,2,8,-2,2
+Cerebus Launcher,5,,3.5,4,0,1
+Combi-bolter,2,,3,4,0,1
+Cyclone Missile Launcher (Frag),11,,4,4,0,1
+Cyclone Missile Launcher (Krak),17,,2,8,-2,3.5
+Deathwind Launcher,5,,3.5,5,0,1
+Demolisher Cannon (5 Models),0,,2,10,-3,3.5
+Demolisher Cannon (10 Models),0,,3.5,10,-3,3.5
+Dorn's Arrow,0,,4,4,-1,1
+Flamer,9,,3.5,4,0,1
+Fragstorm grenade launcher,4,,7,4,0,1
+Flamestorm gauntlets,18,,7,4,0,1
+Flamestorm cannon,30,,3.5,6,-2,2
+Gauntlet of the Forge,0,,3.5,5,-1,1
+Gauntlets of Ultramar,0,,3,4,-1,2
+Grav-Pistol,8,,1,5,-3,1
+Grav Cannon,28,,4,5,-3,1
+Grav-gun,15,,1.5,5,-3,1
+Grenade Harness,8,,3.5,4,0,1
+Heavy Bolter,10,,3,5,-1,1
+Heavy Bolt Pistol,0,,1,4,-1,1
+Heavy Flamer,17,,3.5,5,-1,1
+Heavy Onslaught Gattling Cannon,36,,12,5,-1,1
+Heavy Plasma Cannon,30,,2,7,-3,1
+Heavy Plasma Cannon (Supercharge),30,,2,8,-3,2
+Heavy Plasma Incinerator,17,,1,8,-4,1
+Heavy Plasma Incinerator (Supercharge),17,,1,9,-4,2
+Hunter Killer Missile,6,,1,8,-2,3.5
+Hurricane Bolter,4,,9,4,0,1
+Icarus Ironhail Heavy Stubber,6,,3,4,-1,1
+Icarus rocket pod,6,,2,7,-1,1
+Icarus Stormcannon,17,,3,7,-1,2
+Infernus Flamer,0,,3.5,4,0,1
+Master Crafted Boltgun,0,,1.5,4,-1,2
+Ironhail Heavy Stubber,6,,3,4,-1,1
+Kheres Pattern Assault Cannon,25,,6,7,-1,1
+Krak Gernade,0,,1,6,-1,2
+Krakstorm Gernade Launcher,4,,1,6,-1,2
+Las-Talon,40,,2,9,-3,3.5
+Lascannon,25,,1,9,-3,3.5
+Macro Plasma Incinerator,31,,3.5,8,-4,1
+Macro Plasma Incinerator (Supercharged),31,,3.5,9,-4,2
+Master-crafted auto bolt rifle,4,,2,4,0,2
+Master Crafted Boltgun,3,,1.5,4,-1,2
+Master-Crafted stalker bolt rifle,5,,1,4,-2,2
+Melta bomb,5,,1,8,-4,3.5
+Meltagun,17,,1,8,-4,3.5
+Meltagun (Close Range),17,,1,8,-4,4
+Missile Launcher,25,,,,,
+Missile Launcher (Frag),25,,3.5,4,0,1
+Missile Launcher Krak,25,,1,8,-2,3.5
+Multi-Melta,27,,1,8,-4,3.5
+Onslaught Gatling cannon,16,,6,5,-1,1
+Plasma Blaster,17,,2,7,-3,1
+Plasma Blaster (Supercharge),17,,2,8,-3,2
+Plasma Cannon ( Standard),21,,2,7,-3,1
+Plasma Cannon ( Supercharged),21,,2,8,-3,2
+Plasma Cutter ( Standard),7,,1,7,-3,1
+Plasma Cutter ( Supercharged),7,,1,8,-3,2
+Plasma exterminator,28,,2,7,-3,1
+Plasma exterminator ( Supercharged ),28,,2,8,-3,2
+Plasma gun,13,,1.5,7,-3,1
+Plasma gun( Supercharged ),13,,1.5,8,-3,2
+Plasma Incinerator,15,,1.5,7,-4,1
+Plasma Incinerator( Supercharged ),15,,1.5,8,-4,2
+Plasma pistol,7,,1.5,7,-3,1
+Plasma Pistol (Supercharged),7,,1.5,8,-3,2
+Predator Autocannon,49,,4,7,-1,3
+Quietus,0,,2,4,-1,2
+Reaper Autocannon,18,,4,7,-1,1
+Reductor Pistol,-,,1,4,-3,2
+Skyhammer ,24,,3,7,-1,2
+Skyspear,0,,1,9,-3,3.5
+Sniper Rifle,0,,1,4,0,1
+Special Issue Boltgun,2,,1,4,-2,1
+Stalker Bolt Rifle,2,,1,4,-2,1
+Storm Bolter,2,,3,4,0,1
+Stormstrike Missile Launcher,21,,1,8,-3,3
+Thunderfire cannon,0,,8,5,-1,1
+Twin Assault Cannon,35,,12,6,-1,1
+Twin boltgun,2,,3,4,0,1
+Twin Heavy Bolter,17,,6,5,-1,1
+Twin heavy plasma cannon (Standard),34,,4,7,-3,1
+Twin heavy plasma cannon (Supercharge),34,,4,8,-3,2
+Twin lascannon,50,,2,9,-3,3.5
+Twin multi-melta,54,,2,8,-4,3.5
+Typhoon Missile Launcher,,,,,,
+Typhoon Missile Launcher (Frag),50,,7,4,0,1
+Typhoon Missile Launcher (Krak),50,,2,8,-2,3.5
+Volkite Charger,6,,2,5,0,2
+Whirlwind Castellan Launcher,25,,7,6,0,1
+Whirlwind Vengance Launcher,34,,4,7,-1,2
+Wrist-mounted grenade launcher,4,,2,4,0,1

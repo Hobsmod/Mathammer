@@ -1,0 +1,7 @@
+Weapon,Firetype,Points,Range,Type,Shots,S,AP,D,Rules
+Boltgun,Standard,0,24,Rapid Fire,1,4,0,1
+Bolt Pistol,Standard,0,12,Pistol,1,4,0,1
+Krak Grenade,Standard,0,6,Grenade,1,6,-1,D3
+Frag Grenade,Standard,0,6,Grenade,D6,3,0,1
+Plasma Gun,Standard,13,24,Rapid Fire,1,7,-3,1
+Plasma Gun,Supercharge,13,24,Rapid Fire,1,8,-3,2,Overheat
