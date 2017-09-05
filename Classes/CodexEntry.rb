@@ -9,7 +9,10 @@ class CodexEntry
 		@stats['W'] = stats[5]
 		@stats['A'] = stats[6]
 		@stats['Ld'] = stats[7]
-		@stats['Sv'] = stats[8]		
+		@stats['Sv'] = stats[8]
+		if stats[9]
+			@stats['Invuln'] = @stats[9]
+		end
 		@gear = gear
 		@rules = rules
 		@cost = cost
@@ -21,6 +24,10 @@ class CodexEntry
 	
 	def getCost()
 		@cost
+	end
+	
+	def getRules()
+		@rules
 	end
 
 	### Return Hashes and Arrays

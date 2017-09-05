@@ -3,6 +3,7 @@ class Model
 		@id = id
 		@statline = codex[name].getStats
 		@gear = gear
+		@rules = codex[name].getRules
 	end
 	
 	def getID
@@ -14,30 +15,37 @@ class Model
 	end
 	### Return individual stats
 	def getM 
-		@stats['M']
+		@statline['M']
 	end
 	def getWS
-		@stats['WS']
+		@statline['WS']
 	end
 	def getBS 
-		@stats['BS']
+		@statline['BS']
 	end
 	def getS 
-		@stats['S']
+		@statline['S']
 	end
 	def getT 
-		@stats['T']
+		@statline['T']
 	end
 	def getW 
-		@stats['W']
+		@statline['W']
 	end
 	def getA
-		@stats['A']
+		@statline['A']
 	end
 	def getLd 
-		@stats['Ld']
+		@statline['Ld']
 	end
 	def getSv 
-		@stats['Sv']
+		@statline['Sv']
+	end
+	def hasRule(rule)
+		if @rules.include? rule
+			return TRUE
+		else
+			return FALSE
+		end
 	end
 end

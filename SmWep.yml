@@ -1,0 +1,76 @@
+---
+Boltgun: !ruby/object:Weapon
+  id: Boltgun
+  fire_types:
+    Standard:
+      Cost: 0
+      Range: 24
+      Type: Rapid Fire
+      Shots: '1'
+      S: '4'
+      AP: '0'
+      Rules: []
+  firetypes_list:
+  - Standard
+Bolt Pistol: !ruby/object:Weapon
+  id: Bolt Pistol
+  fire_types:
+    Standard:
+      Cost: 0
+      Range: 12
+      Type: Pistol
+      Shots: '1'
+      S: '4'
+      AP: '0'
+      Rules: []
+  firetypes_list:
+  - Standard
+Krak Grenade: !ruby/object:Weapon
+  id: Krak Grenade
+  fire_types:
+    Standard:
+      Cost: 0
+      Range: 6
+      Type: Grenade
+      Shots: '1'
+      S: '6'
+      AP: "-1"
+      Rules: []
+  firetypes_list:
+  - Standard
+Frag Grenade: !ruby/object:Weapon
+  id: Frag Grenade
+  fire_types:
+    Standard:
+      Cost: 0
+      Range: 6
+      Type: Grenade
+      Shots: D6
+      S: '3'
+      AP: '0'
+      Rules: []
+  firetypes_list:
+  - Standard
+Plasma Gun: !ruby/object:Weapon
+  id: Plasma Gun
+  fire_types:
+    Standard:
+      Cost: 13
+      Range: 24
+      Type: Rapid Fire
+      Shots: '1'
+      S: '7'
+      AP: "-3"
+      Rules: []
+    Supercharge:
+      Cost: 13
+      Range: 24
+      Type: Rapid Fire
+      Shots: '1'
+      S: '8'
+      AP: "-3"
+      Rules:
+      - Overheat
+  firetypes_list:
+  - Standard
+  - Supercharge

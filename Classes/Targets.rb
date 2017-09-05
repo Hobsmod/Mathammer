@@ -17,6 +17,9 @@ class Target
 	end	
    end
    
+   def getName()
+		@name
+	end
    def getT()
 		@stats['Toughness']
 	end
