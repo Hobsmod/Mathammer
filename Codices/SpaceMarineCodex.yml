@@ -206,7 +206,7 @@ Company Ancient: !ruby/object:CodexEntry
     T: 4
     W: 4
     A: 3
-    Ld: 98
+    Ld: 9
     Sv: 3
   gear:
   - Bolt Pistol
@@ -222,15 +222,14 @@ Chapter Champion: !ruby/object:CodexEntry
     S: 4
     T: 4
     W: 4
-    A: 3
-    Ld: 8
-    Sv: 3
-    Invuln: 
+    A: 4
+    Ld: 9
+    Sv: 2
   gear:
-  - Master-crafted Power SwordBolt Pistol
+  - Champions Blade
+  - Power SwordBolt Pistol
   - Frag Grenade
   - Krak Grenade
-  - Combat Shield
   rules:
   - Character
   - ATSKNF
@@ -255,6 +254,28 @@ Honor Guard: !ruby/object:CodexEntry
   rules:
   - ATSKNF
   - Honor Guard
+  cost: 63
+Company Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 8
+    Sv: 3
+    Invuln: 
+  gear:
+  - Master-crafted Power SwordBolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Combat Shield
+  rules:
+  - Character
+  - ATSKNF
+  - Duelist - Hits
   cost: 63
 Company Veterans: !ruby/object:CodexEntry
   stats:
@@ -359,6 +380,8 @@ Terminator: !ruby/object:CodexEntry
   - Power Fist
   rules: &12
   - ATSKNF
+  - Invulnerable-5
+  - Deepstrike
   cost: 26
 Terminator Sergeant: !ruby/object:CodexEntry
   stats:
@@ -440,7 +463,10 @@ Cataphractii Terminator Sergeant: !ruby/object:CodexEntry
   gear: &15
   - Combi-bolter
   - Power Sword
-  rules: *12
+  rules:
+  - ATSKNF
+  - Invulnerable-4
+  - Deepstrike
   cost: 30
 Tartaros Terminator: !ruby/object:CodexEntry
   stats:
@@ -457,7 +483,7 @@ Tartaros Terminator: !ruby/object:CodexEntry
   gear: *14
   rules: *12
   cost: 31
-Tartatros Terminator Sergeant: !ruby/object:CodexEntry
+Tartaros Terminator Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
     WS: 3
@@ -585,7 +611,7 @@ Venerable Dreadnought: !ruby/object:CodexEntry
     Sv: 3
   gear: *19
   rules:
-  - Unyielding Ancient
+  - FNP - 6
   cost: 90
 Contemptor Dreadnought: !ruby/object:CodexEntry
   stats:
@@ -603,7 +629,8 @@ Contemptor Dreadnought: !ruby/object:CodexEntry
   - Multi-Melta
   - Combi-bolter
   - Dreadnought Close Combat Weapon
-  rules: *18
+  rules:
+  - Invulnerable-5
   cost: 98
 Redemptor Dreadnought: !ruby/object:CodexEntry
   stats:
@@ -623,7 +650,7 @@ Redemptor Dreadnought: !ruby/object:CodexEntry
   - Fragstorm Grenade Launcher
   - Fragstorm Grenade Launcher
   - Redemptor Fist
-  rules: &25 []
+  rules: &27 []
   cost: 140
 Assault Centurion: !ruby/object:CodexEntry
   stats:
@@ -751,9 +778,30 @@ Land Speeder: !ruby/object:CodexEntry
     Sv: 3
   gear:
   - Heavy Bolter
-  rules: []
+  rules:
+  - Fly
   cost: 70
 Scout Biker: !ruby/object:CodexEntry
+  stats:
+    M: 16
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 1
+    Ld: 7
+    Sv: 4
+  gear: &25
+  - Bolt Pistol
+  - Astartes Shotgun
+  - Combat Knife
+  - Frag Grenade
+  - Krak Grenade
+  rules: &26
+  - Turbo-boost
+  cost: 23
+Scout Biker Sergeant: !ruby/object:CodexEntry
   stats:
     M: 16
     WS: 3
@@ -764,14 +812,8 @@ Scout Biker: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 4
-  gear:
-  - Bolt Pistol
-  - Astartes Shotgun
-  - Combat Knife
-  - Frag Grenade
-  - Krak Grenade
-  rules:
-  - Turbo-boost
+  gear: *25
+  rules: *26
   cost: 23
 Interceptor: !ruby/object:CodexEntry
   stats:
@@ -784,10 +826,10 @@ Interceptor: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
-  gear: &26
+  gear: &28
   - Assault Bolter
   - Assault Bolter
-  rules: *25
+  rules: *27
   cost: 30
 Interceptor Sergeant: !ruby/object:CodexEntry
   stats:
@@ -800,8 +842,8 @@ Interceptor Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-  gear: *26
-  rules: *25
+  gear: *28
+  rules: *27
   cost: 30
 Devestator: !ruby/object:CodexEntry
   stats:
@@ -815,7 +857,7 @@ Devestator: !ruby/object:CodexEntry
     Ld: 7
     Sv: 3
   gear: *1
-  rules: &27
+  rules: &29
   - Signum
   - ATSKNF
   cost: 13
@@ -831,7 +873,7 @@ Devestator Sergeant: !ruby/object:CodexEntry
     Ld: 8
     Sv: 3
   gear: *1
-  rules: *27
+  rules: *29
   cost: 13
 Centurion Devestator: !ruby/object:CodexEntry
   stats:
@@ -844,11 +886,11 @@ Centurion Devestator: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 2
-  gear: &28
+  gear: &30
   - Heavy Bolter
   - Heavy Bolter
   - Hurricane Bolter
-  rules: &29
+  rules: &31
   - Move and Fire
   - ATSKNF
   - Ignores Cover
@@ -864,8 +906,8 @@ Centurion Devestator Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
-  gear: *28
-  rules: *29
+  gear: *30
+  rules: *31
   cost: 80
 Hellblaster: !ruby/object:CodexEntry
   stats:
@@ -878,7 +920,7 @@ Hellblaster: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
-  gear: &30
+  gear: &32
   - Plasma Incinerator
   - Bolt Pistol
   - Frag Grenade
@@ -896,7 +938,7 @@ Hellblaster Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-  gear: *30
+  gear: *32
   rules: *2
   cost: 18
 Thunderfire Cannon: !ruby/object:CodexEntry
@@ -999,6 +1041,21 @@ Vindicator: !ruby/object:CodexEntry
     M: 10
     WS: 6
     BS: 3
+    S: 6
+    T: 8
+    W: 11
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Demolisher Cannon
+  rules: *18
+  cost: 135
+Land Raider: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 6
+    BS: 3
     S: 8
     T: 8
     W: 16
@@ -1009,7 +1066,7 @@ Vindicator: !ruby/object:CodexEntry
   - Twin Heavy Bolter
   - Twin Lascannon
   - Twin Lascannon
-  rules: &31
+  rules: &33
   - Move and Fire
   cost: 239
 Land Raider Crusader: !ruby/object:CodexEntry
@@ -1027,7 +1084,7 @@ Land Raider Crusader: !ruby/object:CodexEntry
   - Twin Assault Cannon
   - Flamestorm Cannon
   - Flamestorm Cannon
-  rules: *31
+  rules: *33
   cost: 244
 Rhino: !ruby/object:CodexEntry
   stats:
@@ -1071,7 +1128,8 @@ Land Speeder Storm: !ruby/object:CodexEntry
   gear:
   - Heavy Bolter
   - Cerberus Launcher
-  rules: *2
+  rules:
+  - Fly
   cost: 70
 Repulsor: !ruby/object:CodexEntry
   stats:
@@ -1093,7 +1151,8 @@ Repulsor: !ruby/object:CodexEntry
   - Krakstorm Grenade Launcher
   - Storm Bolter
   - Storm Bolter
-  rules: *18
+  rules:
+  - Fly
   cost: 210
 Stormhawk Interceptor: !ruby/object:CodexEntry
   stats:
@@ -1112,8 +1171,10 @@ Stormhawk Interceptor: !ruby/object:CodexEntry
   - Heavy Bolter
   - Icarus Stormcannon
   rules:
-  - Hard to Hit
-  - Reroll 1 - SavesAA - 1
+  - Hard to Hit - 1
+  - Reroll - Saves - 1
+  - AA - 1
+  - Fly
   cost: 85
 Stormtalon Gunship: !ruby/object:CodexEntry
   stats:
@@ -1130,6 +1191,7 @@ Stormtalon Gunship: !ruby/object:CodexEntry
   - Twin Assault Cannon
   - Heavy Bolter
   - Heavy Bolter
+  - Fly
   rules:
   - Hard to Hit
   - Anti-Ground
@@ -1151,6 +1213,7 @@ Stormraven Gunship: !ruby/object:CodexEntry
   - Heavy Bolter
   - StormStrike Missile LauncherStormStrike Missile Launcher
   rules:
-  - Hard to Hit
+  - Hard to Hit - 1
   - Move and Fire
+  - Fly
   cost: 172

@@ -43,9 +43,9 @@ class Model
 	end
 	def hasRule(rule)
 		if @rules.include? rule
-			return TRUE
+			return true
 		else
-			return FALSE
+			return false
 		end
 	end
 end

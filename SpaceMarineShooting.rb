@@ -4,14 +4,24 @@ require_relative 'Classes\Targets.rb'
 require 'yaml'
 require_relative 'Classes\Unit.rb'
 require_relative 'Classes\CodexEntry.rb'
+require_relative 'Classes\CodexTargets.rb'
 require 'time'
 start_time = Time.now
 
 
 
 space_marine_codex = YAML.load(File.read('F:\Mathammer\Codices\SpaceMarineCodex.yml')) 
-sm_wep = LoadWeapons('F:\Mathammer\SMWeapons.csv')
-targets = LoadTargets('targets.csv')
+sm_wep = LoadWeapons('F:\Mathammer\Weapons.csv')
+targets = Hash.new
+
+space_marine_codex.each do |key, value|
+	targets[key] = CodexTarget.new(space_marine_codex, key)
+end
+
+uniq_targets = UniqueTargets(targets)
+
+
+
 
 special_wep = ['Flamer','Grav-gun','Meltagun','Plasma Gun']
 heavy_wep = ['Grav-cannon and Grav-amp', 'Heavy Bolter', 'Lascannon', 'Missile Launcher',
@@ -21,7 +31,7 @@ sarge_ranged = ['Boltgun', 'Combi-flamer','Combi-melta', 'Combi-plasma', 'Storm 
 dreadnought_hvy_wep = ['Assault Cannon', 'Heavy Plasma Cannon', 'Multi-melta', 'Twin Lascannon']
 combi_wep = ['Combi-flamer','Combi-melta', 'Combi-plasma', 'Combi-grav', 'Storm Bolter']
 stern_combi_wep = ['Special Issue Boltgun', 'Combi-flamer','Combi-melta', 'Combi-plasma', 'Combi-grav', 'Storm Bolter']
-range = 11
+range = 15
 units = Hash.new
 combined = Hash.new{|hash, key| hash[key] = Hash.new}
 
@@ -38,12 +48,6 @@ special_wep.each do |special|
 			units[string].addModels(space_marine_codex, sm_wep, 'Tactical Marine', 1, [special], ['Boltgun'])
 			units[string].addModels(space_marine_codex, sm_wep, 'Tactical Marine', 1, [heavy], ['Boltgun'])
 			units[string].addModels(space_marine_codex, sm_wep, 'Tactical Marine Sergeant', 1, [sarge], ['Boltgun', 'Bolt Pistol'])
-			targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-			end
 		end
 	end
 end
@@ -67,12 +71,6 @@ intercessor_options.each do |opt|
 		end
 		units[string].addModels(space_marine_codex, sm_wep, 'Intercessor Sergeant', 1, [opt], ['Bolt Rifle'])
 		
-		targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-		end
 	end
 end
 
@@ -90,12 +88,6 @@ scout_options.each do |opt|
 			units[string].addModels(space_marine_codex, sm_wep, 'Scouts', 1, [heavy], ['Boltgun'])
 			units[string].addModels(space_marine_codex, sm_wep, 'Scout Sergeant', 1, [sarge], ['Boltgun'])
 			string = "Scout-#{opt}-#{heavy}-#{sarge}"
-			targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-			end
 		end
 	end
 end
@@ -104,25 +96,12 @@ end
 units['Agressors'] = Unit.new()
 units['Agressors'].addModels(space_marine_codex, sm_wep, 'Aggressor', 2, [], [])
 units['Agressors'].addModels(space_marine_codex, sm_wep, 'Aggressor Sergeant', 1, [], [])
-targets.each do |key, value|
-	ex_wounds = ShootingAtTarget(units['Agressors'], sm_wep, targets[key], range, false)
-	cost = units['Agressors'].getCost
-	efficency = (ex_wounds * 100) / cost
-	combined['Agressors'][key] = efficency
-end
 
 units['Agressors-Flamestorm'] = Unit.new()
 units['Agressors-Flamestorm'].addModels(space_marine_codex, sm_wep, 'Aggressor', 2, ['Flamestorm Gauntlets'],
  ['Auto Boltstorm Gauntlet','Fragstorm Grenade Launcher'])
 units['Agressors-Flamestorm'].addModels(space_marine_codex, sm_wep, 'Aggressor Sergeant', 1, 
 ['Flamestorm Gauntlets'], ['Auto Boltstorm Gauntlet','Fragstorm Grenade Launcher'])
-targets.each do |key, value|
-	ex_wounds = ShootingAtTarget(units['Agressors-Flamestorm'], sm_wep, targets[key], range, false)
-	cost = units['Agressors-Flamestorm'].getCost
-	efficency = (ex_wounds * 100) / cost
-	combined['Agressors-Flamestorm'][key] = efficency
-end
-
 
 
 ####Standard Terminators
@@ -133,23 +112,11 @@ terminator_options.each do |opt|
 	units[string].addModels(space_marine_codex, sm_wep, 'Terminator', 3, [], [])
 	units[string].addModels(space_marine_codex, sm_wep, 'Terminator', 1, [opt], ['Storm Bolter'])
 	units[string].addModels(space_marine_codex, sm_wep, 'Terminator Sergeant', 1, [], [])
-	targets.each do |key, value|
-		ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-		cost = units[string].getCost
-		efficency = (ex_wounds * 100) / cost
-		combined[string][key] = efficency
-	end
 end
 units['Terminators-Cyclone Missile Launcher'] = Unit.new()
 units['Terminators-Cyclone Missile Launcher'].addModels(space_marine_codex, sm_wep, 'Terminator', 3, [], [])
 units['Terminators-Cyclone Missile Launcher'].addModels(space_marine_codex, sm_wep, 'Terminator', 1, ['Cyclone Missile Launcher'], ['Storm Bolter'])
 units['Terminators-Cyclone Missile Launcher'].addModels(space_marine_codex, sm_wep, 'Terminator Sergeant', 1, [], [])
-	targets.each do |key, value|
-		ex_wounds = ShootingAtTarget(units['Terminators-Cyclone Missile Launcher'], sm_wep, targets[key], range, false)
-		cost = units['Terminators-Cyclone Missile Launcher'].getCost
-		efficency = (ex_wounds * 100) / cost
-		combined['Terminators-Cyclone Missile Launcher'][key] = efficency
-	end
 
 ####Cataphractii Terminators
 cat_terminator_options = ['Combi-bolter','Heavy Flamer']
@@ -159,12 +126,6 @@ cat_terminator_options.each do |opt|
 	units[string].addModels(space_marine_codex, sm_wep, 'Cataphractii Terminator', 3, [], [])
 	units[string].addModels(space_marine_codex, sm_wep, 'Cataphractii Terminator', 1, [opt], ['Combi-bolter'])
 	units[string].addModels(space_marine_codex, sm_wep, 'Cataphractii Terminator Sergeant', 1, [], [])
-	targets.each do |key, value|
-		ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-		cost = units[string].getCost
-		efficency = (ex_wounds * 100) / cost
-		combined[string][key] = efficency
-	end
 end
 
 ####Tartaros Terminators
@@ -180,12 +141,6 @@ tart_terminator_options.each do |opt|
 			units[string].addModels(space_marine_codex, sm_wep, 'Tartaros Terminator', 1, [grenade], ['Combi-bolter'])
 			units[string].addModels(space_marine_codex, sm_wep, 'Tartaros Terminator', 1, [opt], ['Combi-bolter'])
 			units[string].addModels(space_marine_codex, sm_wep, 'Tartaros Terminator Sergeant', 1, [sarge], ['Combi-bolter'])
-			targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-			end
 		end
 	end
 end
@@ -206,14 +161,6 @@ stern_options.each do |opt|
 			#puts "With 1 more models each with #{sarge} the unit costs #{units[string].getCost}"
 			cost = units[string].getCost
 			#print "#{string},#{cost},"
-			targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				#puts cost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-				#print "#{efficency},"
-			end
 		end
 	end
 end
@@ -224,12 +171,6 @@ dreadnought_hvy_wep.each do |hvy|
 		string = "Dreadnought-#{hvy}-#{opt}"
 		units[string] = Unit.new
 		units[string].addModels(space_marine_codex, sm_wep, 'Dreadnought', 1, [hvy, opt ], ['Storm Bolter'])
-		targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-		end
 	end
 end
 
@@ -238,12 +179,6 @@ dreadnought_hvy_wep.each do |hvy|
 		string = "Ven Dreadnought-#{hvy}-#{opt}"
 		units[string] = Unit.new
 		units[string].addModels(space_marine_codex, sm_wep, 'Venerable Dreadnought', 1, [hvy, opt ], ['Storm Bolter'])
-		targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-		end
 	end
 end
 
@@ -252,12 +187,6 @@ contempt_opt.each do |opt|
 	string = "Contemptor - #{opt}"
 	units[string] = Unit.new
 	units[string].addModels(space_marine_codex, sm_wep, 'Venerable Dreadnought', 1, [opt], ['Multi-melta'])
-	targets.each do |key, value|
-		ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-		cost = units[string].getCost
-		efficency = (ex_wounds * 100) / cost
-		combined[string][key] = efficency
-	end
 end
 
 
@@ -272,12 +201,6 @@ redem_opt_1.each do |opt1|
 			units[string].addModels(space_marine_codex, sm_wep, 'Redemptor Dreadnought', 1, 
 			[opt1, opt2, opt3, opt3], ['Heavy Flamger', 'Heavy Onslaught Gattling Cannon', 'Fragstorm Grenade Launcher', 
 			'Fragstorm Grenade Launcher'])
-			targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-			end
 		end
 	end
 end
@@ -293,12 +216,6 @@ centurion_opt1.each do |opt1|
 		['Flamer','Flamer','Centurion Assault Launcher'])
 		units[string].addModels(space_marine_codex, sm_wep, 'Assault Centurion Sergeant',1,[opt1, opt1, opt2],
 		['Flamer','Flamer','Centurion Assault Launcher'])
-		targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-		end
 	end
 end
 
@@ -312,13 +229,6 @@ special_wep.each do |special|
 			units[string].addModels(space_marine_codex, sm_wep, 'Biker', 2, [special], ['Bolt Pistol'])
 			units[string].addModels(space_marine_codex, sm_wep, 'Biker Sergeant', 1,
 			[sarge], ['Bolt Pistol'])
-		
-			targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-			end
 		end
 	end
 end		
@@ -331,13 +241,6 @@ ls_opt1.each do |opt1|
 		string = "Land Speeder-#{opt1}-#{opt2}"
 		units[string] = Unit.new()
 		units[string].addModels(space_marine_codex, sm_wep, 'Land Speeder', 1, [opt1, opt2], ['Heavy Bolter'])
-		
-		targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-		end
 	end
 end
 	
@@ -347,12 +250,6 @@ atk_bike_opt.each do |opt|
 	string = "Attack Bike - #{opt}"
 	units[string] = Unit.new()
 	units[string].addModels(space_marine_codex, sm_wep, 'Attack Bike', 1, [opt], ['Heavy Bolter'])
-	targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-	end
 end
 
 ##Scout Bikers
@@ -369,15 +266,7 @@ scout_bike_opt.each do |opt|
 			end
 			units[string].addModels(space_marine_codex, sm_wep, 'Scout Biker', sub, [opt], ['Twin Boltgun'])
 			units[string].addModels(space_marine_codex, sm_wep, 'Scout Biker', n - sub, [],[] )
-			units[string].addModels(space_marine_codex, sm_wep, 'Scout Biker Sergeant', 1, [],[] )
-			
-			targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-			end
-			
+			units[string].addModels(space_marine_codex, sm_wep, 'Scout Biker Sergeant', 1, [],[] )		
 		end
 	end
 end
@@ -389,12 +278,6 @@ intercept_opt.each do |opt|
 	units[string] = Unit.new()
 	units[string].addModels(space_marine_codex, sm_wep, 'Interceptor', 2, [opt, opt], ['Assault Bolter','Assault Bolter'])
 	units[string].addModels(space_marine_codex, sm_wep, 'Interceptor Sergeant', 1, [opt, opt], ['Assault Bolter','Assault Bolter'])
-	targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-	end
 end
 
 
@@ -405,12 +288,6 @@ heavy_wep.each do |opt|
 		units[string] = Unit.new()
 		units[string].addModels(space_marine_codex, sm_wep, 'Devestator', 4, [opt], ['Boltgun'])
 		units[string].addModels(space_marine_codex, sm_wep, 'Devestator Sergeant', 1, [sarge], ['Boltgun'])
-		targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-		end
 	end
 end
 	
@@ -426,12 +303,6 @@ cent_dev_opt1.each do |opt1|
 		['Hurricane Bolter','Heavy Bolter','Heavy Bolter'])
 		units[string].addModels(space_marine_codex, sm_wep, 'Centurion Devestator Sergeant', 1, [opt1,opt2,opt2],
 		['Hurricane Bolter','Heavy Bolter','Heavy Bolter'])
-		targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-		end
 	end
 end
 
@@ -445,12 +316,6 @@ hell_opt.each do |opt|
 		units[string] = Unit.new()
 		units[string].addModels(space_marine_codex, sm_wep, 'Hellblaster', 4, [opt],['Plasma Incinerator'])
 		units[string].addModels(space_marine_codex, sm_wep, 'Hellblaster Sergeant', 4, [opt,sarge],['Plasma Incinerator','Bolt Pistol'])
-		targets.each do |key, value|
-				ex_wounds = ShootingAtTarget(units[string], sm_wep, targets[key], range, false)
-				cost = units[string].getCost
-				efficency = (ex_wounds * 100) / cost
-				combined[string][key] = efficency
-		end
 	end
 end
 
@@ -458,11 +323,22 @@ end
 units['Hellfire Cannon'] = Unit.new()
 units['Hellfire Cannon'].addModels(space_marine_codex, sm_wep, 'Thunderfire Cannon', 1, [],[])
 units['Hellfire Cannon'].addModels(space_marine_codex, sm_wep, 'Techmarine Gunner', 1, [],[])
-targets.each do |key, value|
-	ex_wounds = ShootingAtTarget(units['Hellfire Cannon'], sm_wep, targets[key], range, false)
-	cost = units['Hellfire Cannon'].getCost
-	efficency = (ex_wounds * 100) / cost
-	combined['Hellfire Cannon'][key] = efficency
+
+## Hunters
+
+print ",,"	
+uniq_targets.each do |key, value|
+	print "#{key},"
+end
+puts " "
+## Calculate Offensive power
+units.each do |string, unit|
+	uniq_targets.each do |key, value|
+		ex_wounds = ShootingAtTarget(unit, sm_wep, value, range, false)
+		cost = unit.getCost
+		efficency = (ex_wounds * 100) / cost
+		combined[string][key] = efficency
+	end
 end
 	
 #put the string and then the efficency			

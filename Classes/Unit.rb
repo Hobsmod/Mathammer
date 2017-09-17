@@ -7,6 +7,7 @@ class Unit
 	end
 	
 	def addModels(codex, gear_hash, name, quantity, add_gear, remove_gear)
+		
 		@rules = codex[name].getRules
 		@weapons = Array.new
 		(1..quantity).each do |n|
@@ -30,6 +31,7 @@ class Unit
 			
 			new_gear.each do |item|
 				gear_cost = gear_cost + gear_hash[item].getCost()
+				#puts "#{item}, #{gear_cost}"
 			end
 		
 			#create model, and give it an id, add it to the unit array
@@ -40,6 +42,7 @@ class Unit
 			#find out how much model costs and add costs to the unit
 			new_cost = codex[name].getCost
 			@cost = @cost + new_cost + gear_cost
+			#puts @cost
 		end	
 	end
 	

@@ -15,7 +15,7 @@ Bolt Carbine,Standard,0,24,Assault,2,4,0,1
 Bolt Rifle,Standard,0,30,Rapid Fire,1,4,0,1
 Boltgun,Standard,0,24,Rapid Fire,1,4,0,1
 Boltstorm Gauntlet,Shooting,25,12,Pistol,3,4,0,1
-Centurion Missile Launcher,Standard,25,36,,Assault,D3,8,-2,D3
+Centurion Missile Launcher,Standard,25,36,Assault,D3,8,-2,D3
 Cerberus Launcher,Standard,5,18,Heavy,D6,4,0,1
 Combi-bolter,Standard,2,24,Rapid Fire,2,4,0,1
 Combi-flamer,Boltgun,11,24,Rapid Fire,1,4,0,1

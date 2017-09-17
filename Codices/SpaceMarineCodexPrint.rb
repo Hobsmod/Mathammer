@@ -70,7 +70,7 @@ chapter_ancient_cost = 63
 spacemarinecodex['Chapter Ancient'] = CodexEntry.new(chapter_ancient_stats, chapter_ancient_gear, primaris_ancient_rules, chapter_ancient_cost)
 
 #Company Ancient
-company_ancient_stats = [6, 3, 3, 4, 4, 4, 3, 98, 3]
+company_ancient_stats = [6, 3, 3, 4, 4, 4, 3, 9, 3]
 company_ancient_gear = ['Bolt Pistol', 'Frag Grenade', 'Krak Grenade']
 company_ancient_cost = 
 spacemarinecodex['Company Ancient'] = CodexEntry.new(company_ancient_stats, company_ancient_gear, primaris_ancient_rules, company_ancient_cost)
@@ -91,11 +91,11 @@ spacemarinecodex['Honor Guard'] = CodexEntry.new(h_guard_stats, h_guard_gear, h_
 
 
 #Chapter Champion
-company_champion_stats = [6, 2, 3, 4, 4, 4, 3, 8, 3,5]
+company_champion_stats = [6, 2, 3, 4, 4, 4, 3, 8, 3, 5]
 company_champion_gear = [ 'Master-crafted Power Sword' 'Bolt Pistol', 'Frag Grenade', 'Krak Grenade', 'Combat Shield']
 company_champion_rules = ['Character', 'ATSKNF', 'Duelist - Hits']
 company_champion_cost = 63
-spacemarinecodex['Chapter Champion'] = CodexEntry.new(company_champion_stats, company_champion_gear, company_champion_rules, company_champion_cost)
+spacemarinecodex['Company Champion'] = CodexEntry.new(company_champion_stats, company_champion_gear, company_champion_rules, company_champion_cost)
 
 #Company Veterans
 veteran_sergeant_stats = [6, 3, 3, 4, 4, 1, 3, 9, 3]
@@ -123,7 +123,7 @@ terminator_stats = [5,3,3,4,4,2,2,8,2,5]
 terminator_sergeant_stats = [5,3,3,4,4,2,3,9,2,5]
 terminator_gear = ['Storm Bolter', 'Power Fist']
 terminator_sergeant_gear = ['Storm Bolter', 'Power Sword']
-terminator_rules = ['ATSKNF']
+terminator_rules = ['ATSKNF','Invulnerable-5','Deepstrike']
 terminator_cost = 26
 spacemarinecodex['Terminator'] = CodexEntry.new(terminator_stats, terminator_gear, terminator_rules, terminator_cost)
 spacemarinecodex['Terminator Sergeant'] = CodexEntry.new(terminator_sergeant_stats, terminator_sergeant_gear, terminator_rules, terminator_cost)
@@ -139,14 +139,15 @@ cataphractii_stats = [4,3,3,4,4,2,2,8,2,4]
 cataphractii_sergeant_stats = [4,3,3,4,4,2,3,9,2,4]
 cataphractii_gear = ['Combi-bolter', 'Power Fist']
 cataphractii_sergeant_gear = ['Combi-bolter', 'Power Sword']
+cataphractii_rules = ['ATSKNF', 'Invulnerable-4', 'Deepstrike']
 spacemarinecodex['Cataphractii Terminator'] = CodexEntry.new(cataphractii_stats, cataphractii_gear, terminator_rules, 30)
-spacemarinecodex['Cataphractii Terminator Sergeant'] = CodexEntry.new(cataphractii_sergeant_stats, cataphractii_sergeant_gear, terminator_rules, 30)
+spacemarinecodex['Cataphractii Terminator Sergeant'] = CodexEntry.new(cataphractii_sergeant_stats, cataphractii_sergeant_gear, cataphractii_rules, 30)
 
 #Tartaros Terminators
 tartaros_stats = [6,3,3,4,4,2,2,8,2,5]
 tartaros_sergeant_stats = [6,3,3,4,4,2,3,9,2,5]
 spacemarinecodex['Tartaros Terminator'] = CodexEntry.new(tartaros_stats, cataphractii_gear, terminator_rules, 31)
-spacemarinecodex['Tartatros Terminator Sergeant'] = CodexEntry.new(tartaros_sergeant_stats, cataphractii_sergeant_gear, terminator_rules, 31)
+spacemarinecodex['Tartaros Terminator Sergeant'] = CodexEntry.new(tartaros_sergeant_stats, cataphractii_sergeant_gear, terminator_rules, 31)
 
 #Vanguard Veterans
 vanguard_gear = ['Bolt Pistol', 'Chainsword', 'Frag Grenade', 'Krak Grenade']
@@ -168,12 +169,13 @@ ironclad_dreadnought_stats = [6,3,3,6,8,8,4,8,3]
 spacemarinecodex['Ironclad Dreadnought'] = CodexEntry.new(ironclad_dreadnought_stats, ironclad_dreadnought_gear, dreadnought_rules, 80)
 
 ven_dread_stats = [6,2,2,6,7,8,4,8,3]
-ven_dread_rules = ['Unyielding Ancient']
+ven_dread_rules = ['FNP - 6']
 spacemarinecodex['Venerable Dreadnought'] = CodexEntry.new(ven_dread_stats, dreadnought_gear, ven_dread_rules, 90)
 
 contempt_dread_stats = [9,2,2,7,7,10,4,8,3,5]
+contempt_rules = ['Invulnerable-5']
 contempt_gear = ['Multi-Melta', 'Combi-bolter', 'Dreadnought Close Combat Weapon']
-spacemarinecodex['Contemptor Dreadnought'] = CodexEntry.new(contempt_dread_stats, contempt_gear, dreadnought_rules, 98)
+spacemarinecodex['Contemptor Dreadnought'] = CodexEntry.new(contempt_dread_stats, contempt_gear, contempt_rules, 98)
 
 redem_dread_stats = [8,3,3,7,7,13,4,8,3]
 redem_dread_gear = ['Heavy Onslaught Gattling Cannon', 'Heavy Flamer', 'Icarus Rocket Pod', 'Fragstorm Grenade Launcher',
@@ -204,7 +206,7 @@ spacemarinecodex['Assault Marine Sergeant'] = CodexEntry.new(sergeant_stats, ass
 
 land_speeder_stats = [16,3,3,4,5,6,2,7,3]
 land_speeder_gear = ['Heavy Bolter']
-ls_rules = []
+ls_rules = ['Fly']
 spacemarinecodex['Land Speeder'] = CodexEntry.new(land_speeder_stats, land_speeder_gear, ls_rules, 70)
 
 scout_bike = [16,3,3,4,5,2,1,7,4]
@@ -212,7 +214,7 @@ scout_bike_sarge = [16,3,3,4,5,2,2,8,4]
 scout_bike_gear = ['Bolt Pistol', 'Astartes Shotgun', 'Combat Knife','Frag Grenade','Krak Grenade']
 scout_bike_rules = ['Turbo-boost']
 spacemarinecodex['Scout Biker'] = CodexEntry.new(scout_bike, scout_bike_gear, scout_bike_rules, 23)
-spacemarinecodex['Scout Biker'] = CodexEntry.new(scout_bike_sarge, scout_bike_gear, scout_bike_rules, 23)
+spacemarinecodex['Scout Biker Sergeant'] = CodexEntry.new(scout_bike_sarge, scout_bike_gear, scout_bike_rules, 23)
 
 interceptors = [10,3,3,4,5,2,2,7,3]
 interceptors_sarge = [10,3,3,4,5,2,3,8,3]
@@ -261,7 +263,7 @@ spacemarinecodex['Vindicator'] = CodexEntry.new(hunter, vindicator_gear, dreadno
 land_raider = [10,6,3,8,8,16,6,9,2]
 land_raider_gear = ['Twin Heavy Bolter', 'Twin Lascannon', 'Twin Lascannon']
 land_raider_rules = ['Move and Fire']
-spacemarinecodex['Vindicator'] = CodexEntry.new(land_raider, land_raider_gear, land_raider_rules, 239)
+spacemarinecodex['Land Raider'] = CodexEntry.new(land_raider, land_raider_gear, land_raider_rules, 239)
 
 lr_crusader_gear = ['Twin Assault Cannon', 'Hurricane Bolter', 'Hurricane Bolter']
 lr_redeem_gear = ['Twin Assault Cannon', 'Flamestorm Cannon', 'Flamestorm Cannon']
@@ -273,27 +275,29 @@ spacemarinecodex['Razorback'] = CodexEntry.new(rhino, 'Twin Heavy Bolter', dread
 
 land_speeder_storm = [18,3,3,4,5,7,2,7,4]
 ls_storm_gear = ['Heavy Bolter', 'Cerberus Launcher']
-spacemarinecodex['Land Speeder Storm'] = CodexEntry.new(land_speeder_storm, ls_storm_gear, tactical_rules, 70)
+ls_rules = ['Fly']
+spacemarinecodex['Land Speeder Storm'] = CodexEntry.new(land_speeder_storm, ls_storm_gear, ls_rules, 70)
 
 repulsor = [10,6,3,8,8,16,6,9,3]
+repulsor_rules = ['Fly']
 repulsor_gear = ['Heavy Onslaught Gattling Cannon', 'Twin Heavy Bolter', 'Ironhail Heavy Stubber',
 'Icarus Ironhail Heavy Stubber', 'Krakstorm Grenade Launcher', 'Krakstorm Grenade Launcher', 'Storm Bolter',
 'Storm Bolter']
-spacemarinecodex['Repulsor'] = CodexEntry.new(repulsor, repulsor_gear, dreadnought_rules, 210)
+spacemarinecodex['Repulsor'] = CodexEntry.new(repulsor, repulsor_gear, repulsor_rules, 210)
 
 stormhawk = [60,6,3,6,7,10,3,8,3]
 stormhawk_gear = ['Assault Cannon' 'Assault Cannon', 'Heavy Bolter', 'Heavy Bolter', 'Icarus Stormcannon']
-stormhawk_rules = ['Hard to Hit', 'Reroll 1 - Saves' 'AA - 1']
+stormhawk_rules = ['Hard to Hit - 1', 'Reroll - Saves - 1', 'AA - 1', 'Fly']
 spacemarinecodex['Stormhawk Interceptor'] = CodexEntry.new(stormhawk, stormhawk_gear, stormhawk_rules, 85)
 
 stormtalon = [60,6,3,6,6,10,3,8,3]
-stormtalon_gear = ['Twin Assault Cannon', 'Heavy Bolter', 'Heavy Bolter']
+stormtalon_gear = ['Twin Assault Cannon', 'Heavy Bolter', 'Heavy Bolter', 'Fly']
 stormtalon_rules = ['Hard to Hit', 'Anti-Ground']
 spacemarinecodex['Stormtalon Gunship'] = CodexEntry.new(stormtalon, stormtalon_gear, stormtalon_rules, 110)
 
 stormraven = [45,6,3,8,7,14,3,9,3]
 stormraven_gear = ['Twin Assault Cannon', 'Heavy Bolter', 'Heavy Bolter', 'StormStrike Missile Launcher' 'StormStrike Missile Launcher']
-storm_raven_rules = ['Hard to Hit', 'Move and Fire']
+storm_raven_rules = ['Hard to Hit - 1', 'Move and Fire', 'Fly']
 spacemarinecodex['Stormraven Gunship'] = CodexEntry.new(stormraven, stormraven_gear, storm_raven_rules, 172)
 
 

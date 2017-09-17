@@ -32,9 +32,9 @@ class Weapon
 	
 	def hasRule(name, rule)
 		if @fire_types[name]['Rules'].include? rule
-			return TRUE
+			return true
 		else
-			return FALSE
+			return false
 		end
 	end
 	
@@ -53,35 +53,35 @@ class Weapon
 	
 	def getRange(fire_type)
 		if fire_type.nil?
-			fire_type = 'Standard'
+			firetype = @firetypes_list[0]
 		end
 		return @fire_types[fire_type]['Range']
 	end
 	
 	def getType(fire_type)
 		if fire_type.nil?
-			fire_type = 'Standard'
+			firetype = @firetypes_list[0]
 		end
 		return @fire_types[fire_type]['Type']
 	end
 	
 	def getS(fire_type)
 		if fire_type.nil?
-			fire_type = 'Standard'
+			firetype = @firetypes_list[0]
 		end
 		return @fire_types[fire_type]['S']
 	end
 	
 	def getAP(fire_type)
 		if fire_type.nil?
-			fire_type = 'Standard'
+			firetype = @firetypes_list[0]
 		end
 		return @fire_types[fire_type]['AP']
 	end
 	
 	def getD(fire_type)
 		if fire_type.nil?
-			fire_type = 'Standard'
+			firetype = @firetypes_list[0]
 		end
 		if @fire_types[fire_type]['D'] == 'D6'
 			if hasRule(fire_type,'Melta')
@@ -101,54 +101,15 @@ class Weapon
 	def getShots(fire_type)
 		if fire_type.nil?
 			fire_type = 'Standard'
-		elsif @fire_types[fire_type]['Shots'] == 'D6'
-			return 3.5
-		elsif @fire_types[fire_type]['Shots'] == 'D3'
-			return 2
-		elsif @fire_types[fire_type]['Shots'] == '2D3'
-			return 4
-		elsif @fire_types[fire_type]['Shots'] == '4D3'
-			return 8
-		elsif @fire_types[fire_type]['Shots'] == '2D6'
-			return 7
-		else
-			return @fire_types[fire_type]['Shots'].to_i
 		end
+		@fire_types[fire_type]['Shots']
 	end
 	
 	def getShotsAtRange(fire_type, firing_range)
-		#define rapid fire range
-		rapid_fire_range = @fire_types[fire_type]['Range'] / 2
-		#convert random shot numbers to averages
-		
-		if @fire_types[fire_type]['Shots'] == 'D6'
-			shots = 3.5
+		if fire_type.nil?
+			firetype = @firetypes_list[0]
 		end
-		if @fire_types[fire_type]['Shots'] == 'D3'
-			shots = 2
-		end
-		if @fire_types[fire_type]['Shots'] == '2D6'
-			shots =  7
-		end
-		if shots.nil?
-			#puts 'Shots was nil'
-			shots = @fire_types[fire_type]['Shots'].to_i
-		end
-
-		
-		#check if we are in rapid fire range and return double the shots
-		if @fire_types[fire_type]['Type'] == 'Rapid Fire' && rapid_fire_range >= firing_range
-			real_shots = shots * 2
-			#puts 'Rapid Firing'
-		elsif  firing_range > @fire_types[fire_type]['Range']
-			real_shots = 0
-			#puts 'Out of range'
-		else 
-			real_shots = shots
-			#puts 'normal firing'
-		end
-		
-		return real_shots
+		@fire_types[fire_type]['Shots']
 	end
 
 end
