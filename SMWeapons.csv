@@ -69,6 +69,7 @@ Infernus,Master-crafted Boltgun,0,24,Rapid Fire,1,4,-1,2
 Infernus,Both 1,0,8,Assault,D6,4,0,1,Autohit,Combi
 Infernus,Both 2,0,24,Rapid Fire,1,4,-1,2,Combi
 Ironhail Heavy Stubber,6,Standard,,36,Heavy,3,4,-1,1
+Icarus Ironhail Heavy Stubber,6,Standard,,36,Heavy,3,4,-1,1,AA Only
 Kheres Pattern Assault Cannon,Standard,25,24,Heavy,6,7,-1,1
 Krak Grenade,Standard,0,6,Grenade,1,6,-1,D3
 Krakstorm Grenade Launcher,Standard,4,18,Assault,1,6,-1,D3
@@ -147,3 +148,5 @@ Power Fist,Standard,12,0,Melee,0,*2,-3,D3,Unwieldy
 Centurion Assault Launcher,Standard,3,0,Melee,0,0,0,0,
 Siege Drills,Standard,0,0,Melee,0,*2,-4,3,
 Servo Arm,Standard,0,0,Melee,0,*2,-2,3,Unwieldy,One Use
+Auto Launcher,Standard,0,0,Buff,0,0,0,0,Hard to Hit
+Blank,Standard,0,0,0,0,0,0,0,0,

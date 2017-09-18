@@ -11,7 +11,7 @@ start_time = Time.now
 
 
 space_marine_codex = YAML.load(File.read('F:\Mathammer\Codices\SpaceMarineCodex.yml')) 
-sm_wep = LoadWeapons('F:\Mathammer\Weapons.csv')
+sm_wep = LoadWeapons('F:\Mathammer\SMWeapons.csv')
 targets = Hash.new
 
 space_marine_codex.each do |key, value|
@@ -199,7 +199,7 @@ redem_opt_1.each do |opt1|
 			string = "Redemptor - #{opt1}- #{opt2}-#{opt3}"
 			units[string] = Unit.new
 			units[string].addModels(space_marine_codex, sm_wep, 'Redemptor Dreadnought', 1, 
-			[opt1, opt2, opt3, opt3], ['Heavy Flamger', 'Heavy Onslaught Gattling Cannon', 'Fragstorm Grenade Launcher', 
+			[opt1, opt2, opt3, opt3], ['Heavy Flamger', 'Heavy Onslaught Gatling Cannon', 'Fragstorm Grenade Launcher', 
 			'Fragstorm Grenade Launcher'])
 		end
 	end
@@ -369,8 +369,81 @@ razorback_opt.each do |opt|
 	units[string] = Unit.new
 	units[string].addModels(space_marine_codex, sm_wep, 'Razorback', 1, [opt],['Twin Heavy Bolter'])
 end
+
+units['Land Speeder Storm'] = Unit.new
+units['Land Speeder Storm'].addModels(space_marine_codex, sm_wep, 'Land Speeder Storm', 1, [],[])
 	
-	
+repulsor_opt1 = ['Twin Heavy Bolter', 'Twin Lascannon']
+repulsor_opt2 = ['Heavy Onslaught Gatling Cannon', 'Las-talon']
+repulsor_opt3 = ['Ironhail Heavy Stubber', 'Onslaught Gatling Cannon']
+repulsor_opt4 = ['Storm Bolter', 'Fragstorm Grenade Launcher']
+repulsor_opt5 = ['Icarus Ironhail Heavy Stubber', 'Icarus Rocket Pod', 'Storm Bolter', 'Fragstorm Grenade Launcher']
+repulsor_opt6 = ['Auto Launcher', 'Fragstorm Grenade Launcher']
+repulsor_opt7 = ['Blank', 'Ironhail Heavy Stubber']
+
+repulsor_opt1.each do |opt1|
+	repulsor_opt2.each do |opt2|
+		repulsor_opt3.each do |opt3|
+			repulsor_opt4.each do |opt4|
+				repulsor_opt5.each do |opt5|
+					repulsor_opt6.each do |opt6|
+						repulsor_opt7.each do |opt7|
+							string = "Repulsor-#{opt1}-#{opt2}-#{opt3}-2#{opt4}-#{opt5}-#{opt6}-#{opt7}"
+							units[string] = Unit.new
+							units[string].addModels(space_marine_codex, sm_wep, 'Repulsor', 1,
+							[opt1, opt2, opt3, opt4, opt4, opt5, opt6, opt7],
+							['Twin Heavy Bolter','Heavy Onslaught Gatling Cannon','Icarus Ironhail Heavy Stubber',
+							'Storm Bolter','Storm Bolter','Auto Launcher'])
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+hawk_opt1 = ['Heavy Bolter','Skyhammer Missile Launcher','Typhoon Missile Launcher']
+hawk_opt2 = ['Icarus Stormcannon', 'Las-talon']
+hawk_opt1.each do |opt1|
+	hawk_opt2.each do |opt2|
+		string = "Stormhawk Interceptor - #{opt1} - #{opt2}"
+		units[string] = Unit.new
+		if opt1 == 'Heavy Bolter'
+			units[string].addModels(space_marine_codex, sm_wep, 'Stormhawk Interceptor', 1, [opt1, opt1, opt2],
+			[hawk_opt1[0], hawk_opt1[0], hawk_opt2[0]])
+		else
+			units[string].addModels(space_marine_codex, sm_wep, 'Stormhawk Interceptor', 1, [opt1, opt2],
+			[hawk_opt1[0], hawk_opt1[0], hawk_opt2[0]])
+		end
+	end
+end
+		
+raven_opt = ['Twin Assault Cannon', 'Twin Lascannon', 'Twin Heavy Plasma Cannon']
+raven_opt2 = ['Twin Heavy Bolter','Twin Multi-melta','Typhoon Missile Launcher']
+raven_opt3 = ['Blank','Hurricane Bolter']
+
+raven_opt.each do |opt1|
+	raven_opt2.each do |opt2|
+		raven_opt3.each do |opt3|
+			string = "Stormraven Gunship-#{opt1}-#{opt2}-#{opt3}"
+			units[string] = Unit.new
+			units[string].addModels(space_marine_codex, sm_wep, 'Stormraven Gunship', 1, [opt1, opt2,opt3],
+			[raven_opt[0], raven_opt2[0], raven_opt3[0]])
+		end
+	end
+end
+
+talon_opt = ['Heavy Bolter', 'Lascannon', 'Skyhammer Missile Launcher', 'Typhoon Missile Launcher']
+talon_opt.each do |opt|
+	string = "Stormtalon Gunship-#{opt}"
+	units[string] = Unit.new
+	if opt == 'Lascannon'
+		units[string].addModels(space_marine_codex, sm_wep, 'Stormtalon Gunship', 1, [opt, opt], [talon_opt[0],talon_opt[0]])
+	else
+		units[string].addModels(space_marine_codex, sm_wep, 'Stormtalon Gunship', 1, [opt], [talon_opt[0]])
+	end
+end
+
 print ",,"	
 uniq_targets.each do |key, value|
 	print "#{key},"

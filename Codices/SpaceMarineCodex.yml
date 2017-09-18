@@ -644,7 +644,7 @@ Redemptor Dreadnought: !ruby/object:CodexEntry
     Ld: 8
     Sv: 3
   gear:
-  - Heavy Onslaught Gattling Cannon
+  - Heavy Onslaught Gatling Cannon
   - Heavy Flamer
   - Icarus Rocket Pod
   - Fragstorm Grenade Launcher
@@ -1162,7 +1162,7 @@ Repulsor: !ruby/object:CodexEntry
     Ld: 9
     Sv: 3
   gear:
-  - Heavy Onslaught Gattling Cannon
+  - Heavy Onslaught Gatling Cannon
   - Twin Heavy Bolter
   - Ironhail Heavy Stubber
   - Icarus Ironhail Heavy Stubber
@@ -1185,7 +1185,8 @@ Stormhawk Interceptor: !ruby/object:CodexEntry
     Ld: 8
     Sv: 3
   gear:
-  - Assault CannonAssault Cannon
+  - Assault Cannon
+  - Assault Cannon
   - Heavy Bolter
   - Heavy Bolter
   - Icarus Stormcannon
@@ -1210,10 +1211,10 @@ Stormtalon Gunship: !ruby/object:CodexEntry
   - Twin Assault Cannon
   - Heavy Bolter
   - Heavy Bolter
-  - Fly
   rules:
   - Hard to Hit
   - Anti-Ground
+  - Fly
   cost: 110
 Stormraven Gunship: !ruby/object:CodexEntry
   stats:
@@ -1230,7 +1231,8 @@ Stormraven Gunship: !ruby/object:CodexEntry
   - Twin Assault Cannon
   - Heavy Bolter
   - Heavy Bolter
-  - StormStrike Missile LauncherStormStrike Missile Launcher
+  - Stormstrike Missile Launcher
+  - Stormstrike Missile Launcher
   rules:
   - Hard to Hit - 1
   - Move and Fire

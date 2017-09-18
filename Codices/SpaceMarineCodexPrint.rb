@@ -178,7 +178,7 @@ contempt_gear = ['Multi-Melta', 'Combi-bolter', 'Dreadnought Close Combat Weapon
 spacemarinecodex['Contemptor Dreadnought'] = CodexEntry.new(contempt_dread_stats, contempt_gear, contempt_rules, 98)
 
 redem_dread_stats = [8,3,3,7,7,13,4,8,3]
-redem_dread_gear = ['Heavy Onslaught Gattling Cannon', 'Heavy Flamer', 'Icarus Rocket Pod', 'Fragstorm Grenade Launcher',
+redem_dread_gear = ['Heavy Onslaught Gatling Cannon', 'Heavy Flamer', 'Icarus Rocket Pod', 'Fragstorm Grenade Launcher',
 'Fragstorm Grenade Launcher', 'Redemptor Fist']
 redem_dread_rules = []
 spacemarinecodex['Redemptor Dreadnought'] = CodexEntry.new(redem_dread_stats, redem_dread_gear, redem_dread_rules, 140)
@@ -282,23 +282,23 @@ spacemarinecodex['Land Speeder Storm'] = CodexEntry.new(land_speeder_storm, ls_s
 
 repulsor = [10,6,3,8,8,16,6,9,3]
 repulsor_rules = ['Fly']
-repulsor_gear = ['Heavy Onslaught Gattling Cannon', 'Twin Heavy Bolter', 'Ironhail Heavy Stubber',
+repulsor_gear = ['Heavy Onslaught Gatling Cannon', 'Twin Heavy Bolter', 'Ironhail Heavy Stubber',
 'Icarus Ironhail Heavy Stubber', 'Krakstorm Grenade Launcher', 'Krakstorm Grenade Launcher', 'Storm Bolter',
 'Storm Bolter']
 spacemarinecodex['Repulsor'] = CodexEntry.new(repulsor, repulsor_gear, repulsor_rules, 210)
 
 stormhawk = [60,6,3,6,7,10,3,8,3]
-stormhawk_gear = ['Assault Cannon' 'Assault Cannon', 'Heavy Bolter', 'Heavy Bolter', 'Icarus Stormcannon']
+stormhawk_gear = ['Assault Cannon', 'Assault Cannon', 'Heavy Bolter', 'Heavy Bolter', 'Icarus Stormcannon']
 stormhawk_rules = ['Hard to Hit - 1', 'Reroll - Saves - 1', 'AA - 1', 'Fly']
 spacemarinecodex['Stormhawk Interceptor'] = CodexEntry.new(stormhawk, stormhawk_gear, stormhawk_rules, 85)
 
 stormtalon = [60,6,3,6,6,10,3,8,3]
-stormtalon_gear = ['Twin Assault Cannon', 'Heavy Bolter', 'Heavy Bolter', 'Fly']
-stormtalon_rules = ['Hard to Hit', 'Anti-Ground']
+stormtalon_gear = ['Twin Assault Cannon', 'Heavy Bolter', 'Heavy Bolter']
+stormtalon_rules = ['Hard to Hit', 'Anti-Ground', 'Fly']
 spacemarinecodex['Stormtalon Gunship'] = CodexEntry.new(stormtalon, stormtalon_gear, stormtalon_rules, 110)
 
 stormraven = [45,6,3,8,7,14,3,9,3]
-stormraven_gear = ['Twin Assault Cannon', 'Heavy Bolter', 'Heavy Bolter', 'StormStrike Missile Launcher' 'StormStrike Missile Launcher']
+stormraven_gear = ['Twin Assault Cannon', 'Heavy Bolter', 'Heavy Bolter', 'Stormstrike Missile Launcher', 'Stormstrike Missile Launcher']
 storm_raven_rules = ['Hard to Hit - 1', 'Move and Fire', 'Fly']
 spacemarinecodex['Stormraven Gunship'] = CodexEntry.new(stormraven, stormraven_gear, storm_raven_rules, 172)
 
