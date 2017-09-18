@@ -1082,6 +1082,23 @@ Land Raider Crusader: !ruby/object:CodexEntry
     Sv: 2
   gear:
   - Twin Assault Cannon
+  - Hurricane Bolter
+  - Hurricane Bolter
+  rules: *33
+  cost: 244
+Land Raider Redeemer: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 6
+    BS: 3
+    S: 8
+    T: 8
+    W: 16
+    A: 6
+    Ld: 9
+    Sv: 2
+  gear:
+  - Twin Assault Cannon
   - Flamestorm Cannon
   - Flamestorm Cannon
   rules: *33
@@ -1097,7 +1114,8 @@ Rhino: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-  gear: Storm Bolter
+  gear:
+  - Storm Bolter
   rules: *18
   cost: 70
 Razorback: !ruby/object:CodexEntry
@@ -1111,7 +1129,8 @@ Razorback: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-  gear: Twin Heavy Bolter
+  gear:
+  - Twin Heavy Bolter
   rules: *18
   cost: 75
 Land Speeder Storm: !ruby/object:CodexEntry

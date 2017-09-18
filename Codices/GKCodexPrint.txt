@@ -1,0 +1,5 @@
+require_relative '..\Classes\CodexEntry.rb'
+require 'yaml'
+
+
+GKcodex = Hash.new{}

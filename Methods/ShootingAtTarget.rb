@@ -4,10 +4,9 @@ require_relative 'ShootingMethods.rb'
 def ShootingAtTarget(unit, gear_hash, target, range, moved)
 	possible_grenade_users = Hash.new{|key, value| value = Array.new}
 	total_dmg = 0.0
-	#begin to calculate damage for all models
+	#begin to calculate damage for each models
 	unit.getModels.each do |model|
-		bs = model.getBS.to_f
-		
+
 		#set up all the damage types
 		main_dmg = 0.0
 		grenade_dmg = 0.0 

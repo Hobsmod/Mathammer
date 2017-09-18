@@ -29,6 +29,9 @@ def CalcHits(model, weapon, firetype, target, range, auras, moved, advanced)
 		shots = shots.to_f
 		stdev1 = 0.0
 	end
+	
+	
+	
 	if weapon.getType(firetype) == 'Rapid Fire' && (weapon.getRange(firetype) / 2) >= range
 		shots = shots * 2
 		if stdev1
@@ -65,6 +68,11 @@ def CalcHits(model, weapon, firetype, target, range, auras, moved, advanced)
 		modifier = modifier - 1
 	end
 	if advanced && weapon.getType(firetype) == 'Heavy' && model.hasRule('Move and Fire') == false
+		modifier = modifier + 1
+	end
+	if weapon.hasRule(firetype, 'AA Only') && target.hasRule('Fly')
+		modifier = modifier - 1
+	elsif weapon.hasRule(firetype, 'AA Only') && target.hasRule('Fly') == false
 		modifier = modifier + 1
 	end
 	### Check Special Rules from target that modify ability to get hit
@@ -171,8 +179,6 @@ def CalcDamage(felt_wounds, weapon, firetype, target, range, auras)
 	if save >= 3 && weapon.hasRule(firetype, 'Grav')
 		d = 2
 	end
-
-	
 
 
 	#Calculate Final Damage

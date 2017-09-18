@@ -267,11 +267,13 @@ spacemarinecodex['Land Raider'] = CodexEntry.new(land_raider, land_raider_gear, 
 
 lr_crusader_gear = ['Twin Assault Cannon', 'Hurricane Bolter', 'Hurricane Bolter']
 lr_redeem_gear = ['Twin Assault Cannon', 'Flamestorm Cannon', 'Flamestorm Cannon']
-spacemarinecodex['Land Raider Crusader'] = CodexEntry.new(land_raider, lr_redeem_gear, land_raider_rules, 244)
+spacemarinecodex['Land Raider Crusader'] = CodexEntry.new(land_raider, lr_crusader_gear, land_raider_rules, 244)
+spacemarinecodex['Land Raider Redeemer'] = CodexEntry.new(land_raider, lr_redeem_gear, land_raider_rules, 244)
 
 rhino = [12,6,3,6,7,10,3,8,3]
-spacemarinecodex['Rhino'] = CodexEntry.new(rhino, 'Storm Bolter', dreadnought_rules, 70)
-spacemarinecodex['Razorback'] = CodexEntry.new(rhino, 'Twin Heavy Bolter', dreadnought_rules, 75)
+
+spacemarinecodex['Rhino'] = CodexEntry.new(rhino, ['Storm Bolter'], dreadnought_rules, 70)
+spacemarinecodex['Razorback'] = CodexEntry.new(rhino, ['Twin Heavy Bolter'], dreadnought_rules, 75)
 
 land_speeder_storm = [18,3,3,4,5,7,2,7,4]
 ls_storm_gear = ['Heavy Bolter', 'Cerberus Launcher']

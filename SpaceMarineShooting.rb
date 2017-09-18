@@ -324,8 +324,53 @@ units['Hellfire Cannon'] = Unit.new()
 units['Hellfire Cannon'].addModels(space_marine_codex, sm_wep, 'Thunderfire Cannon', 1, [],[])
 units['Hellfire Cannon'].addModels(space_marine_codex, sm_wep, 'Techmarine Gunner', 1, [],[])
 
-## Hunters
+## Hunters & Stalkers
+units['Hunter'] = Unit.new()
+units['Hunter'].addModels(space_marine_codex, sm_wep, 'Hunter', 1, [],[])
 
+units['Stalker'] = Unit.new()
+units['Stalker'].addModels(space_marine_codex, sm_wep, 'Stalker', 1, [],[])
+
+##Whirlwinds
+whirl_opt = ['Whirlwind Castellan Launcher', 'Whirlwind Vengeance Launcher']
+whirl_opt.each do |opt|
+	string = "Whirlwind - #{opt}"
+	units[string] = Unit.new
+	units[string].addModels(space_marine_codex, sm_wep, 'Whirlwind', 1, [opt],['Whirlwind Castellan Launcher'])
+end
+### Predators
+pred_turret = ['Predator Autocannon', 'Twin Lascannon']
+pred_spon = ['Heavy Bolter', 'Lascannon']
+pred_turret.each do |turret|
+	pred_spon.each do |spon|
+		string = "Predator - #{turret} - #{spon}"
+		units[string] = Unit.new
+		units[string].addModels(space_marine_codex, sm_wep, 'Predator', 1, [turret,spon,spon],['Predator Autocannon'])
+	end
+end
+
+#vindicator
+units['Vindicator'] = Unit.new
+units['Vindicator'].addModels(space_marine_codex, sm_wep, 'Vindicator', 1, [],[])
+
+lr_opt = ['Multi-melta','Storm Bolter']
+lr_types = ['Land Raider', 'Land Raider Crusader','Land Raider Redeemer']
+lr_types.each do |type|
+	lr_opt.each do |opt|
+		string = "#{type} - #{opt}"
+		units[string] = Unit.new
+		units[string].addModels(space_marine_codex, sm_wep, type, 1, [opt],[])
+	end
+end
+		
+razorback_opt = ['Twin Heavy Bolter', 'Twin Lascannon', 'Twin Assault Cannon']
+razorback_opt.each do |opt|
+	string = "Razorback - #{opt}"
+	units[string] = Unit.new
+	units[string].addModels(space_marine_codex, sm_wep, 'Razorback', 1, [opt],['Twin Heavy Bolter'])
+end
+	
+	
 print ",,"	
 uniq_targets.each do |key, value|
 	print "#{key},"
