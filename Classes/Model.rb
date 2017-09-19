@@ -4,10 +4,15 @@ class Model
 		@statline = codex[name].getStats
 		@gear = gear
 		@rules = codex[name].getRules
+		@name = name
 	end
 	
 	def getID
 		@id
+	end
+	
+	def getName
+		@name
 	end
 	
 	def getGear()

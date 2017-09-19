@@ -1,6 +1,7 @@
 require_relative 'Methods\LoadFromCSV'
 require_relative 'Methods\ShootingAtTarget'
 require_relative 'Methods\ShootingAtDist'
+require_relative 'Methods\DefensivePfP'
 require_relative 'Classes\Targets.rb'
 require 'yaml'
 require_relative 'Classes\Unit.rb'
@@ -9,6 +10,7 @@ require_relative 'Classes\CodexTargets.rb'
 require 'time'
 start_time = Time.now
 
+print_file = File.open('pfp.csv', 'w')
 
 
 space_marine_codex = YAML.load(File.read('F:\Mathammer\Codices\SpaceMarineCodex.yml')) 
@@ -445,36 +447,25 @@ talon_opt.each do |opt|
 	end
 end
 
-print ",,"	
-uniq_targets.each do |key, value|
-	print "#{key},"
-end
-puts " "
-## Calculate Offensive power
-units.each do |string, unit|
-	uniq_targets.each do |key, value|
-		ex_wounds = ShootingAtDist(unit, sm_wep, value, range)
-		cost = unit.getCost
-		efficency = (ex_wounds * 100) / cost
-		combined[string][key] = efficency
-	end
-end
-	
-#put the string and then the efficency			
-units.each do |string, eq|
-	cost = units[string].getCost()
-	print "#{string},#{cost},"
-	targets.each do |k, v|
-		print "#{combined[string][k]},"
-	end
-	if cost
-		print "\n"
-	end
-end
+distances = [12,24,36,48]
 
+distances.each do |dist|
+			print_file.write "#{dist},"
+end
+print_file.write "\n"
+## Calculate Offensive power
+units.each do |def_string, defender|
+	pfp_avg_hash = DefensivePfP(space_marine_codex, sm_wep, defender, units, distances)
+	puts Time.now - start_time
+	puts def_string
+	print_file.write "#{def_string},"
+	distances.each do |dist|
+		print_file.write "#{pfp_avg_hash[dist]},"
+	end
+	print_file.write "\n"
+end
 	
-	
-#File.write('TacSquad.yml', tac_squad1.to_yaml)
+
 end_time = Time.now
 elapsed = end_time - start_time
 puts "Calculation took #{elapsed} Seconds" 

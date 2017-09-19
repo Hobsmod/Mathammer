@@ -1,0 +1,691 @@
+---
+Lord Kaldor Draigo: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 7
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear:
+  - The Titansword
+  - Storm Bolter
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules:
+  - Invulnerable - 3
+  - Chapter Master
+  - Deepstrike
+  - Psyker - 2
+  - Smite
+  cost: 240
+Grand Master Voldus: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear:
+  - Maleus Argyrum
+  - Storm Bolter
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules:
+  - Invulnerable - 4
+  - Rites of Battle
+  - Psyker - 3
+  - Smite
+  cost: 190
+Grand Master: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear: &2
+  - Nemesis Force Halberd
+  - Storm Bolter
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules: &1
+  - Invulnerable - 4
+  - Rites of Battle
+  - Psyker - 2
+  - Smite
+  - Deep Strike
+  cost: 160
+Grand Master in Dreadknight: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 2
+    BS: 2
+    S: 6
+    T: 6
+    W: 12
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear:
+  - Dreadfist
+  - Dreadfist
+  rules: *1
+  cost: 190
+Castellan Crowe: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 5
+    Ld: 8
+    Sv: 2
+  gear:
+  - Black Blade of Antwyr
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules:
+  - Invulnerable - 4
+  - Psyker - 2
+  - Purifying Flames
+  - Deep Strike
+  cost: 125
+Brother-Captain Stern: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear: &3
+  - Nemesis Force Sword
+  - Storm Bolter
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules:
+  - Invulnerable - 4
+  - Minor Smite
+  - Psyker - 1
+  cost: 157
+Brother-Captain: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear: *2
+  rules:
+  - Invulnerable - 4
+  - Minor Smite
+  - Psychic Locus
+  - Psyker - 1
+  cost: 150
+Librarian: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Nemesis Warding Stave
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  - Psyker - 1
+  rules:
+  - Psyker - 2
+  - Invulnerable - 5
+  - Minor Smite
+  - Deny - 1
+  cost: 157
+Techmarine: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 2
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Power Axe
+  - Servo Arm
+  - Servo Arm
+  - Boltgun
+  - Plasma Cutter
+  - Flamer
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules:
+  - Minor Smite
+  - Psyker - 1
+  cost: 91
+Chaplain: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Crozius Arcanum
+  - Storm Bolter
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules:
+  - Invulnerable - 4
+  - Minor Smite
+  - Psyker - 1
+  cost: 144
+Brotherhood Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 4
+    A: 4
+    Ld: 8
+    Sv: 2
+  gear: *3
+  rules:
+  - Invulnerable - 4
+  - Heroic Sacrifice
+  - Minor Smite
+  - Psyker - 1
+  cost: 113
+Grey Knight Terminator: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 2
+    Ld: 7
+    Sv: 2
+  gear: *3
+  rules: &4
+  - ATSKNF
+  - Invulnerable-5
+  - Deepstrike
+  - Minor Smite
+  - Psyker - 1
+  cost: 46
+Terminator Justicar: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear: *3
+  rules: *4
+  cost: 46
+Grey Knight: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: *3
+  rules: &5
+  - ATSKNF
+  - Minor Smite
+  - Psyker - 1
+  cost: 19
+Justicar: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *3
+  rules: *5
+  cost: 19
+Apothecary: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 8
+    Sv: 2
+  gear:
+  - Nemesis Force Sword
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules:
+  - ATSKNF
+  - Invulnerable-5
+  - Minor Smite
+  - Psyker - 1
+  - Nathecium
+  cost: 90
+Brotherhood Ancient: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Storm Bolter
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules:
+  - ATSKNF
+  - Invulnerable-5
+  - Minor Smite
+  - Psyker - 1
+  - Aura - Attack - 1
+  cost: 128
+Paladin: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 3
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear: *3
+  rules: *4
+  cost: 53
+Paragon: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 3
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear: *3
+  rules: *4
+  cost: 53
+Paladin Ancient: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Storm Bolter
+  - Frag Grenade
+  - Krak Grenade
+  - Psykout Grenade
+  rules:
+  - ATSKNF
+  - Invulnerable-5
+  - Minor Smite
+  - Psyker - 1
+  - Aura - Attack - 1
+  cost: 128
+Purifier: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: *3
+  rules: &6
+  - ATSKNF
+  - Purifying Flame
+  - Psyker - 1
+  cost: 19
+Knight of Flame: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *3
+  rules: *6
+  cost: 19
+Dreadnought: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 6
+    T: 7
+    W: 8
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear: &7
+  - Assault Cannon
+  - Storm Bolter
+  - Dreadnought Close Combat Weapon
+  rules:
+  - Smoke Launchers
+  - Psyker - 1
+  - Minor Smite
+  cost: 87
+Venerable Dreadnought: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 6
+    T: 7
+    W: 8
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear: *7
+  rules:
+  - FNP - 6
+  - Psyker - 1
+  - Minor Smite
+  cost: 110
+Interceptor: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: *3
+  rules: *5
+  cost: 23
+Interceptor Justicar: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: *3
+  rules: *5
+  cost: 23
+Purgator: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: *3
+  rules: *5
+  cost: 19
+Purgator Justicar: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *3
+  rules: *5
+  cost: 19
+Nemesis Dreadknight: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 3
+    BS: 3
+    S: 6
+    T: 6
+    W: 12
+    A: 4
+    Ld: 8
+    Sv: 2
+  gear:
+  - Dreadfist
+  - Dreadfist
+  rules:
+  - Invulnerable-5
+  - Minor Smite
+  - Psyker - 1
+  - Deep Strike
+  cost: 130
+Land Raider: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 6
+    BS: 3
+    S: 8
+    T: 8
+    W: 16
+    A: 6
+    Ld: 9
+    Sv: 2
+  gear:
+  - Twin Heavy Bolter
+  - Twin Lascannon
+  - Twin Lascannon
+  rules: &8
+  - Move and Fire
+  cost: 239
+Land Raider Crusader: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 6
+    BS: 3
+    S: 8
+    T: 8
+    W: 16
+    A: 6
+    Ld: 9
+    Sv: 2
+  gear:
+  - Twin Assault Cannon
+  - Hurricane Bolter
+  - Hurricane Bolter
+  rules: *8
+  cost: 244
+Land Raider Redeemer: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 6
+    BS: 3
+    S: 8
+    T: 8
+    W: 16
+    A: 6
+    Ld: 9
+    Sv: 2
+  gear:
+  - Twin Assault Cannon
+  - Flamestorm Cannon
+  - Flamestorm Cannon
+  rules: *8
+  cost: 244
+Rhino: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 6
+    BS: 3
+    S: 6
+    T: 7
+    W: 10
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Storm Bolter
+  rules: &9
+  - Smoke Launchers
+  cost: 70
+Razorback: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 6
+    BS: 3
+    S: 6
+    T: 7
+    W: 10
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Twin Heavy Bolter
+  rules: *9
+  cost: 75
+Stormhawk Interceptor: !ruby/object:CodexEntry
+  stats:
+    M: 60
+    WS: 6
+    BS: 3
+    S: 6
+    T: 7
+    W: 10
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Assault Cannon
+  - Assault Cannon
+  - Heavy Bolter
+  - Heavy Bolter
+  - Icarus Stormcannon
+  rules:
+  - Hard to Hit - 1
+  - Reroll - Saves - 1
+  - AA - 1
+  - Fly
+  cost: 85
+Stormtalon Gunship: !ruby/object:CodexEntry
+  stats:
+    M: 60
+    WS: 6
+    BS: 3
+    S: 6
+    T: 6
+    W: 10
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Twin Assault Cannon
+  - Heavy Bolter
+  - Heavy Bolter
+  rules:
+  - Hard to Hit
+  - Anti-Ground
+  - Fly
+  cost: 110
+Stormraven Gunship: !ruby/object:CodexEntry
+  stats:
+    M: 45
+    WS: 6
+    BS: 3
+    S: 8
+    T: 7
+    W: 14
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Twin Assault Cannon
+  - Heavy Bolter
+  - Heavy Bolter
+  - Stormstrike Missile Launcher
+  - Stormstrike Missile Launcher
+  rules:
+  - Hard to Hit - 1
+  - Move and Fire
+  - Fly
+  cost: 172
