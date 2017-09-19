@@ -11,8 +11,8 @@ start_time = Time.now
 
 
 
-space_marine_codex = YAML.load(File.read('F:\Mathammer\Codices\SpaceMarineCodex.yml')) 
-sm_wep = LoadWeapons('F:\Mathammer\SMWeapons.csv')
+space_marine_codex = YAML.load(File.read('Codices\SpaceMarineCodex.yml')) 
+sm_wep = LoadWeapons('Codices\SMWeapons.csv')
 targets = Hash.new
 
 space_marine_codex.each do |key, value|

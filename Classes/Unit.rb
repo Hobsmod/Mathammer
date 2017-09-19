@@ -30,6 +30,7 @@ class Unit
 			gear_cost = 0
 			
 			new_gear.each do |item|
+				#puts item
 				gear_cost = gear_cost + gear_hash[item].getCost()
 				#puts "#{item}, #{gear_cost}"
 			end
@@ -40,6 +41,7 @@ class Unit
 			@models.push(new_model)
 			
 			#find out how much model costs and add costs to the unit
+			
 			new_cost = codex[name].getCost
 			@cost = @cost + new_cost + gear_cost
 			#puts @cost

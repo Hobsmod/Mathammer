@@ -1,7 +1,7 @@
 require_relative 'ShootingAtDist.rb'
 require 'descriptive_statistics'
 
-def DefensivePfP(codex, gear_hash, defender, attackers, distances)
+def OffensivePfP(codex, gear_hash, defender, attackers, distances)
 	#defender is a unit
 	# attackers is a hash of all attacking models
 	# distances is an array
