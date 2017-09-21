@@ -1,5 +1,5 @@
 class CodexEntry
-	def initialize(stats, gear, rules, cost)
+	def initialize(stats, gear, rules, cost, keywords)
 		@stats = Hash.new{}
 		@stats['M'] = stats[0]
 		@stats['WS'] = stats[1]
@@ -16,6 +16,7 @@ class CodexEntry
 		@gear = gear
 		@rules = rules
 		@cost = cost
+		@keywords = keywords
 	end
 	
 	def getGear()

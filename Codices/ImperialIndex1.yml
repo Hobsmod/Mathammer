@@ -1,0 +1,2250 @@
+---
+Commander Dante: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 6
+    A: 6
+    Ld: 9
+    Sv: 2
+  gear:
+  - Axe Mortalis
+  - Inferno Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - Hits - All
+  - Fear - 1
+  - Deepstrike
+  cost: 215
+  keywords: &1
+  - Imperium
+  - Adeptus Astartes
+  - Character
+  - Infantry
+  - Vehicle
+  - Dreadnought
+  - Fly
+Captain Tycho: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Blood Song
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - Hits - 1
+  cost: 95
+  keywords: *1
+Tycho the Lost: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Blood Song
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - Hits - 1
+  - FNP - 6
+  - Charge - Attack - 1
+  cost: 70
+  keywords: *1
+Librarian Dreadnought: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 6
+    T: 7
+    W: 8
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Furioso Force Halberd
+  - Furioso Fist
+  - Storm Bolter
+  rules:
+  - Psyker - 2
+  - Deny - 1Smoke Launchers
+  cost: 150
+  keywords: *1
+Chief Librarian Mephiston: !ruby/object:CodexEntry
+  stats:
+    M: 7
+    WS: 2
+    BS: 2
+    S: 5
+    T: 5
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Plamsa Pistol
+  - Sanguine Sword
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Psyker - 2
+  - Deny - 1FNP - 5
+  cost: 145
+  keywords: *1
+The Sanguinor: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear:
+  - Encarmine Broadsword
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Attacks - 1
+  - Fear - 1
+  - Deepstrike
+  cost: 170
+  keywords: *1
+Astorath: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Excecutioners Axe
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - Fight - Hits - All
+  - Deepstrike
+  cost: 143
+  keywords: *1
+Sanguinary Priest: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Aura - 6 - Strength - 1
+  - Narthecium
+  cost: 69
+  keywords: *1
+Sanguinary Priest on Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 2
+    BS: 3
+    S: 4
+    T: 5
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Aura - 6 - Strength - 1
+  - Narthecium
+  cost: 91
+  keywords: *1
+Brother Corbulo: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Heavens Teeth
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Aura - 6 - Strength - 1
+  - Narthecium
+  - Aura - 6 - Chain Attacks - 6
+  cost: 94
+  keywords: *1
+Sanguinary Guard Ancient: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Encarmine Sword
+  - Angelus Boltgun
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Fear - 1
+  - Aura - 6 - Reroll - Fight - Wound - 1
+  cost: 84
+  keywords: *1
+Terminator Ancient: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Lightning Claw
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 5
+  - Aura - 6 - Reroll - Fight - Hits - All
+  cost: 108
+  keywords: *1
+Death Company: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 7
+    Sv: 3
+  gear:
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - FNP - 6
+  - Charge - Attack - 1
+  cost: 17
+  keywords: *1
+Lemartes: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Blood Crozius
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - FNP - 6
+  - Charge - Attack - 1
+  - Aura - 6 - Reroll - Fight - Hit - All
+  - Deepstrike
+  cost: 129
+  keywords: *1
+Sanguinary Guard: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 2
+  gear:
+  - Encarmine Sword
+  - Angelus Boltgun
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Deepstrike
+  cost: 22
+  keywords: *1
+Death Company Dreadnought: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 3
+    BS: 3
+    S: 6
+    T: 7
+    W: 8
+    A: 4
+    Ld: 7
+    Sv: 3
+  gear:
+  - Furioso Fist
+  - Furioso Fist
+  - Storm Bolter
+  - Meltagun
+  rules:
+  - FNP - 6
+  - Charge - Attack - 1
+  - Smoke Launchers
+  cost: 128
+  keywords: *1
+Furioso Dreadnought: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 3
+    BS: 3
+    S: 6
+    T: 7
+    W: 8
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Furioso Fist
+  - Furioso Fist
+  - Storm Bolter
+  - Meltagun
+  rules: &2
+  - Smoke Launchers
+  cost: 122
+  keywords: *1
+Baal Predator: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 6
+    BS: 3
+    S: 6
+    T: 7
+    W: 11
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Twin Assault Cannon
+  rules: *2
+  cost: 107
+  keywords: *1
+Gabriel Seth: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Blood Song
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - All
+  - Aura - 6 - Fight Twice - 6
+  cost: 135
+  keywords: *1
+Azrael: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear:
+  - Sword of Secrets
+  - Lions Wrath
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - All
+  - Aura - 6 - Invulnerable - 4
+  - Command Point - 1
+  cost: 180
+  keywords: *1
+Belial: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Sword of Silence
+  - Storm Bolter
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - 1
+  - Aura - Deathwing - Reroll - All - Hits - All
+  - Parry
+  cost: 150
+  keywords: *1
+Sammael on Corvex: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 2
+    BS: 2
+    S: 4
+    T: 6
+    W: 6
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear:
+  - Raven Sword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Plasma Cannon
+  - Twin Storm Bolter
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - 1
+  - Aura - Ravenwing - Reroll - All - Hits - All
+  - Jink
+  cost: 216
+  keywords: *1
+Sammael on Sableclaw: !ruby/object:CodexEntry
+  stats:
+    M: 16
+    WS: 2
+    BS: 2
+    S: 4
+    T: 6
+    W: 7
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Raven Sword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Twin Assault Cannon
+  - Twin Heavy Bolter
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - 1
+  - Aura - Ravenwing - Reroll - All - Hits - All
+  - Jink
+  cost: 183
+  keywords: *1
+Interrogator-Chaplain in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Crozius Arcanum
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - Fight - Hits - All
+  - Fear - 1
+  cost: 90
+  keywords: *1
+Interrogator-Chaplain on Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 2
+    BS: 3
+    S: 4
+    T: 5
+    W: 6
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Crozius Arcanum
+  - Storm Bolter
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - Fight - Hits - All
+  - Fear - 1
+  cost: 117
+  keywords: *1
+Asmodai: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Blades of Reason
+  - Crozius Arcanum
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - Fight - Hits - All
+  - Aura - 6 - Attacks - 1
+  - Fear - 1
+  cost: 145
+  keywords: *1
+Ezekiel: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Traitors Bane
+  - The Deliverer
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Fight Back - 0
+  - Psyker - 2
+  - Deny - 1
+  cost: 145
+  keywords: *1
+Deathwing Apothecary: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 2
+    Ld: 8
+    Sv: 2
+  gear:
+  - Storm Bolter
+  rules:
+  - Invulnerable - 5
+  - Deepstrike
+  - Narthecium
+  cost: 75
+  keywords: *1
+Deathwing Ancient: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear: &3
+  - Storm Bolter
+  - Power Fist
+  rules:
+  - Invulnerable - 5
+  - Aura - Deathwing - Attack - 1
+  - Deepstrike
+  cost: 103
+  keywords: *1
+Deathwing Champion: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Halberd of Caliban
+  rules:
+  - Invulnerable - 5
+  - Duelist - Hits
+  - Deepstrike
+  cost: 118
+  keywords: *1
+Deathwing Terminator: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 2
+  gear: *3
+  rules: &4
+  - Invulnerable - 5
+  - Deepstrike
+  cost: 26
+  keywords: *1
+Deathwing Sergeant: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 2
+  gear:
+  - Power Sword
+  - Storm Bolter
+  rules: *4
+  cost: 26
+  keywords: *1
+Knight Master: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Flail of the Unforgiven
+  - Storm Shield
+  rules: &5
+  - Invulnerable - 3
+  - Deepstrike
+  cost: 45
+  keywords: *1
+Deathwing Knight: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 2
+  gear:
+  - Mace of Absolution
+  - Storm Shield
+  rules: *5
+  cost: 45
+  keywords: *1
+Ravenwing Apothecary: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 5
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Corvus Hammer
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Plamsa Talon
+  rules:
+  - Turbo-Boost
+  - Jink
+  - Narthecium
+  cost: 97
+  keywords: *1
+Ravenwing Ancient: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 5
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Corvus Hammer
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Plamsa Talon
+  rules:
+  - Turbo-Boost
+  - Jink
+  - Aura - Ravenwing - Attacks - 1
+  cost: 117
+  keywords: *1
+Ravenwing Champion: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 2
+    BS: 3
+    S: 4
+    T: 5
+    W: 5
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Blade of Caliban
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Plamsa Talon
+  rules:
+  - Turbo-Boost
+  - Jink
+  - Duelist - Hits
+  cost: 106
+  keywords: *1
+Ravenwing Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: &6
+  - Twin Boltgun
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &7
+  - Turbo-Boost
+  - Jink
+  cost: 32
+  keywords: *1
+Ravenwing Sergeant: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *6
+  rules: *7
+  cost: 32
+  keywords: *1
+Ravenwing Attack Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 4
+    A: 2
+    Ld: 7
+    Sv: 3
+  gear: &29
+  - Heavy Bolter
+  - Twin Boltgun
+  - Bolt Pistol
+  rules:
+  - Turbo Boost
+  - Jink
+  cost: 45
+  keywords: *1
+Ravenwing Land Speeder: !ruby/object:CodexEntry
+  stats:
+    M: 16
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 6
+    A: 2
+    Ld: 7
+    Sv: 3
+  gear:
+  - Heavy Bolter
+  rules:
+  - Fly
+  - Jink
+  cost: 85
+  keywords: *1
+Ravenwing Darkshroud: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 6
+    W: 9
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Heavy Bolter
+  rules:
+  - Jink
+  - Aura - 6 - Hard to Hit
+  cost: 128
+  keywords: *1
+Nephilim Jetfighter: !ruby/object:CodexEntry
+  stats:
+    M: 50
+    WS: 6
+    BS: 3
+    S: 6
+    T: 6
+    W: 10
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Avenger Mega Bolter
+  - Twin Heavy Bolter
+  - Blacksword Missile Launcher
+  - Blacksword Missile Launcher
+  rules:
+  - Jink
+  - Hard to Hit
+  - Airborne
+  - Anti-Ground
+  cost: 123
+  keywords: *1
+Ravenwing Dark Talon: !ruby/object:CodexEntry
+  stats:
+    M: 40
+    WS: 6
+    BS: 3
+    S: 6
+    T: 6
+    W: 10
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Hurricane Bolter
+  - Hurricane Bolter
+  - Rift Cannon
+  rules:
+  - Jink
+  - Hard to Hit
+  - Airborne
+  - Anti-Ground
+  cost: 180
+  keywords: *1
+Ravenwing Black Knight: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: &8
+  - Corvus Hammer
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Plamsa Talon
+  rules: &9
+  - Turbo-Boost
+  - Jink
+  cost: 50
+  keywords: *1
+Ravenwing Huntsmaster: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear: *8
+  rules: *9
+  cost: 50
+  keywords: *1
+Ravenwing Land Speeder Vengance: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 6
+    W: 9
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Heavy Bolter
+  - Plamsa Storm Bolter
+  rules:
+  - Fly
+  - Jink
+  cost: 122
+  keywords: *1
+Logan Grimnar: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 7
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear:
+  - Axe of Morkai
+  - Storm Bolter
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - All
+  - Deepstrike
+  cost: 190
+  keywords: *1
+Logan Grimnar on Stormrider: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 2
+    BS: 2
+    S: 4
+    T: 6
+    W: 12
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Axe of Morkai
+  - Storm Bolter
+  - Tynak and Fenrir
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - All
+  - Deepstrike
+  - Reroll - Charge
+  cost: 230
+  keywords: *1
+Wolf Lord on Thunderwolf: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 2
+    BS: 2
+    S: 4
+    T: 5
+    W: 7
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Storm Bolter
+  - Thunderwolf
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - 1
+  cost: 128
+  keywords: *1
+Ragnar Blackmane: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Frostfang
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Storm Bolter
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - 1
+  - Aura - 6 - Reroll - Charge
+  cost: 141
+  keywords: *1
+Svangir: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 7
+    S: 4
+    T: 4
+    W: 1
+    A: 3
+    Ld: 4
+    Sv: 
+  gear:
+  - Teeth and Claws
+  rules: []
+  cost: 141
+  keywords: *1
+Krom Dragongraze: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Wyrmclaw
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Storm Bolter
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - 1
+  - Fear - 1
+  cost: 119
+  keywords: *1
+Arjac Rockfist: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Foehammer
+  rules:
+  - Invulnerable - 3
+  - Aura - 6 - Reroll - All - Wounds - 1
+  - Duelist - Hits
+  - Aura - Wolf Guard - Attacks - 1
+  - Damage Reduced - 1
+  cost: 140
+  keywords: *1
+Harald Deathwolf: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 2
+    BS: 2
+    S: 4
+    T: 5
+    W: 7
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Glacius
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Storm Bolter
+  - Crushing Teeth and Claws
+  rules:
+  - Invulnerable - 3
+  - Aura - 6 - Reroll - All - Hits - 1
+  - Saves - Shooting - 1
+  cost: 188
+  keywords: *1
+Canis Wolfborn: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 2
+    BS: 5
+    S: 4
+    T: 5
+    W: 6
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Two Wolf Claws
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Storm Bolter
+  - Crushing Teeth and Claws
+  rules:
+  - Aura - Wolves - Attacks - 1
+  - Reroll - Charges
+  - Aura - 6 - Reroll - All - Wound - 1
+  cost: 150
+  keywords: *1
+Rune Priest: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Runic Axe
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Deny - 1
+  - Psyker - 2
+  cost: 68
+  keywords: *1
+Rune Priest in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Runic Axe
+  - Storm Bolter
+  rules:
+  - Invulnerable - 5
+  - Deny - 1
+  - Psyker - 2
+  cost: 120
+  keywords: *1
+Rune Priest on Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 2
+    BS: 3
+    S: 4
+    T: 5
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Runic Axe
+  - Storm Bolter
+  rules:
+  - Deny - 1
+  - Psyker - 2
+  cost: 109
+  keywords: *1
+Njal Stormcaller: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear: &10
+  - Staff of the Stormcaller
+  - Nightwing
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &11
+  - Deny - 1
+  - Psyker - 2
+  - Psychic Test - 1
+  - Invulnerable - 5
+  - Reroll - Deny - 1
+  cost: 138
+  keywords: *1
+Njal Stormcaller in Runic Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear: *10
+  rules: *11
+  cost: 167
+  keywords: *1
+Wolf Priest: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Crozius Arcanum
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Aura - 6 - Reroll - Fight - Hits - All
+  - Invulnerable - 4
+  - Healing Balms
+  cost: 90
+  keywords: *1
+Wolf Priest in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Crozius Arcanum
+  - Storm Bolter
+  rules:
+  - Aura - 6 - Reroll - Fight - Hits - All
+  - Invulnerable - 4
+  - Healing Balms
+  cost: 144
+  keywords: *1
+Wolf Priest on Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 2
+    BS: 3
+    S: 4
+    T: 5
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Crozius Arcanum
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Twin Boltgun
+  rules:
+  - Aura - 6 - Reroll - Fight - Hits - All
+  - Invulnerable - 4
+  - Healing Balms
+  - Turbo-Boost
+  cost: 135
+  keywords: *1
+Ulrik the Slayer: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Crozius Arcanum
+  - Plasma Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Aura - 6 - Reroll - Fight - Hits - All
+  - Invulnerable - 4
+  - Healing Balms
+  cost: 133
+  keywords: *1
+Wolf Guard Battle Leader: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Aura - 6 - Reroll - All - Wound - 1
+  cost: 60
+  keywords: *1
+Wolf Guard Battle Leader in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 8
+    Sv: 2
+  gear: &22
+  - Power Sword
+  - Storm Bolter
+  rules:
+  - Aura - 6 - Reroll - All - Wound - 1
+  - Invulnerable - 5
+  - Deepstrike
+  cost: 92
+  keywords: *1
+Wolf Guard Battle Leader on Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 2
+    BS: 3
+    S: 4
+    T: 5
+    W: 5
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Twin Boltgun
+  rules:
+  - Aura - 6 - Reroll - All - Wound - 1
+  cost: 85
+  keywords: *1
+Wolf Guard Battle Leader on Thunderwolf: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 2
+    BS: 3
+    S: 4
+    T: 5
+    W: 6
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Crushing Teeth and Claws
+  rules:
+  - Aura - 6 - Reroll - All - Wound - 1
+  cost: 97
+  keywords: *1
+Bjorn the Fell-handed: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 2
+    BS: 2
+    S: 7
+    T: 8
+    W: 8
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Trueclaw
+  - Assault Cannon
+  - Heavy Flamer
+  rules:
+  - Smoke Launchers
+  - Aura - 6 - Reroll - All - Hit - 1
+  - FNP - 5
+  - Command Point - 1
+  cost: 210
+  keywords: *1
+Blood Claw: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 4
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: &12
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &13
+  - ATSKNF
+  - Charge - Attack - 1
+  cost: 13
+  keywords: *1
+Skyclaw: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 4
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: *12
+  rules: *13
+  cost: 13
+  keywords: *1
+Blood Claw Pack Leader: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 4
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 7
+    Sv: 3
+  gear: *12
+  rules: *13
+  cost: 13
+  keywords: *1
+Wolf Guard Pack Leader: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *12
+  rules: *13
+  cost: 16
+  keywords: *1
+Wolf Guard Pack Leader in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Power Sword
+  - Storm Bolter
+  rules: &26
+  - Invulnerable - 5
+  - Deepstrike
+  cost: 31
+  keywords: *1
+Lukas the Trickster: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Claw of the Jackalwolf
+  - Plasma Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Aura - Blood Claw - Add - All - Hits - 1
+  - Hard to Hit - Fight
+  - Fear - 1
+  cost: 118
+  keywords: *1
+Grey Hunter: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: &14
+  - Boltgun
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &15
+  - ATSKNF
+  cost: 14
+  keywords: *1
+Grey Hunter Pack Leader: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 4
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 7
+    Sv: 3
+  gear: *14
+  rules: *15
+  cost: 14
+  keywords: *1
+Wolf Guard: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *14
+  rules: *15
+  cost: 16
+  keywords: *1
+Long Fang: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: *14
+  rules: &16
+  - ATSKNF
+  - Reroll - Shooting - 1
+  cost: 15
+  keywords: *1
+Long Fang Pack Leader: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: *14
+  rules: *16
+  cost: 15
+  keywords: *1
+Iron Priest: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Thunder Hammer
+  - Boltgun
+  - Servo-arm
+  - Plasma Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &17
+  - Heal - Vehicle - D3
+  cost: 58
+  keywords: *1
+Iron Priest on Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 2
+    BS: 3
+    S: 4
+    T: 5
+    W: 5
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Thunder Hammer
+  - Boltgun
+  - Servo-arm
+  - Plasma Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Twin Boltgun
+  rules:
+  - Heal - Vehicle - D3
+  cost: 65
+  keywords: *1
+Iron Priest on Thunderwolf: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 2
+    BS: 3
+    S: 4
+    T: 5
+    W: 6
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Thunder Hammer
+  - Boltgun
+  - Frag Grenade
+  - Krak Grenade
+  - Servo-arm
+  - Crushing Teeth and Claws
+  rules: *17
+  cost: 80
+  keywords: *1
+Cyberwolf: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 3
+    BS: 7
+    S: 4
+    T: 4
+    W: 2
+    A: 3
+    Ld: 4
+    Sv: 4
+  gear: &18
+  - Teeth and Claws
+  rules: *17
+  cost: 15
+  keywords: *1
+Fenrisian Wolf: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 3
+    BS: 7
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 4
+    Sv: 6
+  gear: *18
+  rules: *17
+  cost: 9
+  keywords: *1
+Wolf Scout: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 4
+  gear: &19
+  - Boltgun
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &20
+  - ATSKNF
+  cost: 11
+  keywords: *1
+Wolf Scout Pack Leader: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 4
+  gear: *19
+  rules: *20
+  cost: 11
+  keywords: *1
+Wulfen: !ruby/object:CodexEntry
+  stats:
+    M: 7
+    WS: 3
+    BS: 5
+    S: 5
+    T: 4
+    W: 2
+    A: 3
+    Ld: 7
+    Sv: 4
+  gear:
+  - Wulfen Claws
+  rules: &21
+  - Reroll - Charges
+  - Fleet
+  - FNP - 5
+  - Death Throes - 0
+  - Aura - 6 - Reroll - Charges
+  - Aura - 6 - Attacks - 1
+  cost: 37
+  keywords: *1
+Wulfen Pack Leader: !ruby/object:CodexEntry
+  stats:
+    M: 7
+    WS: 3
+    BS: 5
+    S: 5
+    T: 4
+    W: 2
+    A: 4
+    Ld: 7
+    Sv: 4
+  gear:
+  - Frost Claws
+  rules: *21
+  cost: 37
+  keywords: *1
+Lone Wolf: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 3
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear: *12
+  rules: &23
+  - Death Throws - 4
+  - Duelist - Wounds
+  cost: 75
+  keywords: *1
+Lone Wolf in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 3
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear: *22
+  rules: *23
+  cost: 115
+  keywords: *1
+Murderfang: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Power Sword
+  - Hellfire Extremis
+  - Stasis Bomb
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - 1
+  - FNP - 6
+  cost: 130
+  keywords: *1
+Wolf Guard on Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: &24
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Twin Boltgun
+  rules: &25
+  - Turbo-Boost
+  cost: 34
+  keywords: *1
+Wolf Guard Pack Leader on Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear: *24
+  rules: *25
+  cost: 34
+  keywords: *1
+Wolf Guard in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 2
+  gear:
+  - Power Fist
+  - Storm Bolter
+  rules: *26
+  cost: 31
+  keywords: *1
+Swift Claw: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 4
+    S: 4
+    T: 5
+    W: 2
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: &27
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Twin Boltgun
+  rules: &28
+  - ATSKNF
+  - Charge - Attack - 1
+  - Turbo-Boost
+  cost: 31
+  keywords: *1
+Swift Claw Pack Leader: !ruby/object:CodexEntry
+  stats:
+    M: 13
+    WS: 3
+    BS: 4
+    S: 4
+    T: 5
+    W: 2
+    A: 2
+    Ld: 7
+    Sv: 3
+  gear: *27
+  rules: *28
+  cost: 31
+  keywords: *1
+Swiftclaw Attack Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 4
+    S: 4
+    T: 5
+    W: 4
+    A: 2
+    Ld: 7
+    Sv: 3
+  gear: *29
+  rules: *28
+  cost: 45
+  keywords: *1
+Stormwolf Gunship: !ruby/object:CodexEntry
+  stats:
+    M: 50
+    WS: 6
+    BS: 3
+    S: 8
+    T: 7
+    W: 14
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Lascannon
+  - Lascannon
+  - Twin Heavy Bolter
+  - Twin Heavy Bolter
+  - Twin Helfrost Cannon
+  rules: &30
+  - Hard to Hit - 1
+  - Move and Fire
+  - Fly
+  cost: 165
+  keywords: *1
+Stormfang Gunship: !ruby/object:CodexEntry
+  stats:
+    M: 50
+    WS: 6
+    BS: 3
+    S: 8
+    T: 7
+    W: 14
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Helfrost Destructor
+  - Twin Heavy Bolter
+  - Twin Heavy Bolter
+  - Stormstrike Missile LauncherStormstrike Missile Launcher
+  rules: *30
+  cost: 155
+  keywords: *1
+Corvus Blackstar: !ruby/object:CodexEntry
+  stats:
+    M: 50
+    WS: 6
+    BS: 3
+    S: 8
+    T: 7
+    W: 14
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Twin Assault Cannon
+  - Stormstrike Missile LauncherStormstrike Missile Launcher
+  rules: *30
+  cost: 160
+  keywords: *1
+Thunderwolf Cavalry: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 3
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear:
+  - Chainsword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  - Crushing Teeth and Claws
+  rules: *15
+  cost: 45
+  keywords: *1
+Watch Master: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear:
+  - Guardian Spear
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - All
+  cost: 130
+  keywords: *1
+Deathwatch Veteran: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: &31
+  - Boltgun - Deathwatch
+  - Frag Grenades
+  - Krak Grenades
+  rules: *15
+  cost: 19
+  keywords: *1
+Deathwatch Sergeant: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear: *31
+  rules: *15
+  cost: 19
+  keywords: *1
+Black Shield: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear: *31
+  rules:
+  - Heroic Intervention
+  cost: 19
+  keywords: *1
+Deathwatch Terminator: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 2
+  gear:
+  - Storm Bolter
+  - Power Fist
+  rules: &32
+  - Invulnerable - 5
+  - Autopass Morale
+  cost: 32
+  keywords: *1
+Deathwatch Terminator Sergeant: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Storm Bolter
+  - Power Sword
+  rules: *32
+  cost: 32
+  keywords: *1
+Deathwatch Biker: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: &33
+  - Frag Grenade
+  - Krak Grenade
+  - Twin Boltgun - Deathwatch
+  rules: &34
+  - Fall Back - Assault
+  - ATSKNF
+  cost: 34
+  keywords: *1
+Deathwatch Biker Sergeant: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear: *33
+  rules: *34
+  cost: 34
+  keywords: *1
+Deathwatch Vanguard Veteran: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: &35
+  - Frag Grenade
+  - Krak Grenade
+  - Bolt Pistol - Deathwatch
+  - Chainsword
+  rules: &36
+  - Fall Back - Shoot
+  - ATSKNF
+  - Deepstrike
+  cost: 21
+  keywords: *1
+Deathwatch Vanguard Sergeant: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear: *35
+  rules: *36
+  cost: 21
+  keywords: *1

@@ -1,0 +1,965 @@
+---
+Abaddon The Despoiler: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 5
+    W: 7
+    A: 6
+    Ld: 10
+    Sv: 2
+  gear:
+  - Drach’nyen
+  - Talon of Horus
+  rules:
+  - DTFE
+  - Command Points - 2
+  - Invulnerable-4
+  - Damage is Halved
+  - Aura - 6 - Reroll Hits
+  - Aura - 12 - Pass Morale
+  - Deepstrike
+  cost: 240
+  keywords: &1
+  - Chaos
+  - Heretic Astartes
+  - Character
+  - Infantry
+  - Vehicle
+  - Dreadnought
+  - Fly
+Fabius Bile: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 5
+    T: 4
+    W: 5
+    A: 6
+    Ld: 9
+    Sv: 3
+  gear:
+  - Xyclos Needler
+  - Rod of Torment
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - DTFE
+  cost: 109
+  keywords: *1
+Kharn the Betrayer: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 5
+    T: 4
+    W: 5
+    A: 6
+    Ld: 9
+    Sv: 3
+  gear:
+  - Gorechild
+  - Kharns Plasma Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Fight Twice
+  - Aura - 1 - Reroll Hits
+  cost: 160
+  keywords: *1
+Lucius The Eternal: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Lash of Torment
+  - Master-crafted Power Sword
+  - Doom Siren
+  - Frag Grenade
+  - Krak Grenade
+  rules: &2
+  - Invulnerable-4
+  - Aura - 6 - Reroll Hits
+  cost: 115
+  keywords: *1
+Cypher: !ruby/object:CodexEntry
+  stats:
+    M: 7
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Cyphers Bolt Pistol
+  - Cyphers Plasma Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: *2
+  cost: 110
+  keywords: *1
+Huron Blackheart: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Tyrants Claw
+  - Power Axe
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Psyker - 2
+  - Command Points - 1
+  - Aura - 6 - Reroll Hits
+  cost: 125
+  keywords: *1
+Daemon Prince: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 2
+    BS: 2
+    S: 7
+    T: 6
+    W: 8
+    A: 4
+    Ld: 10
+    Sv: 3
+  gear:
+  - Malefic Talons
+  - Malefic Talons
+  rules:
+  - DTFE
+  - Invulnerable-5Aura - 6 - Reroll Hits - 1
+  cost: 146
+  keywords: *1
+Fallen: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: &3
+  - Boltgun
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &4
+  - DTFE
+  - Stationary - Reroll 1
+  cost: 14
+  keywords: *1
+Fallen Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear: *3
+  rules: *4
+  cost: 14
+  keywords: *1
+Chaos Space Marine: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: &5
+  - Boltgun
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &6
+  - DTFE
+  cost: 13
+  keywords: *1
+Aspiring Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *5
+  rules: *6
+  cost: 13
+  keywords: *1
+Chaos Cultist: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 4
+    BS: 4
+    S: 3
+    T: 3
+    W: 1
+    A: 1
+    Ld: 5
+    Sv: 6
+  gear: &7
+  - Autogun
+  rules: &8 []
+  cost: 4
+  keywords: *1
+Cultist Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 4
+    BS: 4
+    S: 3
+    T: 3
+    W: 1
+    A: 2
+    Ld: 6
+    Sv: 6
+  gear: *7
+  rules: *8
+  cost: 4
+  keywords: *1
+Bloodletter: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 3
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 6
+  gear: &9
+  - Hellblade
+  rules: &10
+  - Invulnerable-5
+  - Furious Charge
+  cost: 7
+  keywords: *1
+Bloodreaper: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 3
+    W: 1
+    A: 2
+    Ld: 7
+    Sv: 6
+  gear: *9
+  rules: *10
+  cost: 7
+  keywords: *1
+Pink Horror: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 4
+    BS: 4
+    S: 3
+    T: 3
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 6
+  gear:
+  - Coruscating Flame
+  rules: &11
+  - Invulnerable-5
+  - Psyker - 1
+  - Minor Smite
+  cost: 8
+  keywords: *1
+Brimstone Horrors: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 5
+    BS: 7
+    S: 1
+    T: 3
+    W: 1
+    A: 2
+    Ld: 7
+    Sv: 6
+  gear: []
+  rules: *11
+  cost: 3
+  keywords: *1
+Blue Horrors: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 5
+    BS: 7
+    S: 2
+    T: 3
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 6
+  gear: []
+  rules: *11
+  cost: 5
+  keywords: *1
+Plaguebearer: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 4
+    BS: 4
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 6
+  gear: &12
+  - Plaguesword
+  rules: &13
+  - Invulnerable-5
+  - FNP - 5
+  cost: 7
+  keywords: *1
+Plagueridden: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 4
+    BS: 4
+    S: 4
+    T: 4
+    W: 1
+    A: 3
+    Ld: 7
+    Sv: 6
+  gear: *12
+  rules: *13
+  cost: 7
+  keywords: *1
+Deamonette: !ruby/object:CodexEntry
+  stats:
+    M: 7
+    WS: 3
+    BS: 3
+    S: 3
+    T: 3
+    W: 1
+    A: 2
+    Ld: 7
+    Sv: 6
+  gear: &14
+  - Piercing Claws
+  rules: &15
+  - Invulnerable-5
+  - Always Strikes First
+  cost: 7
+  keywords: *1
+Alluress: !ruby/object:CodexEntry
+  stats:
+    M: 7
+    WS: 3
+    BS: 3
+    S: 3
+    T: 3
+    W: 1
+    A: 3
+    Ld: 7
+    Sv: 6
+  gear: *14
+  rules: *15
+  cost: 7
+  keywords: *1
+Khorne Berzerker: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 5
+    T: 4
+    W: 1
+    A: 2
+    Ld: 7
+    Sv: 3
+  gear: &16
+  - Bolt Pistol
+  - Chainsword
+  - Frag Grenade
+  - Krak Grenade
+  rules: &17
+  - DTFE
+  - Fights Twice
+  cost: 16
+  keywords: *1
+Berzerker Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 5
+    T: 4
+    W: 1
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear: *16
+  rules: *17
+  cost: 16
+  keywords: *1
+Rubric Marine: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear:
+  - Inferno Boltgun
+  rules:
+  - Invulnerable-5
+  - DTFE
+  - Move and Fire
+  - All is Dust
+  cost: 18
+  keywords: *1
+Aspiring Sorcerer: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear:
+  - Force Stave
+  - Inferno Bolt Pistol
+  rules:
+  - Invulnerable-5
+  - DTFE
+  - Move and Fire
+  - All is Dust
+  - Psyker - 1
+  - Minor Smite
+  cost: 18
+  keywords: *1
+Plague Marine: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear:
+  - Plague Knige
+  - Boltgun
+  - Blight Grenade
+  - Krak Grenade
+  rules:
+  - DTFE
+  - FNP - 5
+  cost: 19
+  keywords: *1
+Plague Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear: *5
+  rules: &18
+  - DTFEShoot Back - Auto
+  cost: 15
+  keywords: *1
+Noise Marine: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 7
+    Sv: 
+  gear: *5
+  rules: *18
+  cost: 15
+  keywords: *1
+Chosen: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *5
+  rules: &19
+  - DTFE
+  cost: 16
+  keywords: *1
+Chosen Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear: *5
+  rules: *19
+  cost: 16
+  keywords: *1
+Mutilator: !ruby/object:CodexEntry
+  stats:
+    M: 4
+    WS: 3
+    BS: 3
+    S: 5
+    T: 4
+    W: 3
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Fleshmetal Weapons
+  rules:
+  - Invulnerable-5
+  - DTFE
+  - Deepstrike
+  cost: 50
+  keywords: *1
+Chaos Terminator: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 2
+  gear: &20
+  - Combi-bolter
+  - Power Axe
+  rules: &21
+  - DTFE
+  - Invulnerable-5
+  - Deepstrike
+  cost: 31
+  keywords: *1
+Terminator Champion: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 2
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear: *20
+  rules: *21
+  cost: 31
+  keywords: *1
+Possesed: !ruby/object:CodexEntry
+  stats:
+    M: 7
+    WS: 3
+    BS: 3
+    S: 5
+    T: 4
+    W: 2
+    A: 0
+    Ld: 8
+    Sv: 3
+  gear:
+  - Horrifying Mutations
+  rules:
+  - Invulnerable-5
+  - DTFE
+  - Attacks - D3
+  cost: 22
+  keywords: *1
+Hellbrutes: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 3
+    BS: 3
+    S: 6
+    T: 7
+    W: 8
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Multi-Melta
+  - Hellbrute Fist
+  - Hellbrute Fist
+  rules:
+  - Crazed
+  - Attacks - Two CCW - 1
+  cost: 72
+  keywords: *1
+Chaos Biker: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: &22
+  - Combi-bolter
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &23
+  - DTFE
+  - Turbo Boost
+  cost: 25
+  keywords: *1
+Chaos Biker Champion: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 3
+    BS: 3
+    S: 4
+    T: 5
+    W: 2
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *22
+  rules: *23
+  cost: 25
+  keywords: *1
+Chaos Spawn: !ruby/object:CodexEntry
+  stats:
+    M: 7
+    WS: 4
+    BS: 4
+    S: 5
+    T: 5
+    W: 4
+    A: D6
+    Ld: 9
+    Sv: 5
+  gear:
+  - Hideous Mutations
+  rules:
+  - Fear - 1
+  cost: 33
+  keywords: *1
+Raptor: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: &24
+  - Bolt Pistol
+  - Chainsword
+  - Frag Grenade
+  - Krak Grenade
+  rules: &25
+  - DTFE
+  - Fear - 1
+  - Deepstrike
+  cost: 17
+  keywords: *1
+Raptor Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear: *24
+  rules: *25
+  cost: 17
+  keywords: *1
+Warp Talon: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 8
+    Sv: 3
+  gear: &26
+  - Two Lightning Claws
+  rules: &27
+  - Invulnerable-5
+  - DTFE
+  - Deepstrike
+  cost: 15
+  keywords: *1
+Warp Talon Champion: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 2
+    Sv: 3
+  gear: *26
+  rules: *27
+  cost: 15
+  keywords: *1
+Havoc: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 1
+    A: 1
+    Ld: 7
+    Sv: 3
+  gear: *5
+  rules: *6
+  cost: 13
+  keywords: *1
+Obliterator: !ruby/object:CodexEntry
+  stats:
+    M: 4
+    WS: 3
+    BS: 3
+    S: 5
+    T: 4
+    W: 3
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Fleshmetal Guns
+  rules:
+  - Invulnerable-5
+  - Deepstrike
+  - DTFE
+  cost: 65
+  keywords: *1
+Chaos Land Raider: !ruby/object:CodexEntry
+  stats:
+    M: 10
+    WS: 6
+    BS: 3
+    S: 8
+    T: 8
+    W: 16
+    A: 6
+    Ld: 9
+    Sv: 2
+  gear:
+  - Twin Heavy Bolter
+  - Twin Lascannon
+  - Twin Lascannon
+  rules:
+  - Move and Fire
+  cost: 239
+  keywords: *1
+Defiler: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 4
+    BS: 4
+    S: 8
+    T: 7
+    W: 14
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Battle Cannon
+  - Reaper Autocannon
+  - Twin Heavy Flamer
+  - Defiler Claws
+  rules: &28
+  - Invulnerable-5
+  - Regeneration - 1
+  cost: 152
+  keywords: *1
+Forgefiend: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 4
+    BS: 4
+    S: 6
+    T: 7
+    W: 12
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Hades Autocannon
+  - Hades Autocannon
+  - Daemon Jaws
+  rules: *28
+  cost: 119
+  keywords: *1
+Maulerfiend: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 4
+    BS: 4
+    S: 6
+    T: 7
+    W: 12
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Maulerfiend Fists
+  - Magma Cutter
+  - Magma Cutter
+  rules: *28
+  cost: 140
+  keywords: *1
+Chaos Predator: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 6
+    BS: 3
+    S: 6
+    T: 7
+    W: 11
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Predator Autocannon
+  rules: &29
+  - Smoke Launcher
+  cost: 90
+  keywords: *1
+Chaos Vindicator: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 6
+    BS: 3
+    S: 6
+    T: 7
+    W: 11
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Demolisher Cannon
+  rules: *29
+  cost: 135
+  keywords: *1
+Chaos Rhino: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 6
+    BS: 3
+    S: 6
+    T: 7
+    W: 10
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Storm Bolter
+  rules: *29
+  cost: 70
+  keywords: *1
+Heldrake: !ruby/object:CodexEntry
+  stats:
+    M: 30
+    WS: 3
+    BS: 4
+    S: 7
+    T: 7
+    W: 12
+    A: 4
+    Ld: 8
+    Sv: 3
+  gear:
+  - Hades Autocannon
+  - Heldrake Claws
+  rules:
+  - Invulnerable-5
+  - Regeneration - 1
+  - Fly
+  cost: 138
+  keywords: *1

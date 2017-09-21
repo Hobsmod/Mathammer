@@ -18,6 +18,15 @@ Marneus Calgar: !ruby/object:CodexEntry
   - Chapter Master
   - Character
   cost: 200
+  keywords: &1
+  - Imperium
+  - Adeptus Astartes
+  - Character
+  - Infantry
+  - Vehicle
+  - Dreadnought
+  - Fly
+  - Infantry
 Chief Librarian Tigerius: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -43,6 +52,7 @@ Chief Librarian Tigerius: !ruby/object:CodexEntry
   - "-1 Hit Buff"
   - 2 Powers
   cost: 130
+  keywords: *1
 Chaplain Cassius: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -64,6 +74,523 @@ Chaplain Cassius: !ruby/object:CodexEntry
   - Character
   - Reroll Fight Hits
   cost: 98
+  keywords: *1
+Captain Sicarius: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Talassarian Tempest Blade
+  - Plasma Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Character
+  - Aura - 6 - Reroll - All - Hits - 1
+  - Aura - 6 - Always Strikes First
+  cost: 132
+  keywords: *1
+Sergeant Chronus: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 2
+    S: 4
+    T: 4
+    W: 4
+    A: 2
+    Ld: 8
+    Sv: 3
+  gear:
+  - Bolt Pistol
+  - Servo-arm
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - ATSKNF
+  cost: 35
+  keywords: *1
+Sergeant Telion: !ruby/object:CodexEntry
+  stats:
+    M: 7
+    WS: 3
+    BS: 2
+    S: 4
+    T: 4
+    W: 4
+    A: 2
+    Ld: 8
+    Sv: 4
+  gear:
+  - Quietus
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - ATSKNF
+  - Cover - 2
+  - Aura - Scouts - Hits - 1
+  cost: 75
+  keywords: *1
+Captain Lysander: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Fist of Dorn
+  rules:
+  - Invulnerable-3
+  - Aura - 6 - Reroll - All - All - Hits - 1
+  cost: 150
+  keywords: *1
+Pedro Kantor: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Dorns Arrow
+  - Power Fist
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Aura - 6 - Reroll - All - All - Hits - All
+  - Aura - 6 - Attacks - 1
+  cost: 170
+  keywords: *1
+High Marshal Helbrecht: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Sword of the High Marshals
+  - Combi-Melta
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Aura - 6 - Reroll - All - All - Hits - All
+  - Aura - 6 - Strength - 1
+  cost: 170
+  keywords: *1
+The Emperors Champion: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 4
+    Ld: 8
+    Sv: 2
+  gear:
+  - Black Sword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Duelist - Reroll - Hits Duelist - Attacks - 1
+  - Duelist - Strength - 1
+  cost: 75
+  keywords: *1
+Chaplain Grimaldus: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Crozius Arcanum
+  - Plasma Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Aura - 6 - Reroll - Fight - Hits - All
+  - Aura - 6 - Rend - Extra Attack
+  cost: 120
+  keywords: *1
+Korsarro Khan: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Moonfang
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Aura - 6 - Reroll - All - Hits - 1
+  - Aura - 6 - Charge - Strength - 1
+  cost: 107
+  keywords: *1
+Vulkan Hestan: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Gauntlet of the Forge
+  - Spear of Vulkan
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-3
+  - Aura - 6 - Reroll - All - Hits - 1
+  - Forgefather
+  cost: 154
+  keywords: *1
+Kayavaan Shrike: !ruby/object:CodexEntry
+  stats:
+    M: 12
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 5
+    A: 5
+    Ld: 9
+    Sv: 2
+  gear:
+  - Ravens Talons
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Aura - 6 - Reroll - All - Hits - All
+  - Aura - 6 - Reroll - Charge
+  cost: 150
+  keywords: *1
+Captain in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Power Sword
+  - Storm Bolter
+  rules:
+  - Invulnerable-4
+  - Aura - 6 - Reroll - All - Hits - 1
+  cost: 105
+  keywords: *1
+Captain in Cataphracti Armor: !ruby/object:CodexEntry
+  stats:
+    M: 4
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 4
+    Ld: 9
+    Sv: 2
+  gear:
+  - Power Sword
+  - Combi-bolter
+  rules:
+  - Invulnerable-3
+  - Aura - 6 - Reroll - All - Hits - 1
+  cost: 126
+  keywords: *1
+Captain: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Bolt-Pistol
+  - Master-crafted Auto Bolt Rifle
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable-4
+  - Aura - 6 - Reroll - All - Hits - 1
+  cost: 87
+  keywords: *1
+Captain on Bike: !ruby/object:CodexEntry
+  stats:
+    M: 14
+    WS: 2
+    BS: 2
+    S: 4
+    T: 5
+    W: 6
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Chainsword
+  - Master-crafted Boltgun
+  - Frag Grenade
+  - Krak Grenade
+  - Twin Boltgun
+  rules:
+  - Invulnerable-4
+  - Aura - 6 - Reroll - All - Hits - 1
+  cost: 98
+  keywords: *1
+Captain in Gravis Armor: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 5
+    W: 6
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Master-crafted Power Sword
+  - Boltstorm Gauntlet
+  rules:
+  - Invulnerable-4
+  - Aura - 6 - Reroll - All - Hits - 1
+  cost: 102
+  keywords: *1
+Librarian: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Force Stave
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &2
+  - Psyker - 2
+  - Deny - 1
+  cost: 93
+  keywords: *1
+Primaris Librarian: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Force Sword
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: *2
+  cost: 93
+  keywords: *1
+Librarian in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Force Stave
+  rules:
+  - Psyker - 2
+  - Deny - 1
+  - Invulnerable-5
+  cost: 143
+  keywords: *1
+Chaplain: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 9
+    Sv: 3
+  gear:
+  - Crozius Arcanum
+  - Absolver Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: &3
+  - Invulnerable-4
+  - Aura - 6 - Reroll - Fight - Hits - 1
+  cost: 72
+  keywords: *1
+Primaris Chaplain: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 4
+    Ld: 9
+    Sv: 3
+  gear:
+  - Crozius Arcanum
+  - Absolver Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules: *3
+  cost: 85
+  keywords: *1
+Chaplain in Terminator Armor: !ruby/object:CodexEntry
+  stats:
+    M: 5
+    WS: 3
+    BS: 3
+    S: 4
+    T: 4
+    W: 5
+    A: 3
+    Ld: 9
+    Sv: 2
+  gear:
+  - Crozius Arcanum
+  - Storm Bolter
+  rules: *3
+  cost: 115
+  keywords: *1
+Techmarine Gunner: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 3
+    BS: 2
+    S: 4
+    T: 4
+    W: 2
+    A: 3
+    Ld: 8
+    Sv: 2
+  gear:
+  - Servo Arm
+  - Servo Arm
+  - Bolt Pistol
+  - Plasma Cutter
+  - Flamer
+  rules: &4
+  - ATSKNF
+  cost: 26
+  keywords: *1
+Lieutenant: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Chainsword
+  - Master-crafted Boltgun
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Aura -6 - Reroll - All - Wounds - 1
+  cost: 60
+  keywords: *1
+Primaris Lieutenant: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 3
+    S: 4
+    T: 4
+    W: 4
+    A: 3
+    Ld: 8
+    Sv: 3
+  gear:
+  - Chainsword
+  - Master-crafted Boltgun
+  - Bolt Pistol
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Aura -6 - Reroll - All - Wounds - 1
+  cost: 70
+  keywords: *1
 Tactical Marine: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -75,14 +602,14 @@ Tactical Marine: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
-  gear: &1
+  gear: &5
   - Boltgun
   - Bolt Pistol
   - Frag Grenade
   - Krak Grenade
-  rules: &2
-  - ATSKNF
+  rules: *4
   cost: 13
+  keywords: *1
 Tactical Marine Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -94,9 +621,10 @@ Tactical Marine Sergeant: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
-  gear: *1
-  rules: *2
+  gear: *5
+  rules: *4
   cost: 13
+  keywords: *1
 Intercessor: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -108,14 +636,15 @@ Intercessor: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
-  gear: &3
+  gear: &6
   - Bolt Rifle
   - Bolt Pistol
   - Frag Grenade
   - Krak Grenade
-  rules: &4
+  rules: &7
   - ATSKNF
   cost: 20
+  keywords: *1
 Intercessor Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -127,9 +656,10 @@ Intercessor Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-  gear: *3
-  rules: *4
+  gear: *6
+  rules: *7
   cost: 20
+  keywords: *1
 Scouts: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -141,14 +671,15 @@ Scouts: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 4
-  gear: &5
+  gear: &8
   - Boltgun
   - Bolt Pistol
   - Frag Grenade
   - Krak Grenade
-  rules: &6
+  rules: &9
   - ATSKNF
   cost: 11
+  keywords: *1
 Scout Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -160,9 +691,10 @@ Scout Sergeant: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 4
-  gear: *5
-  rules: *6
+  gear: *8
+  rules: *9
   cost: 11
+  keywords: *1
 Primaris Ancient: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -174,11 +706,12 @@ Primaris Ancient: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
-  gear: *3
-  rules: &7
+  gear: *6
+  rules: &10
   - ATSKNF
   - 4+ Fight Back
   cost: 69
+  keywords: *1
 Chapter Ancient: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -195,8 +728,9 @@ Chapter Ancient: !ruby/object:CodexEntry
   - Bolt Pistol
   - Frag Grenade
   - Krak Grenade
-  rules: *7
+  rules: *10
   cost: 63
+  keywords: *1
 Company Ancient: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -212,8 +746,9 @@ Company Ancient: !ruby/object:CodexEntry
   - Bolt Pistol
   - Frag Grenade
   - Krak Grenade
-  rules: *7
-  cost: 
+  rules: *10
+  cost: 63
+  keywords: *1
 Chapter Champion: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -235,6 +770,7 @@ Chapter Champion: !ruby/object:CodexEntry
   - ATSKNF
   - Duelist - Hits
   cost: 63
+  keywords: *1
 Honor Guard: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -255,6 +791,7 @@ Honor Guard: !ruby/object:CodexEntry
   - ATSKNF
   - Honor Guard
   cost: 63
+  keywords: *1
 Company Champion: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -277,6 +814,7 @@ Company Champion: !ruby/object:CodexEntry
   - ATSKNF
   - Duelist - Hits
   cost: 63
+  keywords: *1
 Company Veterans: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -296,6 +834,7 @@ Company Veterans: !ruby/object:CodexEntry
   rules:
   - ATSKNF
   cost: 16
+  keywords: *1
 Reiver: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -307,15 +846,16 @@ Reiver: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
-  gear: &8
+  gear: &11
   - Bolt Carbine
   - Heavy Bolt Pistol
   - Frag Grenade
   - Krak Grenade
-  rules: &9
+  rules: &12
   - ATSKNF
   - "-1 Ld"
   cost: 18
+  keywords: *1
 Reiver Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -327,9 +867,10 @@ Reiver Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-  gear: *8
-  rules: *9
+  gear: *11
+  rules: *12
   cost: 18
+  keywords: *1
 Aggressor: !ruby/object:CodexEntry
   stats:
     M: 5
@@ -341,14 +882,15 @@ Aggressor: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
-  gear: &10
+  gear: &13
   - Auto Boltstorm Gauntlet
   - Fragstorm Grenade Launcher
-  rules: &11
+  rules: &14
   - ATSKNF
   - Fire Storm
   - Move and Fire
   cost: 25
+  keywords: *1
 Aggressor Sergeant: !ruby/object:CodexEntry
   stats:
     M: 5
@@ -360,9 +902,10 @@ Aggressor Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-  gear: *10
-  rules: *11
+  gear: *13
+  rules: *14
   cost: 25
+  keywords: *1
 Terminator: !ruby/object:CodexEntry
   stats:
     M: 5
@@ -378,11 +921,12 @@ Terminator: !ruby/object:CodexEntry
   gear:
   - Storm Bolter
   - Power Fist
-  rules: &12
+  rules: &15
   - ATSKNF
   - Invulnerable-5
   - Deepstrike
   cost: 26
+  keywords: *1
 Terminator Sergeant: !ruby/object:CodexEntry
   stats:
     M: 5
@@ -398,8 +942,9 @@ Terminator Sergeant: !ruby/object:CodexEntry
   gear:
   - Storm Bolter
   - Power Sword
-  rules: *12
+  rules: *15
   cost: 26
+  keywords: *1
 Assault Terminator: !ruby/object:CodexEntry
   stats:
     M: 5
@@ -412,10 +957,11 @@ Assault Terminator: !ruby/object:CodexEntry
     Ld: 8
     Sv: 2
     Invuln: 
-  gear: &13
+  gear: &16
   - Two Storm Claws
-  rules: *12
+  rules: *15
   cost: 31
+  keywords: *1
 Assault Terminator Sergeant: !ruby/object:CodexEntry
   stats:
     M: 5
@@ -428,9 +974,10 @@ Assault Terminator Sergeant: !ruby/object:CodexEntry
     Ld: 9
     Sv: 2
     Invuln: 
-  gear: *13
-  rules: *12
+  gear: *16
+  rules: *15
   cost: 31
+  keywords: *1
 Cataphractii Terminator: !ruby/object:CodexEntry
   stats:
     M: 4
@@ -443,11 +990,12 @@ Cataphractii Terminator: !ruby/object:CodexEntry
     Ld: 8
     Sv: 2
     Invuln: 
-  gear: &14
+  gear: &17
   - Combi-bolter
   - Power Fist
-  rules: *12
+  rules: *15
   cost: 30
+  keywords: *1
 Cataphractii Terminator Sergeant: !ruby/object:CodexEntry
   stats:
     M: 4
@@ -460,7 +1008,7 @@ Cataphractii Terminator Sergeant: !ruby/object:CodexEntry
     Ld: 9
     Sv: 2
     Invuln: 
-  gear: &15
+  gear: &18
   - Combi-bolter
   - Power Sword
   rules:
@@ -468,6 +1016,7 @@ Cataphractii Terminator Sergeant: !ruby/object:CodexEntry
   - Invulnerable-4
   - Deepstrike
   cost: 30
+  keywords: *1
 Tartaros Terminator: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -480,9 +1029,10 @@ Tartaros Terminator: !ruby/object:CodexEntry
     Ld: 8
     Sv: 2
     Invuln: 
-  gear: *14
-  rules: *12
+  gear: *17
+  rules: *15
   cost: 31
+  keywords: *1
 Tartaros Terminator Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -495,9 +1045,10 @@ Tartaros Terminator Sergeant: !ruby/object:CodexEntry
     Ld: 9
     Sv: 2
     Invuln: 
-  gear: *15
-  rules: *12
+  gear: *18
+  rules: *15
   cost: 31
+  keywords: *1
 Vanguard Veterans: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -509,13 +1060,14 @@ Vanguard Veterans: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
-  gear: &16
+  gear: &19
   - Bolt Pistol
   - Chainsword
   - Frag Grenade
   - Krak Grenade
-  rules: *2
+  rules: *4
   cost: 16
+  keywords: *1
 Vanguard Veteran Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -527,9 +1079,10 @@ Vanguard Veteran Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
-  gear: *16
-  rules: *2
+  gear: *19
+  rules: *4
   cost: 16
+  keywords: *1
 Sternguard Veterans: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -541,13 +1094,14 @@ Sternguard Veterans: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
-  gear: &17
+  gear: &20
   - Bolt Pistol
   - Special Issue Boltgun
   - Frag Grenade
   - Krak Grenade
-  rules: *2
+  rules: *4
   cost: 16
+  keywords: *1
 Sternguard Veteran Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -559,9 +1113,10 @@ Sternguard Veteran Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
-  gear: *17
-  rules: *2
+  gear: *20
+  rules: *4
   cost: 16
+  keywords: *1
 Dreadnought: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -573,13 +1128,14 @@ Dreadnought: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
-  gear: &19
+  gear: &22
   - Assault Cannon
   - Storm Bolter
   - Dreadnought Close Combat Weapon
-  rules: &18
+  rules: &21
   - Smoke Launchers
   cost: 70
+  keywords: *1
 Ironclad Dreadnought: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -595,9 +1151,10 @@ Ironclad Dreadnought: !ruby/object:CodexEntry
   - Seismic Hammer
   - Meltagun
   - Storm Bolter
-  - Dreadnought Close Combat Weapon
-  rules: *18
+  - Dreadnought Close Combat Weapon - Ironclad
+  rules: *21
   cost: 80
+  keywords: *1
 Venerable Dreadnought: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -609,10 +1166,11 @@ Venerable Dreadnought: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
-  gear: *19
+  gear: *22
   rules:
   - FNP - 6
   cost: 90
+  keywords: *1
 Contemptor Dreadnought: !ruby/object:CodexEntry
   stats:
     M: 9
@@ -632,6 +1190,7 @@ Contemptor Dreadnought: !ruby/object:CodexEntry
   rules:
   - Invulnerable-5
   cost: 98
+  keywords: *1
 Redemptor Dreadnought: !ruby/object:CodexEntry
   stats:
     M: 8
@@ -650,8 +1209,9 @@ Redemptor Dreadnought: !ruby/object:CodexEntry
   - Fragstorm Grenade Launcher
   - Fragstorm Grenade Launcher
   - Redemptor Fist
-  rules: &27 []
+  rules: &30 []
   cost: 140
+  keywords: *1
 Assault Centurion: !ruby/object:CodexEntry
   stats:
     M: 4
@@ -663,14 +1223,15 @@ Assault Centurion: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 2
-  gear: &20
+  gear: &23
   - Siege Drills
   - Flamer
   - Flamer
   - Centurion Assault Launcher
-  rules: &21
+  rules: &24
   - Ignores Cover
   cost: 53
+  keywords: *1
 Assault Centurion Sergeant: !ruby/object:CodexEntry
   stats:
     M: 4
@@ -682,9 +1243,10 @@ Assault Centurion Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
-  gear: *20
-  rules: *21
+  gear: *23
+  rules: *24
   cost: 53
+  keywords: *1
 Biker: !ruby/object:CodexEntry
   stats:
     M: 14
@@ -696,14 +1258,15 @@ Biker: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
-  gear: &22
+  gear: &25
   - Twin Boltgun
   - Bolt Pistol
   - Frag Grenade
   - Krak Grenade
-  rules: &23
+  rules: &26
   - Turbo Boost
   cost: 25
+  keywords: *1
 Biker Sergeant: !ruby/object:CodexEntry
   stats:
     M: 14
@@ -715,9 +1278,10 @@ Biker Sergeant: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
-  gear: *22
-  rules: *23
+  gear: *25
+  rules: *26
   cost: 25
+  keywords: *1
 Attack Bike: !ruby/object:CodexEntry
   stats:
     M: 14
@@ -731,8 +1295,9 @@ Attack Bike: !ruby/object:CodexEntry
     Sv: 3
   gear:
   - Heavy Bolter
-  rules: *23
+  rules: *26
   cost: 35
+  keywords: *1
 Assault Marine: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -744,13 +1309,14 @@ Assault Marine: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
-  gear: &24
+  gear: &27
   - Bolt Pistol
   - Chainsword
   - Frag Grenade
   - Krak Grenade
-  rules: *2
+  rules: *4
   cost: 13
+  keywords: *1
 Assault Marine Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -762,9 +1328,10 @@ Assault Marine Sergeant: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
-  gear: *24
-  rules: *2
+  gear: *27
+  rules: *4
   cost: 13
+  keywords: *1
 Land Speeder: !ruby/object:CodexEntry
   stats:
     M: 16
@@ -781,6 +1348,7 @@ Land Speeder: !ruby/object:CodexEntry
   rules:
   - Fly
   cost: 70
+  keywords: *1
 Scout Biker: !ruby/object:CodexEntry
   stats:
     M: 16
@@ -792,15 +1360,16 @@ Scout Biker: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 4
-  gear: &25
+  gear: &28
   - Bolt Pistol
   - Astartes Shotgun
   - Combat Knife
   - Frag Grenade
   - Krak Grenade
-  rules: &26
+  rules: &29
   - Turbo-boost
   cost: 23
+  keywords: *1
 Scout Biker Sergeant: !ruby/object:CodexEntry
   stats:
     M: 16
@@ -812,9 +1381,10 @@ Scout Biker Sergeant: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 4
-  gear: *25
-  rules: *26
+  gear: *28
+  rules: *29
   cost: 23
+  keywords: *1
 Interceptor: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -826,11 +1396,12 @@ Interceptor: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
-  gear: &28
+  gear: &31
   - Assault Bolter
   - Assault Bolter
-  rules: *27
+  rules: *30
   cost: 30
+  keywords: *1
 Interceptor Sergeant: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -842,9 +1413,10 @@ Interceptor Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-  gear: *28
-  rules: *27
+  gear: *31
+  rules: *30
   cost: 30
+  keywords: *1
 Devestator: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -856,11 +1428,12 @@ Devestator: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
-  gear: *1
-  rules: &29
+  gear: *5
+  rules: &32
   - Signum
   - ATSKNF
   cost: 13
+  keywords: *1
 Devestator Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -872,9 +1445,10 @@ Devestator Sergeant: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
-  gear: *1
-  rules: *29
+  gear: *5
+  rules: *32
   cost: 13
+  keywords: *1
 Centurion Devestator: !ruby/object:CodexEntry
   stats:
     M: 4
@@ -886,15 +1460,16 @@ Centurion Devestator: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 2
-  gear: &30
+  gear: &33
   - Heavy Bolter
   - Heavy Bolter
   - Hurricane Bolter
-  rules: &31
+  rules: &34
   - Move and Fire
   - ATSKNF
   - Ignores Cover
   cost: 80
+  keywords: *1
 Centurion Devestator Sergeant: !ruby/object:CodexEntry
   stats:
     M: 4
@@ -906,9 +1481,10 @@ Centurion Devestator Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
-  gear: *30
-  rules: *31
+  gear: *33
+  rules: *34
   cost: 80
+  keywords: *1
 Hellblaster: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -920,13 +1496,14 @@ Hellblaster: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
-  gear: &32
+  gear: &35
   - Plasma Incinerator
   - Bolt Pistol
   - Frag Grenade
   - Krak Grenade
-  rules: *2
+  rules: *4
   cost: 18
+  keywords: *1
 Hellblaster Sergeant: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -938,9 +1515,10 @@ Hellblaster Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-  gear: *32
-  rules: *2
+  gear: *35
+  rules: *4
   cost: 18
+  keywords: *1
 Thunderfire Cannon: !ruby/object:CodexEntry
   stats:
     M: 3
@@ -954,27 +1532,9 @@ Thunderfire Cannon: !ruby/object:CodexEntry
     Sv: 3
   gear:
   - Thunderfire Cannon
-  rules: *2
+  rules: *4
   cost: 55
-Techmarine Gunner: !ruby/object:CodexEntry
-  stats:
-    M: 6
-    WS: 3
-    BS: 2
-    S: 4
-    T: 4
-    W: 2
-    A: 3
-    Ld: 8
-    Sv: 2
-  gear:
-  - Servo Arm
-  - Servo Arm
-  - Bolt Pistol
-  - Plasma Cutter
-  - Flamer
-  rules: *2
-  cost: 26
+  keywords: *1
 Hunter: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -988,8 +1548,9 @@ Hunter: !ruby/object:CodexEntry
     Sv: 3
   gear:
   - Skyspear Missile Launcher
-  rules: *18
+  rules: *21
   cost: 90
+  keywords: *1
 Stalker: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -1004,8 +1565,9 @@ Stalker: !ruby/object:CodexEntry
   gear:
   - Icarus Stormcannon
   - Icarus Stormcannon
-  rules: *18
+  rules: *21
   cost: 80
+  keywords: *1
 Whirlwind: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -1019,8 +1581,9 @@ Whirlwind: !ruby/object:CodexEntry
     Sv: 3
   gear:
   - Whirlwind Vengeance Launcher
-  rules: *18
+  rules: *21
   cost: 75
+  keywords: *1
 Predator: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -1034,8 +1597,9 @@ Predator: !ruby/object:CodexEntry
     Sv: 3
   gear:
   - Predator Autocannon
-  rules: *18
+  rules: *21
   cost: 90
+  keywords: *1
 Vindicator: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -1049,8 +1613,9 @@ Vindicator: !ruby/object:CodexEntry
     Sv: 3
   gear:
   - Demolisher Cannon
-  rules: *18
+  rules: *21
   cost: 135
+  keywords: *1
 Land Raider: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -1066,9 +1631,10 @@ Land Raider: !ruby/object:CodexEntry
   - Twin Heavy Bolter
   - Twin Lascannon
   - Twin Lascannon
-  rules: &33
+  rules: &36
   - Move and Fire
   cost: 239
+  keywords: *1
 Land Raider Crusader: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -1084,8 +1650,9 @@ Land Raider Crusader: !ruby/object:CodexEntry
   - Twin Assault Cannon
   - Hurricane Bolter
   - Hurricane Bolter
-  rules: *33
+  rules: *36
   cost: 244
+  keywords: *1
 Land Raider Redeemer: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -1101,8 +1668,9 @@ Land Raider Redeemer: !ruby/object:CodexEntry
   - Twin Assault Cannon
   - Flamestorm Cannon
   - Flamestorm Cannon
-  rules: *33
+  rules: *36
   cost: 244
+  keywords: *1
 Rhino: !ruby/object:CodexEntry
   stats:
     M: 12
@@ -1116,8 +1684,9 @@ Rhino: !ruby/object:CodexEntry
     Sv: 3
   gear:
   - Storm Bolter
-  rules: *18
+  rules: *21
   cost: 70
+  keywords: *1
 Razorback: !ruby/object:CodexEntry
   stats:
     M: 12
@@ -1131,8 +1700,9 @@ Razorback: !ruby/object:CodexEntry
     Sv: 3
   gear:
   - Twin Heavy Bolter
-  rules: *18
+  rules: *21
   cost: 75
+  keywords: *1
 Land Speeder Storm: !ruby/object:CodexEntry
   stats:
     M: 18
@@ -1150,6 +1720,7 @@ Land Speeder Storm: !ruby/object:CodexEntry
   rules:
   - Fly
   cost: 70
+  keywords: *1
 Repulsor: !ruby/object:CodexEntry
   stats:
     M: 10
@@ -1173,6 +1744,7 @@ Repulsor: !ruby/object:CodexEntry
   rules:
   - Fly
   cost: 210
+  keywords: *1
 Stormhawk Interceptor: !ruby/object:CodexEntry
   stats:
     M: 60
@@ -1196,6 +1768,7 @@ Stormhawk Interceptor: !ruby/object:CodexEntry
   - AA - 1
   - Fly
   cost: 85
+  keywords: *1
 Stormtalon Gunship: !ruby/object:CodexEntry
   stats:
     M: 60
@@ -1216,6 +1789,7 @@ Stormtalon Gunship: !ruby/object:CodexEntry
   - Anti-Ground
   - Fly
   cost: 110
+  keywords: *1
 Stormraven Gunship: !ruby/object:CodexEntry
   stats:
     M: 45
@@ -1238,3 +1812,4 @@ Stormraven Gunship: !ruby/object:CodexEntry
   - Move and Fire
   - Fly
   cost: 172
+  keywords: *1
