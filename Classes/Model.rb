@@ -5,6 +5,7 @@ class Model
 		@gear = gear
 		@rules = codex[name].getRules
 		@name = name
+		@keywords = codex[name].getKeywords
 	end
 	
 	def getID
@@ -15,7 +16,7 @@ class Model
 		@name
 	end
 	
-	def getGear()
+	def getGear(type)
 		return @gear
 	end
 	### Return individual stats
@@ -48,6 +49,14 @@ class Model
 	end
 	def hasRule(rule)
 		if @rules.include? rule
+			return true
+		else
+			return false
+		end
+	end
+	
+	def hasKeyword(keyword)
+		if @rules.include? keyword
 			return true
 		else
 			return false
