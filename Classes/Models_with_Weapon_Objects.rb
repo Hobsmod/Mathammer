@@ -1,11 +1,15 @@
-class Model
-	def initialize(id, codex, name, gear)
+class ModelWithWeapons
+	def initialize(id, codex, gear_hash, name, gear)
 		@id = id
 		@statline = codex[name].getStats
-		@gear = gear
 		@rules = codex[name].getRules
 		@name = name
 		@keywords = codex[name].getKeywords
+		### Add Weapon Objects to Model
+		@gear = Array.new()
+		gear.each do |item|
+			@gear.push(gear_hash[item])
+		end
 	end
 	
 	def getID
@@ -14,6 +18,14 @@ class Model
 	
 	def getName
 		@name
+	end
+	def getRules
+		@rules
+	end
+	
+	def ApplyFactionKeywords(faction, keyword)
+		@keywords.delete(keyword)
+		@keywords.push(faction)
 	end
 	
 	def getGear()
@@ -32,6 +44,9 @@ class Model
 	def getS 
 		@statline['S']
 	end
+	def addS(n)
+		@statline['S'] = @statline['S'] + n
+	end
 	def getT 
 		@statline['T']
 	end
@@ -40,6 +55,10 @@ class Model
 	end
 	def getA
 		@statline['A']
+	end
+	
+	def addA(n)
+		@statline['A'] = @statline['A'] + n
 	end
 	def getLd 
 		@statline['Ld']
@@ -70,7 +89,7 @@ class Model
 	def getFNP()
 		unless @fnp
 			@fnp = Array.new
-			rules.each do |rule|
+			@rules.each do |rule|
 				if rule =~ /FNP/
 					@FNP.push(rule[-1].to_f)
 				end
@@ -86,6 +105,7 @@ class Model
 			return false
 		end
 	end
+	
 	def addRule(rule)
 		@rules.push(rule)
 	end

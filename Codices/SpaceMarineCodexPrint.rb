@@ -50,7 +50,7 @@ tech_cost = 45
 ##Marneus Calgar
 calgar_stats = [5,2,2,4,4,7,5,9,2,4]
 calgar_gear = ['Gauntlets of Ultramar','Relic Blade']
-calgar_rules = ['Chapter Master','Character']
+calgar_rules = ['Chapter Master','Character','Damage - Halved']
 
 calgar_keywords = character.push('Infantry')
 spacemarinecodex['Marneus Calgar'] = CodexEntry.new(calgar_stats, calgar_gear, calgar_rules, calgar_cost, character)
@@ -86,17 +86,17 @@ spacemarinecodex['Sergeant Telion'] = CodexEntry.new(telion_stats, telion_gear, 
 
 lysander_stats = [5,2,2,4,4,6,4,9,2]
 lysander_gear = ['Fist of Dorn']
-lysander_rules = ['Invulnerable-3','Aura - 6 - Reroll - All - All - Hits - 1']
+lysander_rules = ['Invulnerable-3','Aura - 6 - Reroll  - All- Hits - 1']
 spacemarinecodex['Captain Lysander'] = CodexEntry.new(lysander_stats, lysander_gear, lysander_rules, lysander_cost, character)
 
 kantor_stats = [6,2,2,4,4,6,4,9,2]
 kantor_gear = ['Dorns Arrow','Power Fist','Frag Grenade','Krak Grenade']
-kantor_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - All - Hits - All','Aura - 6 - Attacks - 1']
+kantor_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Attacks - 1']
 spacemarinecodex['Pedro Kantor'] = CodexEntry.new(kantor_stats, kantor_gear, kantor_rules, kantor_cost, character)
 
 helbrecht_stats = [6,2,2,4,4,6,4,9,2]
-helbrecht_gear = ['Sword of the High Marshals','Combi-Melta','Frag Grenade','Krak Grenade']
-helbrecht_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - All - Hits - All','Aura - 6 - Strength - 1']
+helbrecht_gear = ['Sword of the High Marshals','Combi-melta','Frag Grenade','Krak Grenade']
+helbrecht_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Strength - 1']
 spacemarinecodex['High Marshal Helbrecht'] = CodexEntry.new(helbrecht_stats, helbrecht_gear, helbrecht_rules, helbrecht_cost, character)
 
 emp_chmp_stats = [6,2,3,4,4,4,4,8,2]

@@ -17,6 +17,7 @@ Marneus Calgar: !ruby/object:CodexEntry
   rules:
   - Chapter Master
   - Character
+  - Damage - Halved
   cost: 200
   keywords: &1
   - Imperium
@@ -155,7 +156,7 @@ Captain Lysander: !ruby/object:CodexEntry
   - Fist of Dorn
   rules:
   - Invulnerable-3
-  - Aura - 6 - Reroll - All - All - Hits - 1
+  - Aura - 6 - Reroll  - All- Hits - 1
   cost: 150
   keywords: *1
 Pedro Kantor: !ruby/object:CodexEntry
@@ -176,7 +177,7 @@ Pedro Kantor: !ruby/object:CodexEntry
   - Krak Grenade
   rules:
   - Invulnerable-4
-  - Aura - 6 - Reroll - All - All - Hits - All
+  - Aura - 6 - Reroll - All - Hits - All
   - Aura - 6 - Attacks - 1
   cost: 170
   keywords: *1
@@ -193,12 +194,12 @@ High Marshal Helbrecht: !ruby/object:CodexEntry
     Sv: 2
   gear:
   - Sword of the High Marshals
-  - Combi-Melta
+  - Combi-melta
   - Frag Grenade
   - Krak Grenade
   rules:
   - Invulnerable-4
-  - Aura - 6 - Reroll - All - All - Hits - All
+  - Aura - 6 - Reroll - All - Hits - All
   - Aura - 6 - Strength - 1
   cost: 170
   keywords: *1

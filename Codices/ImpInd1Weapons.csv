@@ -14,6 +14,10 @@ Auxiliary Grenade Launcher,Krak,0,30,Grenade,1,6,-1,D3
 Bolt Carbine,Standard,0,24,Assault,2,4,0,1
 Bolt Rifle,Standard,0,30,Rapid Fire,1,4,0,1
 Boltgun,Standard,0,24,Rapid Fire,1,4,0,1
+Boltgun - Deathwatch,Dragonfire,0,24,Rapid Fire,1,4,0,1,Cover - Hit - 1
+Boltgun - Deathwatch,Helfire,0,24,Rapid Fire,1,4,0,1,Poison - 2
+Boltgun - Deathwatch,Kraken,0,30,Rapid Fire,1,4,-1,1,
+Boltgun - Deathwatch,Vengance,0,18,Rapid Fire,1,4,-2,1,
 Boltstorm Gauntlet,Shooting,25,12,Pistol,3,4,0,1
 Boltstorm Gauntlet,Melee,0,12,Melee,0,*2,-3,D3,Unwieldy
 Centurion Missile Launcher,Standard,25,36,,Assault,D3,8,-2,D3
@@ -115,6 +119,10 @@ Stormstrike Missile Launcher,Standard,21,72,Heavy,1,8,-3,3
 Thunderfire Cannon,Standard,0,60,Heavy,4D3,5,-1,1
 Twin Assault Cannon,Standard,35,24,Heavy,12,6,-1,1
 Twin Boltgun,Standard,2,24,Rapid Fire,2,4,0,1
+Twin Boltgun - Deathwatch,Dragonfire,2,24,Rapid Fire,2,4,0,1,Cover - Hit - 1
+Twin Boltgun - Deathwatch,Hellfire,2,24,Rapid Fire,2,4,0,1,Poison - 2
+Twin Boltgun - Deathwatch,Kraken,2,30,Rapid Fire,2,4,-1,1,
+Twin Boltgun - Deathwatch,Vengance,2,18,Rapid Fire,2,4,-2,1
 Twin Heavy Bolter,Standard,17,36,Heavy,6,5,-1,1
 Twin Heavy Plasma Cannon,Standard,34,36,Heavy,2D3,7,-3,1,
 Twin Heavy Plasma Cannon,Supercharge,34,36,Heavy,2D3,8,-4,1,Overheat
@@ -127,6 +135,10 @@ Whirlwind Castellan Launcher,Standard,25,72,Heavy,2D6,6,0,1
 Whirlwind Vengeance Launcher,Standard,34,72,Heavy,2D3,7,-1,2
 Wrist-mounted Grenade Launcher,Standard,4,12,Assault,D3,4,0,1,
 Bolt Pistol,Standard,0,12,Pistol,1,4,0,1
+Bolt Pistol - Deathwatch,Dragonfire,0,12,Pistol,1,4,0,1,Cover - 1 - Hit
+Bolt Pistol - Deathwatch,Hellfire,0,12,Pistol,1,4,0,1,Poison - 2
+Bolt Pistol - Deathwatch,Kraken,0,15,Pistol,1,4,-1,1,
+Bolt Pistol - Deathwatch,Vengance,0,9,Pistol,1,4,-2,1,
 Relic Blade,Melee,21,0,Melee,0,+2,-3,D3
 Gauntlets of Ultramar,Melee,0,0,Melee,0,*2,-3,D3
 Crozius Arcanum,Standard,0,0,Melee,0,+1,-1,2
@@ -151,7 +163,7 @@ Force Sword,Standard,12,0,Melee,0,0,-3,D3,
 Master-crafted Power Sword,,0,Melee,0,0,-3,1
 Power Sword,Standard,4,0,Melee,0,0,-3,1
 Power Axe,Standard,5,0,Melee,0,+1,-2,1
-Power Fist,Standard,12,0,Melee,0,*2,-3,D3,Unwieldy
+Power Fist,Standard,20,0,Melee,0,*2,-3,D3,Unwieldy
 Power Lance,Standard,4,0,Melee,0,+2,-1,1,
 Power Maul,Standard,4,0,Melee,0,+2,-1,1,
 Seismic Hammer,Standard,48,Melee,0,*2,-4,5,Unwieldy,Wrecker
@@ -159,11 +171,125 @@ Redemptor Fist,Standard,0,0,Melee,0,*2,-3,D6
 Servo-Arm,Standard,12,0,Mount,1,*2,-2,3,Unwieldy
 Centurion Assault Launcher,Standard,3,0,Melee,0,0,0,0,
 Siege Drills,Standard,0,0,Melee,0,*2,-4,3,
+Angelus Boltgun,Standard,9,12,Assault,2,4,-1,1
+Blood Song,Master-crafted Boltgun,0,24,Rapid Fire,1,4,-1,2
+Blood Song,Meltagun,0,12,Assault,1,8,-4,D6,Melta
+Blood Song,Both,0,12,Assault,1,8,-4,D6,Melta,Combi
+Blood Song,Both2,0,24,Rapid Fire,1,4,-1,2,Combi
+Frag Cannon,Standard,019,8,Assault,2D6,6,-1,1,Autohit
+Hand Flamer,Standard,8,6,Pistol,D3,3,0,1,Autohit
+Inferno Pistol,Standard,20,6,Pistol,1,8,-4,D6,Melta
+Axe Mortalis,STD,0,0,Melee,0,+2,-3,D3,Duelist - Wounds
+Blood Crozius,STD,0,0,Melee,0,+2,-2,D3,
+Blood Reaver,STD,0,0,Melee,0,*2,-1,3,Rend - Hit
+Blood Talons,STD,65,0,Melee,0,*2,-3,D6,
+Encarmine Axe,STD,16,0,Melee,0,+1,-2,D3,
+Encarmine Broadsword,STD,0,0,Melee,0,+2,-4,D3,
+Encarmine Sword,STD,13,0,Melee,0,0,-3,D3,
+The Excecutioners Axe,STD,0,0,Melee,0,1,-3,D3, Rend - Damage - 3
+Furioso Fist,STD,40,0,Melee,0,*2,-3,3,
+Two Furioso Fists,STD,50,0,Melee,0,*2,-3,3,Double - Reroll - Hits - All
+Furioso Force Halberd,STD,0,0,Melee,0,+4,-4,3,
+Heavens Teeth,STD,0,0,Melee,0,+1,-1,1,
+Sanguine Sword,STD,0,0,Melee,0,*2,-3,D3,
+Avenger Mega Bolter,STD,35,36,Heavy,10,6,-1,1
+Blacksword Missile Launcher,STD,0,36,Heavy,10,7,-3,2
+The Deliverer,STD,0,12,Pistol,1,4,-1,2
+Lions Wrath,Master-crafted Boltgun,0,24,Rapid Fire,1,4,-1,2,
+Lions Wrath,Both1,0,24,Rapid Fire,1,4,-1,2,Combi
+Lions Wrath,Plasma Gun,0,24,Rapid Fire,1,7,-3,1,
+Lions Wrath,Both2,0,24,Rapid Fire,1,7,-3,1,Combi
+Plasma Storm Battery,STD,0,36,Heavy,D6,7,-3,2,
+Plasma Storm Battery,Supercharge,0,36,Heavy,D6,8,-3,3,Overheat
+Plasma Talon,STD,0,18,Assault,2,7,-3,1,
+Plasma Talon,Supercharge,0,18,Assault,2,8,-3,2,Overheat
+Ravenwing Grenade Launcher,Frag,0,24,Assault,D6,3,0,1,
+Ravenwing Grenade Launcher,Krak,0,24,Assault,2,6,-1,D3,
+Redemption Missile Silo,Frag,0,96,Heavy,2D6,4,0,1,
+Redemption Missile Silo,Krak,0,96,Heavy,D6,8,-3,D3,
+Rift Cannon,STD,0,18,Heavy,D3,10,-3,3
+Twin Icarus Lascannon,STD,0,96,Heavy,2D6,9,-3,D6,AA Only
+Twin Storm Bolter,STD,0,24,Rapid Fire,4,4,0,1
+Blades of Caliban,STD,0,0,Melee,0,+3,-3,D3
+Blades of Reason,STD,0,0,Melee,0,0,0,D6
+Corvus Hammer,STD,0,0,Melee,0,+1,-1,1,Rend - Damage - D3
+Flail of the Unforgiven,0,0,Melee,0,+2,-3,2,Overflow
+Halberd of Caliban,STD,0,0,Melee,0,+3,-4,D3,Area - 5 - D3
+Mace of Absolution,STD,0,0,Melee,0,*2,-2,3,
+Raven Sword,STD,0,0,Melee,0,+1,-3,2,Charge - Strength - *2
+Sword of Secrets,STD,0,0,Melee,0,+2,-3,D3,Rend - Mortal Wounds
+Sword of Silence,STD,0,0,Melee,0,+1,-3,2,Poison - 2
+Traitors Bane,STD,0,0,Melee,0,+1,-3,D3,Damage - Psyker - 1
+Foehammer,Shooting,0,12,Assault,1,*2,-3,D3,Duelist - Damage - 3
+Helfrost Cannon,Dispersed,25,24,Heavy,D3,6,-2,1
+Helfrost Cannon,Focused,25,24,Heavy,1,8,-4,D6
+Helfrost Pistol,STD,15,12,Pistol,1,8,-4,D3,Helfrost
+Nightwing,STD,,12,Assault,D3,4,0,1,
+Stormfrag Auto-launcher,STD,4,12,Assault,D3,4,0,1
+Twin Helfrost Cannon,Focused,30,24,Heavy,2,8,-4,D6,Helfrost
+Twin Helfrost Cannon,Dispersed,30,24,Heavy,2D3,6,-2,1,Helfrost
+Axe of Morkai,One Handed,0,0,Melee,0,+2,-3,D3
+Axe of Morkai,Two Handed,0,0,Melee,0,*2,-3,3,Unwieldy
+Claw of the Jackalwolf,STD,0,0,Melee,0,+1,-2,2,Reroll - Wounds
+Crushing Teeth and Claws,STD,0,0,Mount,3,5,-1,1
+Fenrisian Great Axe,STD,40,0,Melee,1,+4,-3,D6,
+Flurry of Teeth and Claws,STD,0,0,Mount,6,5,-1,1
+Frost Axe,STD,10,0,Melee,0,+1,-2,1,
+Frost Claws,STD,15,0,Melee,1,+1,-2,1,Reroll - Wounds
+Frost Sword,STD,7,0,Melee,0,+1,-3,1,
+Frostfang,STD,0,0,Melee,0,+1,-4,2,
+Glacius,STD,0,0,Melee,0,+2,-2,2,Helfrost - D3
+Great Frost Axe,STD,17,0,Melee,0,+3,-3,D3,Charge - Attacks - 1
+Great Wolf Claw,STD,25,0,Melee,0,+4,-2,D6,Reroll - Wounds
+The Murderclaws,STD,0,0,Melee,0,*2,-3,D3,Reroll - Wounds
+Runic Axe,STD,16,0,Melee,0,+1,-2,D3,
+Runic Stave,STD,14,0,Melee,0,+2,-1,D3,
+Runic Sword,STD,12,0,Melee,0,0,-3,D3,
+Staff of the Stormcaller,STD,0,0,Melee,0,+2,-1,D3
+Teeth and Claws,STD,0,0,Melee,0,-1,1
+Tempest Hammer,STD,30,0,Melee,0,*2,-3,3,Helfrost
+Trueclaw,STD,0,0,Melee,0,+5,-4,D6,Reroll - Wounds
+Wolf Claw,STD,9,0,Melee,0,+1,-2,1,Reroll - Wounds
+Wolf Claw Pair,STD,13,0,Melee,1,+1,-2,1,Reroll - Wounds
+Wulfen Claws,STD,0,0,Melee,0,0,-1,1
+Wyrmclaw,STD,0,0,Melee,0,+2,-2,D3
+Blackstar Rocket Launcher,Corvid,15,30,Heavy,D6,6,-1,1,AA
+Blackstar Rocket Launcher,Dracos,15,30,Heavy,D6,4,0,1,Hit - Cover - 1
+Deathwatch Frag Cannon,Frag Round,30,8,Assault,2D6,6,-1,1,Autohit
+Deathwatch Frag Cannon,Shell,30,24,Assault,2,7,-2,2,Autohit
+Deathwatch Frag Cannon,Shell - Half,30,12,Assault,2,9,-3,2,Autohit
+Deathwatch Shotgun,Crytoclearer Round,5,16,Assault,2,4,0,1,Reroll - Wounds
+Deathwatch Shotgun,Xenopurge Slug,5,16,Assault,2,4,-1,1,
+Deathwatch Shotgun,Xenopurge Slug - Half,5,8,Assault,2,4,-1,2,
+Deathwatch Shotgun,Wyrmsbreath Shell,5,7,Assault,D6,3,0,1,Autohit
+Guardian Spear,Shooting,0,24,Rapid Fire,1,4,-1,2
+Guardian Spear,Dragonfire,0,24,Rapid Fire,1,4,-1,2,Cover - Hit - 1
+Guardian Spear,Hellfire,0,24,Rapid Fire,1,4,-1,2,Poison - 2
+Guardian Spear,Kraken,0,30,Rapid Fire,1,4,-1,2,
+Guardian Spear,Vengance,0,18,Rapid Fire,1,4,-2,2,
+Hand Flamer,STD,,6,Pistol,D3,3,0,1,Autohit
+Hellfire Extremis,Flamer,0,8,Assault,D6,1,0,1,Poison - 4
+Hellfire Extremis,Boltgun,0,24,Rapid Fire,1,4,0,1,
+Hellfire Extremis,Both,0,8,Assault,D6,1,0,1,Poison - 4,Combi
+Hellfire Extremis,Both2,0,24,Rapid Fire,1,4,0,1,Combi
+Infernus Heavy Bolter,Heavy Bolter,25,36,Heavy,3,5,-1,1,
+Infernus Heavy Bolter,Heavy Flamer,25,36,Assault,D6,5,-1,1,Autohit
+Infernus Heavy Bolter,Both1,25,36,Heavy,3,5,-1,1,Combi
+Infernus Heavy Bolter,Both2,25,36,Assault,D6,5,-1,1,Autohit,Combi
+Stalker Pattern Boltgun,STD,4,30,Heavy,2,4,0,1,
+Stalker Pattern Boltgun,Dragonfire,4,30,Heavy,2,4,0,1,Cover - Hit - 1
+Stalker Pattern Boltgun,Hellfire,4,30,Heavy,2,4,0,1,Poison - 2
+Stalker Pattern Boltgun,Kraken,4,36,Heavy,2,4-1,1,
+Stalker Pattern Boltgun,Vengance,4,36,Heavy,2,4-2,1,
+Stasis Bomb,STD,0,6,Grenade,1,1,1,1,Stasis Bomb
+Guardian Spear,Melee,0,0,Melee,0,+1,-3,D3,
+Heavy Thunder Hammer,Melee,30,0,Melee,0,*2,-3,D6,Rend - Damage - 6
+Xenophase Blade,STD,7,0,Melee,0,0,-3,1,Reroll - Target - Invulnerable
 Jump Packs,Standard,2,0,Movement,0,0,0,0,Jump Pack
 Auto Launcher,Standard,0,0,Buff,0,0,0,0,Hard to Hit
 Blank,Standard,0,0,0,0,0,0,0,0,
-Fist of Dorn,Melee,0,0,Melee,0,+6,-3,3,
-Sword of the High Marshals,Melee,0,0,Melee,0,+1,-3,D3,Charge - Attacks - D3
-Rod of Tigerius,Melee,0,0,Melee,0,+3,-1,D3,
-Smite,Standard,0,12,Psychic,0,0,0,0,Mortal - D3
-Librarius Discipline,0,0,0,0,0,0,0,0,0,0,0
+Auspex Array,STD,5,0,0,0,0,0,0,0,0
+Blackstar Cluster Launcher,0,0,0,0,0,0,0,0
+Combat Shield,STD,4,0,Shield,0,0,0,0,Invulnerable - 5
+Infernum Halo-Launcher,STD,5,0,Gear,0,0,0,0,
+Storm Shield - Deathwatch,STD,15,0,Shield,0,0,0,0,Invulnerable - 3

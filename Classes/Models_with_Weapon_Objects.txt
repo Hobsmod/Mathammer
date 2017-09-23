@@ -55,13 +55,13 @@ class Model
 		end
 	end
 	def getInvuln()
-		if @rules.include? 'Invulnerable-3'
+		if @rules.include? 'Invulnerable-3' or 'Invulnerable - 3' or 'Invulnerable- 3' or 'Invulnerable -3'
 			return 3
-		elsif @rules.include? 'Invulnerable-4'
+		elsif @rules.include? 'Invulnerable-4' or 'Invulnerable - 4' or 'Invulnerable- 4' or 'Invulnerable -4'
 			return 4
-		elsif @rules.include? 'Invulnerable-5'
+		elsif @rules.include? 'Invulnerable-5' or 'Invulnerable - 5' or 'Invulnerable- 5' or 'Invulnerable -5'
 			return 5 
-		elsif @rules.include? 'Invulnerable-6'
+		elsif @rules.include? 'Invulnerable-6' or 'Invulnerable - 6' or 'Invulnerable- 6' or 'Invulnerable -6'
 			return 6
 		else
 			return 7
@@ -85,8 +85,5 @@ class Model
 		else
 			return false
 		end
-	end
-	def addRule(rule)
-		@rules.push(rule)
 	end
 end

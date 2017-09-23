@@ -106,10 +106,10 @@ def CalcWounds(hits, weapon, firetype, target, range, auras)
 		wound_prob = 4.0 / 6.0
 	elsif str == tough
 		wound_prob = 3.0 / 6.0
-	elsif str < tough 
-		wound_prob = 2.0 / 6.0 
+	elsif str =< (tough / 2)
+		wound_prob = 1.0 / 6.0 
 	else
-		wound_prob = 1.0 / 6.0
+		wound_prob = 2.0 / 6.0
 	end
 	
 	var = hits * wound_prob * (1.0 - wound_prob)
