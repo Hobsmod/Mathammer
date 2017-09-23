@@ -111,7 +111,7 @@ Sniper Rifle,Standard,4,36,Heavy,1,4,0,1,Sniper
 Special Issue Boltgun,Standard,2,30,Rapid Fire,1,4,-2,1,
 Stalker Bolt Rifle,Standard,2,36,Heavy,1,4,-2,1
 Storm Bolter,Standard,2,24,Rapid Fire,2,4,0,1
-Stormstrike Missile Launcher,Standard,21,72,Heavy,1,8,-3,3
+Stormstrike Missile Launcher,Standard,21,72,Heavy,1,8,-3,3,
 Thunderfire Cannon,Standard,0,60,Heavy,4D3,5,-1,1
 Twin Assault Cannon,Standard,35,24,Heavy,12,6,-1,1
 Twin Boltgun,Standard,2,24,Rapid Fire,2,4,0,1
@@ -167,3 +167,7 @@ Sword of the High Marshals,Melee,0,0,Melee,0,+1,-3,D3,Charge - Attacks - D3
 Rod of Tigerius,Melee,0,0,Melee,0,+3,-1,D3,
 Smite,Standard,0,12,Psychic,0,0,0,0,Mortal - D3
 Librarius Discipline,0,0,0,0,0,0,0,0,0,0,0
+Talassarian Tempest Blade,Melee,0,0,Melee,0,0,-3,D3,Rend - Mortal Wounds - Replace - D3
+Dorns Arrow,Standard,0,24,Assault,4,4,-1,1
+Black Sword,Melee,0,0,Melee,0,+2,-3,D3,Duelist - Reroll - Wounds
+Moonfang,Melee,0,0,Melee,0,0,-3,D3,Duelist - Strength - *2

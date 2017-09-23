@@ -65,15 +65,14 @@ Chaplain Cassius: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
-    Invuln: 
   gear:
   - Infernus
   - Crozius Arcanum
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Character
-  - Reroll Fight Hits
+  - Invulnerable - 4
+  - Aura - 6 -Reroll - Fight - Hits - All
   cost: 98
   keywords: *1
 Captain Sicarius: !ruby/object:CodexEntry
@@ -135,6 +134,7 @@ Sergeant Telion: !ruby/object:CodexEntry
   - Bolt Pistol
   - Frag Grenade
   - Krak Grenade
+  - Combat Knife
   rules:
   - ATSKNF
   - Cover - 2
@@ -244,7 +244,7 @@ Chaplain Grimaldus: !ruby/object:CodexEntry
   rules:
   - Invulnerable-4
   - Aura - 6 - Reroll - Fight - Hits - All
-  - Aura - 6 - Rend - Extra Attack
+  - Aura - 6 - Rend - Fight - Extra Attack
   cost: 120
   keywords: *1
 Korsarro Khan: !ruby/object:CodexEntry

@@ -30,50 +30,48 @@ def CalcDiceAvg(value)
 end
 	
 def RollDice(value)
-	if value.to_f >= -10 && value.to_i <= 10  
-		return value
-	elsif value == 'D3'
-		return srand(1..3)
+	if value == 'D3'
+		return rand(1..3).to_i
+		puts "Matches D3"
 	elsif value == 'D6'
-		return srand(1..6)
+		return rand(1..6).to_i
 	elsif value == '2D6'
-		dice1 = srand(1..6)
-		dice2 = srand(1..6)
+		dice1 = rand(1..6).to_i
+		dice2 = rand(1..6).to_i
 		return dice1 + dice2
 	elsif value == '2D3'
-		dice1 = srand(1..3)
-		dice2 = srand(1..3)
+		dice1 = rand(1..3).to_i
+		dice2 = rand(1..3).to_i
 		return dice1 + dice2
 	elsif value == '-D3'
-		dice = srand(1..3) * -1
+		dice = rand(1..3).to_i * -1
 		return dice
 	elsif value == '3D6'
-		dice1 = srand(1..6)
-		dice2 = srand(1..6)
-		dice3 = srand(1..6)
+		dice1 = rand(1..6).to_i
+		dice2 = rand(1..6).to_i
+		dice3 = rand(1..6).to_i
 		return dice1 + dice2 + dice3
 	elsif value == '3D3'
-		dice1 = srand(1..3)
-		dice2 = srand(1..3)
-		dice3 = srand(1..3)
+		dice1 = rand(1..3).to_i
+		dice2 = rand(1..3).to_i
+		dice3 = rand(1..3).to_i
 		return dice1 + dice2 + dice3
 	elsif value == '4D6'
-		dice1 = srand(1..6)
-		dice2 = srand(1..6)
-		dice3 = srand(1..6)
-		dice4 = srand(1..6)
+		dice1 = rand(1..6).to_i
+		dice2 = rand(1..6).to_i
+		dice3 = rand(1..6).to_i
+		dice4 = rand(1..6).to_i
 		return dice1 + dice2 + dice3 + dice4
 	elsif value == '4D3'
-		dice1 = srand(1..3)
-		dice2 = srand(1..3)
-		dice3 = srand(1..3)
-		dice4 = srand(1..3)
+		dice1 = rand(1..3).to_i
+		dice2 = rand(1..3).to_i
+		dice3 = rand(1..3).to_i
+		dice4 = rand(1..3).to_i
 		return dice1 + dice2 + dice3 + dice4
 	elsif value == '6+D3'
-		return 6 + srand(1..3)
+		return 6 + rand(1..3).to_i
 	else
-		puts "No RollDice Value for #{value}"
-		abort
+		return value.to_i
 	end
 end
 	

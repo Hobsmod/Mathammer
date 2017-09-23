@@ -86,6 +86,9 @@ class Unit2
 			if model.hasRule('Strength - 1')
 				model.addS(1)
 			end
+			if model.hasRule('Attacks - 1')
+				model.addA(1)
+			end
 		end
 	end
 							

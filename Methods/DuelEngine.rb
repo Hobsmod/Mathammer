@@ -20,14 +20,18 @@ def Duel(wep_hash,charger,defender,iterations)
 	(1..iterations).each do
 		dmg_to_charger = 0
 		dmg_to_defender = 0
-		rounds = 0
+		rounds = 1
 		until dmg_to_defender >= def_wounds or dmg_to_charger >= atk_wounds
-			if rounds == 0
-				dmg_to_defender = dmg_to_charger + RollMeleeWeapon(charger,defender,atk_wep,atk_mode,true)
+			if rounds == 1
+				#puts "Initital Charge!"
+				dmg_to_defender = dmg_to_defender + RollMeleeWeapon(charger,defender,atk_wep,atk_mode,true)
 			else
-				dmg_to_defender = dmg_to_charger + RollMeleeWeapon(charger,defender,atk_wep,atk_mode,false)
+				#puts "Chargers round #{rounds} Attacks"
+				dmg_to_defender = dmg_to_defender + RollMeleeWeapon(charger,defender,atk_wep,atk_mode,false)
 			end
+			#puts "Defenders round #{rounds} Attacks"
 			dmg_to_charger = dmg_to_charger + RollMeleeWeapon(defender,charger,def_wep,def_mode,false)
+			rounds = rounds + 1
 		end
 		if dmg_to_defender >= def_wounds
 			#puts "#{charger.getName} won!"

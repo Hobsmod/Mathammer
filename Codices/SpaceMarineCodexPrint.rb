@@ -63,9 +63,9 @@ tigerius_rules = ['Character','+1 Deny','Reroll Psyker','-1 Hit Buff','2 Powers'
 spacemarinecodex['Chief Librarian Tigerius'] = CodexEntry.new(tigerius_stats, tigerius_gear, tigerius_rules, tigerius_cost, character)
 
 ##Chaplain Cassius
-cassius_stats = [6,2,3,4,5,4,3,9,3,4]
+cassius_stats = [6,2,3,4,5,4,3,9,3]
 cassius_gear = ['Infernus','Crozius Arcanum','Frag Grenade','Krak Grenade']
-cassius_rules = ['Character','Reroll Fight Hits']
+cassius_rules = ['Invulnerable - 4','Aura - 6 -Reroll - Fight - Hits - All']
 
 spacemarinecodex['Chaplain Cassius'] = CodexEntry.new(cassius_stats, cassius_gear, cassius_rules, cassius_cost, character)
 
@@ -80,7 +80,7 @@ chronus_rules = ['ATSKNF']
 spacemarinecodex['Sergeant Chronus'] = CodexEntry.new(chronus_stats, chronus_gear, chronus_rules, chronus_cost, character)
 
 telion_stats = [7,3,2,4,4,4,2,8,4]
-telion_gear = ['Quietus','Bolt Pistol','Frag Grenade','Krak Grenade']
+telion_gear = ['Quietus','Bolt Pistol','Frag Grenade','Krak Grenade','Combat Knife']
 telion_rules = ['ATSKNF','Cover - 2','Aura - Scouts - Hits - 1']
 spacemarinecodex['Sergeant Telion'] = CodexEntry.new(telion_stats, telion_gear, telion_rules, telion_cost, character)
 
@@ -106,13 +106,13 @@ spacemarinecodex['The Emperors Champion'] = CodexEntry.new(emp_chmp_stats, emp_c
 
 grimaldus_stats = [6,2,3,4,4,4,3,8,3]
 grimaldus_gear = ['Crozius Arcanum','Plasma Pistol','Frag Grenade','Krak Grenade']
-grimaldus_rules = ['Invulnerable-4','Aura - 6 - Reroll - Fight - Hits - All','Aura - 6 - Rend - Extra Attack']
+grimaldus_rules = ['Invulnerable-4','Aura - 6 - Reroll - Fight - Hits - All','Aura - 6 - Rend - Fight - Extra Attack']
 spacemarinecodex['Chaplain Grimaldus'] = CodexEntry.new(grimaldus_stats, grimaldus_gear, grimaldus_rules, grimaldus_cost, character)
 
 khan_stats = [6,2,2,4,4,5,4,9,3]
 khan_gear = ['Moonfang','Bolt Pistol','Frag Grenade','Krak Grenade']
 khan_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - 1','Aura - 6 - Charge - Strength - 1']
-spacemarinecodex['Korsarro Khan'] = CodexEntry.new(khan_stats, khan_gear, khan_rules, khan_cost, character)
+spacemarinecodex['Korsarro Khan'] = CodexEntry.new(khan_stats, khan_gear, khan_rules, khan_cost, character.push('White Scars'))
 
 vulkan_stats = [6,2,2,4,4,5,4,9,2]
 vulkan_gear = ['Gauntlet of the Forge','Spear of Vulkan','Bolt Pistol','Frag Grenade','Krak Grenade']

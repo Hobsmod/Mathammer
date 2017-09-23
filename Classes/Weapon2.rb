@@ -20,6 +20,7 @@ class Weapon
 		@fire_types[name]['AP'] = stats[5]
 		@fire_types[name]['D'] = stats[6]
 		@fire_types[name]['Rules'] = rules
+		
 	end
 	
 	def addRules(rule)
@@ -105,6 +106,9 @@ class Weapon
 		@fire_types[fire_type]['Shots']
 	end
 	
+	def getRules(firetype)
+		@fire_types[firetype]['Rules']
+	end
 	def getShotsAtRange(fire_type, firing_range)
 		if fire_type.nil?
 			firetype = @firetypes_list[0]

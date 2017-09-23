@@ -30,7 +30,7 @@ def LoadWeapons(target_file)
 	rules = Array.new
 	
 	csv.each do |row|
-		rules = Array.new
+		rules = ['']
 		name = row['Weapon'] 
 		firetype = row['Firetype']
 		stats = row[2..8]
