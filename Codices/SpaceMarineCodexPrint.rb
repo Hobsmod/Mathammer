@@ -71,7 +71,7 @@ spacemarinecodex['Chaplain Cassius'] = CodexEntry.new(cassius_stats, cassius_gea
 
 sicarius_stats = [6,2,2,4,4,5,4,9,2]
 sicarius_gear = ['Talassarian Tempest Blade','Plasma Pistol','Frag Grenade','Krak Grenade']
-sicarius_rules = ['Invulnerable-4','Character','Aura - 6 - Reroll - All - Hits - 1','Aura - 6 - Always Strikes First']
+sicarius_rules = ['Invulnerable - 4','Character','Aura - 6 - Reroll - All - Hits - 1','Aura - 6 - Always Strikes First']
 spacemarinecodex['Captain Sicarius'] = CodexEntry.new(sicarius_stats, sicarius_gear, sicarius_rules, sicarius_cost, character)
 
 chronus_stats = [6,3,2,4,4,4,2,8,3]
@@ -86,72 +86,72 @@ spacemarinecodex['Sergeant Telion'] = CodexEntry.new(telion_stats, telion_gear, 
 
 lysander_stats = [5,2,2,4,4,6,4,9,2]
 lysander_gear = ['Fist of Dorn']
-lysander_rules = ['Invulnerable-3','Aura - 6 - Reroll  - All- Hits - 1']
+lysander_rules = ['Invulnerable - 3','Aura - 6 - Reroll - All - Hits - 1']
 spacemarinecodex['Captain Lysander'] = CodexEntry.new(lysander_stats, lysander_gear, lysander_rules, lysander_cost, character)
 
 kantor_stats = [6,2,2,4,4,6,4,9,2]
 kantor_gear = ['Dorns Arrow','Power Fist','Frag Grenade','Krak Grenade']
-kantor_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Attacks - 1']
+kantor_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Attacks - 1']
 spacemarinecodex['Pedro Kantor'] = CodexEntry.new(kantor_stats, kantor_gear, kantor_rules, kantor_cost, character)
 
 helbrecht_stats = [6,2,2,4,4,6,4,9,2]
 helbrecht_gear = ['Sword of the High Marshals','Combi-melta','Frag Grenade','Krak Grenade']
-helbrecht_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Strength - 1']
+helbrecht_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Strength - 1']
 spacemarinecodex['High Marshal Helbrecht'] = CodexEntry.new(helbrecht_stats, helbrecht_gear, helbrecht_rules, helbrecht_cost, character)
 
 emp_chmp_stats = [6,2,3,4,4,4,4,8,2]
 emp_chmp_gear = ['Black Sword','Bolt Pistol','Frag Grenade','Krak Grenade']
-emp_chmp_rules = ['Invulnerable-4','Duelist - Reroll - Hits' ' Duelist - Attacks - 1','Duelist - Strength - 1']
+emp_chmp_rules = ['Invulnerable - 4','Duelist - Reroll - Hits' ' Duelist - Attacks - 1','Duelist - Strength - 1']
 spacemarinecodex['The Emperors Champion'] = CodexEntry.new(emp_chmp_stats, emp_chmp_gear, emp_chmp_rules, emp_chmp_cost, character)
 
 grimaldus_stats = [6,2,3,4,4,4,3,8,3]
 grimaldus_gear = ['Crozius Arcanum','Plasma Pistol','Frag Grenade','Krak Grenade']
-grimaldus_rules = ['Invulnerable-4','Aura - 6 - Reroll - Fight - Hits - All','Aura - 6 - Rend - Fight - Extra Attack']
+grimaldus_rules = ['Invulnerable - 4','Aura - 6 - Reroll - Fight - Hits - All','Aura - 6 - Rend - Fight - Extra Attack']
 spacemarinecodex['Chaplain Grimaldus'] = CodexEntry.new(grimaldus_stats, grimaldus_gear, grimaldus_rules, grimaldus_cost, character)
 
 khan_stats = [6,2,2,4,4,5,4,9,3]
 khan_gear = ['Moonfang','Bolt Pistol','Frag Grenade','Krak Grenade']
-khan_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - 1','Aura - 6 - Charge - Strength - 1']
+khan_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1','Aura - 6 - Charge - Strength - 1']
 spacemarinecodex['Korsarro Khan'] = CodexEntry.new(khan_stats, khan_gear, khan_rules, khan_cost, character.push('White Scars'))
 
 vulkan_stats = [6,2,2,4,4,5,4,9,2]
 vulkan_gear = ['Gauntlet of the Forge','Spear of Vulkan','Bolt Pistol','Frag Grenade','Krak Grenade']
-vulkan_rules = ['Invulnerable-3','Aura - 6 - Reroll - All - Hits - 1','Forgefather']
+vulkan_rules = ['Invulnerable - 3','Aura - 6 - Reroll - All - Hits - 1','Forgefather']
 spacemarinecodex['Vulkan Hestan'] = CodexEntry.new(vulkan_stats, vulkan_gear, vulkan_rules, vulkan_cost, character)
 
 shrike_stats = [12,2,2,4,4,5,5,9,2]
 shrike_gear = ['Ravens Talons','Frag Grenade','Krak Grenade']
-shrike_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Reroll - Charge']
-spacemarinecodex['Kayavaan Shrike'] = CodexEntry.new(shrike_stats, shrike_gear, shrike_rules, shrike_cost, character)
+shrike_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Reroll - Charge']
+spacemarinecodex['Kayvaan Shrike'] = CodexEntry.new(shrike_stats, shrike_gear, shrike_rules, shrike_cost, character)
 
 capt_term_stats = [5,2,2,4,4,6,4,9,2]
 capt_term_gear = ['Power Sword','Storm Bolter']
-capt_term_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - 1']
+capt_term_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1']
 spacemarinecodex['Captain in Terminator Armor'] = CodexEntry.new(capt_term_stats, capt_term_gear, capt_term_rules, capt_term_cost, character)
 
 capt_cata_stats = [4,2,2,4,4,6,4,9,2]
 capt_cata_gear = ['Power Sword','Combi-bolter']
-capt_cata_rules = ['Invulnerable-3','Aura - 6 - Reroll - All - Hits - 1']
+capt_cata_rules = ['Invulnerable - 3','Aura - 6 - Reroll - All - Hits - 1']
 spacemarinecodex['Captain in Cataphracti Armor'] = CodexEntry.new(capt_cata_stats, capt_cata_gear, capt_cata_rules, capt_cata_cost, character)
 
 capt_stats = [5,2,2,4,4,5,4,9,3]
 capt_gear = ['Chainsword','Master-crafted Boltgun','Frag Grenade','Krak Grenade']
-capt_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - 1']
+capt_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1']
 spacemarinecodex['Captain'] = CodexEntry.new(capt_stats, capt_gear, capt_rules, capt_cost, character)
 
 capt_bike_stats = [14,2,2,4,5,6,4,9,3]
 capt_bike_gear = ['Chainsword','Master-crafted Boltgun','Frag Grenade','Krak Grenade','Twin Boltgun']
-capt_bike_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - 1']
+capt_bike_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1']
 spacemarinecodex['Captain on Bike'] = CodexEntry.new(capt_bike_stats, capt_bike_gear, capt_bike_rules, capt_bike_cost, character)
 
 prim_capt_stats = [6,2,2,4,4,6,5,9,3]
 prim_capt_gear = ['Bolt-Pistol','Master-crafted Auto Bolt Rifle','Frag Grenade','Krak Grenade']
-prim_capt_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - 1']
+prim_capt_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1']
 spacemarinecodex['Captain'] = CodexEntry.new(prim_capt_stats, prim_capt_gear, prim_capt_rules, prim_capt_cost, character)
 
 capt_grav_stats = [6,2,2,4,5,6,5,9,3]
 capt_grav_gear = ['Master-crafted Power Sword','Boltstorm Gauntlet']
-capt_grav_rules = ['Invulnerable-4','Aura - 6 - Reroll - All - Hits - 1']
+capt_grav_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1']
 spacemarinecodex['Captain in Gravis Armor'] = CodexEntry.new(capt_grav_stats, capt_grav_gear, capt_grav_rules, capt_grav_cost, character)
 
 librarian_stats = [6,3,3,4,4,4,3,9,3]
@@ -161,7 +161,7 @@ librarian_gear = ['Force Stave','Bolt Pistol','Frag Grenade','Krak Grenade']
 prim_lib_gear = ['Force Sword','Bolt Pistol','Frag Grenade','Krak Grenade']
 term_lib_gear = ['Force Stave']
 librarian_rules = ['Psyker - 2','Deny - 1']
-term_lib_rules = ['Psyker - 2','Deny - 1','Invulnerable-5']
+term_lib_rules = ['Psyker - 2','Deny - 1','Invulnerable - 5']
 spacemarinecodex['Librarian'] = CodexEntry.new(librarian_stats, librarian_gear, librarian_rules, librarian_cost, character)
 spacemarinecodex['Primaris Librarian'] = CodexEntry.new(prim_lib_stats, prim_lib_gear, librarian_rules, prim_lib_cost, character)
 spacemarinecodex['Librarian in Terminator Armor'] = CodexEntry.new(term_lib_stats, term_lib_gear, term_lib_rules, term_lib_cost, character)
@@ -173,7 +173,7 @@ term_chap_stats = [5,3,3,4,4,5,3,9,2]
 chaplain_gear = ['Crozius Arcanum','Absolver Bolt Pistol','Frag Grenade','Krak Grenade']
 prim_chap_gear = ['Crozius Arcanum','Absolver Bolt Pistol','Frag Grenade','Krak Grenade']
 term_chap_gear = ['Crozius Arcanum','Storm Bolter']
-chaplain_rules = ['Invulnerable-4','Aura - 6 - Reroll - Fight - Hits - 1']
+chaplain_rules = ['Invulnerable - 4','Aura - 6 - Reroll - Fight - Hits - 1']
 spacemarinecodex['Chaplain'] = CodexEntry.new(chaplain_stats, chaplain_gear, chaplain_rules, chaplain_cost, character)
 spacemarinecodex['Primaris Chaplain'] = CodexEntry.new(prim_chap_stats, prim_chap_gear, chaplain_rules, prim_chap_cost, character)
 spacemarinecodex['Chaplain in Terminator Armor'] = CodexEntry.new(term_chap_stats, term_chap_gear, chaplain_rules, term_chap_cost, character)
@@ -290,7 +290,7 @@ terminator_stats = [5,3,3,4,4,2,2,8,2,5]
 terminator_sergeant_stats = [5,3,3,4,4,2,3,9,2,5]
 terminator_gear = ['Storm Bolter', 'Power Fist']
 terminator_sergeant_gear = ['Storm Bolter', 'Power Sword']
-terminator_rules = ['ATSKNF','Invulnerable-5','Deepstrike']
+terminator_rules = ['ATSKNF','Invulnerable - 5','Deepstrike']
 terminator_cost = 26
 spacemarinecodex['Terminator'] = CodexEntry.new(terminator_stats, terminator_gear, terminator_rules, terminator_cost, infantry)
 spacemarinecodex['Terminator Sergeant'] = CodexEntry.new(terminator_sergeant_stats, terminator_sergeant_gear, terminator_rules, terminator_cost, infantry)
@@ -306,7 +306,7 @@ cataphractii_stats = [4,3,3,4,4,2,2,8,2,4]
 cataphractii_sergeant_stats = [4,3,3,4,4,2,3,9,2,4]
 cataphractii_gear = ['Combi-bolter', 'Power Fist']
 cataphractii_sergeant_gear = ['Combi-bolter', 'Power Sword']
-cataphractii_rules = ['ATSKNF', 'Invulnerable-4', 'Deepstrike']
+cataphractii_rules = ['ATSKNF', 'Invulnerable - 4', 'Deepstrike']
 spacemarinecodex['Cataphractii Terminator'] = CodexEntry.new(cataphractii_stats, cataphractii_gear, terminator_rules, 30, infantry)
 spacemarinecodex['Cataphractii Terminator Sergeant'] = CodexEntry.new(cataphractii_sergeant_stats, cataphractii_sergeant_gear, cataphractii_rules, 30, infantry)
 
@@ -340,7 +340,7 @@ ven_dread_rules = ['FNP - 6']
 spacemarinecodex['Venerable Dreadnought'] = CodexEntry.new(ven_dread_stats, dreadnought_gear, ven_dread_rules, 90, dreadnought)
 
 contempt_dread_stats = [9,2,2,7,7,10,4,8,3,5]
-contempt_rules = ['Invulnerable-5']
+contempt_rules = ['Invulnerable - 5']
 contempt_gear = ['Multi-Melta', 'Combi-bolter', 'Dreadnought Close Combat Weapon']
 spacemarinecodex['Contemptor Dreadnought'] = CodexEntry.new(contempt_dread_stats, contempt_gear, contempt_rules, 98, dreadnought)
 

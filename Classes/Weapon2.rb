@@ -115,5 +115,18 @@ class Weapon
 		end
 		@fire_types[fire_type]['Shots']
 	end
-
+	
+	def inspect()
+		puts "ID:#{@id}"
+		@firetypes_list.each do |name|
+			puts "Cost: #{@fire_types[name]['Cost']}"
+			puts "Range: #{@fire_types[name]['Range']}"
+			puts "Type: #{@fire_types[name]['Type']}"
+			puts "Shots: #{@fire_types[name]['Shots']}"
+			puts "Strength: #{@fire_types[name]['S']}"
+			puts "Armor Penetration: #{@fire_types[name]['AP']}"
+			puts "Damage: #{@fire_types[name]['D']}"
+			puts "Rules #{@fire_types[name]['Rules']}"
+		end
+	end
 end

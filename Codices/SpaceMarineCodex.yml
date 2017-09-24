@@ -28,6 +28,7 @@ Marneus Calgar: !ruby/object:CodexEntry
   - Dreadnought
   - Fly
   - Infantry
+  - White Scars
 Chief Librarian Tigerius: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -92,7 +93,7 @@ Captain Sicarius: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Character
   - Aura - 6 - Reroll - All - Hits - 1
   - Aura - 6 - Always Strikes First
@@ -155,8 +156,8 @@ Captain Lysander: !ruby/object:CodexEntry
   gear:
   - Fist of Dorn
   rules:
-  - Invulnerable-3
-  - Aura - 6 - Reroll  - All- Hits - 1
+  - Invulnerable - 3
+  - Aura - 6 - Reroll - All - Hits - 1
   cost: 150
   keywords: *1
 Pedro Kantor: !ruby/object:CodexEntry
@@ -176,7 +177,7 @@ Pedro Kantor: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - All
   - Aura - 6 - Attacks - 1
   cost: 170
@@ -198,7 +199,7 @@ High Marshal Helbrecht: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - All
   - Aura - 6 - Strength - 1
   cost: 170
@@ -220,7 +221,7 @@ The Emperors Champion: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Duelist - Reroll - Hits Duelist - Attacks - 1
   - Duelist - Strength - 1
   cost: 75
@@ -242,7 +243,7 @@ Chaplain Grimaldus: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - Fight - Hits - All
   - Aura - 6 - Rend - Fight - Extra Attack
   cost: 120
@@ -264,7 +265,7 @@ Korsarro Khan: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - 1
   - Aura - 6 - Charge - Strength - 1
   cost: 107
@@ -287,12 +288,12 @@ Vulkan Hestan: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Invulnerable-3
+  - Invulnerable - 3
   - Aura - 6 - Reroll - All - Hits - 1
   - Forgefather
   cost: 154
   keywords: *1
-Kayavaan Shrike: !ruby/object:CodexEntry
+Kayvaan Shrike: !ruby/object:CodexEntry
   stats:
     M: 12
     WS: 2
@@ -308,7 +309,7 @@ Kayavaan Shrike: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - All
   - Aura - 6 - Reroll - Charge
   cost: 150
@@ -328,7 +329,7 @@ Captain in Terminator Armor: !ruby/object:CodexEntry
   - Power Sword
   - Storm Bolter
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - 1
   cost: 105
   keywords: *1
@@ -347,7 +348,7 @@ Captain in Cataphracti Armor: !ruby/object:CodexEntry
   - Power Sword
   - Combi-bolter
   rules:
-  - Invulnerable-3
+  - Invulnerable - 3
   - Aura - 6 - Reroll - All - Hits - 1
   cost: 126
   keywords: *1
@@ -368,7 +369,7 @@ Captain: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - 1
   cost: 87
   keywords: *1
@@ -390,7 +391,7 @@ Captain on Bike: !ruby/object:CodexEntry
   - Krak Grenade
   - Twin Boltgun
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - 1
   cost: 98
   keywords: *1
@@ -409,7 +410,7 @@ Captain in Gravis Armor: !ruby/object:CodexEntry
   - Master-crafted Power Sword
   - Boltstorm Gauntlet
   rules:
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - 1
   cost: 102
   keywords: *1
@@ -469,7 +470,7 @@ Librarian in Terminator Armor: !ruby/object:CodexEntry
   rules:
   - Psyker - 2
   - Deny - 1
-  - Invulnerable-5
+  - Invulnerable - 5
   cost: 143
   keywords: *1
 Chaplain: !ruby/object:CodexEntry
@@ -489,7 +490,7 @@ Chaplain: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   rules: &3
-  - Invulnerable-4
+  - Invulnerable - 4
   - Aura - 6 - Reroll - Fight - Hits - 1
   cost: 72
   keywords: *1
@@ -924,7 +925,7 @@ Terminator: !ruby/object:CodexEntry
   - Power Fist
   rules: &15
   - ATSKNF
-  - Invulnerable-5
+  - Invulnerable - 5
   - Deepstrike
   cost: 26
   keywords: *1
@@ -1014,7 +1015,7 @@ Cataphractii Terminator Sergeant: !ruby/object:CodexEntry
   - Power Sword
   rules:
   - ATSKNF
-  - Invulnerable-4
+  - Invulnerable - 4
   - Deepstrike
   cost: 30
   keywords: *1
@@ -1189,7 +1190,7 @@ Contemptor Dreadnought: !ruby/object:CodexEntry
   - Combi-bolter
   - Dreadnought Close Combat Weapon
   rules:
-  - Invulnerable-5
+  - Invulnerable - 5
   cost: 98
   keywords: *1
 Redemptor Dreadnought: !ruby/object:CodexEntry

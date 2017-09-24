@@ -74,16 +74,21 @@ class ModelWithWeapons
 		end
 	end
 	def getInvuln()
-		if @rules.include? 'Invulnerable-3'
+		if @statline['Invuln'] 
+			invul = @statline['Invuln']
+		else
+			invul = 7
+		end
+		if @rules.include? 'Invulnerable - 3' && invul > 3
 			return 3
-		elsif @rules.include? 'Invulnerable-4'
+		elsif @rules.include? 'Invulnerable - 4' && invul > 4
 			return 4
-		elsif @rules.include? 'Invulnerable-5'
+		elsif @rules.include? 'Invulnerable - 5' && invul > 5
 			return 5 
-		elsif @rules.include? 'Invulnerable-6'
+		elsif @rules.include? 'Invulnerable - 6' && invul > 6
 			return 6
 		else
-			return 7
+			return invul
 		end
 	end
 	def getFNP()
@@ -106,6 +111,39 @@ class ModelWithWeapons
 		end
 	end
 	
+	def ApplyGear()
+		### Take rules that are on wargear and add them to the model
+		gear_rules = Array.new()
+		@gear.each do |item|
+			if rule =~ /Gear/
+				gear_rules.push(rule)
+			end
+		end
+		gear_rules.each do |rule|
+
+			if rule =~ /Invulnerable - \d/
+				@statline['Invuln'] = rule[-1]
+			end
+					
+
+			if rule =~ /Modify Stat/
+				split_array = rule.split(' - ')
+				@statline[split_array[2]] = split_array[3]
+			end
+			if rule =~ /Add Rule/
+				split_array = rule.split(' - ')
+				add_rule = ''
+				split_array[1..-1].each do |part|
+					add_rule = add_rule + part + ' - '
+				end
+				@rules.push(add_rule[0..-4])
+			end
+		end
+	end
+	
+	def modStat(stat, mod)
+		@statline[stat] = @statline[stat] + mod
+	end
 	def addRule(rule)
 		@rules.push(rule)
 	end

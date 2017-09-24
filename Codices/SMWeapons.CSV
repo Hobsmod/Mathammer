@@ -45,7 +45,7 @@ Flamestorm Cannon,Standard,30,8,Heavy,D6,6,-2,2,Autohit
 Flamestorm Gauntlets,Shooting,18,8,Assault,2D6,4,0,1,Autohit
 Frag Grenade,Standard,0,6,Grenade,D6,3,0,1
 Fragstorm Grenade Launcher,Standard,4,18,Assault,D6,4,0,1
-Gauntlets of the Forge,Standard,0,8,Assault,D6,5,-1,1,Autohit
+Gauntlet of the Forge,Standard,0,8,Assault,D6,5,-1,1,Autohit
 Gauntlets of Ultramar,Shooting,0,24,Rapid Fire,2,4,-1,2
 Grav-pistol,Standard,8,12,Pistol,1,5,-3,1,Grav
 Grav-cannon and Grav-amp,Standard,28,24,Heavy,4,5,-3,1,Grav
@@ -171,3 +171,6 @@ Talassarian Tempest Blade,Melee,0,0,Melee,0,0,-3,D3,Rend - Mortal Wounds - Repla
 Dorns Arrow,Standard,0,24,Assault,4,4,-1,1
 Black Sword,Melee,0,0,Melee,0,+2,-3,D3,Duelist - Reroll - Wounds
 Moonfang,Melee,0,0,Melee,0,0,-3,D3,Duelist - Strength - *2
+Spear of Vulkan,Melee,0,0,Melee,0,+2,-2,D3,
+Ravens Talons,Melee,0,0,Melee,0,0,-3,D3,Reroll - Wounds - All,
+Storm Shield,Gear,0,0,Gear,0,0,0,0,Gear - Invulnerable - 3
