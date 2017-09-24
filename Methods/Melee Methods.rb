@@ -28,18 +28,19 @@ def CalcHits(attacker,defender,weapon,mode)
 	
 	prob = (6.0 - (ws - modifier)) / 6.0
 	
-	
-	if weapon.hasRule(mode, 'Reroll - Hits - All') or attacker.hasRule('Reroll - All - Hits - All') or attacker.hasRule('Reroll - Fight - Hits - All')
-		prob = prob + ((1 - prob) * prob)
-		puts "#{attacker.getName} gets to reroll all their misses"
-	elsif (attacker.hasRule('Duelist - Hits') or attacker.hasRule('Duelist - Hits - All')) && defender.hasKeyword('Character')
-		prob = prob + ((1 - prob) * prob)
-		puts "#{attacker.getName} gets to reroll all their misses"
-	elsif weapon.hasRule(mode, 'Reroll - Hits - 1') or attacker.hasRule('Reroll - All - Hits - 1') or attacker.hasRule('Reroll - Fight - Hits - 1')
-		prob = prob +((1 / 6) * prob)
-		puts "#{attacker.getName} gets to reroll all their 1's"
-	end
 	puts "With a WS of #{ws} and a modifier of #{modifier - 1} #{attacker.getName} has a #{prob} chance of hitting"
+	if weapon.hasRule(mode, 'Reroll - Hits - All') or attacker.hasRule('Reroll - All - Hits - All') or attacker.hasRule('Reroll - Fight - Hits - All')
+		prob = prob + ((1.0 - prob) * prob)
+		puts "#{attacker.getName} gets to reroll all their misses increasing their odds to #{prob}"
+	elsif (attacker.hasRule('Duelist - Hits') or attacker.hasRule('Duelist - Hits - All')) && defender.hasKeyword('Character')
+		prob = prob + ((1.0 - prob) * prob)
+		puts "#{attacker.getName} gets to reroll all their misses increasing their odds to #{prob}"
+	elsif weapon.hasRule(mode, 'Reroll - Hits - 1') or attacker.hasRule('Reroll - All - Hits - 1') or attacker.hasRule('Reroll - Fight - Hits - 1')
+		prob = prob + ((1.0 / 6.0) * prob)
+		puts "#{attacker.getName} gets to reroll all their 1's increasing their odds to #{prob}"
+	end
+	
+	
 	hits = prob * attacks
 	puts "He gets #{hits} hits"
 
@@ -54,7 +55,7 @@ def RollHits(attacker,defender,weapon,mode, charged)
 	shots = RollDice(weapon.getShots(mode)).to_i
 	attacks = attacks + shots
 	hits = 0
-	mortals = 0
+	mortals = Array.new()
 	self_wounds = 0
 	puts "#{attacker.getName} has #{attacks} attacks, and gets #{shots} bonus attacks from his weapon" 
 	
@@ -80,90 +81,44 @@ def RollHits(attacker,defender,weapon,mode, charged)
 	end
 	
 	# Roll the Dice
-	rolls = Array.new(attacks) {rand(1..6)}
-	rerolls = Array.new()
+	rolls = Array.new(attacks) {rand(1..6).to_i}
 	puts "#{attacker.getName}'s rolls to hit are #{rolls} "
 	# Reroll failed hits
-	if weapon.hasRule(mode, 'Reroll - Hits - All') or attacker.hasRule('Reroll - All - Hits - All') or attacker.hasRule('Reroll - Fight - Hits - All')
-		rolls.each do |n|
-			if to_hit > n
-				n = rand(1..6)
-				rerolls.push(n)
-			else 
-				rerolls.push(n)
-			end
-		end
-		puts "#{attacker.getName} gets to reroll all their misses and now rolled #{rerolls}"
+	if weapon.hasRule(mode, 'Reroll - Hits - All') or attacker.hasRule('Reroll - All - Hits - All') or attacker.hasRule('Reroll - Fight - Hits - All') 
+		rolls = RerollAll(rolls, to_hit)
+		puts "#{attacker.getName} gets to reroll all their misses and now rolled #{rolls}"
 	elsif attacker.hasRule('Duelist - Reroll - Hits') && defender.hasKeyword('Character')
-		rolls.each do |n|
-			if to_hit > n
-				n = rand(1..6)
-				rerolls.push(n)
-			else 
-				rerolls.push(n)
-			end
-		end
-		puts "#{attacker.getName} gets to reroll all their misses and now rolled #{rerolls}"
+		rolls = RerollAll(rolls, to_hit)
+		puts "#{attacker.getName} gets to reroll all their misses and now rolled #{rolls}"
 	elsif weapon.hasRule(mode, 'Reroll - Hits - 1') or attacker.hasRule('Reroll - All - Hits - 1') or attacker.hasRule('Reroll - Fight - Hits - 1')
-		rolls.each do |n|
-			if to_hit > n
-				n = rand(1..6)
-				rerolls.push(n)
-			else 
-				rerolls.push(n)
-			end
-		end
+		rolls = RerollOnes(rolls)
 		puts "#{attacker.getName} gets to reroll all their 1's and now rolled #{rolls}"
-	else 
-		rerolls = rolls
 	end
 	
 	sixes = rolls.count(6)
 	
-	
+	# check if those rolls generate any additional attacks
+	extra_rolls = Array.new()
 	if (weapon.hasRule(mode, 'Rend - Fight - Extra Attack') or attacker.hasRule('Rend - Fight - Extra Attack') == true) && sixes > 0 
-		puts "#{attacker.getName} generates an additional attack for every natural six, they rolled #{rolls} giving them #{sixes} more attack"
-		extra_rolls = Array.new(sixes) {rand(1..6)}
-		extra_rerolls = Array.new()
+		puts "#{attacker.getName} generates an additional attack for every natural six, they rolled #{rolls} giving them #{sixes} more attacks"
+		rend_rolls = Array.new(sixes) {rand(1..6)}
+		extra_rolls = extra_rolls + rend_rolls
 		puts "Those extra attacks rolled #{extra_rolls}"
-		if weapon.hasRule(mode, 'Reroll - Hits - All') or attacker.hasRule('Reroll - All - Hits - All') or attacker.hasRule('Reroll - Fight - Hits - All')
-			extra_rolls.each do |n|
-				if to_hit > n
-					n = rand(1..6)
-					rerolls.push(n)
-				else
-					extra_rerolls.push(n)
-				end
-				
-			end
-			puts "#{attacker.getName} gets to reroll misses even for extra attacks leaving #{extra_rerolls}"
-		elsif attacker.hasRule('Duelist - Reroll - Hits') && defender.hasKeyword('Character')
-			extra_rolls.each do |n|
-				if to_hit > n
-					n = rand(1..6)
-					rerolls.push(n)
-				else
-					extra_rerolls.push(n)
-				end
-				
-			end
-		puts "#{attacker.getName} gets to reroll misses even for extra attacks leaving #{extra_rerolls}"
-		elsif weapon.hasRule(mode, 'Reroll - Hits - 1') or attacker.hasRule('Reroll - All - Hits - 1') or attacker.hasRule('Reroll - Fight - Hits - 1')
-			extra_rolls.each do |n|
-				if n == 1
-					n = rand(1..6)
-					rerolls.push(n)
-				else
-				extra_rerolls.push(n)
-				end
-			end
-			puts "#{attacker.getName} gets to reroll all their 1's, even for extra attacks, and now rolled #{extra_rerolls}"
-		end
-		extra_rerolls.each do |r|
-			rerolls.push(r)
-		end
-		puts "Extra rolls and main rolls are now merged to give #{rolls}"
 	end
+	#reroll the additional attacks
+	if (weapon.hasRule(mode, 'Reroll - Hits - All') or attacker.hasRule('Reroll - All - Hits - All') or attacker.hasRule('Reroll - Fight - Hits - All')) && extra_rolls.size > 0
+		extra_rolls = RerollAll(extra_rolls, to_hit)
+		puts "#{attacker.getName} also gets to reroll all the additional attacks that missed and now rolled #{extra_rolls}"
+	elsif attacker.hasRule('Duelist - Reroll - Hits') && defender.hasKeyword('Character') && extra_rolls.size > 0
+		extra_rolls = RerollAll(extra_rolls, to_hit)
+		puts "#{attacker.getName} gets to reroll all the additional attacks that missed when fighting characters and now rolled #{extra_rolls}"
+	elsif (weapon.hasRule(mode, 'Reroll - Hits - 1') or attacker.hasRule('Reroll - All - Hits - 1') or attacker.hasRule('Reroll - Fight - Hits - 1')) && extra_rolls.size > 0
+		extra_rolls = RerollOnes(extra_rolls)
+		puts "#{attacker.getName} gets to reroll reroll all the additional attacks that are 1's and now rolled #{extra_rolls}"
+	end
+	
+	
+	rolls = rolls + extra_rolls
 	
 	## Remove all Natural 1s
 	rolls.delete_if {|x| x == 1}
@@ -180,7 +135,7 @@ def RollHits(attacker,defender,weapon,mode, charged)
 	
 	
 	
-	
+	puts mortals
 	puts "after modifiers the results are #{rolls}"
 	puts "#{attacker.getName} needs #{to_hit} to hit"
 	rolls.delete_if {|x| x < to_hit}
@@ -196,18 +151,20 @@ def CalcWounds(hits,attacker,target,weapon,mode)
 	str = 0.0
 	if weapon.getS(mode)[0] == '*'
 		str = user_str + CalcDiceAvg(weapon.getS(mode)[1..-1]).to_f
-	elsif weapon.getS(mode)[0]
-		puts weapon.getS(mode)[1]
-		str = user_str * weapon.getS(mode)[1].to_i
-	else
-		puts "Don't know what to do with weapon strength of #{weapon.getS(mode)[0]}"
-		abort
+		puts "#{attacker.getName}'s #{weapon.getID} doubles their strength"
 	end
 
 	tough = target.getT.to_f
 	
+	if weapon.getS(mode)[0] != '*'
+		bonus = CalcDiceAvg(weapon.getS(mode)[1..-1]).to_f
+		str = user_str + bonus
+		puts "#{attacker.getName}'s #{weapon.getID} increases their strength by #{bonus}, for  a total of #{str}"
+	end
+	
 	if attacker.hasRule('Duelist - Strength - 1') && target.hasKeyword('Character')
 		str = str + 1
+		puts "#{attacker.getName}'s duelist ability increases their strength by 1, for  a total of #{str}"
 	end
 	
 	if str >= (tough * 2)
@@ -222,12 +179,17 @@ def CalcWounds(hits,attacker,target,weapon,mode)
 		prob = 1.0 / 6.0
 	end
 	
+	
+	puts "#{attacker.getName} has an effective strength of #{str} and his target has a toughness of #{tough}, giving a #{prob} chance of wounding" 
 	if weapon.hasRule(mode, 'Reroll - Wounds - All') or attacker.hasRule('Reroll - All - Wounds - All') or attacker.hasRule('Reroll - Fight - Wounds - All')
 		prob = prob + ((1 - prob) * prob)
+		puts "#{attacker.getName} can reroll wounds so their chances improve to #{prob}"
 	elsif weapon.hasRule(mode, 'Reroll - Wounds - 1') or attacker.hasRule('Reroll - All - Wounds - 1') or attacker.hasRule('Reroll - Fight - Wounds - 1')
 		prob = prob +((1 / 6) * prob)
+		puts "#{attacker.getName} can reroll 1's to wound so their chances improve to #{prob}"
 	end
 	wounds = prob * hits
+	puts "#{attacker.getName} causes #{wounds} wounds"
 	return wounds
 end
 
@@ -236,6 +198,7 @@ def RollWounds(hits,attacker,target,weapon,mode,charged)
 	tough = target.getT.to_i
 	wounds = 0
 	mortals = hits[3]
+	puts mortals
 	self_wounds = hits[4]
 	
 	# Because of the way order of operations works in warhammer we query each rule to get a 
@@ -255,7 +218,7 @@ def RollWounds(hits,attacker,target,weapon,mode,charged)
 	elsif
 		bonus = RollDice(weapon.getS(mode)[1..-1]).to_i
 		str_add.push(bonus)
-		puts "#{attacker.getName}'s increases his strength by  #{bonus}"
+		puts "#{attacker.getName}'s #{weapon.getID} increases his strength by  #{bonus}"
 	else
 		puts "Don't know what to do with weapon strength of #{weapon.getS(mode)[0]}"
 		abort
@@ -266,17 +229,16 @@ def RollWounds(hits,attacker,target,weapon,mode,charged)
 	if weapon.getRules(mode).select{|rule| rule.match(/Duelist - Strength/)}.length > 0 && target.hasKeyword('Character')
 		rule_array = weapon.getRules(mode).select{|rule| rule.match(/Duelist - Strength/)}[0].split(' - ')
 		duel_bonus = rule_array[-1]
-		puts duel_bonus
 		if duel_bonus[0] == '*'
 			mult = RollDice(duel_bonus[1..-1])
 			if mult > str_mult
 				str_mult = mult
 			end
-			puts "#{attacker.getName} has a strength of #{user_str} and his weapon multiples his strength by  #{ weapon.getS(mode)[1]}"
+			puts "#{weapon.getID} multiplies #{attacker.getName}'s strength by  #{mult} when charging"
 		elsif duel_bonus
 			bonus = RollDice(duel_bonus)
 			str_add.push(bonus)
-			puts "#{attacker.getName}'s increases his strength by  #{bonus}"
+			puts "#{attacker.getName}'s #{weapon.getID} increases his strength by  #{bonus}"
 		else
 			puts "Don't know what to do with weapon strength of #{weapon.getS(mode)[0]}"
 			abort
@@ -287,17 +249,16 @@ def RollWounds(hits,attacker,target,weapon,mode,charged)
 	if attacker.getRules().select{|rule| rule.match(/Duelist - Strength/)}.length > 0 && target.hasKeyword('Character')
 		rule_array = attacker.getRules().select{|rule| rule.match(/Duelist - Strength/)}[0].split(' - ')
 		duel_bonus = rule_array[-1]
-		puts duel_bonus
 		if duel_bonus[0] == '*'
 			bonus = RollDice(duel_bonus[1..-1])
 			if bonus > str_mult
 				str_mult = bonus
 			end
-			puts "#{attacker.getName}'s weapon multiples his strength by  #{bonus}"
+			puts "#{attacker.getName} multiples his strength by  #{str_mult} when fighting characters"
 		elsif duel_bonus
 			bonus = RollDice(duel_bonus)
 			str_add.push(bonus)
-			puts "#{attacker.getName}'s increases his strength by  #{bonus}"
+			puts "#{attacker.getName}'s #{weapon.getID} increases his strength by  #{bonus}"
 		else
 			puts "Don't know what to do with weapon strength of #{duel_bonus}"
 			abort
@@ -309,7 +270,7 @@ def RollWounds(hits,attacker,target,weapon,mode,charged)
 	if weapon.getRules(mode).select{|rule| rule.match(/Charge - Strength/)}.length > 0 && charged == true 
 		rule_array = weapon.getRules(mode).select{|rule| rule.match(/Charge - Strength/)}[0].split(' - ')
 		charge_bonus = rule_array[-1]
-		puts duel_bonus
+		puts "#{weapon.getID}"
 		if charge_bonus[0] == '*'
 			mult = RollDice(charge_bonus[1..-1])
 			if mult > str_mult
@@ -365,28 +326,19 @@ def RollWounds(hits,attacker,target,weapon,mode,charged)
 		to_wound = 5
 	end
 	
+	### Reroll
+	
 	puts "#{target.getName} has a toughness of #{tough} so #{attacker.getName} needs #{to_wound}'s to wound"
 	rolls = Array.new(hits[0]) {rand(1..6)}
 	puts  "#{attacker.getName} rolled #{rolls}"
 	if weapon.hasRule(mode, 'Reroll - Wounds - All') or attacker.hasRule('Reroll - All - Wounds - All') or attacker.hasRule('Reroll - Fight - Wounds - All')
-		rolls.each do |n|
-			if to_wound <= n
-				n = rand(1..6)
-			end
-		end
+		rolls = RerollAll(rolls, to_wound)
 		puts "#{attacker.getName} gets to reroll all failed wounds so now they have #{rolls}"
 	elsif weapon.hasRule(mode,'Duelist - Reroll - Wounds') == true && target.hasKeyword('Character') == true
-		rolls.each do |n|
-			if to_wound <= n
-				n = rand(1..6)
-			end
-		end
+		rolls = RerollAll(rolls, to_wound)
+		puts "#{attacker.getName}'s #{weapon.getID} gets to reroll all failed wounds so now they have #{rolls}"
 	elsif weapon.hasRule(mode, 'Reroll - Wounds - 1') or attacker.hasRule('Reroll - All - Wounds - 1') or attacker.hasRule('Reroll - Fight - Wounds - 1')
-		rolls.each do |n|
-			if n == 1
-				n = rand(1..6)
-			end
-		end
+		rolls = RerollOnes(rolls)
 		puts "#{attacker.getName} gets to reroll 1's so now they have #{rolls}"
 	end
 	
@@ -396,38 +348,43 @@ def RollWounds(hits,attacker,target,weapon,mode,charged)
 
 	sixes = rolls.count(6)
 	
-	if weapon.getRules(mode).select{|rule| rule.match(/Rend - Mortal Wounds/)}.length > 0
+	if weapon.getRules(mode).select{|rule| rule.match(/Rend - Mortal Wounds/)}.length > 0 && sixes> 0
 		rule_array = weapon.getRules(mode).select{|rule| rule.match(/Rend - Mortal Wounds/)}[0].split(' - ')
 		
 		if sixes >= 1
 			puts "#{rolls}"
 			puts "#{attacker.getName} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
+			mortal_array = Array.new()
 			(1..sixes).each do
 				bonus = RollDice(rule_array[-1])
-				mortals = mortals + bonus
+				mortal_array.push(bonus)
 			end
+			puts "This causes #{mortal_array} mortal wounds"
+			mortals = mortals + mortal_array
 		end
-		puts "#{sixes} sixes caused #{mortals} mortal wounds"
 		if rule_array.include? 'Replace'
 			rolls.delete_if {|x| x == 6}
 			puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
 		end
 	end
 	
-	if attacker.getRules().select{|rule| rule.match(/Rend - Mortal Wounds/)}.length > 0
+	if attacker.getRules().select{|rule| rule.match(/Rend - Mortal Wounds/)}.length > 0 && sixes> 0
 		rule_array = attacker.getRules().select{|rule| rule.match(/Rend - Mortal Wounds/)}[0].split(' - ')
 		if sixes >= 1
 			puts "#{attacker.getName} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
-			1..sixes.each do
+			(1..sixes).each do
 				bonus = RollDice(rule_array[-1])
-				mortals = mortals + bonus
+				mortal_array.push(bonus)
 			end
+			puts "This causes #{mortal_array} mortal wounds"
+			mortals = mortals + mortal_array
 		end
 		if rule_array.include? 'Replace'
 			rolls.delete_if {|x| x == 6}
 			puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
 		end
 	end
+	
 	
 	### prepare array to return
 	sixes = rolls.count(6)
@@ -445,11 +402,11 @@ def CalcSaves(wounds, attacker, target, weapon, firetype)
 	ap = CalcDiceAvg(weapon.getAP(firetype)).to_f
 	save = target.getSv.to_f
 	invuln = target.getInvuln.to_f
-	
 	mod_save = save - ap 
-	
+	puts "#{attacker.getName}'s #{weapon.getID} has an AP of #{ap} so #{target.getName}'s save of #{save} becomes #{mod_save}"
 	if mod_save > invuln
 		mod_save = invuln
+		puts "#{target.getName}'s invulnerable save of #{invuln} is better, so they will use that instead"
 	end
 	if mod_save >= 7.0
 		prob = 1.0
@@ -458,8 +415,9 @@ def CalcSaves(wounds, attacker, target, weapon, firetype)
 		prob = (mod_save - 1) / 6
 	end
 	
-	
+	puts "#{target.getName} has a #{prob} chance of failing their save"
 	failed_saves = wounds * prob
+	puts "#{target.getName} failed #{failed_saves} saves"
 	return failed_saves
 	
 end
@@ -531,13 +489,18 @@ def CalcDamage(felt_wounds, attacker, target, weapon, firetype)
 end
 
 def RollDamage(felt_wounds, attacker, target, weapon, firetype,charged)
-	
+	mortals = felt_wounds[3]
 	sv = target.getSv()
 	fnp = target.getFNP()
 	tot_wounds = 0
-	## Roll a damage dice for each wound
-	puts "Each of #{attacker.getName} Attacks do #{weapon.getD(firetype)} damage"
+	if felt_wounds[0] > 0 
+		puts "Each of #{attacker.getName} Attacks do #{weapon.getD(firetype)} damage"
+	end
+	if mortals.size > 0
+		puts "There are also #{mortals} mortal wounds"
+	end
 	dmg_rolls = Array.new()
+	dmg_rolls = dmg_rolls + mortals
 	(1..felt_wounds[0]).each do 
 		d = (RollDice(weapon.getD(firetype)))
 		if sv >= 3 && weapon.hasRule(firetype, 'Grav')
@@ -546,16 +509,16 @@ def RollDamage(felt_wounds, attacker, target, weapon, firetype,charged)
 		dmg_rolls.push(d)
 	end
 	
+	
+	
 	puts "#{attacker.getName}'s Attacks do #{dmg_rolls} respectively"
 	if target.hasRule('Damage - Halved') == true && dmg_rolls.size > 0
-			(0..dmg_rolls.size).each do |n|
-				dmg_rolls[n] = (dmg_rolls[n].to_i / 2).ceil
-			end
+			dmg_rolls = dmg_rolls.map! { |r| r ? (r.to_f / 2).ceil : r}
 		puts "#{target.getName} halves all damage (rounding up) so he only takes #{dmg_rolls}"
 	end
 	
 	tot_wounds = dmg_rolls.inject(:+).to_i
-	puts "#{target.getName} takes #{tot_wounds} wounds"
+	
 
 	wounds = target.getW.to_f
 
@@ -578,8 +541,16 @@ def RollDamage(felt_wounds, attacker, target, weapon, firetype,charged)
 	#Calculate Final Damage
 	if tot_wounds >= wounds && weapon.hasRule(firetype, 'Overflow') == false
 		tot_wounds = wounds
+		puts "#{target.getName} only has #{wounds} wounds to lose"
 	end
-
+	
+	
+	
+	
+	
+	puts "#{target.getName} takes #{tot_wounds} wounds"
+	
+	tot_wounds
 	return tot_wounds
 	
 end
@@ -600,6 +571,21 @@ def OptMeleeWeapon(attacker,target)
 	weapon = ''
 	puts "Calculating Average Damage for each of #{attacker.getName}'s weapons when fighting #{target.getName}"
 	firetype = ''
+	num_melee = 0
+	attacker.getGear.each do |gear|
+		gear.getFiretypes.each do |mode|
+			if gear.getType(mode) == 'Melee'
+				num_melee = num_melee + 1
+			end
+		end
+	end
+	
+	if num_melee == 0
+		gen_wep_hash = LoadWeapons('Methods\genericwep.csv')
+		attacker.addGear(gen_wep_hash['Close Combat Weapon'])
+		puts "#{attacker.getName} has no melee weapons so we added a Close Combat Weapon"
+	end
+	
 	attacker.getGear.each do |gear|
 		gear.getFiretypes.each do |mode|
 			unless gear.getType(mode) == 'Melee'
@@ -616,7 +602,6 @@ def OptMeleeWeapon(attacker,target)
 			end
 		end
 	end
-
 	puts "#The Optimal Weapon for #{attacker.getName} is #{weapon.getID}"
 	return [weapon, firetype]
 end		
