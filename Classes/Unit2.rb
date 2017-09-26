@@ -1,5 +1,6 @@
 require_relative 'Models_with_Weapon_Objects.rb'
 require_relative 'CodexEntry.rb'
+require_relative 'Weapon2.rb'
 class Unit2
 	def initialize()
 		@cost = 0
@@ -84,10 +85,13 @@ class Unit2
 		#### Have Auras that modify stats modify the stats here
 		@models.each do |model|
 			if model.hasRule('Strength - 1')
-				model.addS(1)
+				model.modStat('S',1)
 			end
 			if model.hasRule('Attacks - 1')
-				model.addA(1)
+				model.modStat('A',1)
+			end
+			if model.hasRule('Wounds - 1')
+				model.modStat('W',1)
 			end
 		end
 	end

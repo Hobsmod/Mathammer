@@ -139,8 +139,8 @@ Combat Knife,Standard,0,0,Melee,1,User,0,1
 Powerfist,Standard,,0,Melee,0,*2,-3,D3,Unwieldy
 Lightning Claw,Standard,8,0,Melee,0,0,-2,1,Reroll Wounds
 Two Lightning Claws,Standard,12,0,Melee,1,0,-2,1,Reroll Wounds
-Thunderhammer,Standard,21,0,Melee,0,*2,-3,3,Unwieldy
-Thunderhammer - Character,Standard,16,0,Melee,0,*2,-3,3,Unwieldy
+Thunder Hammer,Standard,21,0,Melee,0,*2,-3,3,Unwieldy
+Thunder Hammer - Character,Standard,16,0,Melee,0,*2,-3,3,Unwieldy
 Dreadnought Close Combat Weapon - Ironclad,Standard,0,0,Melee,0,*2,-3,3
 Dreadnought Close Combat Weapon,Standard,40,0,Melee,0,*2,-3,3
 Dreadnought Chainfist,Standard,46,0,Melee,0,*2,-4,4
@@ -174,3 +174,12 @@ Moonfang,Melee,0,0,Melee,0,0,-3,D3,Duelist - Strength - *2
 Spear of Vulkan,Melee,0,0,Melee,0,+2,-2,D3,
 Ravens Talons,Melee,0,0,Melee,0,0,-3,D3,Reroll - Wounds - All,
 Storm Shield,Gear,0,0,Gear,0,0,0,0,Gear - Invulnerable - 3
+The Shield Eternal,Gear,0,0,Gear,0,0,0,0,Gear - Invulnerable - 3, Gear - Damage - Halved
+The Armor Indomitus,Gear,0,0,Gear,0,0,0,0,Gear - One Round - Invulnerable - 3, Gear - Damage - Halved
+Teeth of Terra,Melee,0,0,Melee,D3,1,-2,2,
+The Burning Blade,Melee,0,0,Melee,0,2,-5,1
+The Fist of Vengance,Melee,0,0,Melee,0,*2,-3,3
+The Sanctic Halo,Gear,0,0,Gear,0,0,0,0,Gear - Invulnerable - 3,Deny - 1
+The Salamanders Mantle,Gear,0,0,Gear,0,0,0,0,Gear - Toughness - 1
+The Axe of Medusa,Melee,0,0,Melee,0,2,-3,2,
+Close Combat Weapon,Melee,0,0,Melee,0,0,0,0,

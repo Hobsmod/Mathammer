@@ -186,7 +186,7 @@ Blood Talons,STD,65,0,Melee,0,*2,-3,D6,
 Encarmine Axe,STD,16,0,Melee,0,+1,-2,D3,
 Encarmine Broadsword,STD,0,0,Melee,0,+2,-4,D3,
 Encarmine Sword,STD,13,0,Melee,0,0,-3,D3,
-The Excecutioners Axe,STD,0,0,Melee,0,1,-3,D3, Rend - Damage - 3
+Excecutioners Axe,STD,0,0,Melee,0,+1,-3,D3,Rend - Damage - 3
 Furioso Fist,STD,40,0,Melee,0,*2,-3,3,
 Two Furioso Fists,STD,50,0,Melee,0,*2,-3,3,Double - Reroll - Hits - All
 Furioso Force Halberd,STD,0,0,Melee,0,+4,-4,3,

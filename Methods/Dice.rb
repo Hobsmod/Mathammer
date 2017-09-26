@@ -28,7 +28,7 @@ def CalcDiceAvg(value)
 		abort
 	end
 end
-	
+
 def RollDice(value)
 	if value == 'D3'
 		return rand(1..3).to_i
@@ -73,5 +73,13 @@ def RollDice(value)
 	else
 		return value.to_i
 	end
+end
+
+def RerollAll(rolls, to_suceed)
+	rolls = rolls.map! { |r| r < to_suceed ? rand(1..6) : r}
+end
+
+def RerollOnes(rolls)
+	rolls = rolls.map! { |r| r == 1 ? rand(1..6) : r}
 end
 	

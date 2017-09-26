@@ -133,17 +133,17 @@ artemis_cost = 130
 
 dante_stats = [12,3,3,4,4,6,6,9,2]
 dante_gear = ['Axe Mortalis','Inferno Pistol','Frag Grenade','Krak Grenade']
-dante_rules = ['Invulnerable - 4','Aura - 6 - Reroll - Hits - All','Fear - 1', 'Deepstrike']
+dante_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - All','Fear - 1', 'Deepstrike']
 imp_index_1['Commander Dante'] = CodexEntry.new(dante_stats, dante_gear, dante_rules, dante_cost, character)
 
 tycho_stats = [6,2,2,4,4,5,4,9,2]
 tycho_gear = ['Blood Song','Bolt Pistol','Frag Grenade','Krak Grenade']
-tycho_rules = ['Invulnerable - 4','Aura - 6 - Reroll - Hits - 1']
+tycho_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1']
 imp_index_1['Captain Tycho'] = CodexEntry.new(tycho_stats, tycho_gear, tycho_rules, tycho_cost, character)
 
 tycho_lost_stats = [6,2,2,4,4,5,4,9,2]
 tycho_lost_gear = ['Blood Song','Bolt Pistol','Frag Grenade','Krak Grenade']
-tycho_lost_rules = ['Invulnerable - 4','Aura - 6 - Reroll - Hits - 1','FNP - 6','Charge - Attack - 1']
+tycho_lost_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1','FNP - 6','Charge - Attack - 1']
 imp_index_1['Tycho the Lost'] = CodexEntry.new(tycho_lost_stats, tycho_lost_gear, tycho_lost_rules, tycho_lost_cost, character)
 
 lib_dred_stats = [6,2,3,6,7,8,3,9,3]
@@ -152,7 +152,7 @@ lib_dred_rules = ['Psyker - 2', 'Deny - 1' 'Smoke Launchers']
 imp_index_1['Librarian Dreadnought'] = CodexEntry.new(lib_dred_stats, lib_dred_gear, lib_dred_rules, lib_dred_cost, character)
 
 mephiston_stats = [7,2,2,5,5,5,4,9,2]
-mephiston_gear = ['Plamsa Pistol', 'Sanguine Sword','Frag Grenade','Krak Grenade']
+mephiston_gear = ['Plasma Pistol', 'Sanguine Sword','Frag Grenade','Krak Grenade']
 mephiston_rules = ['Psyker - 2', 'Deny - 1' 'FNP - 5']
 imp_index_1['Chief Librarian Mephiston'] = CodexEntry.new(mephiston_stats, mephiston_gear, mephiston_rules, mephiston_cost, character)
 
@@ -163,7 +163,7 @@ imp_index_1['The Sanguinor'] = CodexEntry.new(sanguinor_stats, sanguinor_gear, s
 
 astorath_stats = [12,2,2,4,4,5,4,9,2]
 astorath_gear = ['Excecutioners Axe','Bolt Pistol','Frag Grenade','Krak Grenade']
-astorath_rules = ['Invulnerable - 4','Aura - 6 - Reroll - Fight - Hits - All', 'Deepstrike']
+astorath_rules = ['Invulnerable - 4','Aura - 6 - Reroll - Fight - Hits - All', 'Deepstrike','FNP - 6', 'Charge - Attacks - 1']
 imp_index_1['Astorath'] = CodexEntry.new(astorath_stats, astorath_gear, astorath_rules, astorath_cost, character)
 
 sang_priest_stats = [6,2,3,4,4,4,3,9,3]

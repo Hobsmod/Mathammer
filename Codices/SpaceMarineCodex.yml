@@ -10,14 +10,15 @@ Marneus Calgar: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 2
-    Invuln: 
+    Invuln: 4
   gear:
   - Gauntlets of Ultramar
   - Relic Blade
   rules:
-  - Chapter Master
+  - Aura - 6 - Reroll - Fight - Hits - All
   - Character
   - Damage - Halved
+  - Invulnerable - 4
   cost: 200
   keywords: &1
   - Imperium
@@ -73,7 +74,7 @@ Chaplain Cassius: !ruby/object:CodexEntry
   - Krak Grenade
   rules:
   - Invulnerable - 4
-  - Aura - 6 -Reroll - Fight - Hits - All
+  - Aura - 6 - Reroll - Fight - Hits - All
   cost: 98
   keywords: *1
 Captain Sicarius: !ruby/object:CodexEntry
@@ -135,7 +136,6 @@ Sergeant Telion: !ruby/object:CodexEntry
   - Bolt Pistol
   - Frag Grenade
   - Krak Grenade
-  - Combat Knife
   rules:
   - ATSKNF
   - Cover - 2
@@ -333,7 +333,7 @@ Captain in Terminator Armor: !ruby/object:CodexEntry
   - Aura - 6 - Reroll - All - Hits - 1
   cost: 105
   keywords: *1
-Captain in Cataphracti Armor: !ruby/object:CodexEntry
+Captain in Cataphractii Armor: !ruby/object:CodexEntry
   stats:
     M: 4
     WS: 2
@@ -354,24 +354,24 @@ Captain in Cataphracti Armor: !ruby/object:CodexEntry
   keywords: *1
 Captain: !ruby/object:CodexEntry
   stats:
-    M: 6
+    M: 5
     WS: 2
     BS: 2
     S: 4
     T: 4
-    W: 6
-    A: 5
+    W: 5
+    A: 4
     Ld: 9
     Sv: 3
   gear:
-  - Bolt-Pistol
-  - Master-crafted Auto Bolt Rifle
+  - Chainsword
+  - Master-crafted Boltgun
   - Frag Grenade
   - Krak Grenade
   rules:
   - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - 1
-  cost: 87
+  cost: 74
   keywords: *1
 Captain on Bike: !ruby/object:CodexEntry
   stats:
@@ -394,6 +394,27 @@ Captain on Bike: !ruby/object:CodexEntry
   - Invulnerable - 4
   - Aura - 6 - Reroll - All - Hits - 1
   cost: 98
+  keywords: *1
+Primaris Captain: !ruby/object:CodexEntry
+  stats:
+    M: 6
+    WS: 2
+    BS: 2
+    S: 4
+    T: 4
+    W: 6
+    A: 5
+    Ld: 9
+    Sv: 3
+  gear:
+  - Bolt Pistol
+  - Master-crafted Auto Bolt Rifle
+  - Frag Grenade
+  - Krak Grenade
+  rules:
+  - Invulnerable - 4
+  - Aura - 6 - Reroll - All - Hits - 1
+  cost: 87
   keywords: *1
 Captain in Gravis Armor: !ruby/object:CodexEntry
   stats:
@@ -551,7 +572,7 @@ Techmarine Gunner: !ruby/object:CodexEntry
   - ATSKNF
   cost: 26
   keywords: *1
-Lieutenant: !ruby/object:CodexEntry
+c: !ruby/object:CodexEntry
   stats:
     M: 6
     WS: 2
@@ -805,7 +826,7 @@ Company Champion: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
-    Invuln: 
+    Invuln: 5
   gear:
   - Master-crafted Power SwordBolt Pistol
   - Frag Grenade
@@ -919,7 +940,7 @@ Terminator: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
-    Invuln: 
+    Invuln: 5
   gear:
   - Storm Bolter
   - Power Fist
@@ -940,7 +961,7 @@ Terminator Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
-    Invuln: 
+    Invuln: 5
   gear:
   - Storm Bolter
   - Power Sword
@@ -958,7 +979,7 @@ Assault Terminator: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
-    Invuln: 
+    Invuln: 5
   gear: &16
   - Two Storm Claws
   rules: *15
@@ -975,7 +996,7 @@ Assault Terminator Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
-    Invuln: 
+    Invuln: 5
   gear: *16
   rules: *15
   cost: 31
@@ -991,7 +1012,7 @@ Cataphractii Terminator: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
-    Invuln: 
+    Invuln: 4
   gear: &17
   - Combi-bolter
   - Power Fist
@@ -1009,7 +1030,7 @@ Cataphractii Terminator Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
-    Invuln: 
+    Invuln: 4
   gear: &18
   - Combi-bolter
   - Power Sword
@@ -1030,7 +1051,7 @@ Tartaros Terminator: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
-    Invuln: 
+    Invuln: 5
   gear: *17
   rules: *15
   cost: 31
@@ -1046,7 +1067,7 @@ Tartaros Terminator Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
-    Invuln: 
+    Invuln: 5
   gear: *18
   rules: *15
   cost: 31
@@ -1184,7 +1205,7 @@ Contemptor Dreadnought: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
-    Invuln: 
+    Invuln: 5
   gear:
   - Multi-Melta
   - Combi-bolter

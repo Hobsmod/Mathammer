@@ -11,7 +11,7 @@ class CodexEntry
 		@stats['Ld'] = stats[7]
 		@stats['Sv'] = stats[8]
 		if stats[9]
-			@stats['Invuln'] = @stats[9]
+			@stats['Invuln'] = stats[9]
 		end
 		@gear = gear
 		@rules = rules

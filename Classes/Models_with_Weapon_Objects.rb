@@ -75,17 +75,17 @@ class ModelWithWeapons
 	end
 	def getInvuln()
 		if @statline['Invuln'] 
-			invul = @statline['Invuln']
+			invul = @statline['Invuln'].to_i
 		else
 			invul = 7
 		end
-		if @rules.include? 'Invulnerable - 3' && invul > 3
+		if @rules.include?('Invulnerable - 3') && invul > 3
 			return 3
-		elsif @rules.include? 'Invulnerable - 4' && invul > 4
+		elsif @rules.include?('Invulnerable - 4') && invul > 4
 			return 4
-		elsif @rules.include? 'Invulnerable - 5' && invul > 5
+		elsif @rules.include?('Invulnerable - 5') && invul > 5
 			return 5 
-		elsif @rules.include? 'Invulnerable - 6' && invul > 6
+		elsif @rules.include?('Invulnerable - 6') && invul > 6
 			return 6
 		else
 			return invul
@@ -96,7 +96,7 @@ class ModelWithWeapons
 			@fnp = Array.new
 			@rules.each do |rule|
 				if rule =~ /FNP/
-					@FNP.push(rule[-1].to_f)
+					@fnp.push(rule[-1].to_f)
 				end
 			end
 		end
@@ -111,12 +111,18 @@ class ModelWithWeapons
 		end
 	end
 	
+
+	
 	def ApplyGear()
 		### Take rules that are on wargear and add them to the model
 		gear_rules = Array.new()
 		@gear.each do |item|
-			if rule =~ /Gear/
-				gear_rules.push(rule)
+			item.getFiretypes.each do |mode|
+				item.getRules(mode).each do |rule|
+					if rule =~ /Gear/
+						gear_rules.push(rule)
+					end
+				end
 			end
 		end
 		gear_rules.each do |rule|
@@ -144,7 +150,18 @@ class ModelWithWeapons
 	def modStat(stat, mod)
 		@statline[stat] = @statline[stat] + mod
 	end
+	
 	def addRule(rule)
-		@rules.push(rule)
+		if rule.class == Array
+			@rules = @rules + rule
+		elsif rule.class == String
+			@rules.push(rule)
+		else
+			puts "Could't add rule #{rule}"
+		end
+	end
+	
+	def addGear(gear)
+		@gear.push(gear)
 	end
 end

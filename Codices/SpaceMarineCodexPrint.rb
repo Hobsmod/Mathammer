@@ -50,7 +50,7 @@ tech_cost = 45
 ##Marneus Calgar
 calgar_stats = [5,2,2,4,4,7,5,9,2,4]
 calgar_gear = ['Gauntlets of Ultramar','Relic Blade']
-calgar_rules = ['Chapter Master','Character','Damage - Halved']
+calgar_rules = ['Aura - 6 - Reroll - Fight - Hits - All','Character','Damage - Halved','Invulnerable - 4']
 
 calgar_keywords = character.push('Infantry')
 spacemarinecodex['Marneus Calgar'] = CodexEntry.new(calgar_stats, calgar_gear, calgar_rules, calgar_cost, character)
@@ -65,7 +65,7 @@ spacemarinecodex['Chief Librarian Tigerius'] = CodexEntry.new(tigerius_stats, ti
 ##Chaplain Cassius
 cassius_stats = [6,2,3,4,5,4,3,9,3]
 cassius_gear = ['Infernus','Crozius Arcanum','Frag Grenade','Krak Grenade']
-cassius_rules = ['Invulnerable - 4','Aura - 6 -Reroll - Fight - Hits - All']
+cassius_rules = ['Invulnerable - 4','Aura - 6 - Reroll - Fight - Hits - All']
 
 spacemarinecodex['Chaplain Cassius'] = CodexEntry.new(cassius_stats, cassius_gear, cassius_rules, cassius_cost, character)
 
@@ -80,7 +80,7 @@ chronus_rules = ['ATSKNF']
 spacemarinecodex['Sergeant Chronus'] = CodexEntry.new(chronus_stats, chronus_gear, chronus_rules, chronus_cost, character)
 
 telion_stats = [7,3,2,4,4,4,2,8,4]
-telion_gear = ['Quietus','Bolt Pistol','Frag Grenade','Krak Grenade','Combat Knife']
+telion_gear = ['Quietus','Bolt Pistol','Frag Grenade','Krak Grenade']
 telion_rules = ['ATSKNF','Cover - 2','Aura - Scouts - Hits - 1']
 spacemarinecodex['Sergeant Telion'] = CodexEntry.new(telion_stats, telion_gear, telion_rules, telion_cost, character)
 
@@ -132,7 +132,7 @@ spacemarinecodex['Captain in Terminator Armor'] = CodexEntry.new(capt_term_stats
 capt_cata_stats = [4,2,2,4,4,6,4,9,2]
 capt_cata_gear = ['Power Sword','Combi-bolter']
 capt_cata_rules = ['Invulnerable - 3','Aura - 6 - Reroll - All - Hits - 1']
-spacemarinecodex['Captain in Cataphracti Armor'] = CodexEntry.new(capt_cata_stats, capt_cata_gear, capt_cata_rules, capt_cata_cost, character)
+spacemarinecodex['Captain in Cataphractii Armor'] = CodexEntry.new(capt_cata_stats, capt_cata_gear, capt_cata_rules, capt_cata_cost, character)
 
 capt_stats = [5,2,2,4,4,5,4,9,3]
 capt_gear = ['Chainsword','Master-crafted Boltgun','Frag Grenade','Krak Grenade']
@@ -145,9 +145,9 @@ capt_bike_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1']
 spacemarinecodex['Captain on Bike'] = CodexEntry.new(capt_bike_stats, capt_bike_gear, capt_bike_rules, capt_bike_cost, character)
 
 prim_capt_stats = [6,2,2,4,4,6,5,9,3]
-prim_capt_gear = ['Bolt-Pistol','Master-crafted Auto Bolt Rifle','Frag Grenade','Krak Grenade']
+prim_capt_gear = ['Bolt Pistol','Master-crafted Auto Bolt Rifle','Frag Grenade','Krak Grenade']
 prim_capt_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1']
-spacemarinecodex['Captain'] = CodexEntry.new(prim_capt_stats, prim_capt_gear, prim_capt_rules, prim_capt_cost, character)
+spacemarinecodex['Primaris Captain'] = CodexEntry.new(prim_capt_stats, prim_capt_gear, prim_capt_rules, prim_capt_cost, character)
 
 capt_grav_stats = [6,2,2,4,5,6,5,9,3]
 capt_grav_gear = ['Master-crafted Power Sword','Boltstorm Gauntlet']
@@ -186,7 +186,7 @@ spacemarinecodex['Techmarine Gunner'] = CodexEntry.new(tech_stats, tech_gear, ta
 lt_stats = [6,2,3,4,4,4,3,8,3]
 lt_gear = ['Chainsword', 'Master-crafted Boltgun', 'Bolt Pistol', 'Frag Grenade','Krak Grenade']
 lt_rules = ['Aura -6 - Reroll - All - Wounds - 1']
-spacemarinecodex['Lieutenant'] = CodexEntry.new(lt_stats, lt_gear, lt_rules, lt_cost, character)
+spacemarinecodex['c'] = CodexEntry.new(lt_stats, lt_gear, lt_rules, lt_cost, character)
 
 prim_lt_stats = [6,2,3,4,4,4,3,8,3]
 prim_lt_gear = ['Chainsword', 'Master-crafted Boltgun', 'Bolt Pistol', 'Frag Grenade','Krak Grenade']

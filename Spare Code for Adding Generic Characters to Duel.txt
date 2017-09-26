@@ -1,0 +1,101 @@
+
+
+hero_hash['Captain in Terminator Armor - Two Lightning Claws'] = Unit2.new()
+hero_hash['Captain in Terminator Armor - Two Lightning Claws'].addModels(space_marine_codex, sm_wep, 'Captain in Terminator Armor',
+ 1, ['Two Lightning Claws'],['Power Sword','Storm Bolter'])
+
+ 
+### Captain in Cataphracti Armor
+ term_cap_wep.each do |wep1|
+	term_cap_shield.each do |shield|
+		string = "Captain in Cataphractii Armor - #{wep1} - #{shield}"
+		hero_hash[string] = Unit2.new()
+		hero_hash[string].addModels(space_marine_codex, sm_wep, 'Captain in Cataphractii Armor', 1, [wep1, shield],['Power Sword'] )
+	end
+end
+
+hero_hash['Captain in Cataphractii Armor - Two Lightning Claws'] = Unit2.new()
+hero_hash['Captain in Cataphractii Armor - Two Lightning Claws'].addModels(space_marine_codex, sm_wep, 'Captain in Cataphractii Armor',
+ 1, ['Two Lightning Claws'],['Power Sword','Storm Bolter'])
+ 
+ ### Captain
+cap_wep = melee_wep
+cap_wep.push('Relic Blade')
+ cap_wep.each do |wep1|
+	term_cap_shield.each do |shield|
+		string = "Captain - #{wep1} - #{shield}"
+		hero_hash[string] = Unit2.new()
+		hero_hash[string].addModels(space_marine_codex, sm_wep, 'Captain', 1, [wep1, shield],['Chainsword'] )
+	end
+end
+
+hero_hash['Captain - Two Lightning Claws'] = Unit2.new()
+hero_hash['Captain - Two Lightning Claws'].addModels(space_marine_codex, sm_wep, 'Captain',
+ 1, ['Two Lightning Claws'],['Chainsword','Master-crafted Boltgun'])
+ 
+ 
+### Captain on Bike
+
+  melee_wep.each do |wep1|
+	term_cap_shield.each do |shield|
+		string = "Captain on Bike - #{wep1} - #{shield}"
+		hero_hash[string] = Unit2.new()
+		hero_hash[string].addModels(space_marine_codex, sm_wep, 'Captain on Bike', 1, [wep1, shield],['Chainsword','Master-crafted Boltgun'] )
+	end
+end
+
+hero_hash['Captain on Bike - Two Lightning Claws'] = Unit2.new()
+hero_hash['Captain on Bike - Two Lightning Claws'].addModels(space_marine_codex, sm_wep, 'Captain on Bike',
+ 1, ['Two Lightning Claws'],['Chainsword','Master-crafted Boltgun'])
+
+### Primaris Captain
+hero_hash['Primaris Captain'] = Unit2.new()
+hero_hash['Primaris Captain'].addModels(space_marine_codex, sm_wep, 'Primaris Captain',1,['Power Sword'],['Chainsword','Master-crafted Boltgun'])
+
+## Captain in Gravis Armor
+hero_hash['Captain in Gravis Armor'] = Unit2.new()
+hero_hash['Captain in Gravis Armor'].addModels(space_marine_codex, sm_wep, 'Captain in Gravis Armor',1,['Power Sword'],['Chainsword','Master-crafted Boltgun'])
+ 
+## Librarian
+ lib_wep = ['Force Sword','Force Axe','Force Stave']
+lib_wep.each do |wep|
+	string = "Librarian - #{wep}"
+	hero_hash[string] = Unit2.new()
+	hero_hash[string].addModels(space_marine_codex, sm_wep, 'Librarian', 1, [wep],['Force Stave'] )
+ end 
+ 
+ lib_wep.each do |wep|
+	string = "Librarian in Terminator Armor - #{wep}"
+	hero_hash[string] = Unit2.new()
+	hero_hash[string].addModels(space_marine_codex, sm_wep, 'Librarian in Terminator Armor', 1, [wep],['Force Stave'] )
+ end 
+
+
+hero_hash['Primaris Librarian'] = Unit2.new()
+hero_hash['Primaris Librarian'].addModels(space_marine_codex, sm_wep, 'Primaris Librarian', 1, [],[] )
+hero_hash['Chaplain in Terminator Armor'] = Unit2.new()
+hero_hash['Chaplain in Terminator Armor'].addModels(space_marine_codex, sm_wep, 'Chaplain in Terminator Armor', 1, [],[] )
+ 
+hero_hash['Chaplain'] = Unit2.new()
+hero_hash['Chaplain'].addModels(space_marine_codex, sm_wep, 'Chaplain', 1, [],[] )
+ 
+hero_hash['Chaplain - Power Fist'] = Unit2.new()
+hero_hash['Chaplain - Power Fist'].addModels(space_marine_codex, sm_wep, 'Chaplain', 1, ['Power Fist'],['Bolt Pistol'] )
+ 
+hero_hash['Primaris Chaplain'] = Unit2.new()
+hero_hash['Primaris Chaplain'].addModels(space_marine_codex, sm_wep, 'Primaris Chaplain', 1, [],[] )
+
+melee_wep.each do |wep1|
+	term_cap_shield.each do |shield|
+		string = "Lieutenant - #{wep1} - #{shield}"
+		hero_hash[string] = Unit2.new()
+		hero_hash[string].addModels(space_marine_codex, sm_wep, 'Lieutenant', 1, [wep1, shield],['Chainsword'] )
+	end
+end
+
+
+hero_hash['Lieutenant - Two Lightning Claws'] = Unit2.new()
+hero_hash['Lieutenant - Two Lightning Claws'].addModels(space_marine_codex, sm_wep, 'Lieutenant',
+ 1, ['Two Lightning Claws'],['Chainsword','Master-crafted Boltgun'])
+ 
+ 

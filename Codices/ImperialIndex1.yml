@@ -17,7 +17,7 @@ Commander Dante: !ruby/object:CodexEntry
   - Krak Grenade
   rules:
   - Invulnerable - 4
-  - Aura - 6 - Reroll - Hits - All
+  - Aura - 6 - Reroll - All - Hits - All
   - Fear - 1
   - Deepstrike
   cost: 215
@@ -47,7 +47,7 @@ Captain Tycho: !ruby/object:CodexEntry
   - Krak Grenade
   rules:
   - Invulnerable - 4
-  - Aura - 6 - Reroll - Hits - 1
+  - Aura - 6 - Reroll - All - Hits - 1
   cost: 95
   keywords: *1
 Tycho the Lost: !ruby/object:CodexEntry
@@ -68,7 +68,7 @@ Tycho the Lost: !ruby/object:CodexEntry
   - Krak Grenade
   rules:
   - Invulnerable - 4
-  - Aura - 6 - Reroll - Hits - 1
+  - Aura - 6 - Reroll - All - Hits - 1
   - FNP - 6
   - Charge - Attack - 1
   cost: 70
@@ -105,7 +105,7 @@ Chief Librarian Mephiston: !ruby/object:CodexEntry
     Ld: 9
     Sv: 2
   gear:
-  - Plamsa Pistol
+  - Plasma Pistol
   - Sanguine Sword
   - Frag Grenade
   - Krak Grenade
@@ -156,6 +156,8 @@ Astorath: !ruby/object:CodexEntry
   - Invulnerable - 4
   - Aura - 6 - Reroll - Fight - Hits - All
   - Deepstrike
+  - FNP - 6
+  - Charge - Attacks - 1
   cost: 143
   keywords: *1
 Sanguinary Priest: !ruby/object:CodexEntry
