@@ -801,7 +801,7 @@ end
 def OptMeleeWeapon(attacker,target,logfile)
 	average = 0.0
 	weapon = ''
-	logfile.puts "Calculating Average Damage for each of #{attacker.getName}'s weapons when fighting #{target.getName}"
+	logfile.puts "Calculating  #{attacker.getName}'s optimal weapon and weapon mode when fighting #{target.getName}"
 	firetype = ''
 	num_melee = 0
 	attacker.getGear.each do |gear|
@@ -818,22 +818,35 @@ def OptMeleeWeapon(attacker,target,logfile)
 		logfile.puts "#{attacker.getName} has no melee weapons so we added a Close Combat Weapon"
 	end
 	
-	attacker.getGear.each do |gear|
-		gear.getFiretypes.each do |mode|
-			unless gear.getType(mode) == 'Melee'
-				next
-			end
-			hits = CalcHits(attacker,target,gear,mode,logfile)
-			wounds = CalcWounds(hits,attacker,target,gear,mode,logfile)
-			fail_saves = CalcSaves(wounds,attacker,target,gear,mode,logfile)
-			damage = CalcDamage(fail_saves,attacker,target,gear,mode,logfile)
-			if damage > average
-				average = damage
+	if num_melee == 1
+		attacker.getGear.each do |gear|
+			gear.getFiretypes.each do |mode|
+				unless gear.getType(mode) == 'Melee'
+					next
+				end
 				weapon = gear
 				firetype = mode
+				logfile.puts "#{attacker.getName} only has one melee weapon with one attack mode so they will use #{weapon.getID} in #{mode} mode "
 			end
 		end
+	else
+		attacker.getGear.each do |gear|
+			gear.getFiretypes.each do |mode|
+				unless gear.getType(mode) == 'Melee'
+					next
+				end
+				hits = CalcHits(attacker,target,gear,mode,logfile)
+				wounds = CalcWounds(hits,attacker,target,gear,mode,logfile)
+				fail_saves = CalcSaves(wounds,attacker,target,gear,mode,logfile)
+				damage = CalcDamage(fail_saves,attacker,target,gear,mode,logfile)
+				if damage > average
+					average = damage
+					weapon = gear
+					firetype = mode
+				end
+			end
+		end
+		logfile.puts "The Optimal Weapon for #{attacker.getName} is #{weapon.getID} in #{firetype} mode"
 	end
-	logfile.puts "#The Optimal Weapon for #{attacker.getName} is #{weapon.getID} in #{firetype} mode"
 	return [weapon, firetype]
 end		

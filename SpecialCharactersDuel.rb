@@ -21,8 +21,8 @@ hero_hash['High Marshal Helbrecht'] = Unit2.new()
 hero_hash['High Marshal Helbrecht'].addModels(space_marine_codex, sm_wep, 'High Marshal Helbrecht', 1, [],[] )
 hero_hash['Marneus Calgar'] = Unit2.new()
 hero_hash['Marneus Calgar'].addModels(space_marine_codex, sm_wep, 'Marneus Calgar', 1, [],[] )
-hero_hash['Chief Librarian Tigerius'] = Unit2.new()
-hero_hash['Chief Librarian Tigerius'].addModels(space_marine_codex, sm_wep, 'Chief Librarian Tigerius', 1, [],[] )
+#hero_hash['Chief Librarian Tigerius'] = Unit2.new()
+#hero_hash['Chief Librarian Tigerius'].addModels(space_marine_codex, sm_wep, 'Chief Librarian Tigerius', 1, [],[] )
 hero_hash['Chaplain Cassius'] = Unit2.new()
 hero_hash['Chaplain Cassius'].addModels(space_marine_codex, sm_wep, 'Chaplain Cassius', 1, [],[] )
 hero_hash['Captain Sicarius'] = Unit2.new()
@@ -37,10 +37,10 @@ hero_hash['Chaplain Grimaldus'] = Unit2.new()
 hero_hash['Chaplain Grimaldus'].addModels(space_marine_codex, sm_wep, 'Chaplain Grimaldus', 1, [],[] )
 hero_hash['Korsarro Khan'] = Unit2.new()
 hero_hash['Korsarro Khan'].addModels(space_marine_codex, sm_wep, 'Korsarro Khan', 1, [],[] )
-hero_hash['Korsarro Khan'].getModels[0].addRule('Impact - Mortal Wounds - 1 - 4')
+#hero_hash['Korsarro Khan'].getModels[0].addRule('Impact - Mortal Wounds - 1 - 4')
 hero_hash['Vulkan Hestan'] = Unit2.new()
 hero_hash['Vulkan Hestan'].addModels(space_marine_codex, sm_wep, 'Vulkan Hestan', 1, [],[] )
-hero_hash['Vulkan Hestan'].getModels[0].addRule(['Reroll - All - All - Single','Strength - 1'])
+#hero_hash['Vulkan Hestan'].getModels[0].addRule(['Reroll - All - All - Single','Strength - 1'])
 hero_hash['Kayvaan Shrike'] = Unit2.new()
 hero_hash['Kayvaan Shrike'].addModels(space_marine_codex, sm_wep, 'Kayvaan Shrike', 1, [],[] )
 
@@ -121,11 +121,11 @@ hero_hash.each do |key, value|
 	calc_time = Time.now
 	hero_hash.each do |key2, value2|
 		
-		odds = Duel(sm_wep,value,value2,1000,log_file)
+		odds = Duel(sm_wep,value,value2,10000,log_file)
 		if key == key2
-			#puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
+			puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
 		else 
-			#puts "If #{key} charges #{key2}, #{key} wins #{odds * 100}% of the time"
+			puts "If #{key} charges #{key2}, #{key} wins #{odds * 100}% of the time"
 		end
 		row.push(odds)
 		
