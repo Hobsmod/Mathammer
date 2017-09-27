@@ -60,6 +60,17 @@ hero_hash['Astorath'].addModels(imp_ind_1, imp_ind_wep, 'Astorath', 1, [],[] )
 hero_hash['Astorath'] = Unit2.new()
 hero_hash['Astorath'].addModels(imp_ind_1, imp_ind_wep, 'Astorath', 1, [],[] )
  
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 out_file.print "Attacker,"
 ## Apply Auras and gear to update each model
 hero_hash.each do |key, value|

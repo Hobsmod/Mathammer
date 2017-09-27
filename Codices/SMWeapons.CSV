@@ -169,10 +169,10 @@ Smite,Standard,0,12,Psychic,0,0,0,0,Mortal - D3
 Librarius Discipline,0,0,0,0,0,0,0,0,0,0,0
 Talassarian Tempest Blade,Melee,0,0,Melee,0,0,-3,D3,Rend - Mortal Wounds - Replace - D3
 Dorns Arrow,Standard,0,24,Assault,4,4,-1,1
-Black Sword,Melee,0,0,Melee,0,+2,-3,D3,Duelist - Reroll - Wounds
+Black Sword,Melee,0,0,Melee,0,+2,-3,D3,Duelist - Reroll - Fight - Wounds - All
 Moonfang,Melee,0,0,Melee,0,0,-3,D3,Duelist - Strength - *2
 Spear of Vulkan,Melee,0,0,Melee,0,+2,-2,D3,
-Ravens Talons,Melee,0,0,Melee,0,0,-3,D3,Reroll - Wounds - All,
+Ravens Talons,Melee,0,0,Melee,0,0,-3,D3,Reroll - Fight - Wounds - All,
 Storm Shield,Gear,0,0,Gear,0,0,0,0,Gear - Invulnerable - 3
 The Shield Eternal,Gear,0,0,Gear,0,0,0,0,Gear - Invulnerable - 3, Gear - Damage - Halved
 The Armor Indomitus,Gear,0,0,Gear,0,0,0,0,Gear - One Round - Invulnerable - 3, Gear - Damage - Halved

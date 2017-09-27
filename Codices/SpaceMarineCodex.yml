@@ -222,7 +222,8 @@ The Emperors Champion: !ruby/object:CodexEntry
   - Krak Grenade
   rules:
   - Invulnerable - 4
-  - Duelist - Reroll - Hits Duelist - Attacks - 1
+  - Duelist - Reroll - Fight - Hits - All
+  - Duelist - Attacks - 1
   - Duelist - Strength - 1
   cost: 75
   keywords: *1

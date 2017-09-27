@@ -101,7 +101,7 @@ spacemarinecodex['High Marshal Helbrecht'] = CodexEntry.new(helbrecht_stats, hel
 
 emp_chmp_stats = [6,2,3,4,4,4,4,8,2]
 emp_chmp_gear = ['Black Sword','Bolt Pistol','Frag Grenade','Krak Grenade']
-emp_chmp_rules = ['Invulnerable - 4','Duelist - Reroll - Hits' ' Duelist - Attacks - 1','Duelist - Strength - 1']
+emp_chmp_rules = ['Invulnerable - 4','Duelist - Reroll - Fight - Hits - All', 'Duelist - Attacks - 1','Duelist - Strength - 1']
 spacemarinecodex['The Emperors Champion'] = CodexEntry.new(emp_chmp_stats, emp_chmp_gear, emp_chmp_rules, emp_chmp_cost, character)
 
 grimaldus_stats = [6,2,3,4,4,4,3,8,3]
@@ -121,7 +121,7 @@ spacemarinecodex['Vulkan Hestan'] = CodexEntry.new(vulkan_stats, vulkan_gear, vu
 
 shrike_stats = [12,2,2,4,4,5,5,9,2]
 shrike_gear = ['Ravens Talons','Frag Grenade','Krak Grenade']
-shrike_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Reroll - Charge']
+shrike_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - All', 'Aura - 6 - Reroll - Charge']
 spacemarinecodex['Kayvaan Shrike'] = CodexEntry.new(shrike_stats, shrike_gear, shrike_rules, shrike_cost, character)
 
 capt_term_stats = [5,2,2,4,4,6,4,9,2]

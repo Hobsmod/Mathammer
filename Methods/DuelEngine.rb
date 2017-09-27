@@ -1,5 +1,5 @@
 require_relative 'Logged Melee Methods.rb'
-
+require_relative '../Classes/Weapon2.rb'
 
 def Duel(wep_hash,charger,defender,iterations,logfile)
 ###each of these is a unit

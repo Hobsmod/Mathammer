@@ -50,19 +50,7 @@ class Unit2
 	end
 	
 	def ApplyAuras
-		all_rules = Array.new()
-		aura_rules = Array.new()
-		@models.each do |model|
-			model.getRules.each do |rule|
-				all_rules.push(rule)
-			end
-		end
-		all_rules = all_rules.uniq
-		all_rules.each do |rule|
-			if rule =~ /Aura/
-				aura_rules.push(rule)
-			end
-		end
+		aura_rules = @rules.grep(/Aura/)
 		aura_rules.each do |aura|
 			aura_array = aura.split(' - ')
 			#puts "#{aura_array}"
@@ -81,12 +69,11 @@ class Unit2
 			end
 		end
 		
-		
+		aura_rules.each do |rule|
+			@rules.delete(rule)
+		end
 		#### Have Auras that modify stats modify the stats here
 		@models.each do |model|
-			if model.hasRule('Strength - 1')
-				model.modStat('S',1)
-			end
 			if model.hasRule('Attacks - 1')
 				model.modStat('A',1)
 			end

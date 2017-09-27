@@ -84,19 +84,8 @@ class Weapon
 		if fire_type.nil?
 			firetype = @firetypes_list[0]
 		end
-		if @fire_types[fire_type]['D'] == 'D6'
-			if hasRule(fire_type,'Melta')
-				return 4.47
-			else
-				return 3.5
-			end
-		elsif @fire_types[fire_type]['D'] == 'D3'
-			return 2.0
-		elsif @fire_types[fire_type]['D'] == '2D6'
-			return 7.0
-		else
-			return @fire_types[fire_type]['D'].to_f
-		end
+		puts "This weapon does the following damage"
+		return @fire_types[fire_type]['D']
 	end
 
 	def getShots(fire_type)
