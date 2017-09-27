@@ -111,6 +111,9 @@ class ModelWithWeapons
 		end
 	end
 	
+	def getKeywords
+		@keywords
+	end
 
 	
 	def ApplyGear()
@@ -118,11 +121,7 @@ class ModelWithWeapons
 		gear_rules = Array.new()
 		@gear.each do |item|
 			item.getFiretypes.each do |mode|
-				item.getRules(mode).each do |rule|
-					if rule =~ /Gear/
-						gear_rules.push(rule)
-					end
-				end
+				gear_rules = gear_rules + item.getRules(mode).grep(/Gear/)
 			end
 		end
 		gear_rules.each do |rule|
@@ -139,7 +138,7 @@ class ModelWithWeapons
 			if rule =~ /Add Rule/
 				split_array = rule.split(' - ')
 				add_rule = ''
-				split_array[1..-1].each do |part|
+				split_array[2..-1].each do |part|
 					add_rule = add_rule + part + ' - '
 				end
 				@rules.push(add_rule[0..-4])

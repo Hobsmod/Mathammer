@@ -1,11 +1,11 @@
 require_relative '..\Classes\CodexEntry.rb'
 require 'yaml'
 faction = ['Imperium','Adeptus Astartes']
-character = faction.push('Character')
-infantry = faction.push('Infantry')
-vehicle = faction.push('Vehicle')
-dreadnought = vehicle.push('Dreadnought')
-flier = vehicle.push('Fly')
+character = faction + ['Character']
+infantry = faction + ['Infantry']
+vehicle = faction + ['Vehicle']
+dreadnought = vehicle + ['Dreadnought']
+flier = vehicle + ['Fly']
 tactical_rules = ['ATSKNF']
 
 imp_index_1 = Hash.new{}
@@ -199,7 +199,7 @@ imp_index_1['Death Company'] = CodexEntry.new(death_cmp_stats, death_cmp_gear, d
 
 lemartes_stats = [12,2,3,4,4,4,5,9,3]
 lemartes_gear = ['Blood Crozius','Bolt Pistol','Frag Grenade','Krak Grenade']
-lemartes_rules = ['Invulnerable - 4','FNP - 6', 'Charge - Attack - 1', 'Aura - 6 - Reroll - Fight - Hit - All','Deepstrike']
+lemartes_rules = ['Invulnerable - 4','FNP - 6', 'Charge - Attack - 1', 'Aura - 6 - Reroll - Fight - Hits - All','Deepstrike']
 imp_index_1['Lemartes'] = CodexEntry.new(lemartes_stats, lemartes_gear, lemartes_rules, lemartes_cost, character)
 
 sang_grd_stats = [12,3,3,4,4,2,2,8,2]
@@ -222,7 +222,7 @@ baal_gear = ['Twin Assault Cannon']
 imp_index_1['Baal Predator'] = CodexEntry.new(baal_stats, baal_gear, furioso_dred_rules, baal_cost, vehicle)
 
 seth_stats = [6,2,2,4,4,6,4,9,3]
-seth_gear = ['Blood Song','Bolt Pistol','Frag Grenade','Krak Grenade']
+seth_gear = ['Blood Reaver','Bolt Pistol','Frag Grenade','Krak Grenade']
 seth_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Fight Twice - 6']
 imp_index_1['Gabriel Seth'] = CodexEntry.new(seth_stats, seth_gear, seth_rules, seth_cost, character)
 
@@ -233,7 +233,7 @@ imp_index_1['Azrael'] = CodexEntry.new(azrael_stats, azrael_gear, azrael_rules, 
 
 belial_stats = [5,2,2,4,4,6,4,9,2]
 belial_gear = ['Sword of Silence','Storm Bolter']
-belial_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1','Aura - Deathwing - Reroll - All - Hits - All','Parry']
+belial_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1','Aura - Deathwing - Reroll - All - Hits - All']
 imp_index_1['Belial'] = CodexEntry.new(belial_stats, belial_gear, belial_rules, belial_cost, character)
 
 sammael_corv_stats = [14,2,2,4,6,6,5,9,2]
@@ -399,8 +399,8 @@ imp_index_1['Krom Dragongraze'] = CodexEntry.new(krom_stats, krom_gear, krom_rul
 
 arjac_stats = [6,2,2,4,4,5,5,9,3]
 arjac_gear = ['Foehammer']
-arjac_rules = ['Invulnerable - 3','Aura - 6 - Reroll - All - Wounds - 1','Duelist - Hits', 'Aura - Wolf Guard - Attacks - 1','Damage Reduced - 1']
-imp_index_1['Arjac Rockfist'] = CodexEntry.new(arjac_stats, arjac_gear, arjac_rules, arjac_cost, character)
+arjac_rules = ['Invulnerable - 3','Aura - 6 - Reroll - All - Wounds - 1','Duelist - Reroll - Fight - Hits - All', 'Aura - Wolf Guard - Attacks - 1','Damage - Reduced - All - 1']
+imp_index_1['Arjac Rockfist'] = CodexEntry.new(arjac_stats, arjac_gear, arjac_rules, arjac_cost, character + ['Wolf Guard'])
 
 harald_stats = [10,2,2,4,5,7,4,9,3]
 harald_gear = ['Glacius','Bolt Pistol','Frag Grenade','Krak Grenade','Storm Bolter','Crushing Teeth and Claws']
@@ -457,7 +457,7 @@ imp_index_1['Wolf Priest on Bike'] = CodexEntry.new(wolf_priest_bike_stats, wolf
 
 ulrik_stats = [6,2,2,4,4,5,4,9,3]
 ulrik_gear = ['Crozius Arcanum','Plasma Pistol','Frag Grenade','Krak Grenade']
-ulrik_rules = ['Aura - 6 - Reroll - Fight - Hits - All','Invulnerable - 4','Healing Balms']
+ulrik_rules = ['Aura - 6 - Reroll - Fight - Hits - All','Invulnerable - 4','Healing Balms - D3']
 imp_index_1['Ulrik the Slayer'] = CodexEntry.new(ulrik_stats, ulrik_gear, ulrik_rules, ulrik_cost, character)
 
 wolf_guard_leader_stats = [6,2,3,4,4,4,4,8,3]
@@ -502,8 +502,8 @@ imp_index_1['Wolf Guard Pack Leader in Terminator Armor'] = CodexEntry.new(wolfg
 
 lukas_stats = [6,2,3,4,4,4,4,8,3]
 lukas_gear = ['Claw of the Jackalwolf','Plasma Pistol','Frag Grenade','Krak Grenade']
-lukas_rules = ['Aura - Blood Claw - Add - All - Hits - 1','Hard to Hit - Fight','Fear - 1']
-imp_index_1['Lukas the Trickster'] = CodexEntry.new(lukas_stats, lukas_gear, lukas_rules, lukas_cost, character)
+lukas_rules = ['Aura - Blood Claw - Add - All - Hits - 1','Hard to Hit - Fight - 1','Fear - 1']
+imp_index_1['Lukas the Trickster'] = CodexEntry.new(lukas_stats, lukas_gear, lukas_rules, lukas_cost, character + ['Blood Claw'])
 
 
 grey_hunter = [6,3,3,4,4,1,1,7,3]
@@ -622,7 +622,7 @@ imp_index_1['Watch Master'] = CodexEntry.new(watch_master_stats, watch_master_ge
 artemis_stats = [6,2,2,4,4,5,4,9,3]
 artemis_gear = ['Power Sword','Hellfire Extremis','Stasis Bomb','Frag Grenade','Krak Grenade']
 artemis_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1','FNP - 6']
-imp_index_1['Murderfang'] = CodexEntry.new(artemis_stats, artemis_gear, artemis_rules, artemis_cost, character)
+imp_index_1['Watch Captain Artemis'] = CodexEntry.new(artemis_stats, artemis_gear, artemis_rules, artemis_cost, character)
 
 watch_veteran = [6,3,3,4,4,1,2,8,3]
 watch_sarge = [6,3,3,4,4,1,3,9,3]

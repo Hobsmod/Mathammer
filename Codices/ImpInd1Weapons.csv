@@ -149,8 +149,8 @@ Chainfist,Standard,22,0,Melee,0,*2,-4,2,Unwieldy
 Chainsword,Standard,0,0,Melee,1,User,0,1
 Combat Knife,Standard,0,0,Melee,1,User,0,1
 Powerfist,Standard,,0,Melee,0,*2,-3,D3,Unwieldy
-Lightning Claw,Standard,8,0,Melee,0,0,-2,1,Reroll Wounds
-Two Lightning Claws,Standard,12,0,Melee,1,0,-2,1,Reroll Wounds
+Lightning Claw,Standard,8,0,Melee,0,0,-2,1,Reroll - Fight - Wounds - All
+Two Lightning Claws,Standard,12,0,Melee,1,0,-2,1,Reroll - Fight - Wounds - All
 Thunderhammer,Standard,21,0,Melee,0,*2,-3,3,Unwieldy
 Thunderhammer - Character,Standard,16,0,Melee,0,*2,-3,3,Unwieldy
 Dreadnought Close Combat Weapon - Ironclad,Standard,0,0,Melee,0,*2,-3,3
@@ -179,16 +179,16 @@ Blood Song,Both2,0,24,Rapid Fire,1,4,-1,2,Combi
 Frag Cannon,Standard,019,8,Assault,2D6,6,-1,1,Autohit
 Hand Flamer,Standard,8,6,Pistol,D3,3,0,1,Autohit
 Inferno Pistol,Standard,20,6,Pistol,1,8,-4,D6,Melta
-Axe Mortalis,STD,0,0,Melee,0,+2,-3,D3,Duelist - Wounds
+Axe Mortalis,STD,0,0,Melee,0,+2,-3,D3,Duelist - Reroll - Fight - Wounds - All
 Blood Crozius,STD,0,0,Melee,0,+2,-2,D3,
-Blood Reaver,STD,0,0,Melee,0,*2,-1,3,Rend - Hit
+Blood Reaver,STD,0,0,Melee,0,*2,-1,3,Rend - Autohit
 Blood Talons,STD,65,0,Melee,0,*2,-3,D6,
 Encarmine Axe,STD,16,0,Melee,0,+1,-2,D3,
 Encarmine Broadsword,STD,0,0,Melee,0,+2,-4,D3,
 Encarmine Sword,STD,13,0,Melee,0,0,-3,D3,
 Excecutioners Axe,STD,0,0,Melee,0,+1,-3,D3,Rend - Damage - 3
 Furioso Fist,STD,40,0,Melee,0,*2,-3,3,
-Two Furioso Fists,STD,50,0,Melee,0,*2,-3,3,Double - Reroll - Hits - All
+Two Furioso Fists,STD,50,0,Melee,0,*2,-3,3,Reroll - Fight - Hits - All
 Furioso Force Halberd,STD,0,0,Melee,0,+4,-4,3,
 Heavens Teeth,STD,0,0,Melee,0,+1,-1,1,
 Sanguine Sword,STD,0,0,Melee,0,*2,-3,D3,
@@ -217,10 +217,11 @@ Flail of the Unforgiven,0,0,Melee,0,+2,-3,2,Overflow
 Halberd of Caliban,STD,0,0,Melee,0,+3,-4,D3,Area - 5 - D3
 Mace of Absolution,STD,0,0,Melee,0,*2,-2,3,
 Raven Sword,STD,0,0,Melee,0,+1,-3,2,Charge - Strength - *2
-Sword of Secrets,STD,0,0,Melee,0,+2,-3,D3,Rend - Mortal Wounds
-Sword of Silence,STD,0,0,Melee,0,+1,-3,2,Poison - 2
+Sword of Secrets,STD,0,0,Melee,0,+2,-3,D3,Rend - Mortal Wounds - 1
+Sword of Silence,STD,0,0,Melee,0,+1,-3,2,Poison - 2,Gear - Add Rule - Hard to Hit - Fight - 1
 Traitors Bane,STD,0,0,Melee,0,+1,-3,D3,Damage - Psyker - 1
 Foehammer,Shooting,0,12,Assault,1,*2,-3,D3,Duelist - Damage - 3
+Foehammer,Melee,0,0,Melee,0,*2,-3,D3,Duelist - Damage - 3
 Helfrost Cannon,Dispersed,25,24,Heavy,D3,6,-2,1
 Helfrost Cannon,Focused,25,24,Heavy,1,8,-4,D6
 Helfrost Pistol,STD,15,12,Pistol,1,8,-4,D3,Helfrost
@@ -292,4 +293,6 @@ Auspex Array,STD,5,0,0,0,0,0,0,0,0
 Blackstar Cluster Launcher,0,0,0,0,0,0,0,0
 Combat Shield,STD,4,0,Shield,0,0,0,0,Invulnerable - 5
 Infernum Halo-Launcher,STD,5,0,Gear,0,0,0,0,
-Storm Shield - Deathwatch,STD,15,0,Shield,0,0,0,0,Invulnerable - 3
+Storm Shield - Deathwatch,STD,15,0,Shield,0,0,0,0,Gear - Invulnerable - 3
+Storm Shield,STD,15,0,Shield,0,0,0,0,Gear - Invulnerable - 3
+Thunder Hammer,Melee,0,0,Melee,0,*2,-3,3,Unwieldy

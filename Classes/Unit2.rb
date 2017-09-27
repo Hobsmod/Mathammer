@@ -50,7 +50,10 @@ class Unit2
 	end
 	
 	def ApplyAuras
-		aura_rules = @rules.grep(/Aura/)
+		aura_rules = Array.new
+		@models.each do |model|
+			aura_rules = aura_rules + model.getRules.grep(/Aura/)
+		end
 		aura_rules.each do |aura|
 			aura_array = aura.split(' - ')
 			#puts "#{aura_array}"
@@ -58,13 +61,23 @@ class Unit2
 				if aura_array[1].to_i == 6
 					add_rule = ''
 					aura_array[2..-1].each do |part|
-						
 						add_rule = add_rule + part + ' - '
 					end
-					#puts add_rule
+				
 					add_rule = add_rule[0..-4]
-					#puts add_rule
+					
 					model.addRule(add_rule)
+				else 
+					if model.hasKeyword(aura_array[1]) == true
+						add_rule = ''
+						aura_array[2..-1].each do |part|
+							add_rule = add_rule + part + ' - '
+						end
+					
+					add_rule = add_rule[0..-4]
+					
+					model.addRule(add_rule)
+					end
 				end
 			end
 		end
