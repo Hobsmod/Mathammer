@@ -700,8 +700,8 @@ def RollDamage(felt_wounds, attacker, target, weapon, firetype,charged,logfile)
 	dmg_rolls = Array.new()
 	dmg_rolls = dmg_rolls + mortals
 	
-	if attacker.getRules().select{|rule| rule.match(/Rend - Damage/)}.length > 0 && charged == true
-		rule_array = attacker.getRules().select{|rule| rule.match(/Rend - Damage/)}[0].split(' - ')
+	if attacker.getRules().select{|rule| rule.match(/Rend - Fight - Damage/)}.length > 0 
+		rule_array = attacker.getRules().select{|rule| rule.match(/Rend - Fight - Damage/)}[0].split(' - ')
 		#logfile.puts "#{attacker.getName} does #{rule_array[2]} damage for each of their #{felt_wounds[1]} unsaved wound rolls of six" 
 		rend_rolls = Array.new(felt_wounds[1]) {RollDice(rule_array[2])}
 		#logfile.puts "This does a total of #{rend_rolls} damage"

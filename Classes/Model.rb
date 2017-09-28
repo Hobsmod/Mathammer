@@ -55,13 +55,13 @@ class Model
 		end
 	end
 	def getInvuln()
-		if @rules.include? 'Invulnerable-3'
+		if @rules.include? 'Invulnerable - 3'
 			return 3
-		elsif @rules.include? 'Invulnerable-4'
+		elsif @rules.include? 'Invulnerable - 4'
 			return 4
-		elsif @rules.include? 'Invulnerable-5'
+		elsif @rules.include? 'Invulnerable - 5'
 			return 5 
-		elsif @rules.include? 'Invulnerable-6'
+		elsif @rules.include? 'Invulnerable - 6'
 			return 6
 		else
 			return 7

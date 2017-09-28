@@ -2,6 +2,7 @@ require_relative '..\Classes\Model.rb'
 require_relative '..\Classes\Unit.rb'
 require_relative '..\Classes\Weapon2.rb'
 require_relative 'Dice.rb'
+require_relative 'LoggedShootingMethods.rb'
 
 def RollOverwatchHits(charger,shooter,wep,mode,range,logfile)
 	## First things first, just check if we are out of range
@@ -9,7 +10,7 @@ def RollOverwatchHits(charger,shooter,wep,mode,range,logfile)
 	if wep_range < range
 		return 0.0
 	end
-	
+	mortals = 0
 	hits = 0
 	to_hit = 6
 	shots = RollDice(wep.getShots(mode))
@@ -23,21 +24,33 @@ def RollOverwatchHits(charger,shooter,wep,mode,range,logfile)
 		logfile.puts "The firing range of #{range} is less than half of #{wep.getID}'s range of #{range} so it fires double the shots for a total of #{shots}"
 	end
 	#Weapons with the autohit rule just hit automatically
-	if weapon.hasRule(mode,'Autohit') == true
+	if wep.hasRule(mode,'Autohit') == true
 		hits = shots
 		logfile.puts "#{weapon.getID}'s shots hit automatically for a total of #{hits} hits"
 	end
+	
 	## RollDice for the shots
 	rolls = Array.new(shots) {rand(1..6)}
-	hits = rolls.count_if{|x| x >= to_hit }
-	logfile.puts "#{shooter.getName} rolls #{rolls} and needs #{to_hit} to hit, for a total of #{hits} hits"
+	logfile.puts "#{shooter.getName} rolls #{rolls}"
+	### Reroll Shooting
+	puts shooter.getRules().grep(/Reroll/)
+	
+	if (shooter.getRules().grep(/Reroll/).size + wep.getRules(mode).grep(/Reroll/).size) > 0 && rolls.count{ |n| n < to_hit} > 0
+		rolls = RerollShootingHits(shooter, charger, wep, mode, rolls, to_hit, logfile)
+	end
+	
+	
+	
+	
+	hits = rolls.count{|x| x >= to_hit }
+	logfile.puts "#{shooter.getName} needs #{to_hit} to hit, for a total of #{hits} hits"
 	
 	
 	##Count sixes and fives in case other rules use them, eventually add possibility of self wounding with plasma
-	sixes = rolls.count_if(6)
-	fives = rolls.count_if(5)
+	sixes = rolls.count(6)
+	fives = rolls.count(5)
 	self_wounds = 0
-	return hits, sixes, fives, self_wounds
+	return hits, sixes, fives, mortals, self_wounds
 end
 
 
@@ -319,6 +332,10 @@ def FireOverwatch(charger,shooter,range,logfile)
 	
 	weapons_to_fire.each do |wep|
 		wep.getFiretypes.each do |mode|
-			RollOverwatchHits(charger,shooter,wep,mode,range,logfile)
-	
+			hits = RollOverwatchHits(charger,shooter,wep,mode,range,logfile)
+			wounds = RollShootingWounds(hits,charger,shooter,wep,mode,range,logfile)
+			failed = RollShootingSaves(wounds,charger,shooter,wep,mode, range, logfile)
+			damage = RollShootingDamage(failed,charger,shooter,wep,mode,range,logfile)
+		end
+	end
 end

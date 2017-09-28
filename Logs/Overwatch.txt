@@ -12,3 +12,18 @@ Marneus Calgar has an effective strength of 0.0 and his target has a toughness o
 Marneus Calgar causes 0.0 wounds
 Pistol Damage is 0.0, Grenade Damage is 0.0, Main Damage is 0.20370370370370372
 Marneus Calgar will fire all their weapons that are not pistols or grenades
+Gauntlets of Ultramar fires 2 shots
+The firing range of 6 is less than half of Gauntlets of Ultramar's range of 6 so it fires double the shots for a total of 4
+Marneus Calgar rolls [6, 1, 5, 4]
+Marneus Calgar gets to reroll all their misses and now rolled [6, 4, 5, 3]
+Marneus Calgar needs 6 to hit, for a total of 1 hits
+Marneus Calgar has a toughness of 4 so Gauntlets of Ultramar needs 4's to wound
+Marneus Calgar rolled [6]
+Marneus Calgar caused 1 wounds
+Marneus Calgar has a save of 2+, but Gauntlets of Ultramar has an AP of -1 so the modified save is 3+
+Marneus Calgar rolls [2], resulting in 1 failed saves
+Each of Marneus Calgar's Attacks do 2 damage
+There are also 0 mortal wounds
+Marneus Calgar's Attacks do [2] respectively
+Marneus Calgar halves all damage (rounding up) so he only takes [1]
+Marneus Calgar takes 1 wounds

@@ -137,6 +137,67 @@ def RerollFightHits(attacker, defender, weapon,mode, rolls, to_suceed, logfile)
 end
 
 
+def RerollShootingHits(attacker, defender, weapon,mode, rolls, to_suceed, logfile)
+	reroll_what = Array.new()
+	reroll_rules = attacker.getRules.grep(/Reroll/)
+	reroll_rules = reroll_rules + weapon.getRules(mode).grep(/Reroll/)
+	unless defender.hasKeyword('Character') == true
+		reroll_rules.delete_if {|rule| rule.match(/Duelist/)}
+	end
+	
+	reroll_rules.each do |rule|
+		rule_split = rule.split(' - ')
+		if (rule_split[-2] == 'Hits' or rule_split[-2] == 'All') &&
+			(rule_split[-3] == 'Shooting' or rule_split[-3] == 'All')
+			
+			reroll_what.push(rule_split[-1])
+			
+		end
+	end
+	
+	
+	if reroll_what.include?('All') == true
+		
+		rolls = RerollAll(rolls, to_suceed)
+		logfile.puts "#{attacker.getName} gets to reroll all their misses and now rolled #{rolls}"
+		
+	elsif reroll_what.include?('Single') == true && reroll_what.include?('1') == true
+		
+		tot_mod = 0
+		rolls.each_index do |n|
+			if rolls[n].to_i == 1
+				rolls[n] = rand(1..6)
+			elsif	
+				rolls[n] < to_suceed && tot_mod < 1
+				rolls[n] = rand(1..6)
+				tot_mod = 1
+			end
+		end
+		
+		logfile.puts "#{attacker.getName} gets to reroll all their ones and a single miss, now they rolled #{rolls}"
+		
+	elsif reroll_what.include?('1') == true
+		
+		rolls = RerollOnes(rolls)
+		
+		logfile.puts "#{attacker.getName} gets to reroll all their 1's and now rolled #{rolls}"
+		
+	elsif reroll_what.include?('Single') == true
+		tot_mod = 0
+		rolls.each_index do |n|
+			if	
+				rolls[n] < to_suceed && tot_mod < 1
+				rolls[n] = rand(1..6)
+				tot_mod = 1
+			end
+		end
+		logfile.puts "#{attacker.getName} gets to reroll a single miss, now they rolled #{rolls}"
+	end
+	
+	
+	return rolls
+end
+
 def CalcRerollFightHits(attacker, defender, weapon,mode, attacks, to_suceed, logfile)
 	reroll_what = Array.new()
 	reroll_rules = attacker.getRules.grep(/Reroll/)
