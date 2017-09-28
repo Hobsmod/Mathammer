@@ -163,4 +163,16 @@ class ModelWithWeapons
 	def addGear(gear)
 		@gear.push(gear)
 	end
+	
+	def getRangedWeapons
+		ranged_wep = Array.new
+		@gear.each do |item|
+			item.getFiretypes.each do |mode|
+				if item.getRange(mode) > 0
+					ranged_wep.push(item)
+				end
+			end
+		end
+		return ranged_wep
+	end
 end

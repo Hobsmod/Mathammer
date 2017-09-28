@@ -656,9 +656,6 @@ def CalcDamage(felt_wounds, attacker, target, weapon, firetype,logfile)
 	wounds = target.getW.to_f
 
 	## Increase damage for grav weapons
-	if sv >= 3 && weapon.hasRule(firetype, 'Grav')
-		d = 2
-	end
 	dmg = d * felt_wounds
 	felt_wounds = felt_wounds * CalcDiceAvg(d)
 	if target.getFNP().any?
@@ -715,9 +712,6 @@ def RollDamage(felt_wounds, attacker, target, weapon, firetype,charged,logfile)
 	
 	(1..felt_wounds[0]).each do 
 		d = (RollDice(weapon.getD(firetype)))
-		if sv >= 3 && weapon.hasRule(firetype, 'Grav') == true
-			d = 2
-		end
 		if weapon.getRules(firetype).grep(/Duelist - Damage/).size > 0 && target.hasKeyword('Character') == true
 			duel_rule = weapon.getRules(firetype).grep(/Duelist - Damage/)
 			d = RollDice(duel_rule[0].split(' - ')[-1])

@@ -178,7 +178,7 @@ imp_index_1['Sanguinary Priest on Bike'] = CodexEntry.new(sang_priest_bike_stats
 
 corbulo_stats = [6,2,2,4,4,5,4,9,3]
 corbulo_gear = ['Heavens Teeth','Bolt Pistol','Frag Grenade','Krak Grenade']
-corbulo_rules = ['Aura - 6 - Strength - 1','Narthecium','Aura - 6 - Chain Attacks - 6']
+corbulo_rules = ['Aura - 6 - Strength - 1','Healing - D3','Aura - 6 - Rend - Fight - Extra Attack']
 imp_index_1['Brother Corbulo'] = CodexEntry.new(corbulo_stats, corbulo_gear, corbulo_rules, corbulo_cost, character)
 
 sang_grd_anc_stats = [12,3,3,4,4,4,3,9,2]
@@ -457,7 +457,7 @@ imp_index_1['Wolf Priest on Bike'] = CodexEntry.new(wolf_priest_bike_stats, wolf
 
 ulrik_stats = [6,2,2,4,4,5,4,9,3]
 ulrik_gear = ['Crozius Arcanum','Plasma Pistol','Frag Grenade','Krak Grenade']
-ulrik_rules = ['Aura - 6 - Reroll - Fight - Hits - All','Invulnerable - 4','Healing Balms - D3']
+ulrik_rules = ['Aura - 6 - Reroll - Fight - Hits - All','Invulnerable - 4','Healing - D3']
 imp_index_1['Ulrik the Slayer'] = CodexEntry.new(ulrik_stats, ulrik_gear, ulrik_rules, ulrik_cost, character)
 
 wolf_guard_leader_stats = [6,2,3,4,4,4,4,8,3]

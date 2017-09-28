@@ -1,0 +1,14 @@
+Marneus Calgar's Gauntlets of Ultramar fires 2.0 shots
+Twice the shots when rapid firing for a total of 4.0
+Marneus Calgar gets to reroll all their misses making the new probability 0.3055555555555556
+He gets 1.2222222222222223 hits
+Marneus Calgar has an effective strength of 4.0 and his target has a toughness of 4.0, giving a 0.5 chance of wounding
+Marneus Calgar causes 0.6111111111111112 wounds
+Marneus Calgar's Gauntlets of Ultramar has an AP of -1.0 so Marneus Calgar's save of 2.0 becomes 3.0
+Marneus Calgar has a 0.3333333333333333 chance of failing their save
+Marneus Calgar failed 0.20370370370370372 saves
+Gauntlets of Ultramar in Shooting mode would do 0.20370370370370372 wounds on average
+Marneus Calgar has an effective strength of 0.0 and his target has a toughness of 4.0, giving a 0.3333333333333333 chance of wounding
+Marneus Calgar causes 0.0 wounds
+Pistol Damage is 0.0, Grenade Damage is 0.0, Main Damage is 0.20370370370370372
+Marneus Calgar will fire all their weapons that are not pistols or grenades

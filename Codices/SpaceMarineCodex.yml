@@ -15,7 +15,7 @@ Marneus Calgar: !ruby/object:CodexEntry
   - Gauntlets of Ultramar
   - Relic Blade
   rules:
-  - Aura - 6 - Reroll - Fight - Hits - All
+  - Aura - 6 - Reroll - All - Hits - All
   - Character
   - Damage - Halved
   - Invulnerable - 4

@@ -1,4 +1,4 @@
-require_relative 'Methods\DuelEngine.rb'
+require_relative 'Methods\LoggedDuelEngine.rb'
 require_relative 'Methods\LoadFromCSV'
 require_relative 'Classes\Targets.rb'
 require 'yaml'
@@ -121,7 +121,7 @@ hero_hash.each do |key, value|
 	calc_time = Time.now
 	hero_hash.each do |key2, value2|
 		
-		odds = Duel(sm_wep,value,value2,10000,log_file)
+		odds = Duel(sm_wep,value,value2,10,log_file)
 		if key == key2
 			puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
 		else 

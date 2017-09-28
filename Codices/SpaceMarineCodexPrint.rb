@@ -50,7 +50,7 @@ tech_cost = 45
 ##Marneus Calgar
 calgar_stats = [5,2,2,4,4,7,5,9,2,4]
 calgar_gear = ['Gauntlets of Ultramar','Relic Blade']
-calgar_rules = ['Aura - 6 - Reroll - Fight - Hits - All','Character','Damage - Halved','Invulnerable - 4']
+calgar_rules = ['Aura - 6 - Reroll - All - Hits - All','Character','Damage - Halved','Invulnerable - 4']
 
 calgar_keywords = character
 spacemarinecodex['Marneus Calgar'] = CodexEntry.new(calgar_stats, calgar_gear, calgar_rules, calgar_cost, character)
