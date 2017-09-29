@@ -343,7 +343,7 @@ def RerollShootingWounds(attacker, defender, weapon, mode, rolls, to_suceed, log
 
 	if reroll_what.include?('All')
 		rolls = RerollAll(rolls, to_suceed)
-		#logfile.puts "#{attacker.getName} gets to reroll all dice that didn't wound and now rolled #{rolls}"
+		logfile.puts "#{attacker.getName} gets to reroll all dice that didn't wound and now rolled #{rolls}"
 		
 	elsif reroll_what.include?('Single') && reroll_what.include?('1')
 		
@@ -358,12 +358,12 @@ def RerollShootingWounds(attacker, defender, weapon, mode, rolls, to_suceed, log
 			end
 		end
 		
-	#logfile.puts "#{attacker.getName} gets to reroll all 1's and a single failed wound roll, now they rolled #{rolls}"
+	logfile.puts "#{attacker.getName} gets to reroll all 1's and a single failed wound roll, now they rolled #{rolls}"
 	
 	elsif reroll_what.include?('1')
 		
 		rolls = RerollOnes(rolls)
-		#logfile.puts "#{attacker.getName} gets to reroll all 1's producing #{rolls}"
+		logfile.puts "#{attacker.getName} gets to reroll all 1's producing #{rolls}"
 		
 	elsif reroll_what.include?('Single')
 		
@@ -376,7 +376,7 @@ def RerollShootingWounds(attacker, defender, weapon, mode, rolls, to_suceed, log
 			end
 		end
 		
-		#logfile.puts "#{attacker.getName} gets to reroll a single attempt to wound producing: #{rolls}"
+		logfile.puts "#{attacker.getName} gets to reroll a single attempt to wound producing: #{rolls}"
 	end
 	
 	return rolls

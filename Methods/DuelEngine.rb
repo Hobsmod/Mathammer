@@ -24,7 +24,12 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 	(1..iterations).each do
 		dmg_to_charger = 0
 		dmg_to_defender = 0
+		range = rand(1..6) + rand(1..6)
 		rounds = 20
+		## Roll Overwatch!###
+		#logfile.puts "The randomly generated charge range is #{range}"
+		dmg_to_charger = dmg_to_charger + FireOverwatch(charger,defender,range,logfile)
+		
 		(1..rounds).each do |round|
 			
 			#### Healing

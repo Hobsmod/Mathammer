@@ -1,10 +1,11 @@
 require_relative 'Logged Melee Methods.rb'
 require_relative '../Classes/Weapon2.rb'
+require_relative 'LoggedOverwatch.rb'
 require_relative 'Dice.rb'
 
 def Duel(wep_hash,charger,defender,iterations,logfile)
 ###each of these is a unit
-	
+	range = 6
 	charger = charger.getModels[0]
 	defender = defender.getModels[0]
 	logfile.puts "----------------#{charger.getName} Charges #{defender.getName}--------------------------"
@@ -14,17 +15,26 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 	atk_mode= atk_arry[1]
 	atk_wounds = charger.getW()
 	def_arry = OptMeleeWeapon(defender,charger,logfile)
+	def_ovwtch_wep = OptOverwatch(charger,defender,range,logfile)
 	def_wep = def_arry[0]
 	def_mode = def_arry[1]
 	def_wounds = defender.getW
-
+	
+	
 	defender_victories = 0
 	attacker_victories = 0
 	
 	(1..iterations).each do
 		dmg_to_charger = 0
 		dmg_to_defender = 0
-		rounds = 20
+		rounds = 10
+		
+		
+		## Roll Overwatch!###
+		logfile.puts "-------------------- Firing Overwatch! ---------------------------------------"
+		logfile.puts "The randomly generated charge range for firing overwatch is #{range}"
+		dmg_to_charger = dmg_to_charger + FireOverwatch(charger,defender,def_ovwtch_wep, range,logfile)
+		
 		(1..rounds).each do |round|
 			
 			#### Healing

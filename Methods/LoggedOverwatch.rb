@@ -26,7 +26,8 @@ def RollOverwatchHits(charger,shooter,wep,mode,range,logfile)
 	#Weapons with the autohit rule just hit automatically
 	if wep.hasRule(mode,'Autohit') == true
 		hits = shots
-		logfile.puts "#{weapon.getID}'s shots hit automatically for a total of #{hits} hits"
+		logfile.puts "#{wep.getID}'s shots hit automatically for a total of #{hits} hits"
+		return [shots,0,0,0,0]
 	end
 	
 	## RollDice for the shots
@@ -160,7 +161,7 @@ def CalcShootingWounds(hits,shooter,target,weapon,mode,logfile)
 	end
 	
 	
-	logfile.puts "#{shooter.getName} has an effective strength of #{str} and his target has a toughness of #{tough}, giving a #{prob} chance of wounding" 
+	logfile.puts "#{weapon.getID} has a strength of #{str} and #{target.getName} has a toughness of #{tough}, giving a #{prob} chance of wounding" 
 	if weapon.hasRule(mode, 'Reroll - Wounds - All') or shooter.hasRule('Reroll - All - Wounds - All') or shooter.hasRule('Reroll - Fight - Wounds - All')
 		prob = prob + ((1 - prob) * prob)
 		logfile.puts "#{shooter.getName} can reroll wounds so their chances improve to #{prob}"
@@ -248,22 +249,23 @@ end
 def CalcOverwatch(charger,shooter,wep,mode,range,logfile)
 		overwatch_hits = CalcOverwatchHits(charger,shooter,wep,mode,range, logfile)
 		puts "#{wep.getID} causes #{overwatch_hits} hits"
-		overwatch_wounds =  CalcShootingWounds(overwatch_hits,charger,shooter,wep,mode,logfile)
+		overwatch_wounds =  CalcShootingWounds(overwatch_hits,shooter, charger,wep,mode,logfile)
 		puts "#{wep.getID} causes #{overwatch_wounds} wounds"
-		unsaved = CalcShootingSaves(overwatch_wounds, charger, shooter, wep, mode,logfile)
+		unsaved = CalcShootingSaves(overwatch_wounds,  shooter, charger, wep, mode,logfile)
 		puts "#{wep.getID} causes #{unsaved} unsaved wounds"
-		dmg = CalcShootingDamage(unsaved, charger, shooter, wep, mode,logfile)
+		dmg = CalcShootingDamage(unsaved,  shooter, charger, wep, mode,logfile)
 		puts "#{wep.getID} causes #{dmg} damage"
 		return dmg
 end
 
 def OptOverwatch(charger,shooter,range,logfile)
-
+	logfile.puts " -------Calculating Average Overwatch Damage to Decide what weapons to fire!---------"
 
 	main_dmg = 0.0
 	pistol_dmg = 0.0
 	grenade_dmg = 0.0
-	type = ''
+	pistol = ''
+	grenade = ''
 	
 	## Calculate the best damage to use
 	shooter.getRangedWeapons.each do |weapon|
@@ -274,6 +276,7 @@ def OptOverwatch(charger,shooter,range,logfile)
 		### Calculate the best firing mode to use
 		weapon.getFiretypes.each do |mode|
 			dmg = CalcOverwatch(charger,shooter,weapon,mode,range,logfile)
+			logfile.puts " --On Average #{weapon.getID} in #{mode} mode firing overwatch does #{dmg} damage--"
 			if dmg > weapon_dmg && weapon.hasRule(mode,'Combi') == false
 				weapon_dmg = dmg
 				type = weapon.getType(mode)
@@ -289,8 +292,10 @@ def OptOverwatch(charger,shooter,range,logfile)
 		
 		if type == 'Pistol' && weapon_dmg > pistol_dmg
 			pistol_dmg = weapon_dmg
+			pistol = weapon.getID
 		elsif type == 'Grenade' && weapon_dmg > grenade_dmg
 			grenade_dmg = weapon_dmg
+			grenade = weapon.getID
 		else
 			main_dmg = main_dmg + weapon_dmg
 		end	
@@ -298,11 +303,11 @@ def OptOverwatch(charger,shooter,range,logfile)
 	
 	logfile.puts "Pistol Damage is #{pistol_dmg}, Grenade Damage is #{grenade_dmg}, Main Damage is #{main_dmg}"
 	if pistol_dmg > main_dmg && pistol_dmg > grenade_dmg
-		type = 'Pistol'
-		logfile.puts "#{shooter.getName} should use their Pistol"
+		type = pistol
+		logfile.puts "#{shooter.getName} should use their #{type}"
 	elsif grenade_dmg > main_dmg
-		type = 'Grenade'
-		logfile.puts "#{shooter.getName} should use a grenade"
+		type = grenade
+		logfile.puts "#{shooter.getName} should use their #{type}"
 	else
 		type = 'All'
 		logfile.puts "#{shooter.getName} will fire all their weapons that are not pistols or grenades"
@@ -311,31 +316,28 @@ def OptOverwatch(charger,shooter,range,logfile)
 end
 
 
-def FireOverwatch(charger,shooter,range,logfile)
-	fire_what = OptOverwatch(charger,shooter,range,logfile)
-	puts fire_what
-	weapons_to_fire = Array.new()
-	if fire_what == 'All'
-		weapons_to_fire = shooter.getRangedWeapons
-		weapons_to_fire.delete_if {|wep| wep.getType(nil) == 'Pistol'}
-		weapons_to_fire.delete_if {|wep| wep.getType(nil) == 'Grenade'}
-	end
-	if fire_what =='Grenade'
-		weapons = shooter.getRangedWeapons
-		weapons_to_fire.delete_if {|wep| wep.getType(nil) != 'Grenade'}
-	end
-	if fire_what == 'Pistol'
-		weapons = shooter.getRangedWeapons
-		weapons_to_fire.delete_if {|wep| wep.getType(nil) != 'Pistol'}
-	end
-	puts "#{weapons_to_fire}"
+def FireOverwatch(charger, shooter, fire_what, range,logfile)
 	
+	weapons_to_fire = shooter.getRangedWeapons
+
+	#puts "#{weapons_to_fire}"
+	dmg_to_chrg = 0
 	weapons_to_fire.each do |wep|
 		wep.getFiretypes.each do |mode|
+			if fire_what == 'All' && (wep.getType(mode) == 'Pistol' or wep.getType(mode) == 'Grenade')
+				next
+			end
+			if fire_what != 'All' && wep.getID != fire_what
+				next
+			end
+			
 			hits = RollOverwatchHits(charger,shooter,wep,mode,range,logfile)
 			wounds = RollShootingWounds(hits,charger,shooter,wep,mode,range,logfile)
 			failed = RollShootingSaves(wounds,charger,shooter,wep,mode, range, logfile)
 			damage = RollShootingDamage(failed,charger,shooter,wep,mode,range,logfile)
+			dmg_to_chrg = dmg_to_chrg + damage
 		end
 	end
+	
+	return dmg_to_chrg 
 end

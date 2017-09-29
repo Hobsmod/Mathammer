@@ -47,13 +47,21 @@ prim_lib_cost = 93
 prim_lt_cost = 70
 tech_cost = 45
 
+##Roboute Guilliman
+rowboat_stats = [8,2,2,6,6,9,6,10,2]
+rowboat_gear = ['Gauntlets of Ultramar','Relic Blade']
+rowboat_rules = ['Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Reroll - All - Wounds - All','Invulnerable - 3']
+rowboat_keywords = character
+spacemarinecodex['Marneus Calgar'] = CodexEntry.new(rowboat_stats, rowboat_gear, rowboat_rules, rowboat_cost, character + ['Ultramarine'])
+
+
 ##Marneus Calgar
 calgar_stats = [5,2,2,4,4,7,5,9,2,4]
 calgar_gear = ['Gauntlets of Ultramar','Relic Blade']
 calgar_rules = ['Aura - 6 - Reroll - All - Hits - All','Character','Damage - Halved','Invulnerable - 4']
 
 calgar_keywords = character
-spacemarinecodex['Marneus Calgar'] = CodexEntry.new(calgar_stats, calgar_gear, calgar_rules, calgar_cost, character)
+spacemarinecodex['Marneus Calgar'] = CodexEntry.new(calgar_stats, calgar_gear, calgar_rules, calgar_cost, character + ['Ultramarine'])
 
 ##Chief Librarian Tigerius
 tigerius_stats = [6,3,3,4,4,4,3,9,3]

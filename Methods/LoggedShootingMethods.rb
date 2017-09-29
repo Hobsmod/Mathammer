@@ -3,7 +3,7 @@ require_relative '..\Classes\Unit.rb'
 require_relative '..\Classes\Weapon2.rb'
 require_relative 'Dice.rb'
 
-def RollShootingHits(charger,shooter,wep,mode,range,moved?,logfile)
+def RollShootingHits(charger,shooter,wep,mode,range,moved,logfile)
 	## First things first, just check if we are out of range
 	wep_range = wep.getRange(mode)
 	if wep_range < range
@@ -28,7 +28,11 @@ def RollShootingHits(charger,shooter,wep,mode,range,moved?,logfile)
 		shots = shots * 2
 	end
 	
-	
+	if wep.hasRule(mode,'Autohit') == true
+		hits = shots
+		logfile.puts "#{weapon.getID}'s shots hit automatically for a total of #{hits} hits"
+		return [shots,0,0,0,0]
+	end
 
 	
 	## RollDice for the shots
@@ -70,10 +74,7 @@ def RollShootingHits(charger,shooter,wep,mode,range,moved?,logfile)
 	hits = rolls.count{|x| x >= to_hit }
 	
 	#Weapons with the autohit rule just hit automatically
-	if wep.hasRule(mode,'Autohit') == true
-		hits = shots
-		logfile.puts "#{weapon.getID}'s shots hit automatically for a total of #{hits} hits"
-	end
+	
 	logfile.puts "#{shooter.getName} needs #{to_hit} to hit, for a total of #{hits} hits"
 	
 	
@@ -84,7 +85,7 @@ def RollShootingHits(charger,shooter,wep,mode,range,moved?,logfile)
 	return hits, sixes, fives, mortals, self_wounds
 end
 
-def RollShootingWounds(hits,shooter,target,weapon,mode,range,logfile)
+def RollShootingWounds(hits,target,shooter,weapon,mode,range,logfile)
 	if weapon.getRange(mode) < range
 		return 0.0
 	end
@@ -124,7 +125,7 @@ def RollShootingWounds(hits,shooter,target,weapon,mode,range,logfile)
 		to_wound = 5
 	end
 	
-	logfile.puts "#{target.getName} has a toughness of #{tough} so #{weapon.getID} needs #{to_wound}'s to wound"
+	logfile.puts "#{target.getName} has #{tough} toughness, and #{weapon.getID} has #{str} strenghth, so it wounds on #{to_wound}'s"
 	
 	## Check Poison
 	if (combined_rules.grep(/Poison/).size > 0 ) && target.hasKeyword('Vehicle') == false
@@ -138,8 +139,6 @@ def RollShootingWounds(hits,shooter,target,weapon,mode,range,logfile)
 		to_wound = poison_val
 		logfile.puts "However, #{shooter.getName} always wounds on #{to_wound} unless targetting vehicles"
 	end
-	
-
 	
 	rolls = Array.new(hits) {rand(1..6)}
 	logfile.puts  "#{shooter.getName} rolled #{rolls}"
@@ -195,7 +194,7 @@ def RollShootingWounds(hits,shooter,target,weapon,mode,range,logfile)
 	sixes = rolls.count(6)
 	fives = rolls.count(5)
 	wounds = rolls.count {|x| x >= to_wound}
-	logfile.puts "#{shooter.getName} caused #{wounds} wounds"
+	logfile.puts "#{weapon.getID} caused #{wounds} wounds"
 	wounds_6s_5s = [wounds,sixes,fives,mortals,self_wounds]
 	return wounds_6s_5s
 end
@@ -268,7 +267,7 @@ def RollShootingDamage(felt_wounds, target, shooter, weapon, mode,range,logfile)
 	fnp = target.getFNP()
 	tot_wounds = 0
 	if felt_wounds[0] > 0 
-		logfile.puts "Each of #{shooter.getName}'s Attacks do #{weapon.getD(mode)} damage"
+		logfile.puts "Each of #{weapon.getID}'s attacks do #{weapon.getD(mode)} damage"
 	end
 	if mortals.size > 0
 		logfile.puts "There are also #{mortals} mortal wounds"

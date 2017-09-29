@@ -173,6 +173,6 @@ class ModelWithWeapons
 				end
 			end
 		end
-		return ranged_wep
+		return ranged_wep.uniq
 	end
 end
