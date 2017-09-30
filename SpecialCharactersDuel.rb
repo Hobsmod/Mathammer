@@ -27,8 +27,8 @@ hero_hash['Chaplain Cassius'] = Unit2.new()
 hero_hash['Chaplain Cassius'].addModels(space_marine_codex, sm_wep, 'Chaplain Cassius', 1, [],[] )
 hero_hash['Captain Sicarius'] = Unit2.new()
 hero_hash['Captain Sicarius'].addModels(space_marine_codex, sm_wep, 'Captain Sicarius', 1, [],[] )
-#hero_hash['Sergeant Telion'] = Unit2.new()
-#hero_hash['Sergeant Telion'].addModels(space_marine_codex, sm_wep, 'Sergeant Telion', 1, [],[] )
+hero_hash['Sergeant Telion'] = Unit2.new()
+hero_hash['Sergeant Telion'].addModels(space_marine_codex, sm_wep, 'Sergeant Telion', 1, [],[] )
 hero_hash['Pedro Kantor'] = Unit2.new()
 hero_hash['Pedro Kantor'].addModels(space_marine_codex, sm_wep, 'Pedro Kantor', 1, [],[] )
 hero_hash['The Emperors Champion'] = Unit2.new()
@@ -69,12 +69,12 @@ hero_hash['Azrael'] = Unit2.new()
 hero_hash['Azrael'].addModels(imp_ind_1, imp_ind_wep, 'Azrael', 1, [],[] )
 hero_hash['Belial'] = Unit2.new()
 hero_hash['Belial'].addModels(imp_ind_1, imp_ind_wep, 'Belial', 1, [],[] )
-hero_hash['Belial - Thunder Hammer Storm Shield'] = Unit2.new()
-hero_hash['Belial - Thunder Hammer Storm Shield'].addModels(imp_ind_1, imp_ind_wep, 'Belial', 1, ['Thunder Hammer','Storm Shield'],
-	['Sword of Silence','Storm Bolter'] )
- hero_hash['Belial - Two Lightning Claws'] = Unit2.new()
-hero_hash['Belial - Two Lightning Claws'].addModels(imp_ind_1, imp_ind_wep, 'Belial', 1, ['Two Lightning Claws'],
-	['Sword of Silence','Storm Bolter'] )
+hero_hash['Belial - TH - SS'] = Unit2.new()
+hero_hash['Belial - TH - SS'].addModels(imp_ind_1, imp_ind_wep, 'Belial', 1, ['Thunder Hammer','Storm Shield'],
+['Sword of Silence','Storm Bolter'] )
+ hero_hash['Belial - LC'] = Unit2.new()
+hero_hash['Belial - LC'].addModels(imp_ind_1, imp_ind_wep, 'Belial', 1, ['Two Lightning Claws'],
+ ['Sword of Silence','Storm Bolter'] )
 hero_hash['Sammael on Corvex'] = Unit2.new()
 hero_hash['Sammael on Corvex'].addModels(imp_ind_1, imp_ind_wep, 'Sammael on Corvex', 1, [],[] )
 hero_hash['Sammael on Sableclaw'] = Unit2.new()
@@ -99,6 +99,8 @@ hero_hash['Arjac Rockfist'] = Unit2.new()
 hero_hash['Arjac Rockfist'].addModels(imp_ind_1, imp_ind_wep, 'Arjac Rockfist', 1, [],[] )
 hero_hash['Watch Captain Artemis'] = Unit2.new()
 hero_hash['Watch Captain Artemis'].addModels(imp_ind_1, imp_ind_wep, 'Watch Captain Artemis', 1, [],[] )
+hero_hash['Roboute Guilliman'] = Unit2.new()
+hero_hash['Roboute Guilliman'].addModels(space_marine_codex, sm_wep, 'Roboute Guilliman', 1, [],[] )
 
 out_file.print "Attacker,"
 ## Apply Auras and gear to update each model
@@ -120,12 +122,14 @@ hero_hash.each do |key, value|
 	row.push(key)
 	calc_time = Time.now
 	hero_hash.each do |key2, value2|
-		
-		odds = Duel(sm_wep,value,value2,10,log_file)
 		if key == key2
-			puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
+			next
+		end
+		odds = Duel(sm_wep,value,value2,10000,log_file)
+		if key == key2
+			#puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
 		else 
-			puts "If #{key} charges #{key2}, #{key} wins #{odds * 100}% of the time"
+			#puts "If #{key} charges #{key2}, #{key} wins #{odds * 100}% of the time"
 		end
 		row.push(odds)
 		

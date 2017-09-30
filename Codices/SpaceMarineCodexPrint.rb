@@ -46,13 +46,14 @@ prim_chap_cost = 85
 prim_lib_cost = 93
 prim_lt_cost = 70
 tech_cost = 45
+rowboat_cost = 360
 
 ##Roboute Guilliman
 rowboat_stats = [8,2,2,6,6,9,6,10,2]
-rowboat_gear = ['Gauntlets of Ultramar','Relic Blade']
+rowboat_gear = ['Hand of Dominion','The Emperors Sword']
 rowboat_rules = ['Aura - 6 - Reroll - All - Hits - All','Aura - 6 - Reroll - All - Wounds - All','Invulnerable - 3']
 rowboat_keywords = character
-spacemarinecodex['Marneus Calgar'] = CodexEntry.new(rowboat_stats, rowboat_gear, rowboat_rules, rowboat_cost, character + ['Ultramarine'])
+spacemarinecodex['Roboute Guilliman'] = CodexEntry.new(rowboat_stats, rowboat_gear, rowboat_rules, rowboat_cost, character + ['Ultramarine'])
 
 
 ##Marneus Calgar

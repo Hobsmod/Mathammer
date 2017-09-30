@@ -1,4 +1,4 @@
-require_relative 'Melee Methods.rb'
+require_relative 'Logged Melee Methods.rb'
 require_relative '../Classes/Weapon2.rb'
 require_relative 'Dice.rb'
 

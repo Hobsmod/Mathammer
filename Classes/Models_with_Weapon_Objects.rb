@@ -175,4 +175,16 @@ class ModelWithWeapons
 		end
 		return ranged_wep.uniq
 	end
+	
+	def getPistols()
+		pistols = Array.new
+		@gear.each do |item|
+			item.getFiretypes.each do |mode|
+				if item.getType(mode) == 'Pistol'
+					pistols.push(item)
+				end
+			end
+		end
+		return pistols.uniq
+	end
 end

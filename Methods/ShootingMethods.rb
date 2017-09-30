@@ -191,3 +191,5 @@ def CalcDamage(felt_wounds, weapon, firetype, target, range, auras)
 	return dmg_array
 	
 end
+
+

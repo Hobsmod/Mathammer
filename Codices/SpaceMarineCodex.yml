@@ -1,4 +1,28 @@
 ---
+Roboute Guilliman: !ruby/object:CodexEntry
+  stats:
+    M: 8
+    WS: 2
+    BS: 2
+    S: 6
+    T: 6
+    W: 9
+    A: 6
+    Ld: 10
+    Sv: 2
+  gear:
+  - Hand of Dominion
+  - The Emperors Sword
+  rules:
+  - Aura - 6 - Reroll - All - Hits - All
+  - Aura - 6 - Reroll - All - Wounds - All
+  - Invulnerable - 3
+  cost: 360
+  keywords:
+  - Imperium
+  - Adeptus Astartes
+  - Character
+  - Ultramarine
 Marneus Calgar: !ruby/object:CodexEntry
   stats:
     M: 5
@@ -20,10 +44,11 @@ Marneus Calgar: !ruby/object:CodexEntry
   - Damage - Halved
   - Invulnerable - 4
   cost: 200
-  keywords: &1
+  keywords:
   - Imperium
   - Adeptus Astartes
   - Character
+  - Ultramarine
 Chief Librarian Tigerius: !ruby/object:CodexEntry
   stats:
     M: 6
@@ -49,7 +74,10 @@ Chief Librarian Tigerius: !ruby/object:CodexEntry
   - "-1 Hit Buff"
   - 2 Powers
   cost: 130
-  keywords: *1
+  keywords: &1
+  - Imperium
+  - Adeptus Astartes
+  - Character
 Chaplain Cassius: !ruby/object:CodexEntry
   stats:
     M: 6

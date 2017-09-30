@@ -3,7 +3,7 @@ require_relative '..\Classes\Unit.rb'
 require_relative '..\Classes\Weapon2.rb'
 require_relative 'Dice.rb'
 
-def RollShootingHits(charger,shooter,wep,mode,range,moved,logfile)
+def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 	## First things first, just check if we are out of range
 	wep_range = wep.getRange(mode)
 	if wep_range < range
@@ -13,7 +13,7 @@ def RollShootingHits(charger,shooter,wep,mode,range,moved,logfile)
 	hits = 0
 	to_hit = shooter.getBS.to_i
 	shots = RollDice(wep.getShots(mode))
-	
+	self_wounds = 0
 	
 	logfile.puts "#{wep.getID} fires #{shots} shots"
 	
@@ -23,14 +23,14 @@ def RollShootingHits(charger,shooter,wep,mode,range,moved,logfile)
 		logfile.puts "The firing range of #{range} is less than half of #{wep.getID}'s range of #{range} so it fires double the shots for a total of #{shots}"
 	end
 	
-	if model.hasRule('Fire Twice - Stationary') == true && moved == false
+	if shooter.hasRule('Fire Twice - Stationary') == true && moved == false
 		logfile.puts "#{shooter.getName} can shoot twice if they don't move, we will just double the shots instead of rolling twice"
 		shots = shots * 2
 	end
 	
 	if wep.hasRule(mode,'Autohit') == true
 		hits = shots
-		logfile.puts "#{weapon.getID}'s shots hit automatically for a total of #{hits} hits"
+		logfile.puts "#{wep.getID}'s shots hit automatically for a total of #{hits} hits"
 		return [shots,0,0,0,0]
 	end
 
@@ -39,49 +39,54 @@ def RollShootingHits(charger,shooter,wep,mode,range,moved,logfile)
 	rolls = Array.new(shots) {rand(1..6)}
 	logfile.puts "#{shooter.getName} rolls #{rolls}"
 	### Reroll Shooting
-	puts shooter.getRules().grep(/Reroll/)
+
 	
 	if (shooter.getRules().grep(/Reroll/).size + wep.getRules(mode).grep(/Reroll/).size) > 0 && rolls.count{ |n| n < to_hit} > 0
-		rolls = RerollShootingHits(shooter, charger, wep, mode, rolls, to_hit, logfile)
+		rolls = RerollShootingHits(shooter, target, wep, mode, rolls, to_hit, logfile)
 	end
 	
 	### Check Special Rules from firer that modify ability to hit
-	if moved && weapon.getType(firetype) == 'Heavy' && model.hasRule('Move and Fire') == false
-		logfile.puts "#{weapon.getID} is heavy and so takes a -1 penalty for moving and firing"
+	if moved && wep.getType(mode) == 'Heavy' && shooter.hasRule('Move and Fire') == false
+		logfile.puts "#{wep.getID} is heavy and so takes a -1 penalty for moving and firing"
 		modifier = modifier + 1
 	end
 	if target.hasRule('Hard to Hit - Shooting')
 		logfile.puts "Attacks targetting #{target.getName} take a -1 penalty to hit"
 		modifier = modifier + 1
 	end
-	if model.hasRule('AA - 1') && target.hasRule('Fly')
-		logfile.puts "#{weapon.getName} gets +1 to hit when targetting models with the 'Fly' rule"
+	if shooter.hasRule('AA - 1') && target.hasRule('Fly')
+		logfile.puts "#{wep.getName} gets +1 to hit when targetting shooters with the 'Fly' rule"
 		modifier = modifier - 1
 	end
-	if model.hasRule('Anti-Ground') && target.hasRule('Fly') == false
-		logfile.puts "#{weapon.getName} gets +1 to hit when targetting models withput the 'Fly' rule"
+	if shooter.hasRule('Anti-Ground') && target.hasRule('Fly') == false
+		logfile.puts "#{wep.getName} gets +1 to hit when targetting shooters withput the 'Fly' rule"
 		modifier = modifier - 1
 	end
-	if weapon.hasRule(firetype, 'AA Only') && target.hasRule('Fly')
+	if wep.hasRule(mode, 'AA Only') && target.hasRule('Fly')
 		modifier = modifier - 1
-		logfile.puts "#{weapon.getName} takes a -1 penalty to hit when targetting models with the 'Fly' rule"
-	elsif weapon.hasRule(firetype, 'AA Only') && target.hasRule('Fly') == false
-		logfile.puts "#{weapon.getName} gets +1 to hit when targetting models with the 'Fly' rule"
+		logfile.puts "#{wep.getName} takes a -1 penalty to hit when targetting shooters with the 'Fly' rule"
+	elsif wep.hasRule(mode, 'AA Only') && target.hasRule('Fly') == false
+		logfile.puts "#{wep.getName} gets +1 to hit when targetting shooters with the 'Fly' rule"
 		modifier = modifier + 1
 	end
 	
-	logfile
+	
 	hits = rolls.count{|x| x >= to_hit }
 	
 	#Weapons with the autohit rule just hit automatically
 	
 	logfile.puts "#{shooter.getName} needs #{to_hit} to hit, for a total of #{hits} hits"
 	
+	#### Count 1's for plasma overheating
+	if wep.hasRule(mode,'Overheat') && rolls.include?(1)
+		self_wounds = shooter.getW
+		logfile.puts "#{shooter.getName}'s #{wep.getID} overheated doing #{self_wounds} wounds to them" 
+	end
 	
 	##Count sixes and fives in case other rules use them, eventually add possibility of self wounding with plasma
 	sixes = rolls.count(6)
 	fives = rolls.count(5)
-	self_wounds = 0
+
 	return hits, sixes, fives, mortals, self_wounds
 end
 
@@ -125,7 +130,7 @@ def RollShootingWounds(hits,target,shooter,weapon,mode,range,logfile)
 		to_wound = 5
 	end
 	
-	logfile.puts "#{target.getName} has #{tough} toughness, and #{weapon.getID} has #{str} strenghth, so it wounds on #{to_wound}'s"
+	logfile.puts "#{target.getName} has #{tough} toughness, and #{weapon.getID} has #{str} strength, so it wounds on #{to_wound}'s"
 	
 	## Check Poison
 	if (combined_rules.grep(/Poison/).size > 0 ) && target.hasKeyword('Vehicle') == false
@@ -263,13 +268,15 @@ def RollShootingDamage(felt_wounds, target, shooter, weapon, mode,range,logfile)
 		return 0.0
 	end
 	mortals = felt_wounds[3]
+	self_wounds = felt_wounds[4]
 	sv = target.getSv()
 	fnp = target.getFNP()
 	tot_wounds = 0
 	if felt_wounds[0] > 0 
 		logfile.puts "Each of #{weapon.getID}'s attacks do #{weapon.getD(mode)} damage"
 	end
-	if mortals.size > 0
+	
+	if mortals.size >= 1
 		logfile.puts "There are also #{mortals} mortal wounds"
 	end
 	
@@ -343,8 +350,51 @@ def RollShootingDamage(felt_wounds, target, shooter, weapon, mode,range,logfile)
 	
 	
 	logfile.puts "#{target.getName} takes #{tot_wounds} wounds"
-	
-	tot_wounds
-	return tot_wounds
+	if self_wounds > 0 
+		logfile.puts "#{shooter.getName} also takes #{self_wounds} self inflicted wounds"
+	end
+	return tot_wounds, self_wounds
 	
 end
+
+
+def CalcShooting(charger,shooter,wep,mode,range,moved,logfile)
+		hits = CalcShootingHits(charger,shooter,wep,mode,range,moved, logfile)
+		wounds = CalcShootingWounds(hits,shooter, charger,wep,mode,logfile)
+		unsaved = CalcShootingSaves(wounds, shooter, charger, wep, mode,logfile)
+		dmg = CalcShootingDamage(unsaved, shooter, charger, wep, mode,logfile)
+		return dmg
+end
+
+
+def RollWeaponShooting(target,shooter,weapon,mode,range,moved,logfile)
+	hits = RollShootingHits(target,shooter,weapon,mode,range,moved,logfile)
+	wounds = RollShootingWounds(hits,target,shooter,weapon,mode,range,logfile)
+	failed = RollShootingSaves(wounds,target,shooter,weapon,mode, range, logfile)
+	damage = RollShootingDamage(failed,target,shooter,weapon,mode,range,logfile)
+	return damage
+end
+
+def OptimizePistolsCC(shooter, target,logfile)
+	
+	opt_mode = Hash.new
+	logfile.puts "----Calculating the optimal firing mode for each of #{shooter.getName}'s pistols---"
+	shooter.getPistols.each do |pistol|
+		dmg = 0
+		profile = 'blank'
+		pistol.getFiretypes.each do |mode|
+			mode_dmg = CalcShooting(target,shooter,pistol,mode,1,false,logfile)
+			if mode_dmg >= dmg 
+				dmg = mode_dmg
+				profile = mode
+				opt_mode[pistol] = mode
+			end
+		end
+		
+		logfile.puts "The optimal firing profile for #{pistol.getID} is #{profile}"
+	end	
+	
+	return opt_mode	
+	
+end		
+	
