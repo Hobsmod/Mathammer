@@ -147,7 +147,21 @@ class ModelWithWeapons
 	end
 	
 	def modStat(stat, mod)
-		@statline[stat] = @statline[stat] + mod
+		### If we call the stats full name and not it's abbreviation we still modify it
+		replace_hash = Hash.new()
+		replace_hash['Toughness'] = 'T'
+		replace_hash['Strength'] = 'S'
+		replace_hash['Attacks'] = 'A'
+		
+		replace_hash.each do |key, value|
+			if stat == key
+				stat = value
+			end
+		end
+		
+		#puts "Increasing #{stat} by #{mod}"
+		@statline[stat] = @statline[stat].to_i + mod
+		
 	end
 	
 	def addRule(rule)
@@ -160,8 +174,14 @@ class ModelWithWeapons
 		end
 	end
 	
-	def addGear(gear)
-		@gear.push(gear)
+	def addGear(gear_hash, gear)
+		if gear.is_a? String
+			@gear.push(gear_hash[gear])
+		elsif gear.is_a? Array
+			gear.each do |item|
+				@gear.push(gear_hash[item])
+			end
+		end
 	end
 	
 	def getRangedWeapons
@@ -187,4 +207,17 @@ class ModelWithWeapons
 		end
 		return pistols.uniq
 	end
+	
+	def getPowers()
+		powers = Array.new()
+		@gear.each do |item|
+			item.getFiretypes.each do |mode|
+				if item.getType(mode) =~ /Psychic/
+					powers.push(item)
+				end
+			end
+		end
+		return powers
+	end
+	
 end

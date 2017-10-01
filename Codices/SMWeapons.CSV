@@ -166,7 +166,7 @@ Blank,Standard,0,0,0,0,0,0,0,0,
 Fist of Dorn,Melee,0,0,Melee,0,+6,-3,3,
 Sword of the High Marshals,Melee,0,0,Melee,0,+1,-3,D3,Charge - Attacks - D3
 Rod of Tigerius,Melee,0,0,Melee,0,+3,-1,D3,
-Smite,Standard,0,12,Psychic,0,0,0,0,Mortal - D3
+Smite,Standard,0,18,Psychic - Attack - 5,0,0,0,0,Mortal - D3
 Librarius Discipline,0,0,0,0,0,0,0,0,0,0,0
 Talassarian Tempest Blade,Melee,0,0,Melee,0,0,-3,D3,Rend - Mortal Wounds - Replace - D3
 Dorns Arrow,Standard,0,24,Assault,4,4,-1,1
@@ -185,3 +185,6 @@ The Salamanders Mantle,Gear,0,0,Gear,0,0,0,0,Gear - Toughness - 1
 The Axe of Medusa,Melee,0,0,Melee,0,2,-3,2,
 Close Combat Weapon,Melee,0,0,Melee,0,0,0,0,
 The Emperors Sword,Melee,0,0,Melee,0,+2,-4,3,Rend - Fights - Mortal Wounds - D3
+Veil of Time,Augment,0,18,Psychic - Buff - 6,0,0,0,0,Psychic - Add Rulle - Always Strikes First,
+Might of Heroes,Augment,0,6,Psychic - Buff - 6,0,0,0,0,Psychic - Add Stat - Attacks - 1, Psychic - Add Stat - Strength - 1, Psychic - Add Stat - Toughness - 1
+Null Zone, Augment,0,8,Psychic - Buff - 6,0,0,0,0,Psychic - Add Rule - Null Zone,

@@ -69,10 +69,12 @@ Chief Librarian Tigerius: !ruby/object:CodexEntry
   - Librarius Discipline
   rules:
   - Character
-  - "+1 Deny"
-  - Reroll Psyker
+  - Deny - 2
+  - Deny - Bonus - 1
+  - Psyker - Reroll
   - "-1 Hit Buff"
-  - 2 Powers
+  - Psyker - 2
+  - Librarius Discipline - 3
   cost: 130
   keywords: &1
   - Imperium

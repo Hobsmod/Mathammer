@@ -67,7 +67,7 @@ spacemarinecodex['Marneus Calgar'] = CodexEntry.new(calgar_stats, calgar_gear, c
 ##Chief Librarian Tigerius
 tigerius_stats = [6,3,3,4,4,4,3,9,3]
 tigerius_gear = ['Rod of Tigerius','Bolt Pistol','Frag Grenade','Krak Grenade','Smite','Librarius Discipline']
-tigerius_rules = ['Character','+1 Deny','Reroll Psyker','-1 Hit Buff','2 Powers']
+tigerius_rules = ['Character','Deny - 2','Deny - Bonus - 1','Psyker - Reroll','-1 Hit Buff','Psyker - 2', 'Librarius Discipline - 3']
 
 spacemarinecodex['Chief Librarian Tigerius'] = CodexEntry.new(tigerius_stats, tigerius_gear, tigerius_rules, tigerius_cost, character)
 
