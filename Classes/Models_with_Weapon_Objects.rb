@@ -1,12 +1,12 @@
 class ModelWithWeapons
 	def initialize(id, codex, gear_hash, name, gear)
 		@id = id
-		@statline = codex[name].getStats
-		@perm_statline = codex[name].getStats
-		@game_statline = codex[name].getStats
-		@rules = codex[name].getRules
-		@perm_rules = codex[name].getRules
-		@game_rules = codex[name].getRules
+		@statline = codex[name].getStats.clone
+		@perm_statline = codex[name].getStats.clone
+		@game_statline = codex[name].getStats.clone
+		@rules = codex[name].getRules.clone
+		@perm_rules = codex[name].getRules.clone
+		@game_rules = codex[name].getRules.clone
 		@name = name
 		@keywords = codex[name].getKeywords
 		### Add Weapon Objects to Model
@@ -167,15 +167,16 @@ class ModelWithWeapons
 	end
 	
 	def ClearRoundModifiers
-		@rules = @game_rules
-		@statline = @game_statline
+		#puts "#{@name} replaces mods stats: #{@statline} with the perm statline #{@perm_statline}"
+		@rules = @game_rules.clone
+		@statline = @game_statline.clone
 	end
 	
 	def ClearGameModifiers
-		@rules = @perm_rules
-		@game_rules = @perm_rules
-		@statline = @game_statline
-		@game_statline = @ perm_statline
+		@rules = @perm_rules.clone
+		@game_rules = @perm_rules.clone
+		@statline = @perm_statline.clone
+		@game_statline = @perm_statline.clone
 	end
 	
 	def modGameStat(stat, mod)
@@ -228,7 +229,7 @@ class ModelWithWeapons
 			@rules = @rules + rule
 			@game_rules = @game_rules + rule
 		elsif rule.class == String
-			@rules = @rules + rule
+			@rules.push(rule)
 			@game_rules.push(rule)
 		else
 			puts "Could't add rule #{rule}"
@@ -241,7 +242,7 @@ class ModelWithWeapons
 			@game_rules = @game_rules + rule
 			@perm_rules = @game_rules + rule
 		elsif rule.class == String
-			@rules = @rules + rule
+			@rules.push(rule)
 			@game_rules.push(rule)
 			@perm_rules.push(rule)
 		else

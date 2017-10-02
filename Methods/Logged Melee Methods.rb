@@ -600,8 +600,12 @@ def RollSaves(wounds, attacker, target, weapon, firetype,charged,logfile)
 	mod_save = save - ap 
 	logfile.puts "#{target.getName} has a save of #{save}+, but #{attacker.getName}'s #{weapon.getID} has an AP of #{ap} so the modified save is #{mod_save}+"
 	if mod_save > invuln
-		mod_save = invuln
-		logfile.puts "#{target.getName}'s Invulnerable save of #{invuln}+ is higher so he will use that instead"
+		unless attacker.hasRule('Null Zone') == true
+			mod_save = invuln
+			logfile.puts "#{target.getName}'s Invulnerable save of #{invuln}+ is higher so he will use that instead"
+		else
+			logfile.puts "#{attacker.getName} has the Null Zone ability so no invulnerable save may be used"
+		end
 	end
 	
 	
@@ -814,7 +818,7 @@ def OptMeleeWeapon(attacker,target,logfile)
 	
 	if num_melee == 0
 		gen_wep_hash = LoadWeapons('Methods\genericwep.csv')
-		attacker.addGear(gen_wep_hash['Close Combat Weapon'])
+		attacker.addGear(gen_wep_hash, ['Close Combat Weapon'])
 		logfile.puts "#{attacker.getName} has no melee weapons so we added a Close Combat Weapon"
 	end
 	

@@ -6,25 +6,24 @@ require_relative 'Dice.rb'
 
 def Duel(wep_hash,charger,defender,iterations,logfile)
 ###each of these is a unit
+
 	range = 6
 	charger = charger.getModels[0]
 	defender = defender.getModels[0]
+	charger.ClearGameModifiers
+	defender.ClearGameModifiers
+	
 	logfile.puts "----------------#{charger.getName} Charges #{defender.getName}--------------------------"
 	## get all stats
 	
 	atk_arry = OptMeleeWeapon(charger,defender,logfile)
-	
 	atk_wep = atk_arry[0]
-	
 	atk_mode= atk_arry[1]
-	
 	atk_pistol_hash = OptimizePistolsCC(charger,defender,logfile)
-	
 	atk_wounds = charger.getW()
+	
 	def_arry = OptMeleeWeapon(defender,charger,logfile)
-	
 	def_ovwtch_wep = OptOvwWepProfiles(charger,defender,range,logfile)
-	
 	def_wep = def_arry[0]
 	def_mode = def_arry[1]
 	def_pistol_hash = OptimizePistolsCC(defender,charger,logfile)
@@ -33,13 +32,47 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 	
 	defender_victories = 0
 	attacker_victories = 0
-	
+
 	(1..iterations).each do |iter|
+		charger.ClearGameModifiers
+		defender.ClearGameModifiers
 		dmg_to_charger = 0
 		dmg_to_defender = 0
 		rounds = 10
+		
+
 		logfile.puts "--------------Beginning Duel Number #{iter} of #{iterations} -----------------------"
 		
+		
+		
+		
+		charger.ClearRoundModifiers
+		#### Use Psyker Powers
+		if charger.getPowers.size >= 1
+			logfile.puts "#{charger.getName} can now use their psychic powers"
+			cast_results = CastPowersWithDenier(charger,defender,range,logfile)
+			dmg_to_defender = dmg_to_defender + cast_results[0]
+			dmg_to_charger = dmg_to_charger + cast_results[1]
+		end
+					
+		#### Check if anyone has won
+		if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds
+			logfile.puts "The defender, #{defender.getName} won!"
+			defender_victories = defender_victories + 1.0
+			break
+		end
+		if dmg_to_defender >= def_wounds && dmg_to_charger < atk_wounds
+			logfile.puts "The charger, #{charger.getName} won!"
+			attacker_victories = attacker_victories + 1.0
+			break
+		end
+		if dmg_to_defender >= def_wounds && dmg_to_charger >= atk_wounds
+			logfile.puts "Both Characters were killed, this is counted as a half - victory"
+			defender_victories = defender_victories + 0.5
+			attacker_victories = attacker_victories + 0.5
+			break
+		end
+	
 		## Roll Overwatch!###
 		logfile.puts "-------------------- Firing Overwatch at range of #{range} inches! ---------------------------------------"
 		ovw_dmg = 0
@@ -84,9 +117,11 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 			next
 		end
 		
+		
 		(1..rounds).each do |round|
-			logfile.puts " ----------------- Begin Combat Round #{round}! -----------------------------"
+			logfile.puts " ----------------- Begin Round #{round}! -----------------------------"
 			
+			### Odd Rounds are the Chargers Turn
 			if round.odd? 
 				#### Healing - Charger can heal every odd round but the first
 				if charger.hasRule('Healing - D3') == true && round > 1
@@ -97,7 +132,36 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 					end
 					logfile.puts "#{charger.getName} heals #{healed} wounds leaving then with #{atk_wounds - dmg_to_charger} wounds"
 				end
-			
+				
+				if round > 1
+					charger.ClearRoundModifiers
+				end
+				
+				#### Use Psyker Powers
+				if charger.getPowers.size >= 1 && round > 1
+					logfile.puts "#{charger.getName} can now use their psychic powers"
+					cast_results = CastPowersWithDenier(charger,defender,range,logfile)
+					dmg_to_defender = dmg_to_defender + cast_results[0]
+					dmg_to_charger= dmg_to_charger + cast_results[1]
+					
+					#### Check if anyone has won
+					if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds
+						logfile.puts "The defender, #{defender.getName} won!"
+						defender_victories = defender_victories + 1.0
+						break
+					end
+					if dmg_to_defender >= def_wounds && dmg_to_charger < atk_wounds
+						logfile.puts "The charger, #{charger.getName} won!"
+						attacker_victories = attacker_victories + 1.0
+						break
+					end
+					if dmg_to_defender >= def_wounds && dmg_to_charger >= atk_wounds
+						logfile.puts "Both Characters were killed, this is counted as a half - victory"
+						defender_victories = defender_victories + 0.5
+						attacker_victories = attacker_victories + 0.5
+						break
+					end
+				end
 				
 				
 				### On odd rounds beyond the first, charger can fire their pistol
@@ -131,7 +195,6 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 						attacker_victories = attacker_victories + 0.5
 						break
 					end
-					
 				end
 						
 						
@@ -186,6 +249,7 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 				end
 			end
 			
+			### Even Rounds are the defenders turn
 			if round.even? 
 			
 				## defender heals
@@ -197,6 +261,36 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 					end
 					logfile.puts "#{defender.getName} heals #{healed} wounds leaving then with #{def_wounds - dmg_to_defender} wounds"
 				end	
+				
+				
+				defender.ClearRoundModifiers
+				
+				#### Use Psyker Powers
+				if defender.getPowers.size >= 1
+					logfile.puts "#{defender.getName} can now use their psychic powers"
+					cast_results = CastPowersWithDenier(defender,charger,range,logfile)
+					dmg_to_defender = dmg_to_defender + cast_results[1]
+					dmg_to_charger= dmg_to_charger + cast_results[0]
+					
+					#### Check if anyone has won
+					if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds
+						logfile.puts "The defender, #{defender.getName} won!"
+						defender_victories = defender_victories + 1.0
+						break
+					end
+					if dmg_to_defender >= def_wounds && dmg_to_charger < atk_wounds
+						logfile.puts "The charger, #{charger.getName} won!"
+						attacker_victories = attacker_victories + 1.0
+						break
+					end
+					if dmg_to_defender >= def_wounds && dmg_to_charger >= atk_wounds
+						logfile.puts "Both Characters were killed, this is counted as a half - victory"
+						defender_victories = defender_victories + 0.5
+						attacker_victories = attacker_victories + 0.5
+						break
+					end
+				end
+				
 				
 				#### On even rounds the defender gets to fire their pistol
 				if round > 1 && defender.getPistols.size > 0

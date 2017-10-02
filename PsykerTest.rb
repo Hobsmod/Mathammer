@@ -28,12 +28,12 @@ calgar = hero_hash['Marneus Calgar'].getModels[0]
 
 
 tigur = hero_hash['Chief Librarian Tigerius'].getModels[0]
-puts tigur.getS
-puts tigur_perm.getS
-tigur.modStat('S',1)
-puts tigur.getS
-puts tigur_perm.getS
-CastPowersWithDenier(tigur, calgar, 1)
-puts "#{tigur.getS}, #{tigur_perm.getS}" 
-puts tigur.getA
-puts tigur.getT
+
+
+(1..10).each do 
+	tigur.modStat('A',1)
+	tigur.addRule('Test')
+	puts "Attacks: #{tigur.getA}" 
+	tigur.ClearGameModifiers
+	puts "Attacks: #{tigur.getA} "
+end
