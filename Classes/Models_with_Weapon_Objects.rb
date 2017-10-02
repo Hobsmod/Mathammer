@@ -2,7 +2,11 @@ class ModelWithWeapons
 	def initialize(id, codex, gear_hash, name, gear)
 		@id = id
 		@statline = codex[name].getStats
+		@perm_statline = codex[name].getStats
+		@game_statline = codex[name].getStats
 		@rules = codex[name].getRules
+		@perm_rules = codex[name].getRules
+		@game_rules = codex[name].getRules
 		@name = name
 		@keywords = codex[name].getKeywords
 		### Add Weapon Objects to Model
@@ -159,9 +163,42 @@ class ModelWithWeapons
 			end
 		end
 		
-		#puts "Increasing #{stat} by #{mod}"
-		@statline[stat] = @statline[stat].to_i + mod
+		@statline[stat] = @statline[stat].to_i + mod	
+	end
+	
+	def modGameStat(stat, mod)
+		### If we call the stats full name and not it's abbreviation we still modify it
+		replace_hash = Hash.new()
+		replace_hash['Toughness'] = 'T'
+		replace_hash['Strength'] = 'S'
+		replace_hash['Attacks'] = 'A'
 		
+		replace_hash.each do |key, value|
+			if stat == key
+				stat = value
+			end
+		end
+		
+		@statline[stat] = @statline[stat].to_i + mod
+		@game_statline[stat] = @statline[stat].to_i + mod	
+	end
+	
+	def modPermStat(stat, mod)
+		### If we call the stats full name and not it's abbreviation we still modify it
+		replace_hash = Hash.new()
+		replace_hash['Toughness'] = 'T'
+		replace_hash['Strength'] = 'S'
+		replace_hash['Attacks'] = 'A'
+		
+		replace_hash.each do |key, value|
+			if stat == key
+				stat = value
+			end
+		end
+		
+		@statline[stat] = @statline[stat].to_i + mod	
+		@game_statline[stat] = @statline[stat].to_i + mod	
+		@perm_statline[stat] = @statline[stat].to_i + mod	
 	end
 	
 	def addRule(rule)
@@ -169,6 +206,32 @@ class ModelWithWeapons
 			@rules = @rules + rule
 		elsif rule.class == String
 			@rules.push(rule)
+		else
+			puts "Could't add rule #{rule}"
+		end
+	end
+	
+	def addGameRule(rule)
+		if rule.class == Array
+			@rules = @rules + rule
+			@game_rules = @game_rules + rule
+		elsif rule.class == String
+			@rules = @rules + rule
+			@game_rules.push(rule)
+		else
+			puts "Could't add rule #{rule}"
+		end
+	end
+	
+	def addPermRule(rule)
+		if rule.class == Array
+			@rules = @rules + rule
+			@game_rules = @game_rules + rule
+			@perm_rules = @game_rules + rule
+		elsif rule.class == String
+			@rules = @rules + rule
+			@game_rules.push(rule)
+			@perm_rules.push(rule)
 		else
 			puts "Could't add rule #{rule}"
 		end
