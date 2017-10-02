@@ -66,7 +66,7 @@ class Unit2
 				
 					add_rule = add_rule[0..-4]
 					
-					model.addRule(add_rule)
+					model.addPermRule(add_rule)
 				else 
 					if model.hasKeyword(aura_array[1]) == true
 						add_rule = ''
@@ -76,7 +76,7 @@ class Unit2
 					
 					add_rule = add_rule[0..-4]
 					
-					model.addRule(add_rule)
+					model.addPermRule(add_rule)
 					end
 				end
 			end
@@ -88,10 +88,10 @@ class Unit2
 		#### Have Auras that modify stats modify the stats here
 		@models.each do |model|
 			if model.hasRule('Attacks - 1')
-				model.modStat('A',1)
+				model.modPermStat('A',1)
 			end
 			if model.hasRule('Wounds - 1')
-				model.modStat('W',1)
+				model.modPermStat('W',1)
 			end
 		end
 	end
