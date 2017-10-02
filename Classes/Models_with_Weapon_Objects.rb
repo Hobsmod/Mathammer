@@ -166,6 +166,18 @@ class ModelWithWeapons
 		@statline[stat] = @statline[stat].to_i + mod	
 	end
 	
+	def ClearRoundModifiers
+		@rules = @game_rules
+		@statline = @game_statline
+	end
+	
+	def ClearGameModifiers
+		@rules = @perm_rules
+		@game_rules = @perm_rules
+		@statline = @game_statline
+		@game_statline = @ perm_statline
+	end
+	
 	def modGameStat(stat, mod)
 		### If we call the stats full name and not it's abbreviation we still modify it
 		replace_hash = Hash.new()
