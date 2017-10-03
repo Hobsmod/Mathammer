@@ -1,6 +1,6 @@
 require_relative 'Models_with_Weapon_Objects.rb'
 require_relative 'CodexEntry.rb'
-require_relative 'Weapon2.rb'
+require_relative 'Weapon.rb'
 class Unit2
 	def initialize()
 		@cost = 0
@@ -9,13 +9,13 @@ class Unit2
 	
 	def addModels(codex, gear_hash, name, quantity, add_gear, remove_gear)
 		
-		@rules = codex[name].getRules
+		@rules = codex[name].rules
 		@weapons = Array.new
 		(1..quantity).each do |n|
 			#initialize an empty gear array
 			new_gear = Array.new
 			#grab the default gear from the codex
-			codex[name].getGear.each do |item|
+			codex[name].gear.each do |item|
 				new_gear.push(item)
 			end
 		
@@ -32,7 +32,7 @@ class Unit2
 			
 			new_gear.each do |item|
 				#puts item
-				gear_cost = gear_cost + gear_hash[item].getCost()
+				gear_cost = gear_cost + gear_hash[item].getCost
 				#puts "#{item}, #{gear_cost}"
 			end
 		
@@ -43,7 +43,7 @@ class Unit2
 			
 			#find out how much model costs and add costs to the unit
 			
-			new_cost = codex[name].getCost
+			new_cost = codex[name].cost
 			@cost = @cost + new_cost + gear_cost
 			#puts @cost			
 		end	
@@ -52,7 +52,7 @@ class Unit2
 	def ApplyAuras
 		aura_rules = Array.new
 		@models.each do |model|
-			aura_rules = aura_rules + model.getRules.grep(/Aura/)
+			aura_rules = aura_rules + model.rules.grep(/Aura/)
 		end
 		aura_rules.each do |aura|
 			aura_array = aura.split(' - ')

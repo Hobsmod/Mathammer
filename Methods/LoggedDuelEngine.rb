@@ -53,6 +53,12 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 			cast_results = CastPowersWithDenier(charger,defender,range,logfile)
 			dmg_to_defender = dmg_to_defender + cast_results[0]
 			dmg_to_charger = dmg_to_charger + cast_results[1]
+			if cast_results[0] > 0
+				logfile.puts "#{defender.getName} took #{cast_results[0]} damage from psychic powers and has #{atk_wounds - dmg_to_charger} wounds left"
+			end
+			if cast_results[1] > 0
+				logfile.puts "#{charger.getName} took #{cast_results[1]} damage from perils and has #{def_wounds - dmg_to_defender} wounds left"
+			end
 		end
 					
 		#### Check if anyone has won
@@ -143,7 +149,12 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 					cast_results = CastPowersWithDenier(charger,defender,range,logfile)
 					dmg_to_defender = dmg_to_defender + cast_results[0]
 					dmg_to_charger= dmg_to_charger + cast_results[1]
-					
+					if cast_results[0] > 0
+						logfile.puts "#{defender.getName} took #{cast_results[0]} damage from psychic powers and has #{atk_wounds - dmg_to_charger} wounds left"
+					end
+					if cast_results[1] > 0
+						logfile.puts "#{charger.getName} took #{cast_results[1]} damage from perils and has #{def_wounds - dmg_to_defender} wounds left"
+					end
 					#### Check if anyone has won
 					if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds
 						logfile.puts "The defender, #{defender.getName} won!"
@@ -271,6 +282,14 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 					cast_results = CastPowersWithDenier(defender,charger,range,logfile)
 					dmg_to_defender = dmg_to_defender + cast_results[1]
 					dmg_to_charger= dmg_to_charger + cast_results[0]
+					
+					### Print damage to logfile
+					if cast_results[1] > 0
+						logfile.puts "#{defender.getName} took #{cast_results[1]} damage from psychic powers and has #{atk_wounds - dmg_to_charger} wounds left"
+					end
+					if cast_results[0] > 0
+						logfile.puts "#{charger.getName} took #{cast_results[0]} damage from perils and has #{def_wounds - dmg_to_defender} wounds left"
+					end
 					
 					#### Check if anyone has won
 					if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds

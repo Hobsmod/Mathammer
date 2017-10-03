@@ -1,89 +1,28 @@
 class CodexEntry
+	attr_accessor :stats, :gear, :rules, :cost, :keywords
+	
 	def initialize(stats, gear, rules, cost, keywords)
-		@stats = Hash.new{}
-		@stats['M'] = stats[0]
-		@stats['WS'] = stats[1]
-		@stats['BS'] = stats[2]
-		@stats['S'] = stats[3]
-		@stats['T'] = stats[4]
-		@stats['W'] = stats[5]
-		@stats['A'] = stats[6]
-		@stats['Ld'] = stats[7]
-		@stats['Sv'] = stats[8]
+		self.stats = Hash.new{}
+		### Turn the stats array in the codex entry into a hash keyed by stat name
+		self.stats['M'] = stats[0]
+		self.stats['WS'] = stats[1]
+		self.stats['BS'] = stats[2]
+		self.stats['S'] = stats[3]
+		self.stats['T'] = stats[4]
+		self.stats['W'] = stats[5]
+		self.stats['A'] = stats[6]
+		self.stats['Ld'] = stats[7]
+		self.stats['Sv'] = stats[8]
 		if stats[9]
 			@stats['Invuln'] = stats[9]
+		else 
+			@stats['Invuln'] = 7
 		end
-		@gear = gear
-		@rules = rules
-		@cost = cost
-		@keywords = keywords
+		
+		self.gear = gear
+		self.rules = rules
+		self.cost = cost
+		self.keywords = keywords
 	end
 	
-	def getGear()
-		@gear
-	end
-	
-	def getCost()
-		@cost
-	end
-	
-	def getRules()
-		@rules
-	end
-
-	### Return Hashes and Arrays
-	
-	def getStats() 
-		@stats
-	end
-	
-	def getRanged()
-		@ranged_weapons
-	end
-	
-	def getCC()
-		@cc_weapons
-	end
-	
-	def getKeywords()
-		@keywords
-	end
-	
-	
-	### Return individual stats
-	def getM 
-		@stats['M']
-	end
-	
-	def getWS
-		@stats['WS']
-	end
-	
-	def getBS 
-		@stats['BS']
-	end
-	
-	def getS 
-		@stats['S']
-	end
-	
-	def getT 
-		@stats['T']
-	end
-	
-	def getW 
-		@stats['W']
-	end
-	
-	def getA
-		@stats['A']
-	end
-	
-	def getLd 
-		@stats['Ld']
-	end
-	
-	def getSv 
-		@stats['Sv']
-	end
 end

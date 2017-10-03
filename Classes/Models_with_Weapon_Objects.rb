@@ -1,123 +1,72 @@
 class ModelWithWeapons
+	attr_accessor :id, :stats, :base_stats, :gear, :rules, :base_rules, :name, :keywords, :stat_modifiers, :rule_modifiers
+	
 	def initialize(id, codex, gear_hash, name, gear)
-		@id = id
-		@statline = codex[name].getStats.clone
-		@perm_statline = codex[name].getStats.clone
-		@game_statline = codex[name].getStats.clone
-		@rules = codex[name].getRules.clone
-		@perm_rules = codex[name].getRules.clone
-		@game_rules = codex[name].getRules.clone
-		@name = name
-		@keywords = codex[name].getKeywords
+		self.id = id
+		self.base_stats = codex[name].stats.clone
+		self.stats = codex[name].stats
+		self.base_rules = codex[name].rules.clone
+		self.rules = codex[name].rules
+		self.name = name
+		self.keywords = codex[name].keywords
+		self.stat_modifiers = Array.new{|v| v = Hash.new}
+		self.rule_modifiers = Array.new()
 		### Add Weapon Objects to Model
-		@gear = Array.new()
+		self.gear = Array.new()
 		gear.each do |item|
 			@gear.push(gear_hash[item])
 		end
 	end
 	
-	def getID
-		@id
-	end
-	
-	def getName
-		@name
-	end
-	def getRules
-		@rules
-	end
 	
 	def ApplyFactionKeywords(faction, keyword)
 		@keywords.delete(keyword)
 		@keywords.push(faction)
 	end
 	
-	def getGear()
-		return @gear
-	end
-	### Return individual stats
-	def getM 
-		@statline['M']
-	end
-	def getWS
-		@statline['WS']
-	end
-	def getBS 
-		@statline['BS']
-	end
-	def getS 
-		@statline['S']
-	end
-	def addS(n)
-		@statline['S'] = @statline['S'] + n
-	end
-	def getT 
-		@statline['T']
-	end
-	def getW 
-		@statline['W']
-	end
-	def getA
-		@statline['A']
+	
+	def hasRule?(rule)
+		rules.include? rule
 	end
 	
-	def addA(n)
-		@statline['A'] = @statline['A'] + n
-	end
-	def getLd 
-		@statline['Ld']
-	end
-	def getSv 
-		@statline['Sv']
-	end
-	def hasRule(rule)
-		if @rules.include? rule
-			return true
-		else
-			return false
-		end
-	end
-	def getInvuln()
+	
+	def getInvuln
+		### The way codex entries are written invuln can either be written as a rule, or as the 9th entry in 
+		### in the statline
+		
 		if @statline['Invuln'] 
 			invul = @statline['Invuln'].to_i
 		else
 			invul = 7
 		end
+		
 		if @rules.include?('Invulnerable - 3') && invul > 3
-			return 3
+			invul = 3
 		elsif @rules.include?('Invulnerable - 4') && invul > 4
-			return 4
+			invul = 4
 		elsif @rules.include?('Invulnerable - 5') && invul > 5
-			return 5 
+			invul = 5 
 		elsif @rules.include?('Invulnerable - 6') && invul > 6
-			return 6
-		else
-			return invul
+			invul = 6
 		end
+			
+		return invul
 	end
-	def getFNP()
-		unless @fnp
-			@fnp = Array.new
-			@rules.each do |rule|
-				if rule =~ /FNP/
-					@fnp.push(rule[-1].to_f)
-				end
-			end
-		end
+	
+	
+	def getFNP
+		
+		self.fnp = rules.select{ |rule| rule =~ /FNP/ }.map(&:last)
 		return @fnp
+	
 	end
 			
 	def hasKeyword(keyword)
-		if @keywords.include? keyword
-			return true
-		else
-			return false
-		end
+		
+		keywords.include? keyword
+
 	end
 	
-	def getKeywords
-		@keywords
-	end
 
 	
 	def ApplyGear()
@@ -150,104 +99,88 @@ class ModelWithWeapons
 		end
 	end
 	
-	def modStat(stat, mod)
+	
+	### Add ,odifier and rules to the base stats and rules, which cannot be reset
+	def modBaseStat(stat, mod)
 		### If we call the stats full name and not it's abbreviation we still modify it
-		replace_hash = Hash.new()
-		replace_hash['Toughness'] = 'T'
-		replace_hash['Strength'] = 'S'
-		replace_hash['Attacks'] = 'A'
-		
-		replace_hash.each do |key, value|
-			if stat == key
-				stat = value
-			end
-		end
-		
-		@statline[stat] = @statline[stat].to_i + mod	
+		stat = stat[1]
+		@base_stats[stat] = @base_stats[stat].to_i + mod	
 	end
 	
-	def ClearRoundModifiers
-		#puts "#{@name} replaces mods stats: #{@statline} with the perm statline #{@perm_statline}"
-		@rules = @game_rules.clone
-		@statline = @game_statline.clone
-	end
 	
-	def ClearGameModifiers
-		@rules = @perm_rules.clone
-		@game_rules = @perm_rules.clone
-		@statline = @perm_statline.clone
-		@game_statline = @perm_statline.clone
-	end
 	
-	def modGameStat(stat, mod)
-		### If we call the stats full name and not it's abbreviation we still modify it
-		replace_hash = Hash.new()
-		replace_hash['Toughness'] = 'T'
-		replace_hash['Strength'] = 'S'
-		replace_hash['Attacks'] = 'A'
-		
-		replace_hash.each do |key, value|
-			if stat == key
-				stat = value
-			end
-		end
-		
-		@statline[stat] = @statline[stat].to_i + mod
-		@game_statline[stat] = @statline[stat].to_i + mod	
-	end
-	
-	def modPermStat(stat, mod)
-		### If we call the stats full name and not it's abbreviation we still modify it
-		replace_hash = Hash.new()
-		replace_hash['Toughness'] = 'T'
-		replace_hash['Strength'] = 'S'
-		replace_hash['Attacks'] = 'A'
-		
-		replace_hash.each do |key, value|
-			if stat == key
-				stat = value
-			end
-		end
-		
-		@statline[stat] = @statline[stat].to_i + mod	
-		@game_statline[stat] = @statline[stat].to_i + mod	
-		@perm_statline[stat] = @statline[stat].to_i + mod	
-	end
-	
-	def addRule(rule)
+	def addBaseRule(rule)
 		if rule.class == Array
-			@rules = @rules + rule
+			@base_rules = @rules + rule
 		elsif rule.class == String
-			@rules.push(rule)
+			@base_rules.push(rule)
 		else
 			puts "Could't add rule #{rule}"
 		end
 	end
 	
-	def addGameRule(rule)
-		if rule.class == Array
-			@rules = @rules + rule
-			@game_rules = @game_rules + rule
-		elsif rule.class == String
-			@rules.push(rule)
-			@game_rules.push(rule)
-		else
-			puts "Could't add rule #{rule}"
+	### add temporary modifiers
+	def addStatModifier(duration, stat, modifier)
+		### Take only the first letter of the stat for building the hash so you better CAPITALIZE!
+		stat = stat[0]
+		dur = duration.to_i - 1
+		
+		unless stat_modifiers[dur]
+			stat_modifiers.insert(dur, { stat=> modifier})
+			return
 		end
+		
+		if stat_modifiers[dur][stat]
+			stat_modifiers[dur][stat] = stat_modifiers[dur][stat] + modifier.to_i
+		elsif stat_modifiers[dur]
+			stat_modifiers[dur][stat] = modifier.to_i
+		end
+		
+		#puts "#{stat_modifiers}"
+	end	
+	
+	def addRuleModifier(duration, rule)
+		### Check if the stat is typed out instead of abbreviated and replace with abbreviation
+		unless rule_modifiers[duration.to_i]
+			rule_modifiers[duration.to_i] = [rule]
+		else
+			rule_modifiers[duration.to_i].push(rule)
+		end	
+	end	
+	
+	def IncrementModifiers
+		stat_modifiers.shift
+		rule_modifiers.shift
+		stats = base_stats.clone
+		rules = base_rules.clone
+		#puts "#{stat_modifiers}"
+		puts "#{rule_modifiers}"
+		
+		rule_modifiers.each do |rule_arr|
+			unless rule_arr == nil
+				rule_arr.each do |rule|
+					rules.push(rule)
+				end
+			end
+		end
+		
+		stat_modifiers.each do |hash|
+			unless hash == nil
+				#puts hash
+				hash.each do |key, value|
+					stats[key] = base_stats[key] + value
+				end
+			end
+		end
+		
+		puts "#{rules}"
 	end
 	
-	def addPermRule(rule)
-		if rule.class == Array
-			@rules = @rules + rule
-			@game_rules = @game_rules + rule
-			@perm_rules = @game_rules + rule
-		elsif rule.class == String
-			@rules.push(rule)
-			@game_rules.push(rule)
-			@perm_rules.push(rule)
-		else
-			puts "Could't add rule #{rule}"
-		end
+	def ClearModifiers
+		self.stat_modifiers = Array.new{|v| v = Hash.new}
+		self.rule_modifiers = Array.new()
+		stats = base_stats.clone
+		rules = base_rules.clone
 	end
 	
 	def addGear(gear_hash, gear)

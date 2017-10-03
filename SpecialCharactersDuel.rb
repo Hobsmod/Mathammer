@@ -24,7 +24,7 @@ hero_hash['Marneus Calgar'] = Unit2.new()
 hero_hash['Marneus Calgar'].addModels(space_marine_codex, sm_wep, 'Marneus Calgar', 1, [],[] )
 hero_hash['Chief Librarian Tigerius'] = Unit2.new()
 hero_hash['Chief Librarian Tigerius'].addModels(space_marine_codex, sm_wep, 'Chief Librarian Tigerius', 1, [],[] )
-hero_hash['Chief Librarian Tigerius'].getModels[0].addGear(sm_wep, ['Null Zone','Might of Heroes'])
+hero_hash['Chief Librarian Tigerius'].getModels[0].addGear(sm_wep, ['Smite','Might of Heroes'])
 hero_hash['Chaplain Cassius'] = Unit2.new()
 hero_hash['Chaplain Cassius'].addModels(space_marine_codex, sm_wep, 'Chaplain Cassius', 1, [],[] )
 hero_hash['Captain Sicarius'] = Unit2.new()
@@ -126,7 +126,7 @@ hero_hash.each do |key, value|
 		if key == key2
 			next
 		end
-		odds = Duel(sm_wep,value,value2,2,log_file)
+		odds = Duel(sm_wep,value,value2,1000,log_file)
 		if key == key2
 			#puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
 		else 

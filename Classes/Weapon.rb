@@ -20,6 +20,7 @@ class Weapon
 		@fire_types[name]['AP'] = stats[5]
 		@fire_types[name]['D'] = stats[6]
 		@fire_types[name]['Rules'] = rules
+		
 	end
 	
 	def addRules(rule)
@@ -83,6 +84,7 @@ class Weapon
 		if fire_type.nil?
 			firetype = @firetypes_list[0]
 		end
+		puts "This weapon does the following damage"
 		return @fire_types[fire_type]['D']
 	end
 
@@ -93,13 +95,15 @@ class Weapon
 		@fire_types[fire_type]['Shots']
 	end
 	
+	def getRules(firetype)
+		@fire_types[firetype]['Rules']
+	end
 	def getShotsAtRange(fire_type, firing_range)
 		if fire_type.nil?
 			firetype = @firetypes_list[0]
 		end
 		@fire_types[fire_type]['Shots']
 	end
-
 	
 	def inspect()
 		puts "ID:#{@id}"
@@ -114,6 +118,4 @@ class Weapon
 			puts "Rules #{@fire_types[name]['Rules']}"
 		end
 	end
-	
-		
 end
