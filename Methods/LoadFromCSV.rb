@@ -41,10 +41,10 @@ def LoadWeapons(target_file)
 		end
 		
 		if weapon_hash[name]
-			weapon_hash[name].addFireType(firetype, stats, rules)
+			weapon_hash[name].addProfile(firetype, stats, rules)
 		else
 			weapon_hash[name] = Weapon.new(name)
-			weapon_hash[name].addFireType(firetype, stats, rules)
+			weapon_hash[name].addProfile(firetype, stats, rules)
 		end
 	end
 	

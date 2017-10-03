@@ -3,7 +3,7 @@ require_relative 'Methods\LoadFromCSV.rb'
 require_relative 'Methods\LoggedPsykerMethods.rb'
 require_relative 'Classes\Targets.rb'
 require 'yaml'
-require_relative 'Classes\Unit2.rb'
+require_relative 'Classes\Unit.rb'
 require_relative 'Classes\CodexEntry.rb'
 require_relative 'Classes\CodexTargets.rb'
 require 'time'
@@ -126,7 +126,7 @@ hero_hash.each do |key, value|
 		if key == key2
 			next
 		end
-		odds = Duel(sm_wep,value,value2,1000,log_file)
+		odds = Duel(sm_wep,value,value2,10,log_file)
 		if key == key2
 			#puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
 		else 

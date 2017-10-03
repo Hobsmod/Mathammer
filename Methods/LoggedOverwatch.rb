@@ -1,6 +1,6 @@
 require_relative '..\Classes\Model.rb'
 require_relative '..\Classes\Unit.rb'
-require_relative '..\Classes\Weapon2.rb'
+require_relative '..\Classes\Weapon.rb'
 require_relative 'Dice.rb'
 require_relative 'LoggedShootingMethods.rb'
 
@@ -17,27 +17,27 @@ def RollOverwatchHits(charger,shooter,wep,mode,range,logfile)
 	shots = RollDice(wep.getShots(mode))
 	
 	
-	logfile.puts "#{wep.getID} firing in #{mode} mode, fires #{shots} shots"
+	logfile.puts "#{wep.name} firing in #{mode} mode, fires #{shots} shots"
 	
 	## Check if in rapid fire range and fire double shots
 	if (wep_range / 2) >= range && wep.getType(mode) == 'Rapid Fire'
 		shots = shots * 2
-		logfile.puts "The firing range of #{range} is less than half of #{wep.getID}'s range of #{range} so it fires double the shots for a total of #{shots}"
+		logfile.puts "The firing range of #{range} is less than half of #{wep.name}'s range of #{range} so it fires double the shots for a total of #{shots}"
 	end
 	#Weapons with the autohit rule just hit automatically
-	if wep.hasRule(mode,'Autohit') == true
+	if wep.hasRule?(mode,'Autohit') == true
 		hits = shots
-		logfile.puts "#{wep.getID}'s shots hit automatically for a total of #{hits} hits"
+		logfile.puts "#{wep.name}'s shots hit automatically for a total of #{hits} hits"
 		return [shots,0,0,0,0]
 	end
 	
 	## RollDice for the shots
 	rolls = Array.new(shots) {rand(1..6)}
-	logfile.puts "#{shooter.getName} rolls #{rolls}"
+	logfile.puts "#{shooter.name} rolls #{rolls}"
 	### Reroll Shooting
 
 	
-	if (shooter.getRules().grep(/Reroll/).size + wep.getRules(mode).grep(/Reroll/).size) > 0 && rolls.count{ |n| n < to_hit} > 0
+	if (shooter.rules.grep(/Reroll/).size + wep.rules[mode].grep(/Reroll/).size) > 0 && rolls.count{ |n| n < to_hit} > 0
 		rolls = RerollShootingHits(shooter, charger, wep, mode, rolls, to_hit, logfile)
 	end
 	
@@ -45,11 +45,11 @@ def RollOverwatchHits(charger,shooter,wep,mode,range,logfile)
 	
 	
 	hits = rolls.count{|x| x >= to_hit }
-	logfile.puts "#{shooter.getName} needs #{to_hit} to hit, for a total of #{hits} hits"
+	logfile.puts "#{shooter.name} needs #{to_hit} to hit, for a total of #{hits} hits"
 	
-	if wep.hasRule(mode,'Overheat') && rolls.include?(1)
-		self_wounds = shooter.getW
-		logfile.puts "#{shooter.getName}'s #{wep.getID} overheated doing #{self_wounds} wounds to them" 
+	if wep.hasRule?(mode,'Overheat') && rolls.include?(1)
+		self_wounds = shooter.stats['W']
+		logfile.puts "#{shooter.name}'s #{wep.name} overheated doing #{self_wounds} wounds to them" 
 	end
 	
 	##Count sixes and fives in case other rules use them, eventually add possibility of self wounding with plasma
@@ -74,7 +74,7 @@ def CalcOverwatchHits(target,shooter,weapon,mode,range,logfile)
 
 	shots = CalcDiceAvg(weapon.getShots(mode)).to_f
 	
-	logfile.puts "#{shooter.getName}'s #{weapon.getID} fires #{shots} shots"
+	logfile.puts "#{shooter.name}'s #{weapon.name} fires #{shots} shots"
 	if weapon.getType(mode) == 'Rapid Fire' && (wep_range / 2) >= range
 		shots = shots * 2.0
 		logfile.puts "Twice the shots when rapid firing for a total of #{shots}"
@@ -85,8 +85,8 @@ def CalcOverwatchHits(target,shooter,weapon,mode,range,logfile)
 	# Begin to Calculate Rerolls
 	### Determine what we are rerolling
 	reroll_what = Array.new()
-	reroll_rules = shooter.getRules.grep(/Reroll/)
-	reroll_rules = reroll_rules + weapon.getRules(mode).grep(/Reroll/)
+	reroll_rules = shooter.rules.grep(/Reroll/)
+	reroll_rules = reroll_rules + weapon.rules[mode].grep(/Reroll/)
 	unless target.hasKeyword('Character') == true
 		reroll_rules.delete_if {|rule| rule.match(/Duelist/)}
 	end
@@ -103,7 +103,7 @@ def CalcOverwatchHits(target,shooter,weapon,mode,range,logfile)
 	if reroll_what.include?('All') == true
 		
 		prob = prob + ((1.0 - prob) * prob)
-		logfile.puts "#{shooter.getName} gets to reroll all their misses making the new probability #{prob}"
+		logfile.puts "#{shooter.name} gets to reroll all their misses making the new probability #{prob}"
 		
 	elsif reroll_what.include?('Single') == true && reroll_what.include?('1') == true
 		
@@ -116,7 +116,7 @@ def CalcOverwatchHits(target,shooter,weapon,mode,range,logfile)
 		hits = hits + (total_ones * prob)
 		hits = hits + (misses_not_ones * prob)
 		
-		logfile.puts "#{shooter.getName} gets to reroll all their ones and a single miss, giving them a total of  #{hits}"
+		logfile.puts "#{shooter.name} gets to reroll all their ones and a single miss, giving them a total of  #{hits}"
 		return hits
 		
 	elsif reroll_what.include?('1') == true
@@ -124,7 +124,7 @@ def CalcOverwatchHits(target,shooter,weapon,mode,range,logfile)
 		
 		prob = prob + (prob * (1.0 / 6.0))
 		
-		logfile.puts "#{shooter.getName} gets to reroll all their 1's making the new probability of hitting #{prob}"
+		logfile.puts "#{shooter.name} gets to reroll all their 1's making the new probability of hitting #{prob}"
 		
 	elsif reroll_what.include?('Single') == true
 		
@@ -134,7 +134,7 @@ def CalcOverwatchHits(target,shooter,weapon,mode,range,logfile)
 		end
 		
 		hits = (prob * shots) + (misses * prob)
-		logfile.puts "#{shooter.getName} gets to reroll a single miss so they git #{hits} hits"
+		logfile.puts "#{shooter.name} gets to reroll a single miss so they git #{hits} hits"
 		return hits
 	end
 
@@ -152,40 +152,40 @@ def CalcShootingHits(target,shooter,weapon,mode,range,moved,logfile)
 	end 
 	
 	## We hit on 6's regardless of BS
-	to_hit = shooter.getBS
+	to_hit = shooter.stats['BS']
 	modifier = 1.0
 	### Insert Abilities allowing you to hit on other rolls here
 
 	shots = CalcDiceAvg(weapon.getShots(mode)).to_f
 	
-	logfile.puts "#{shooter.getName}'s #{weapon.getID} fires #{shots} shots"
+	logfile.puts "#{shooter.name}'s #{weapon.name} fires #{shots} shots"
 	if weapon.getType(mode) == 'Rapid Fire' && (weapon_range / 2) >= range
 		shots = shots * 2.0
 		logfile.puts "Twice the shots when rapid firing for a total of #{shots}"
 	end
 	
 	### Check Special Rules from firer that modify ability to hit
-	if moved && weapon.getType(mode) == 'Heavy' && shooter.hasRule('Move and Fire') == false
-		logfile.puts "#{weapon.getID} is heavy and so takes a -1 penalty for moving and firing"
+	if moved && weapon.getType(mode) == 'Heavy' && shooter.hasRule?('Move and Fire') == false
+		logfile.puts "#{weapon.name} is heavy and so takes a -1 penalty for moving and firing"
 		modifier = modifier + 1
 	end
-	if target.hasRule('Hard to Hit - Shooting')
-		logfile.puts "Attacks targetting #{target.getName} take a -1 penalty to hit"
+	if target.hasRule?('Hard to Hit - Shooting')
+		logfile.puts "Attacks targetting #{target.name} take a -1 penalty to hit"
 		modifier = modifier + 1
 	end
-	if shooter.hasRule('AA - 1') && target.hasRule('Fly')
-		logfile.puts "#{weapon.getName} gets +1 to hit when targetting shooters with the 'Fly' rule"
+	if shooter.hasRule?('AA - 1') && target.hasRule?('Fly')
+		logfile.puts "#{weapon.name} gets +1 to hit when targetting shooters with the 'Fly' rule"
 		modifier = modifier - 1
 	end
-	if shooter.hasRule('Anti-Ground') && target.hasRule('Fly') == false
-		logfile.puts "#{weapon.getName} gets +1 to hit when targetting shooters withput the 'Fly' rule"
+	if shooter.hasRule?('Anti-Ground') && target.hasRule?('Fly') == false
+		logfile.puts "#{weapon.name} gets +1 to hit when targetting shooters withput the 'Fly' rule"
 		modifier = modifier - 1
 	end
-	if weapon.hasRule(mode, 'AA Only') && target.hasRule('Fly')
+	if weapon.hasRule?(mode, 'AA Only') && target.hasRule?('Fly')
 		modifier = modifier - 1
-		logfile.puts "#{weapon.getName} takes a -1 penalty to hit when targetting shooters with the 'Fly' rule"
-	elsif weapon.hasRule(mode, 'AA Only') && target.hasRule('Fly') == false
-		logfile.puts "#{weapon.getName} gets +1 to hit when targetting shooters with the 'Fly' rule"
+		logfile.puts "#{weapon.name} takes a -1 penalty to hit when targetting shooters with the 'Fly' rule"
+	elsif weapon.hasRule?(mode, 'AA Only') && target.hasRule?('Fly') == false
+		logfile.puts "#{weapon.name} gets +1 to hit when targetting shooters with the 'Fly' rule"
 		modifier = modifier + 1
 	end
 	
@@ -194,8 +194,8 @@ def CalcShootingHits(target,shooter,weapon,mode,range,moved,logfile)
 	# Begin to Calculate Rerolls
 	### Determine what we are rerolling
 	reroll_what = Array.new()
-	reroll_rules = shooter.getRules.grep(/Reroll/)
-	reroll_rules = reroll_rules + weapon.getRules(mode).grep(/Reroll/)
+	reroll_rules = shooter.rules.grep(/Reroll/)
+	reroll_rules = reroll_rules + weapon.rules[mode].grep(/Reroll/)
 	unless target.hasKeyword('Character') == true
 		reroll_rules.delete_if {|rule| rule.match(/Duelist/)}
 	end
@@ -213,7 +213,7 @@ def CalcShootingHits(target,shooter,weapon,mode,range,moved,logfile)
 	if reroll_what.include?('All') == true
 		
 		prob = prob + ((1.0 - prob) * prob)
-		logfile.puts "#{shooter.getName} gets to reroll all their misses making the new probability #{prob}"
+		logfile.puts "#{shooter.name} gets to reroll all their misses making the new probability #{prob}"
 		
 	elsif reroll_what.include?('Single') == true && reroll_what.include?('1') == true
 		
@@ -226,7 +226,7 @@ def CalcShootingHits(target,shooter,weapon,mode,range,moved,logfile)
 		hits = hits + (total_ones * prob)
 		hits = hits + (misses_not_ones * prob)
 		
-		logfile.puts "#{shooter.getName} gets to reroll all their ones and a single miss, giving them a total of  #{hits}"
+		logfile.puts "#{shooter.name} gets to reroll all their ones and a single miss, giving them a total of  #{hits}"
 		return hits
 		
 	elsif reroll_what.include?('1') == true
@@ -234,7 +234,7 @@ def CalcShootingHits(target,shooter,weapon,mode,range,moved,logfile)
 		
 		prob = prob + (prob * (1.0 / 6.0))
 		
-		logfile.puts "#{shooter.getName} gets to reroll all their 1's making the new probability of hitting #{prob}"
+		logfile.puts "#{shooter.name} gets to reroll all their 1's making the new probability of hitting #{prob}"
 		
 	elsif reroll_what.include?('Single') == true
 		
@@ -244,7 +244,7 @@ def CalcShootingHits(target,shooter,weapon,mode,range,moved,logfile)
 		end
 		
 		hits = (prob * shots) + (misses * prob)
-		logfile.puts "#{shooter.getName} gets to reroll a single miss so they git #{hits} hits"
+		logfile.puts "#{shooter.name} gets to reroll a single miss so they git #{hits} hits"
 		return hits
 	end
 	
@@ -257,7 +257,7 @@ def CalcShootingHits(target,shooter,weapon,mode,range,moved,logfile)
 end
 
 def CalcShootingWounds(hits,shooter,target,weapon,mode,logfile)
-	tough = CalcDiceAvg(target.getT).to_f
+	tough = CalcDiceAvg(target.stats['T']).to_f
 	str = CalcDiceAvg(weapon.getS(mode))
 	prob = 0.0
 	
@@ -275,16 +275,16 @@ def CalcShootingWounds(hits,shooter,target,weapon,mode,logfile)
 	end
 	
 	
-	logfile.puts "#{weapon.getID} has a strength of #{str} and #{target.getName} has a toughness of #{tough}, giving a #{prob} chance of wounding" 
-	if weapon.hasRule(mode, 'Reroll - Wounds - All') or shooter.hasRule('Reroll - All - Wounds - All') or shooter.hasRule('Reroll - Fight - Wounds - All')
+	logfile.puts "#{weapon.name} has a strength of #{str} and #{target.name} has a toughness of #{tough}, giving a #{prob} chance of wounding" 
+	if weapon.hasRule?(mode, 'Reroll - Wounds - All') or shooter.hasRule?('Reroll - All - Wounds - All') or shooter.hasRule?('Reroll - Fight - Wounds - All')
 		prob = prob + ((1 - prob) * prob)
-		logfile.puts "#{shooter.getName} can reroll wounds so their chances improve to #{prob}"
-	elsif weapon.hasRule(mode, 'Reroll - Wounds - 1') or shooter.hasRule('Reroll - All - Wounds - 1') or shooter.hasRule('Reroll - Fight - Wounds - 1')
+		logfile.puts "#{shooter.name} can reroll wounds so their chances improve to #{prob}"
+	elsif weapon.hasRule?(mode, 'Reroll - Wounds - 1') or shooter.hasRule?('Reroll - All - Wounds - 1') or shooter.hasRule?('Reroll - Fight - Wounds - 1')
 		prob = prob +((1 / 6) * prob)
-		logfile.puts "#{shooter.getName} can reroll 1's to wound so their chances improve to #{prob}"
+		logfile.puts "#{shooter.name} can reroll 1's to wound so their chances improve to #{prob}"
 	end
 	wounds = prob * hits
-	logfile.puts "#{shooter.getName} causes #{wounds} wounds"
+	logfile.puts "#{shooter.name} causes #{wounds} wounds"
 	return wounds
 end
 
@@ -293,13 +293,13 @@ def CalcShootingSaves(wounds, shooter, target, weapon, mode,logfile)
 		return 0.0
 	end
 	ap = CalcDiceAvg(weapon.getAP(mode)).to_f
-	save = target.getSv.to_f
+	save = target.stats['Sv'].to_f
 	invuln = target.getInvuln.to_f
 	mod_save = save - ap 
-	logfile.puts "#{shooter.getName}'s #{weapon.getID} has an AP of #{ap} so #{target.getName}'s save of #{save} becomes #{mod_save}"
+	logfile.puts "#{shooter.name}'s #{weapon.name} has an AP of #{ap} so #{target.name}'s save of #{save} becomes #{mod_save}"
 	if mod_save > invuln
 		mod_save = invuln
-		logfile.puts "#{target.getName}'s invulnerable save of #{invuln} is better, so they will use that instead"
+		logfile.puts "#{target.name}'s invulnerable save of #{invuln} is better, so they will use that instead"
 	end
 	if mod_save >= 7.0
 		prob = 1.0
@@ -308,9 +308,9 @@ def CalcShootingSaves(wounds, shooter, target, weapon, mode,logfile)
 		prob = (mod_save - 1) / 6
 	end
 	
-	logfile.puts "#{target.getName} has a #{prob} chance of failing their save"
+	logfile.puts "#{target.name} has a #{prob} chance of failing their save"
 	failed_saves = wounds * prob
-	logfile.puts "#{target.getName} failed #{failed_saves} saves"
+	logfile.puts "#{target.name} failed #{failed_saves} saves"
 	return failed_saves
 	
 end
@@ -319,21 +319,21 @@ def CalcShootingDamage(felt_wounds, attacker, target, weapon, mode,logfile)
 	if felt_wounds == 0
 		return 0.0
 	end
-	sv = target.getSv()
+	sv = target.stats['Sv']
 	fnp = target.getFNP()
 	d = CalcDiceAvg(weapon.getD(mode))
-	wounds = target.getW.to_f
+	wounds = target.stats['W'].to_f
 
 	## Increase damage for grav weapons
-	if sv >= 3 && weapon.hasRule(mode, 'Grav')
+	if sv >= 3 && weapon.hasRule?(mode, 'Grav')
 		unless d > 2
 			d = 2
 		end
 	end
-	if target.hasRule('Damage - Halved')
+	if target.hasRule?('Damage - Halved')
 		d = (d / 2).ceil
 	end
-	if target.hasRule('Damage - Reduced - 1')
+	if target.hasRule?('Damage - Reduced - 1')
 		d = d - 1
 		if d < 1 
 			d = 1
@@ -350,11 +350,11 @@ def CalcShootingDamage(felt_wounds, attacker, target, weapon, mode,logfile)
 
 
 	#Calculate Final Damage
-	if dmg >= wounds && weapon.hasRule(mode, 'Overflow') == false
+	if dmg >= wounds && weapon.hasRule?(mode, 'Overflow') == false
 		dmg = wounds
 	end
 	
-	logfile.puts "#{weapon.getID} in #{mode} mode would do #{dmg} wounds on average"
+	logfile.puts "#{weapon.name} in #{mode} mode would do #{dmg} wounds on average"
 	return dmg
 	
 end
@@ -362,13 +362,13 @@ end
 
 def CalcOverwatch(charger,shooter,wep,mode,range,logfile)
 		overwatch_hits = CalcOverwatchHits(charger,shooter,wep,mode,range, logfile)
-		#puts "#{wep.getID} causes #{overwatch_hits} hits"
+		#puts "#{wep.name} causes #{overwatch_hits} hits"
 		overwatch_wounds =  CalcShootingWounds(overwatch_hits,shooter, charger,wep,mode,logfile)
-		#puts "#{wep.getID} causes #{overwatch_wounds} wounds"
+		#puts "#{wep.name} causes #{overwatch_wounds} wounds"
 		unsaved = CalcShootingSaves(overwatch_wounds,  shooter, charger, wep, mode,logfile)
-		#puts "#{wep.getID} causes #{unsaved} unsaved wounds"
+		#puts "#{wep.name} causes #{unsaved} unsaved wounds"
 		dmg = CalcShootingDamage(unsaved,  shooter, charger, wep, mode,logfile)
-		#puts "#{wep.getID} causes #{dmg} damage"
+		#puts "#{wep.name} causes #{dmg} damage"
 		return dmg
 end
 
@@ -393,11 +393,11 @@ def OptOverwatch(charger,shooter,range,logfile)
 		### Calculate the best firing mode to use
 		weapon.getFiretypes.each do |mode|
 			dmg = CalcOverwatch(charger,shooter,weapon,mode,range,logfile)
-			logfile.puts " --On Average #{weapon.getID} in #{mode} mode firing overwatch does #{dmg} damage--"
-			if dmg > weapon_dmg && weapon.hasRule(mode,'Combi') == false
+			logfile.puts " --On Average #{weapon.name} in #{mode} mode firing overwatch does #{dmg} damage--"
+			if dmg > weapon_dmg && weapon.hasRule?(mode,'Combi') == false
 				weapon_dmg = dmg
 				type = weapon.getType(mode)
-			elsif weapon.hasRule(mode ,'Combi') == true
+			elsif weapon.hasRule?(mode ,'Combi') == true
 				combi_dmg = combi_dmg + dmg
 			end	 
 		end
@@ -409,10 +409,10 @@ def OptOverwatch(charger,shooter,range,logfile)
 		
 		if type == 'Pistol' && weapon_dmg > pistol_dmg
 			pistol_dmg = weapon_dmg
-			pistol = weapon.getID
+			pistol = weapon.name
 		elsif type == 'Grenade' && weapon_dmg > grenade_dmg
 			grenade_dmg = weapon_dmg
-			grenade = weapon.getID
+			grenade = weapon.name
 		else
 			main_dmg = main_dmg + weapon_dmg
 		end	
@@ -421,13 +421,13 @@ def OptOverwatch(charger,shooter,range,logfile)
 	logfile.puts "Pistol Damage is #{pistol_dmg}, Grenade Damage is #{grenade_dmg}, Main Damage is #{main_dmg}"
 	if pistol_dmg > main_dmg && pistol_dmg > grenade_dmg
 		type = pistol
-		logfile.puts "#{shooter.getName} should use their #{type}"
+		logfile.puts "#{shooter.name} should use their #{type}"
 	elsif grenade_dmg > main_dmg
 		type = grenade
-		logfile.puts "#{shooter.getName} should use their #{type}"
+		logfile.puts "#{shooter.name} should use their #{type}"
 	else
 		type = 'All'
-		logfile.puts "#{shooter.getName} will fire all their weapons that are not pistols or grenades"
+		logfile.puts "#{shooter.name} will fire all their weapons that are not pistols or grenades"
 	end
 	return type
 end
@@ -455,12 +455,12 @@ def OptOvwWepProfiles(charger,shooter,range,logfile)
 		### Calculate the avg dmg for each firing mode, and the combined damage for firing all combi modes, and set profile and weapon dmg to the highest
 		weapon.getFiretypes.each do |mode|
 			profile_dmg = CalcOverwatch(charger,shooter,weapon,mode,range,logfile)
-			logfile.puts " --On Average #{weapon.getID} in #{mode} mode firing overwatch does #{profile_dmg} damage--"
-			if weapon.hasRule(mode ,'Combi') == true
+			logfile.puts " --On Average #{weapon.name} in #{mode} mode firing overwatch does #{profile_dmg} damage--"
+			if weapon.hasRule?(mode ,'Combi') == true
 				combi_dmg = combi_dmg + profile_dmg
 				combitypes.push(weapon.getType(mode))
 				combi_profiles.push(mode)		
-			elsif weapon.hasRule(mode ,'Combi') == false && profile_dmg > weapon_dmg
+			elsif weapon.hasRule?(mode ,'Combi') == false && profile_dmg > weapon_dmg
 				weapon_dmg = profile_dmg
 				profile = mode
 				type = weapon.getType(mode)
@@ -473,12 +473,12 @@ def OptOvwWepProfiles(charger,shooter,range,logfile)
 		if weapon_dmg > combi_dmg && type != 'Pistol' && type != 'Grenade'
 			main_dmg = main_dmg + weapon_dmg
 			main[weapon] = profile
-			logfile.puts "The most damaging firing mode for #{weapon.getID} is #{profile}, and its dmg #{weapon_dmg} was added to main_dmg for a total of #{main_dmg}"
+			logfile.puts "The most damaging firing mode for #{weapon.name} is #{profile}, and its dmg #{weapon_dmg} was added to main_dmg for a total of #{main_dmg}"
 		end
 		
 		#### I'm assuming there are no pistols or grenades with the combi rule, if there ever are this will let me know
 		if combi_dmg > weapon_dmg && combi_profiles.include?('Pistol') == true && combi_profiles.include?('Grenade') == true
-			puts "#{weapon.getID} has a profile that has the special rule combi and is either a grenade or a pistol,
+			puts "#{weapon.name} has a profile that has the special rule combi and is either a grenade or a pistol,
 				at present these scripts cannot handle that and will quit"
 			abort
 		end
@@ -513,13 +513,13 @@ def OptOvwWepProfiles(charger,shooter,range,logfile)
 	#logfile.puts "Pistol Damage is #{pistol_dmg}, Grenade Damage is #{grenade_dmg}, Main Damage is #{main_dmg}"
 	if pistol_dmg > main_dmg && pistol_dmg > grenade_dmg
 		type = pistols
-		logfile.puts "#{shooter.getName} should use their Pistols"
+		logfile.puts "#{shooter.name} should use their Pistols"
 	elsif grenade_dmg > main_dmg
 		type = grenade
-		logfile.puts "#{shooter.getName} should use their Grenade"
+		logfile.puts "#{shooter.name} should use their Grenade"
 	else
 		type = main
-		logfile.puts "#{shooter.getName} will fire all their weapons that are not pistols or grenades"
+		logfile.puts "#{shooter.name} will fire all their weapons that are not pistols or grenades"
 	end
 	return type
 end

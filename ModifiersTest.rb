@@ -2,7 +2,7 @@ require_relative 'Methods\LoadFromCSV.rb'
 require_relative 'Methods\PsykerMethods'
 require_relative 'Classes\Targets.rb'
 require 'yaml'
-require_relative 'Classes\Unit2.rb'
+require_relative 'Classes\Unit.rb'
 require_relative 'Classes\CodexEntry.rb'
 require_relative 'Classes\CodexTargets.rb'
 require 'time'
@@ -28,11 +28,4 @@ calgar = hero_hash['Marneus Calgar'].getModels[0]
 
 tigur = hero_hash['Chief Librarian Tigerius'].getModels[0]
 
-tigur.addStatModifier(2, :S, 1)
-tigur.addStatModifier(2, :S, 1)
-tigur.addStatModifier(2, :T, 1)
-tigur.addStatModifier(3, :A, 1)
-tigur.addRuleModifier(2,'Invulnerable - 3')
-tigur.IncrementModifiers
-tigur.IncrementModifiers
-tigur.IncrementModifiers
+puts tigur.name
