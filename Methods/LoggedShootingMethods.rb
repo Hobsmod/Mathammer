@@ -7,7 +7,7 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 	## First things first, just check if we are out of range
 	wep_range = wep.getRange(mode)
 	if wep_range < range
-		return 0.0
+		return 0
 	end
 	mortals = 0
 	hits = 0
@@ -16,7 +16,7 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 	self_wounds = 0
 	modifier = 0
 	
-	logfile.puts "#{wep.name} fires #{shots} shots"
+	logfile.puts "#{wep.name}  in #{mode} mode fires #{shots} shots"
 	
 	## Check if in rapid fire range and fire double shots
 	if (wep_range / 2) >= range && wep.getType(mode) == 'Rapid Fire'
@@ -97,7 +97,7 @@ end
 
 def RollShootingWounds(hits,target,shooter,weapon,mode,range,logfile)
 	if weapon.getRange(mode) < range
-		return 0.0
+		return 0
 	end
 	### hits that is passed to function is an array that contains [#of hits,#of sixes rolled,#of 5's rolled,#ofmortal wounds,#of self wounds]
 	str = RollDice(weapon.getS(mode))
@@ -212,7 +212,7 @@ end
 
 def RollShootingSaves(wounds, target, shooter, weapon, mode, range, logfile)
 	if weapon.getRange(mode) < range
-		return 0.0
+		return 0
 	end
 	ap = RollDice(weapon.getAP(mode)).to_i
 	save = target.stats['Sv'].to_i
@@ -270,7 +270,7 @@ end
 
 def RollShootingDamage(felt_wounds, target, shooter, weapon, mode,range,logfile)
 	if weapon.getRange(mode) < range
-		return 0.0
+		return 0
 	end
 	mortals = felt_wounds[3]
 	self_wounds = felt_wounds[4]

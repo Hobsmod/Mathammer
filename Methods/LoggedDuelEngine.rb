@@ -7,7 +7,7 @@ require_relative 'Dice.rb'
 def Duel(wep_hash,charger,defender,iterations,logfile)
 ###each of these is a unit
 
-	range = 6
+	
 	
 	charger = charger.getModels[0]
 	defender = defender.getModels[0]
@@ -20,14 +20,14 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 	atk_wep = atk_arry[0]
 	atk_mode= atk_arry[1]
 	atk_pistol_hash = OptimizePistolsCC(charger,defender,logfile)
-	atk_shooting_profiles = OptShootingWepProfiles(defender,charger,range,true,logfile)
-	atk_wounds = charger.stats['W']
 	
+	atk_wounds = charger.stats['W']
+	def_pistol_hash = OptimizePistolsCC(defender,charger,logfile)
 	def_arry = OptMeleeWeapon(defender,charger,logfile)
-	def_ovwtch_wep = OptOvwWepProfiles(charger,defender,range,logfile)
+	
 	def_wep = def_arry[0]
 	def_mode = def_arry[1]
-	def_pistol_hash = OptimizePistolsCC(defender,charger,logfile)
+	
 	def_wounds = defender.stats['W']
 
 	
@@ -35,6 +35,11 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 	attacker_victories = 0
 
 	(1..iterations).each do |iter|
+		range = rand(1..6) + rand(1..6) 
+		### Optimize overwatch and initial volley weapons
+		def_ovwtch_wep = OptOvwWepProfiles(charger,defender,range,logfile)
+		atk_shooting_profiles = OptShootingWepProfiles(defender,charger,range,true,logfile)
+		
 		### Clear all modifiers, reset damage, and define the number of rounds this fight will go
 		charger.ClearModifiers
 		defender.ClearModifiers
@@ -50,7 +55,7 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 		
 		#### Charger Fires their weapons
 		
-		logfile.puts "------ The Charger fires a volley before they charge ------------"
+		logfile.puts "------ The Charger fires a volley at the randomly generated range of #{range} before they charge ------------"
 		volley_dmg = 0
 		self_volley_dmg = 0 
 		
