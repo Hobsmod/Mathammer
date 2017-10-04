@@ -153,7 +153,10 @@ class ModelWithWeapons
 		rule_modifiers.shift
 		stats = base_stats.clone
 		rules = base_rules.clone
-
+	end
+	
+	def ApplyModifiers
+		
 		
 		rule_modifiers.each do |rule_arr|
 			unless rule_arr == nil
@@ -173,6 +176,7 @@ class ModelWithWeapons
 		end
 		
 	end
+	
 	
 	def ClearModifiers
 		self.stat_modifiers = Array.new{|v| v = Hash.new}

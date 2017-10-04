@@ -1,14 +1,14 @@
 require_relative 'Methods\LoggedDuelEngine.rb'
 require_relative 'Methods\LoadFromCSV.rb'
-require_relative 'Methods\PsykerMethods'
+require_relative 'Methods\LoggedPsykerMethods'
 require_relative 'Classes\Targets.rb'
 require 'yaml'
-require_relative 'Classes\Unit2.rb'
+require_relative 'Classes\Unit.rb'
 require_relative 'Classes\CodexEntry.rb'
 require_relative 'Classes\CodexTargets.rb'
 require 'time'
 start_time = Time.now
-log_file = File.open('Logs\DuelLog.txt', 'w')
+log_file = File.open('shit.txt', 'w')
 out_file = File.open('DuelResults.csv', 'w')
 space_marine_codex = YAML.load(File.read('Codices\SpaceMarineCodex.yml')) 
 sm_wep = LoadWeapons('Codices\SMWeapons.csv')
@@ -29,11 +29,3 @@ calgar = hero_hash['Marneus Calgar'].getModels[0]
 
 tigur = hero_hash['Chief Librarian Tigerius'].getModels[0]
 
-
-(1..10).each do 
-	tigur.modStat('A',1)
-	tigur.addRule('Test')
-	puts "Attacks: #{tigur.getA}" 
-	tigur.ClearGameModifiers
-	puts "Attacks: #{tigur.getA} "
-end

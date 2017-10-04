@@ -58,7 +58,10 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 				logfile.puts "#{charger.name} took #{cast_results[1]} damage from perils and has #{def_wounds - dmg_to_defender} wounds left"
 			end
 		end
-					
+		
+		charger.ApplyModifiers
+		defender.ApplyModifiers
+		
 		#### Check if anyone has won
 		if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds
 			logfile.puts "The defender, #{defender.name} won!"
@@ -76,6 +79,8 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 			attacker_victories = attacker_victories + 0.5
 			break
 		end
+	
+		
 	
 		## Roll Overwatch!###
 		logfile.puts "-------------------- Firing Overwatch at range of #{range} inches! ---------------------------------------"
@@ -172,6 +177,9 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 						break
 					end
 				end
+				
+				charger.ApplyModifiers
+				defender.ApplyModifiers
 				
 				
 				### On odd rounds beyond the first, charger can fire their pistol
@@ -310,6 +318,8 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 					end
 				end
 				
+				charger.ApplyModifiers
+				defender.ApplyModifiers
 				
 				#### On even rounds the defender gets to fire their pistol
 				if round > 1 && defender.getPistols.size > 0
