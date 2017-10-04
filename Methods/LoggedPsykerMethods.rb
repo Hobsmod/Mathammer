@@ -74,9 +74,9 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 			if power.getType(mode) =~ /Buff/
 				power.rules[mode].grep(/Psychic - Add Rule/).each do |string|
 					rule = string.split(' - ')
-					rule_text = rule[2..-1].join(' - ')
-					logfile.puts "#{power.name} gives #{caster.name} the #{rule_text} special rule for #{rule[3]} rounds"
-					caster.addRuleModifier(rule[-2], rule_text)
+					rule_text = rule[3..-1].join(' - ')
+					logfile.puts "#{power.name} gives #{caster.name} the #{rule_text} special rule for #{rule[2]} rounds"
+					caster.addRuleModifier(rule[2], rule_text)
 				end
 	
 				power.rules[mode].grep(/Psychic - Add Stat/).each do |string|
@@ -106,6 +106,20 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 			end
 			
 			if power.getType(mode) =~ /Trait/ && power.getRange(mode) >= range
+				power.rules[mode].grep(/Trait - Test/).each do |string|
+					rule = string.split(' - ')
+					target_trait = denier.stats[rule[2]].to_i
+					d = rule[3][-1].to_i
+					rolls = Array.new(rule[4].to_i) {rand(1..d)}
+					suceeds = rolls.count{|x| x > target_trait}
+					dmg = Array.new(suceeds) {RollDice(rule[-1])}
+					if rule[-2] == 'Mortals'
+						logfile.puts "#{power.name} causes #{rule[-1]} mortal wound(s) for each roll higher than the targets #{rule[2]}. The Rolls are #{rolls} for a total of #{dmg} mortal wounds"
+						mortals = mortals + dmg
+					end
+				end
+				
+				### When adding something to a trait and comparing the results
 				power.rules[mode].grep(/Trait - Compare/).each do |string|
 					rule = string.split(' - ')
 					trait = rule[2]
@@ -160,13 +174,13 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 		end
 	end
 	
-	if caster.getFNP().any?	&& tot_mortals >= 1
+	if caster.getFNP().any?	&& tot_perils >= 1
 		caster.getFNP().each do |fnp|
 			logfile.puts "#{caster.name} has a 'Feel No Pain' ability that lets them ignores wounds on a #{fnp.to_i}+"
-			rolls = Array.new(tot_mortals) {rand (1..6)}
+			rolls = Array.new(tot_perils) {rand (1..6)}
 			logfile.puts "#{caster.name} rolls #{rolls}"
 			rolls.delete_if {|x| x >= fnp}
-			tot_mortals = rolls.size
+			tot_perils = rolls.size
 		end
 	end
 	

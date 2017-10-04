@@ -153,7 +153,7 @@ imp_index_1['Librarian Dreadnought'] = CodexEntry.new(lib_dred_stats, lib_dred_g
 
 mephiston_stats = [7,2,2,5,5,5,4,9,2]
 mephiston_gear = ['Plasma Pistol', 'Sanguine Sword','Frag Grenade','Krak Grenade']
-mephiston_rules = ['Psyker - 2', 'Deny - 1' 'FNP - 5']
+mephiston_rules = ['Psyker - 2', 'Deny - 2', 'Deny - Bonus - 1', 'FNP - 5']
 imp_index_1['Chief Librarian Mephiston'] = CodexEntry.new(mephiston_stats, mephiston_gear, mephiston_rules, mephiston_cost, character)
 
 sanguinor_stats = [12,2,2,4,4,5,5,9,2]

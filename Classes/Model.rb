@@ -149,20 +149,20 @@ class ModelWithWeapons
 	end	
 	
 	def IncrementModifiers
-		stat_modifiers.shift
-		rule_modifiers.shift
-		stats = base_stats.clone
-		rules = base_rules.clone
+		@stat_modifiers.shift
+		@rule_modifiers.shift
+		@stats = base_stats.clone
+		@rules = base_rules.clone
 	end
 	
 	def ApplyModifiers
-		stats = base_stats.clone
-		rules = base_rules.clone
+		@stats = @base_stats.clone
+		@rules = @base_rules.clone
 		
 		rule_modifiers.each do |rule_arr|
 			unless rule_arr == nil
 				rule_arr.each do |rule|
-					rules.push(rule)
+					@rules.push(rule)
 				end
 			end
 		end
@@ -171,7 +171,7 @@ class ModelWithWeapons
 			unless hash == nil
 				#puts hash
 				hash.each do |key, value|
-					stats[key] = base_stats[key] + value
+					@stats[key] = base_stats[key] + value
 				end
 			end
 		end
@@ -182,8 +182,8 @@ class ModelWithWeapons
 	def ClearModifiers
 		self.stat_modifiers = Array.new{|v| v = Hash.new}
 		self.rule_modifiers = Array.new()
-		stats = base_stats.clone
-		rules = base_rules.clone
+		self.stats = base_stats.clone
+		self.rules = base_rules.clone
 	end
 	
 	def addGear(gear_hash, gear)
@@ -200,7 +200,7 @@ class ModelWithWeapons
 		ranged_wep = Array.new
 		@gear.each do |item|
 			item.getFiretypes.each do |mode|
-				if item.getRange(mode) > 0
+				if item.getType(mode) == 'Heavy' or item.getType(mode) == 'Rapid Fire' or item.getType(mode) == 'Assault' or item.getType(mode) == 'Pistol' or item.getType(mode) == 'Grenade'
 					ranged_wep.push(item)
 				end
 			end

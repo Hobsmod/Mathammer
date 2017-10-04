@@ -99,16 +99,6 @@ class Weapon
 	end
 	
 	def inspect()
-		puts "ID:#{@id}"
-		stats_list.each do |name|
-			puts "Cost: #{stats[name]['Cost']}"
-			puts "Range: #{stats[name]['Range']}"
-			puts "Type: #{stats[name]['Type']}"
-			puts "Shots: #{stats[name]['Shots']}"
-			puts "Strength: #{stats[name]['S']}"
-			puts "Armor Penetration: #{stats[name]['AP']}"
-			puts "Damage: #{stats[name]['D']}"
-			puts "Rules #{stats[name]['Rules']}"
-		end
+		name
 	end
 end

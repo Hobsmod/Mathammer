@@ -10,6 +10,7 @@ Commander Dante: !ruby/object:CodexEntry
     A: 6
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Axe Mortalis
   - Inferno Pistol
@@ -36,6 +37,7 @@ Captain Tycho: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Blood Song
   - Bolt Pistol
@@ -57,6 +59,7 @@ Tycho the Lost: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Blood Song
   - Bolt Pistol
@@ -80,6 +83,7 @@ Librarian Dreadnought: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Furioso Force Halberd
   - Furioso Fist
@@ -100,6 +104,7 @@ Chief Librarian Mephiston: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Plasma Pistol
   - Sanguine Sword
@@ -107,7 +112,9 @@ Chief Librarian Mephiston: !ruby/object:CodexEntry
   - Krak Grenade
   rules:
   - Psyker - 2
-  - Deny - 1FNP - 5
+  - Deny - 2
+  - Deny - Bonus - 1
+  - FNP - 5
   cost: 145
   keywords: *1
 The Sanguinor: !ruby/object:CodexEntry
@@ -121,6 +128,7 @@ The Sanguinor: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Encarmine Broadsword
   - Frag Grenade
@@ -143,6 +151,7 @@ Astorath: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Excecutioners Axe
   - Bolt Pistol
@@ -167,6 +176,7 @@ Sanguinary Priest: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Chainsword
   - Bolt Pistol
@@ -188,6 +198,7 @@ Sanguinary Priest on Bike: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Chainsword
   - Bolt Pistol
@@ -209,6 +220,7 @@ Brother Corbulo: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Heavens Teeth
   - Bolt Pistol
@@ -216,8 +228,8 @@ Brother Corbulo: !ruby/object:CodexEntry
   - Krak Grenade
   rules:
   - Aura - 6 - Strength - 1
-  - Narthecium
-  - Aura - 6 - Chain Attacks - 6
+  - Healing - D3
+  - Aura - 6 - Rend - Fight - Extra Attack
   cost: 94
   keywords: *1
 Sanguinary Guard Ancient: !ruby/object:CodexEntry
@@ -231,6 +243,7 @@ Sanguinary Guard Ancient: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Encarmine Sword
   - Angelus Boltgun
@@ -255,6 +268,7 @@ Terminator Ancient: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Lightning Claw
   - Frag Grenade
@@ -275,6 +289,7 @@ Death Company: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear:
   - Chainsword
   - Bolt Pistol
@@ -296,6 +311,7 @@ Lemartes: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Blood Crozius
   - Bolt Pistol
@@ -320,6 +336,7 @@ Sanguinary Guard: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Encarmine Sword
   - Angelus Boltgun
@@ -340,6 +357,7 @@ Death Company Dreadnought: !ruby/object:CodexEntry
     A: 4
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear:
   - Furioso Fist
   - Furioso Fist
@@ -366,6 +384,7 @@ Furioso Dreadnought: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Furioso Fist
   - Furioso Fist
@@ -386,6 +405,7 @@ Baal Predator: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Twin Assault Cannon
   rules: *4
@@ -405,6 +425,7 @@ Gabriel Seth: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Blood Reaver
   - Bolt Pistol
@@ -427,6 +448,7 @@ Azrael: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Sword of Secrets
   - Lions Wrath
@@ -451,6 +473,7 @@ Belial: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Sword of Silence
   - Storm Bolter
@@ -471,6 +494,7 @@ Sammael on Corvex: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Raven Sword
   - Bolt Pistol
@@ -496,6 +520,7 @@ Sammael on Sableclaw: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Raven Sword
   - Bolt Pistol
@@ -521,6 +546,7 @@ Interrogator-Chaplain in Terminator Armor: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Crozius Arcanum
   - Bolt Pistol
@@ -543,6 +569,7 @@ Interrogator-Chaplain on Bike: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Crozius Arcanum
   - Storm Bolter
@@ -565,6 +592,7 @@ Asmodai: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Blades of Reason
   - Crozius Arcanum
@@ -589,6 +617,7 @@ Ezekiel: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Traitors Bane
   - The Deliverer
@@ -612,6 +641,7 @@ Deathwing Apothecary: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Storm Bolter
   rules:
@@ -631,6 +661,7 @@ Deathwing Ancient: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear: &5
   - Storm Bolter
   - Power Fist
@@ -651,6 +682,7 @@ Deathwing Champion: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Halberd of Caliban
   rules:
@@ -670,6 +702,7 @@ Deathwing Terminator: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear: *5
   rules: &6
   - Invulnerable - 5
@@ -687,6 +720,7 @@ Deathwing Sergeant: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Power Sword
   - Storm Bolter
@@ -704,6 +738,7 @@ Knight Master: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Flail of the Unforgiven
   - Storm Shield
@@ -723,6 +758,7 @@ Deathwing Knight: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Mace of Absolution
   - Storm Shield
@@ -740,6 +776,7 @@ Ravenwing Apothecary: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Corvus Hammer
   - Bolt Pistol
@@ -763,6 +800,7 @@ Ravenwing Ancient: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Corvus Hammer
   - Bolt Pistol
@@ -786,6 +824,7 @@ Ravenwing Champion: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Blade of Caliban
   - Bolt Pistol
@@ -809,6 +848,7 @@ Ravenwing Bike: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: &8
   - Twin Boltgun
   - Bolt Pistol
@@ -830,6 +870,7 @@ Ravenwing Sergeant: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: *8
   rules: *9
   cost: 32
@@ -845,6 +886,7 @@ Ravenwing Attack Bike: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: &32
   - Heavy Bolter
   - Twin Boltgun
@@ -865,6 +907,7 @@ Ravenwing Land Speeder: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear:
   - Heavy Bolter
   rules:
@@ -887,6 +930,7 @@ Ravenwing Darkshroud: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Heavy Bolter
   rules:
@@ -905,6 +949,7 @@ Nephilim Jetfighter: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Avenger Mega Bolter
   - Twin Heavy Bolter
@@ -928,6 +973,7 @@ Ravenwing Dark Talon: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Hurricane Bolter
   - Hurricane Bolter
@@ -950,6 +996,7 @@ Ravenwing Black Knight: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: &11
   - Corvus Hammer
   - Bolt Pistol
@@ -972,6 +1019,7 @@ Ravenwing Huntsmaster: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: *11
   rules: *12
   cost: 50
@@ -987,6 +1035,7 @@ Ravenwing Land Speeder Vengance: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Heavy Bolter
   - Plamsa Storm Bolter
@@ -1006,6 +1055,7 @@ Logan Grimnar: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Axe of Morkai
   - Storm Bolter
@@ -1026,6 +1076,7 @@ Logan Grimnar on Stormrider: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Axe of Morkai
   - Storm Bolter
@@ -1048,6 +1099,7 @@ Wolf Lord on Thunderwolf: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Chainsword
   - Bolt Pistol
@@ -1071,6 +1123,7 @@ Ragnar Blackmane: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Frostfang
   - Bolt Pistol
@@ -1094,6 +1147,7 @@ Svangir: !ruby/object:CodexEntry
     A: 3
     Ld: 4
     Sv: 
+    Invuln: 7
   gear:
   - Teeth and Claws
   rules: []
@@ -1110,6 +1164,7 @@ Krom Dragongraze: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Wyrmclaw
   - Bolt Pistol
@@ -1133,6 +1188,7 @@ Arjac Rockfist: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Foehammer
   rules:
@@ -1158,6 +1214,7 @@ Harald Deathwolf: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Glacius
   - Bolt Pistol
@@ -1182,6 +1239,7 @@ Canis Wolfborn: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Two Wolf Claws
   - Bolt Pistol
@@ -1206,6 +1264,7 @@ Rune Priest: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Runic Axe
   - Bolt Pistol
@@ -1227,6 +1286,7 @@ Rune Priest in Terminator Armor: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Runic Axe
   - Storm Bolter
@@ -1247,6 +1307,7 @@ Rune Priest on Bike: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Runic Axe
   - Storm Bolter
@@ -1266,6 +1327,7 @@ Njal Stormcaller: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear: &13
   - Staff of the Stormcaller
   - Nightwing
@@ -1291,6 +1353,7 @@ Njal Stormcaller in Runic Terminator Armor: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear: *13
   rules: *14
   cost: 167
@@ -1306,6 +1369,7 @@ Wolf Priest: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Crozius Arcanum
   - Bolt Pistol
@@ -1328,6 +1392,7 @@ Wolf Priest in Terminator Armor: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Crozius Arcanum
   - Storm Bolter
@@ -1348,6 +1413,7 @@ Wolf Priest on Bike: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Crozius Arcanum
   - Bolt Pistol
@@ -1372,6 +1438,7 @@ Ulrik the Slayer: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Crozius Arcanum
   - Plasma Pistol
@@ -1380,7 +1447,7 @@ Ulrik the Slayer: !ruby/object:CodexEntry
   rules:
   - Aura - 6 - Reroll - Fight - Hits - All
   - Invulnerable - 4
-  - Healing Balms - D3
+  - Healing - D3
   cost: 133
   keywords: *1
 Wolf Guard Battle Leader: !ruby/object:CodexEntry
@@ -1394,6 +1461,7 @@ Wolf Guard Battle Leader: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Chainsword
   - Bolt Pistol
@@ -1414,6 +1482,7 @@ Wolf Guard Battle Leader in Terminator Armor: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear: &25
   - Power Sword
   - Storm Bolter
@@ -1434,6 +1503,7 @@ Wolf Guard Battle Leader on Bike: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Chainsword
   - Bolt Pistol
@@ -1455,6 +1525,7 @@ Wolf Guard Battle Leader on Thunderwolf: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Chainsword
   - Bolt Pistol
@@ -1476,6 +1547,7 @@ Bjorn the Fell-handed: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Trueclaw
   - Assault Cannon
@@ -1498,6 +1570,7 @@ Blood Claw: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: &15
   - Chainsword
   - Bolt Pistol
@@ -1519,6 +1592,7 @@ Skyclaw: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: *15
   rules: *16
   cost: 13
@@ -1534,6 +1608,7 @@ Blood Claw Pack Leader: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: *15
   rules: *16
   cost: 13
@@ -1549,6 +1624,7 @@ Wolf Guard Pack Leader: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: *15
   rules: *16
   cost: 16
@@ -1564,6 +1640,7 @@ Wolf Guard Pack Leader in Terminator Armor: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Power Sword
   - Storm Bolter
@@ -1583,6 +1660,7 @@ Lukas the Trickster: !ruby/object:CodexEntry
     A: 4
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Claw of the Jackalwolf
   - Plasma Pistol
@@ -1609,6 +1687,7 @@ Grey Hunter: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: &17
   - Boltgun
   - Bolt Pistol
@@ -1629,6 +1708,7 @@ Grey Hunter Pack Leader: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: *17
   rules: *18
   cost: 14
@@ -1644,6 +1724,7 @@ Wolf Guard: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: *17
   rules: *18
   cost: 16
@@ -1659,6 +1740,7 @@ Long Fang: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: *17
   rules: &19
   - ATSKNF
@@ -1676,6 +1758,7 @@ Long Fang Pack Leader: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: *17
   rules: *19
   cost: 15
@@ -1691,6 +1774,7 @@ Iron Priest: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Thunder Hammer
   - Boltgun
@@ -1713,6 +1797,7 @@ Iron Priest on Bike: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Thunder Hammer
   - Boltgun
@@ -1736,6 +1821,7 @@ Iron Priest on Thunderwolf: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Thunder Hammer
   - Boltgun
@@ -1757,6 +1843,7 @@ Cyberwolf: !ruby/object:CodexEntry
     A: 3
     Ld: 4
     Sv: 4
+    Invuln: 7
   gear: &21
   - Teeth and Claws
   rules: *20
@@ -1773,6 +1860,7 @@ Fenrisian Wolf: !ruby/object:CodexEntry
     A: 2
     Ld: 4
     Sv: 6
+    Invuln: 7
   gear: *21
   rules: *20
   cost: 9
@@ -1788,6 +1876,7 @@ Wolf Scout: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 4
+    Invuln: 7
   gear: &22
   - Boltgun
   - Bolt Pistol
@@ -1808,6 +1897,7 @@ Wolf Scout Pack Leader: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 4
+    Invuln: 7
   gear: *22
   rules: *23
   cost: 11
@@ -1823,6 +1913,7 @@ Wulfen: !ruby/object:CodexEntry
     A: 3
     Ld: 7
     Sv: 4
+    Invuln: 7
   gear:
   - Wulfen Claws
   rules: &24
@@ -1845,6 +1936,7 @@ Wulfen Pack Leader: !ruby/object:CodexEntry
     A: 4
     Ld: 7
     Sv: 4
+    Invuln: 7
   gear:
   - Frost Claws
   rules: *24
@@ -1861,6 +1953,7 @@ Lone Wolf: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: *15
   rules: &26
   - Death Throws - 4
@@ -1878,6 +1971,7 @@ Lone Wolf in Terminator Armor: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: *25
   rules: *26
   cost: 115
@@ -1893,6 +1987,7 @@ Murderfang: !ruby/object:CodexEntry
     A: 5
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Murderclaws
   - Storm Bolter
@@ -1912,6 +2007,7 @@ Wolf Guard on Bike: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: &27
   - Chainsword
   - Bolt Pistol
@@ -1933,6 +2029,7 @@ Wolf Guard Pack Leader on Bike: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: *27
   rules: *28
   cost: 34
@@ -1948,6 +2045,7 @@ Wolf Guard in Terminator Armor: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Power Fist
   - Storm Bolter
@@ -1965,6 +2063,7 @@ Swift Claw: !ruby/object:CodexEntry
     A: 1
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: &30
   - Chainsword
   - Bolt Pistol
@@ -1988,6 +2087,7 @@ Swift Claw Pack Leader: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: *30
   rules: *31
   cost: 31
@@ -2003,6 +2103,7 @@ Swiftclaw Attack Bike: !ruby/object:CodexEntry
     A: 2
     Ld: 7
     Sv: 3
+    Invuln: 7
   gear: *32
   rules: *31
   cost: 45
@@ -2018,6 +2119,7 @@ Stormwolf Gunship: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Lascannon
   - Lascannon
@@ -2041,6 +2143,7 @@ Stormfang Gunship: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Helfrost Destructor
   - Twin Heavy Bolter
@@ -2060,6 +2163,7 @@ Corvus Blackstar: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Twin Assault Cannon
   - Stormstrike Missile LauncherStormstrike Missile Launcher
@@ -2077,6 +2181,7 @@ Thunderwolf Cavalry: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear:
   - Chainsword
   - Bolt Pistol
@@ -2097,6 +2202,7 @@ Watch Master: !ruby/object:CodexEntry
     A: 5
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Guardian Spear
   - Frag Grenade
@@ -2117,6 +2223,7 @@ Watch Captain Artemis: !ruby/object:CodexEntry
     A: 4
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear:
   - Power Sword
   - Hellfire Extremis
@@ -2140,6 +2247,7 @@ Deathwatch Veteran: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: &34
   - Boltgun - Deathwatch
   - Frag Grenades
@@ -2158,6 +2266,7 @@ Deathwatch Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear: *34
   rules: *18
   cost: 19
@@ -2173,6 +2282,7 @@ Black Shield: !ruby/object:CodexEntry
     A: 3
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: *34
   rules:
   - Heroic Intervention
@@ -2189,6 +2299,7 @@ Deathwatch Terminator: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 2
+    Invuln: 7
   gear:
   - Storm Bolter
   - Power Fist
@@ -2208,6 +2319,7 @@ Deathwatch Terminator Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 2
+    Invuln: 7
   gear:
   - Storm Bolter
   - Power Sword
@@ -2225,6 +2337,7 @@ Deathwatch Biker: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: &36
   - Frag Grenade
   - Krak Grenade
@@ -2245,6 +2358,7 @@ Deathwatch Biker Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear: *36
   rules: *37
   cost: 34
@@ -2260,6 +2374,7 @@ Deathwatch Vanguard Veteran: !ruby/object:CodexEntry
     A: 2
     Ld: 8
     Sv: 3
+    Invuln: 7
   gear: &38
   - Frag Grenade
   - Krak Grenade
@@ -2282,6 +2397,7 @@ Deathwatch Vanguard Sergeant: !ruby/object:CodexEntry
     A: 3
     Ld: 9
     Sv: 3
+    Invuln: 7
   gear: *38
   rules: *39
   cost: 21

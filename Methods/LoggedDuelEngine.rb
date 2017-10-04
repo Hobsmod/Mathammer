@@ -103,21 +103,21 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 		
 		#### Use Psyker Powers
 		if charger.getPowers.size >= 1
-			logfile.puts "#{charger.name} can now use their psychic powers"
+			logfile.puts "---------------------#{charger.name} can now use their psychic powers---------------"
 			cast_results = CastPowersWithDenier(charger,defender,range,logfile)
 			dmg_to_defender = dmg_to_defender + cast_results[0]
 			dmg_to_charger = dmg_to_charger + cast_results[1]
 			if cast_results[0] > 0
-				logfile.puts "#{defender.name} took #{cast_results[0]} damage from psychic powers and has #{atk_wounds - dmg_to_charger} wounds left"
+				logfile.puts "#{defender.name} took #{cast_results[0]} damage from psychic powers and has #{def_wounds - dmg_to_defender} wounds left"
 			end
 			if cast_results[1] > 0
-				logfile.puts "#{charger.name} took #{cast_results[1]} damage from perils and has #{def_wounds - dmg_to_defender} wounds left"
+				logfile.puts "#{charger.name} took #{cast_results[1]} damage from perils and has #{atk_wounds - dmg_to_charger} wounds left"
 			end
 		end
-		
+	
 		charger.ApplyModifiers
 		defender.ApplyModifiers
-		
+	
 		#### Check if anyone has won
 		if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds
 			logfile.puts "The defender, #{defender.name} won!"

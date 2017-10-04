@@ -296,3 +296,7 @@ Infernum Halo-Launcher,STD,5,0,Gear,0,0,0,0,
 Storm Shield - Deathwatch,STD,15,0,Shield,0,0,0,0,Gear - Invulnerable - 3
 Storm Shield,STD,15,0,Shield,0,0,0,0,Gear - Invulnerable - 3
 Thunder Hammer,Melee,0,0,Melee,0,*2,-3,3,Unwieldy
+Smite,Standard,0,18,Psychic - Smite - 5,0,0,0,0,Overcast - 10 - Mortals - D6 - D3,
+Blood Boil,Standard,0,18,Psychic - Trait - Test - 5,0,0,0,0,Trait - Test - T - D6 - 3 - Mortals - 1
+Shield of Sanguinius,Standard,0,12,Psychic - Buff - 6,0,0,0,0,Psychic - Add Rule - 2 - Invulnerable - 4
+Unleash Rage,Standard,0,12,Psychic - Buff - 6,0,0,0,0,Psychic - Add Stat - 2 - Attacks - 1
