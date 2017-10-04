@@ -315,7 +315,7 @@ def CalcShootingSaves(wounds, shooter, target, weapon, mode,logfile)
 	
 end
 
-def CalcShootingDamage(felt_wounds, attacker, target, weapon, mode,logfile)
+def CalcShootingDamage(felt_wounds, attacker, target, weapon, mode, range, logfile)
 	if felt_wounds == 0
 		return 0.0
 	end
@@ -323,13 +323,19 @@ def CalcShootingDamage(felt_wounds, attacker, target, weapon, mode,logfile)
 	fnp = target.getFNP()
 	d = CalcDiceAvg(weapon.getD(mode))
 	wounds = target.stats['W'].to_f
-
+	
+	if weapon.hasRule?(mode, 'Melta') && (weapon.stats[mode]['Range'] / 2) >= range
+		d = 4.47
+	end
+	
 	## Increase damage for grav weapons
 	if sv >= 3 && weapon.hasRule?(mode, 'Grav')
 		unless d > 2
 			d = 2
 		end
 	end
+	
+	
 	if target.hasRule?('Damage - Halved')
 		d = (d / 2).ceil
 	end
@@ -367,7 +373,7 @@ def CalcOverwatch(charger,shooter,wep,mode,range,logfile)
 		#puts "#{wep.name} causes #{overwatch_wounds} wounds"
 		unsaved = CalcShootingSaves(overwatch_wounds,  shooter, charger, wep, mode,logfile)
 		#puts "#{wep.name} causes #{unsaved} unsaved wounds"
-		dmg = CalcShootingDamage(unsaved,  shooter, charger, wep, mode,logfile)
+		dmg = CalcShootingDamage(unsaved,  shooter, charger, wep, mode, range, logfile)
 		#puts "#{wep.name} causes #{dmg} damage"
 		return dmg
 end

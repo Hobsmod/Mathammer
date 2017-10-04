@@ -299,6 +299,13 @@ def RollShootingDamage(felt_wounds, target, shooter, weapon, mode,range,logfile)
 			duel_rule = weapon.rules[mode].grep(/Duelist - Shooting - Damage/)
 			d = RollDice(duel_rule[0].split(' - ')[-1])
 		end
+		if weapon.hasRule?(mode, 'Melta') && range <= (weapon.stats[mode]['Range'] / 2)
+			d1 = (RollDice(weapon.getD(mode)))
+			logfile.puts "#{weapon.name} has the melta rule and is within half range, so it does the higher of [#{d},#{d1}]"
+			if d1 > d
+				d = d1
+			end
+		end
 		dmg_rolls.push(d)
 	end
 	
@@ -362,7 +369,7 @@ def CalcShooting(charger,shooter,wep,mode,range,moved,logfile)
 		hits = CalcShootingHits(charger,shooter,wep,mode,range,moved, logfile)
 		wounds = CalcShootingWounds(hits,shooter, charger,wep,mode,logfile)
 		unsaved = CalcShootingSaves(wounds, shooter, charger, wep, mode,logfile)
-		dmg = CalcShootingDamage(unsaved, shooter, charger, wep, mode,logfile)
+		dmg = CalcShootingDamage(unsaved, shooter, charger, wep, mode, range, logfile)
 		return dmg
 end
 
@@ -398,3 +405,95 @@ def OptimizePistolsCC(shooter, target,logfile)
 	
 end		
 	
+
+def OptShootingWepProfiles(charger,shooter,range,logfile)
+	#### Returns a hash of the best weapon(s) to fire on overwatch
+	logfile.puts " -------Calculating Average Overwatch Damage to Decide what weapons to fire!---------"
+	main_dmg = 0.0
+	pistol_dmg = 0.0
+	grenade_dmg = 0.0
+	pistols = Hash.new
+	grenade = Hash.new
+	main = Hash.new
+	
+	
+	## Calculate the best damage to use
+	shooter.getRangedWeapons.each do |weapon|
+		type = 'Blank'
+		combitypes = Array.new
+		weapon_dmg = 0.0
+		combi_dmg = 0.0
+		combi_profiles = Array.new()
+		profile = ''
+		
+		### Calculate the avg dmg for each firing mode, and the combined damage for firing all combi modes, and set profile and weapon dmg to the highest
+		weapon.getFiretypes.each do |mode|
+			profile_dmg = CalcShooting(charger,shooter,weapon,mode,range,logfile)
+			logfile.puts " --On Average #{weapon.name} in #{mode} mode firing overwatch does #{profile_dmg} damage--"
+			if weapon.hasRule?(mode ,'Combi') == true
+				combi_dmg = combi_dmg + profile_dmg
+				combitypes.push(weapon.getType(mode))
+				combi_profiles.push(mode)		
+			elsif weapon.hasRule?(mode ,'Combi') == false && profile_dmg > weapon_dmg
+				weapon_dmg = profile_dmg
+				profile = mode
+				type = weapon.getType(mode)
+			end	
+		end
+		
+		logfile.puts "Weapon Damage for the highest single profile is #{weapon_dmg} and all combi profiles combined are #{combi_dmg}"
+		
+		
+		if weapon_dmg > combi_dmg && type != 'Pistol' && type != 'Grenade'
+			main_dmg = main_dmg + weapon_dmg
+			main[weapon] = profile
+			logfile.puts "The most damaging firing mode for #{weapon.name} is #{profile}, and its dmg #{weapon_dmg} was added to main_dmg for a total of #{main_dmg}"
+		end
+		
+		#### I'm assuming there are no pistols or grenades with the combi rule, if there ever are this will let me know
+		if combi_dmg > weapon_dmg && combi_profiles.include?('Pistol') == true && combi_profiles.include?('Grenade') == true
+			puts "#{weapon.name} has a profile that has the special rule combi and is either a grenade or a pistol,
+				at present these scripts cannot handle that and will quit"
+			abort
+		end
+		
+		#### If we should fire both profiles with -1 to hit on a combi weapon, add combi dmg to main wep damage, 
+		#### and have the hash point to an array
+		if combi_dmg >= weapon_dmg && combi_profiles.include?('Pistol') == false && combi_profiles.include?('Grenade') == false
+			main_dmg = main_dmg + combi_dmg
+			main[weapon] = combi_profiles
+			logfile.puts "Added #{combi_dmg} to main dmg for a total of #{main_dmg}, added combi profiles to main hash"
+		end
+		
+		
+		### Since you can fire all pistols, but only pistols if any pistols are fired, 
+		### sum pistol dmg and make hash of pistols and profiles to be fired
+		if type == 'Pistol'
+			pistol_dmg = pistol_dmg + weapon_dmg
+			pistols[weapon] = profile
+			logfile.puts "Added #{pistol_dmg} to pistol dmg for a total of #{pistol_dmg}, added pistol profiles to main hash"
+		end
+		
+		### Since we can only fire one grenade,check if this is the most damaging grenade
+		### and clear hash before adding it
+		
+		if type == 'Grenade' && weapon_dmg > grenade_dmg
+			grenade_dmg = weapon_dmg
+			grenade = Hash.new
+			grenade[weapon] = profile
+			logfile.puts "Since this grenade is the most damaging, changed grenade dmg to #{grenade_dmg}, emptied grenade hash and added this grenade"
+		end	
+	end
+	#logfile.puts "Pistol Damage is #{pistol_dmg}, Grenade Damage is #{grenade_dmg}, Main Damage is #{main_dmg}"
+	if pistol_dmg > main_dmg && pistol_dmg > grenade_dmg
+		type = pistols
+		logfile.puts "#{shooter.name} should use their Pistols"
+	elsif grenade_dmg > main_dmg
+		type = grenade
+		logfile.puts "#{shooter.name} should use their Grenade"
+	else
+		type = main
+		logfile.puts "#{shooter.name} will fire all their weapons that are not pistols or grenades"
+	end
+	return type
+end

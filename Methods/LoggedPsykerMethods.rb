@@ -51,10 +51,6 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 			
 			if (test.inject(:+) + cast_bonus) < charge
 				logfile.puts "That's not high enough to cast this power"
-				puts "#{caster.base_stats}"
-				puts "#{caster.stats}"
-				puts "#{caster.stat_modifiers}"
-				puts "Cast Failed"
 				next
 			end
 			
