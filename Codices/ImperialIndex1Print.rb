@@ -269,7 +269,7 @@ imp_index_1['Asmodai'] = CodexEntry.new(asmodai_stats, asmodai_gear, asmodai_rul
 
 ezekiel_stats = [6,2,2,4,4,5,3,9,2]
 ezekiel_gear = ['Traitors Bane','The Deliverer','Frag Grenade','Krak Grenade']
-ezekiel_rules = ['Invulnerable - 4','Aura - 6 - Fight Back - 0','Psyker - 2','Deny - 1']
+ezekiel_rules = ['Invulnerable - 4','Aura - 6 - Fight Back - 0','Psyker - 2','Deny - Bonus - 1','Deny - 2']
 imp_index_1['Ezekiel'] = CodexEntry.new(ezekiel_stats, ezekiel_gear, ezekiel_rules, ezekiel_cost, character)
 
 deathwing_apoth_stats = [5,3,3,4,4,5,2,8,2]

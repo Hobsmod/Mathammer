@@ -275,8 +275,16 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 							
 		
 				## If defender always fights first they go here!
-				if defender.hasRule?('Always Strikes First') == true && charger.hasRule?('Always Strikes First') == false
-					logfile.puts "                      #{defender.name} always strikes first!                    "
+				if ((defender.hasRule?('Always Strikes First') == true &&
+					defender.hasRule?('Always Strikes Last') == false) &&
+					charger.hasRule?('Always Strikes First') == false) or 
+					charger.hasRule?('Always Strikes Last') == true
+					
+					if defender.hasRule?('Always Strikes First') == true
+						logfile.puts "                      #{defender.name} always strikes first!                    "
+					elsif charger.hasRule?('Always Strikes Last') == true
+						logfile.puts "     #{charger.name} always strikes last, so #{defender.name} strikes first    "
+					end
 					logfile.puts "                        Roll Defenders round #{round} Attacks                  "
 					dmg_to_charger = dmg_to_charger + RollMeleeWeapon(defender,charger,def_wep,def_mode,false,logfile)
 					logfile.puts "#{charger.name} has #{atk_wounds - dmg_to_charger} wounds left"

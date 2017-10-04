@@ -300,3 +300,5 @@ Smite,Standard,0,18,Psychic - Smite - 5,0,0,0,0,Overcast - 10 - Mortals - D6 - D
 Blood Boil,Standard,0,18,Psychic - Trait - Test - 5,0,0,0,0,Trait - Test - T - D6 - 3 - Mortals - 1
 Shield of Sanguinius,Standard,0,12,Psychic - Buff - 6,0,0,0,0,Psychic - Add Rule - 2 - Invulnerable - 4
 Unleash Rage,Standard,0,12,Psychic - Buff - 6,0,0,0,0,Psychic - Add Stat - 2 - Attacks - 1
+Mind Worm, Standard,0,12,Psychic - Debuff - Smite - 6,0,0,0,0,Psychic - Add Rule - 1 - Always Strikes Last, Mortals - 1
+Aversion, Standard,0,12,Psychic - Debuff - 6,0,0,0,0,Psychic - Add Rule - 2 - Modifier - All - Hits - -1

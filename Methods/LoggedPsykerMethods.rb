@@ -72,19 +72,36 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 			
 			### Resolve the effects of the power
 			if power.getType(mode) =~ /Buff/
-				power.rules[mode].grep(/Psychic - Add Rule/).each do |string|
+				power.rules[mode].grep(/Add Rule/).each do |string|
 					rule = string.split(' - ')
 					rule_text = rule[3..-1].join(' - ')
 					logfile.puts "#{power.name} gives #{caster.name} the #{rule_text} special rule for #{rule[2]} rounds"
 					caster.addRuleModifier(rule[2], rule_text)
 				end
 	
-				power.rules[mode].grep(/Psychic - Add Stat/).each do |string|
+				power.rules[mode].grep(/Add Stat/).each do |string|
 					rule = string.split(' - ')
 					logfile.puts "#{power.name} increases #{caster.name}'s #{rule[-2]} by #{rule[-1]} for #{rule[-3]} rounds"
 					caster.addStatModifier(rule[-3],rule[-2],rule[-1].to_i)
 				end
 			end
+			
+			
+			if power.getType(mode) =~ /Debuff/
+				power.rules[mode].grep(/Add Rule/).each do |string|
+					rule = string.split(' - ')
+					rule_text = rule[3..-1].join(' - ')
+					logfile.puts "#{power.name} gives #{denier.name} the #{rule_text} special rule for #{rule[2]} rounds"
+					denier.addRuleModifier(rule[2], rule_text)
+				end
+	
+				power.rules[mode].grep(/Add Stat/).each do |string|
+					rule = string.split(' - ')
+					logfile.puts "#{power.name} increases #{denier.name}'s #{rule[-2]} by #{rule[-1]} for #{rule[-3]} rounds"
+					denier.addStatModifier(rule[-3],rule[-2],rule[-1].to_i)
+				end
+			end
+			
 			
 			if power.getType(mode) =~ /Smite/ && power.getRange(mode) >= range
 				power.rules[mode].grep(/Overcast/).each do |string|
@@ -99,9 +116,15 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 						mortals.push(dmg)
 						logfile.puts "#{power.name} does #{rule[-1]} mortal wounds for a total of #{dmg}" 
 					end
-					
-					
-					
+				end
+				
+				power.rules[mode].grep(/Mortals/).each do |string|
+					unless string =~ /Overcast/
+						rule = string.split(' - ')
+						dmg = RollDice(rule[-1])
+						mortals.push(dmg)
+						logfile.puts "#{power.name} does #{rule[-1]} mortal wounds for a total of #{dmg}" 
+					end
 				end
 			end
 			

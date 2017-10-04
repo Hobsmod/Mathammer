@@ -74,7 +74,19 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 		modifier = modifier - 1
 		logfile.puts "Combi weapons have a -1 penalty to hit when firing both modes at once"
 	end
-	
+	if shooter.rules.grep(/Modifier/).size > 0
+			shooter.rules.grep(/Modifier/).each do |rule|
+			string = rule.split(' - ')
+			if (string[-2] == 'Hits' or string[-2] == 'All') &&
+				(string[-3] == 'Shooting' or string[-3] == 'All')
+				
+				modifier = modifier + string[-1].to_i
+				logfile.puts "#{shooter.name} has a rule which gives them a #{string[-1]} modifier to hit"
+			end
+		end
+	end
+			
+			
 	if modifier != 0
 		rolls.map!{|x| x + modifier}
 		logfile.puts "After modifiers the rolls are #{rolls}"

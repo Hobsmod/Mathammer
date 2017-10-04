@@ -165,6 +165,9 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 		rolls = RerollFightHits(attacker, target, weapon, mode, rolls, to_hit, logfile)
 	end
 	
+	
+
+	
 	sixes = rolls.count(6)
 	
 	# check if those rolls generate any additional attacks
@@ -208,6 +211,18 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 		modifier = modifier + 1
 	end
 	
+	if attacker.rules.grep(/Modifier/).size> 0
+		attacker.rules.grep(/Modifier/).each do |rule|
+			string = rule.split(' - ')
+			if (string[-2] == 'Hits' or string[-2] == 'All') &&
+				(string[-3] == 'Fight' or string[-3] == 'All')
+				
+				modifier = modifier + string[-1].to_i
+				logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to hit"
+			end
+		end
+	end
+			
 	if rolls.include?('1') == true && modifer =! 0
 		rolls.delete_if {|x| x == 1}
 		logfile.puts "All ones fail and are removed leaving #{rolls}"
