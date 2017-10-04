@@ -186,10 +186,19 @@ def CalcShootingHits(target,shooter,weapon,mode,range,moved,logfile)
 		logfile.puts "#{weapon.name} takes a -1 penalty to hit when targetting shooters with the 'Fly' rule"
 	elsif weapon.hasRule?(mode, 'AA Only') && target.hasRule?('Fly') == false
 		logfile.puts "#{weapon.name} gets +1 to hit when targetting shooters with the 'Fly' rule"
-		modifier = modifier + 1
+		modifier = modifier - 1
 	end
 	
-	prob = (6 - (to_hit - modifier)) / 6
+	if weapon.hasRule?(mode, 'Combi')
+		modifier = modifier + 1
+		logfile.puts "Combi weapons have a -1 penalty to hit when firing both modes at once"
+	end
+	to_hit = to_hit - modifier
+	if to_hit > 5 
+		to_hit = 5
+	end
+	
+	prob = (6 - to_hit) / 6
 	
 	# Begin to Calculate Rerolls
 	### Determine what we are rerolling
