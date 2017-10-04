@@ -31,6 +31,10 @@ class Unit2
 			gear_cost = 0
 			
 			new_gear.each do |item|
+				puts item
+				if item == nil
+					puts item
+				end
 				gear_cost = gear_cost + gear_hash[item].getCost
 				#puts "#{item}, #{gear_cost}"
 			end

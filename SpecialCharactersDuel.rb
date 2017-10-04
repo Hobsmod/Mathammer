@@ -14,6 +14,8 @@ space_marine_codex = YAML.load(File.read('Codices\SpaceMarineCodex.yml'))
 sm_wep = LoadWeapons('Codices\SMWeapons.csv')
 imp_ind_1 = YAML.load(File.read('Codices\ImperialIndex1.yml')) 
 imp_ind_wep = LoadWeapons('Codices\ImpInd1Weapons.csv')
+gk_codex = YAML.load(File.read('Codices\GreyKnightsCodex.yml'))
+gk_wep = LoadWeapons('Codices\GK+SMWeapons.csv')
 hero_hash = Hash.new()
 
 hero_hash['Captain Lysander'] = Unit2.new()
@@ -109,6 +111,21 @@ hero_hash['Njal Stormcaller'] = Unit2.new()
 hero_hash['Njal Stormcaller'].addModels(imp_ind_1, imp_ind_wep, 'Njal Stormcaller', 1, [],[] )
 hero_hash['Njal Stormcaller'].getModels[0].addGear(imp_ind_wep, ['Jaws of the World Wolf','Tempests Wrath'])
 
+hero_hash['Lord Kaldor Draigo'] = Unit2.new()
+hero_hash['Lord Kaldor Draigo'].addModels(gk_codex, gk_wep, 'Lord Kaldor Draigo', 1, [],[] )
+hero_hash['Lord Kaldor Draigo'].getModels[0].addGear(gk_wep, ['Rites of Banishment','Hammerhand'])
+
+hero_hash['Grand Master Voldus'] = Unit2.new()
+hero_hash['Grand Master Voldus'].addModels(gk_codex, gk_wep, 'Grand Master Voldus', 1, [],[] )
+hero_hash['Grand Master Voldus'].getModels[0].addGear(gk_wep, ['Rites of Banishment','Hammerhand'])
+
+hero_hash['Castellan Crowe'] = Unit2.new()
+hero_hash['Castellan Crowe'].addModels(gk_codex, gk_wep, 'Castellan Crowe', 1, [],[] )
+hero_hash['Castellan Crowe'].getModels[0].addGear(gk_wep, ['Rites of Banishment','Hammerhand'])
+
+hero_hash['Brother-Captain Stern'] = Unit2.new()
+hero_hash['Brother-Captain Stern'].addModels(gk_codex, gk_wep, 'Brother-Captain Stern', 1, [],[] )
+hero_hash['Brother-Captain Stern'].getModels[0].addGear(gk_wep, ['Rites of Banishment','Hammerhand'])
 
 
 out_file.print "Attacker,"
@@ -118,6 +135,8 @@ hero_hash.each do |key, value|
 	value.getModels[0].ApplyGear
 	out_file.print "#{key},"
 end
+
+puts "#{hero_hash['Lord Kaldor Draigo'].getModels[0].rules}"
 
 
 out_file.print "\n"
@@ -133,7 +152,7 @@ hero_hash.each do |key, value|
 		if key == key2
 			next
 		end
-		odds = Duel(sm_wep,value,value2,10,log_file)
+		odds = Duel(sm_wep,value,value2,5000,log_file)
 		if key == key2
 			#puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
 		else 

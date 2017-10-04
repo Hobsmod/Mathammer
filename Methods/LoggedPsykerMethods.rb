@@ -119,11 +119,24 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 				end
 				
 				power.rules[mode].grep(/Mortals/).each do |string|
-					unless string =~ /Overcast/
+					unless string =~ /Overcast/ or string =~ /Keyword/
 						rule = string.split(' - ')
 						dmg = RollDice(rule[-1])
 						mortals.push(dmg)
 						logfile.puts "#{power.name} does #{rule[-1]} mortal wounds for a total of #{dmg}" 
+					end
+					
+					if string =~ /Keyword/
+						rule = string.split(' - ')
+						
+						if denier.hasKeyword?(rule[1])
+							dmg = RollDice(rule[-2])
+						else
+							dmg = RollDice(rule[-1])
+						end
+						
+						mortals.push(dmg)
+						logfile.puts "#{power.name} does #{dmg} mortal wounds" 
 					end
 				end
 			end

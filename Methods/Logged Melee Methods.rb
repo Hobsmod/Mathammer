@@ -565,6 +565,23 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 		end
 	end
 	
+	modifier = 0
+	
+	if attacker.rules.grep(/Modifier/).size> 0
+		attacker.rules.grep(/Modifier/).each do |rule|
+			string = rule.split(' - ')
+			if (string[-2] == 'Wounds' or string[-2] == 'All') &&
+				(string[-3] == 'Fight' or string[-3] == 'All')
+				
+				modifier = modifier + string[-1].to_i
+				logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to hit"
+			end
+		end
+	end
+	if modifier != 0
+		rolls.map!{|roll| roll + modifier}
+		logfile.puts "After modifiers the rolls are #{rolls}"
+	end
 	
 	### prepare array to return
 	sixes = rolls.count(6)

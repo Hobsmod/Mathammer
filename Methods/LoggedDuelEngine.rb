@@ -357,10 +357,10 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 					
 					### Print damage to logfile
 					if cast_results[1] > 0
-						logfile.puts "#{defender.name} took #{cast_results[1]} damage from psychic powers and has #{atk_wounds - dmg_to_charger} wounds left"
+						logfile.puts "#{defender.name} took #{cast_results[1]} damage from perils and has #{atk_wounds - dmg_to_charger} wounds left"
 					end
 					if cast_results[0] > 0
-						logfile.puts "#{charger.name} took #{cast_results[0]} damage from perils and has #{def_wounds - dmg_to_defender} wounds left"
+						logfile.puts "#{charger.name} took #{cast_results[0]} damage from psychic powers and has #{def_wounds - dmg_to_defender} wounds left"
 					end
 					
 					#### Check if anyone has won

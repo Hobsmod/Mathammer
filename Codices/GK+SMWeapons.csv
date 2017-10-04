@@ -104,7 +104,7 @@ Psilencer,Standard,4,24,Heavy,6,4,0,D3,
 Psilencer (Terminator),Standard,10,24,Heavy,6,4,0,D3,
 Psycannon,Standard,14,24,Heavy,4,7,-1,1
 Psycannon (Terminator),Standard,20,24,Heavy,4,7,-1,1
-Psyk-out Grenade,Standard,0,6,Grenade,D3,2,0,1
+Psykout Grenade,Standard,0,6,Grenade,D3,2,0,1,Rend - Hits - Psyker - Mortals - 1
 Predator Autocannon,Standard,49,48,Heavy,2D3,7,-1,3
 Quietus,Standard,0,36,Heavy,2,4,-1,D3,Sniper
 Reaper Autocannon,Standard,18,36,Heavy,4,7,-1,1,
@@ -155,3 +155,9 @@ Siege Drills,Standard,0,0,Melee,0,*2,-4,3,
 Servo Arm,Standard,0,0,Melee,0,*2,-2,3,Unwieldy,One Use
 Auto Launcher,Standard,0,0,Buff,0,0,0,0,Hard to Hit
 Blank,Standard,0,0,0,0,0,0,0,0,
+The Titansword,Melee,0,0,Melee,0,+4,-4,3,
+Maleus Argyrum,Melee,0,0,Melee,0,*2,-3,3
+Black Blade of Antwyr,Melee,0,0,Melee,0,0,0,1,Rend - Fight - Extra Attack,
+Nemesis Force Sword,Melee,0,0,Melee,0,0,-3,D3
+Rites of Banishment,Psychic,0,12,Psychic - Smite - 5,0,0,0,0,Keyword - Daemons - Mortals - D3 - 1
+Hammerhand,Psychic,0,12,Psychic - Buff - 6,0,0,0,0,Psychic - Add Rule - 2 - Modifier - All - Wounds - 1

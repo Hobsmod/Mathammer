@@ -62,12 +62,12 @@ class ModelWithWeapons
 	end
 			
 	def hasKeyword(keyword)
-		
 		keywords.include? keyword
-
 	end
 	
-
+	def hasKeyword?(keyword)
+		keywords.include? keyword
+	end
 	
 	def ApplyGear()
 		### Take rules that are on wargear and add them to the model

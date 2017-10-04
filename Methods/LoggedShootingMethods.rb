@@ -222,6 +222,22 @@ def RollShootingWounds(hits,target,shooter,weapon,mode,range,logfile)
 		end
 	end
 	
+	modifier = 0
+	if shooter.rules.grep(/Modifier/).size> 0
+		shooter.rules.grep(/Modifier/).each do |rule|
+			string = rule.split(' - ')
+			if (string[-2] == 'Wounds' or string[-2] == 'All') &&
+				(string[-3] == 'Shooting' or string[-3] == 'All')
+				
+				modifier = modifier + string[-1].to_i
+				logfile.puts "#{shooter.name} has a rule which gives them a #{string[-1]} modifier to hit"
+			end
+		end
+	end
+	if modifier != 0
+		rolls.map!{|roll| roll + modifier}
+		logfile.puts "After modifiers the rolls are #{rolls}"
+	end
 	
 	### prepare array to return
 	sixes = rolls.count(6)
