@@ -20,6 +20,7 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 	atk_wep = atk_arry[0]
 	atk_mode= atk_arry[1]
 	atk_pistol_hash = OptimizePistolsCC(charger,defender,logfile)
+	atk_shooting_profiles = OptShootingWepProfiles(defender,charger,range,true,logfile)
 	atk_wounds = charger.stats['W']
 	
 	def_arry = OptMeleeWeapon(defender,charger,logfile)
@@ -46,6 +47,52 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 		
 
 		logfile.puts "--------------Beginning Duel Number #{iter} of #{iterations} -----------------------"
+		
+		#### Charger Fires their weapons
+		
+		logfile.puts "------ The Charger fires a volley before they charge ------------"
+		volley_dmg = 0
+		self_volley_dmg = 0 
+		
+		atk_shooting_profiles.each do |wep, profile_s|	
+			if profile_s.is_a?(Array)
+				profile_s.each do |profile|
+					prof_dmg = RollWeaponShooting(defender,charger,wep,profile,range,true,logfile)
+					volley_dmg = volley_dmg + prof_dmg[0]
+					self_volley_dmg = self_volley_dmg + prof_dmg[1]
+				end	
+			else 
+				prof_dmg = RollWeaponShooting(defender,charger,wep,profile_s,range,true,logfile)
+				volley_dmg = volley_dmg + prof_dmg[0]
+				self_volley_dmg = self_volley_dmg + prof_dmg[1]
+			end
+		end
+		
+	
+		dmg_to_charger = dmg_to_charger + self_volley_dmg
+		dmg_to_defender = dmg_to_defender + volley_dmg
+		logfile.puts "#{defender.name} took a total of #{volley_dmg} from the chargers initial volley leaving them with #{def_wounds - dmg_to_defender} wounds"
+		if self_volley_dmg > 0
+			logfile.puts "#{charger.name} took a total of #{self_volley_dmg} self inflicted wounds leaving them with #{atk_wounds - dmg_to_charger} wounds"
+		end
+		
+	#### Check if anyone has won
+		if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds
+			logfile.puts "The defender, #{defender.name} won!"
+			defender_victories = defender_victories + 1.0
+			break
+		end
+		if dmg_to_defender >= def_wounds && dmg_to_charger < atk_wounds
+			logfile.puts "The charger, #{charger.name} won!"
+			attacker_victories = attacker_victories + 1.0
+			break
+		end
+		if dmg_to_defender >= def_wounds && dmg_to_charger >= atk_wounds
+			logfile.puts "Both Characters were killed, this is counted as a half - victory"
+			defender_victories = defender_victories + 0.5
+			attacker_victories = attacker_victories + 0.5
+			break
+		end
 		
 		
 		

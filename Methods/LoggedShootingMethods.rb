@@ -14,6 +14,7 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 	to_hit = shooter.stats['BS'].to_i
 	shots = RollDice(wep.getShots(mode))
 	self_wounds = 0
+	modifier = 0
 	
 	logfile.puts "#{wep.name} fires #{shots} shots"
 	
@@ -33,13 +34,13 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 		logfile.puts "#{wep.name}'s shots hit automatically for a total of #{hits} hits"
 		return [shots,0,0,0,0]
 	end
-
+	
 	
 	## RollDice for the shots
 	rolls = Array.new(shots) {rand(1..6)}
 	logfile.puts "#{shooter.name} rolls #{rolls}"
 	### Reroll Shooting
-
+	
 	
 	if (shooter.rules.grep(/Reroll/).size + wep.rules[mode].grep(/Reroll/).size) > 0 && rolls.count{ |n| n < to_hit} > 0
 		rolls = RerollShootingHits(shooter, target, wep, mode, rolls, to_hit, logfile)
@@ -70,6 +71,10 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 		modifier = modifier + 1
 	end
 	
+	if wep.hasRule?(mode,'Overheat') && rolls.include?(1)
+		self_wounds = shooter.stats['W']
+		logfile.puts "#{shooter.name}'s #{wep.name} overheated doing #{self_wounds} wounds to them" 
+	end
 	
 	hits = rolls.count{|x| x >= to_hit }
 	
@@ -366,7 +371,7 @@ end
 
 
 def CalcShooting(charger,shooter,wep,mode,range,moved,logfile)
-		hits = CalcShootingHits(charger,shooter,wep,mode,range,moved, logfile)
+		hits = CalcShootingHits(charger,shooter,wep,mode,range,moved,logfile)
 		wounds = CalcShootingWounds(hits,shooter, charger,wep,mode,logfile)
 		unsaved = CalcShootingSaves(wounds, shooter, charger, wep, mode,logfile)
 		dmg = CalcShootingDamage(unsaved, shooter, charger, wep, mode, range, logfile)
@@ -406,7 +411,7 @@ def OptimizePistolsCC(shooter, target,logfile)
 end		
 	
 
-def OptShootingWepProfiles(charger,shooter,range,logfile)
+def OptShootingWepProfiles(charger,shooter,range,moved,logfile)
 	#### Returns a hash of the best weapon(s) to fire on overwatch
 	logfile.puts " -------Calculating Average Overwatch Damage to Decide what weapons to fire!---------"
 	main_dmg = 0.0
@@ -428,7 +433,7 @@ def OptShootingWepProfiles(charger,shooter,range,logfile)
 		
 		### Calculate the avg dmg for each firing mode, and the combined damage for firing all combi modes, and set profile and weapon dmg to the highest
 		weapon.getFiretypes.each do |mode|
-			profile_dmg = CalcShooting(charger,shooter,weapon,mode,range,logfile)
+			profile_dmg = CalcShooting(charger,shooter,weapon,mode,range,moved,logfile)
 			logfile.puts " --On Average #{weapon.name} in #{mode} mode firing overwatch does #{profile_dmg} damage--"
 			if weapon.hasRule?(mode ,'Combi') == true
 				combi_dmg = combi_dmg + profile_dmg

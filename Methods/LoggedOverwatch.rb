@@ -159,7 +159,7 @@ def CalcShootingHits(target,shooter,weapon,mode,range,moved,logfile)
 	shots = CalcDiceAvg(weapon.getShots(mode)).to_f
 	
 	logfile.puts "#{shooter.name}'s #{weapon.name} fires #{shots} shots"
-	if weapon.getType(mode) == 'Rapid Fire' && (weapon_range / 2) >= range
+	if weapon.getType(mode) == 'Rapid Fire' && (wep_range / 2) >= range
 		shots = shots * 2.0
 		logfile.puts "Twice the shots when rapid firing for a total of #{shots}"
 	end
@@ -537,6 +537,6 @@ def FireOverwatch(charger, shooter, wep, mode, range,logfile)
 	wounds = RollShootingWounds(hits,charger,shooter,wep,mode,range,logfile)
 	failed = RollShootingSaves(wounds,charger,shooter,wep,mode, range, logfile)
 	damage = RollShootingDamage(failed,charger,shooter,wep,mode,range,logfile)
-
+	
 	return damage
 end
