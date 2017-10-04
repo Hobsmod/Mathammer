@@ -70,11 +70,21 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 		logfile.puts "#{wep.name} gets +1 to hit when targetting shooters with the 'Fly' rule"
 		modifier = modifier + 1
 	end
+	if wep.hasRule?(mode, 'Combi')
+		modifier = modifier - 1
+		logfile.puts "Combi weapons have a -1 penalty to hit when firing both modes at once"
+	end
+	
+	if modifier != 0
+		rolls.map!{|x| x + modifier}
+		logfile.puts "After modifiers the rolls are #{rolls}"
+	end
 	
 	if wep.hasRule?(mode,'Overheat') && rolls.include?(1)
 		self_wounds = shooter.stats['W']
 		logfile.puts "#{shooter.name}'s #{wep.name} overheated doing #{self_wounds} wounds to them" 
 	end
+	
 	
 	hits = rolls.count{|x| x >= to_hit }
 	
@@ -113,6 +123,7 @@ def RollShootingWounds(hits,target,shooter,weapon,mode,range,logfile)
 		logfile.puts "#{shooter.name} generates an extra hit for every six they rolled, and they rolled #{hits[1]} sixes"
 		hits = hits + hits[1]
 	end
+	
 	
 	###adjust strength based on weapon
 	if weapon.getS(mode)[0] == '*'
