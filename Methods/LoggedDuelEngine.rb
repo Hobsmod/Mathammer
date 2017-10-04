@@ -8,10 +8,10 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 ###each of these is a unit
 
 	range = 6
+	
 	charger = charger.getModels[0]
 	defender = defender.getModels[0]
-	charger.ClearModifiers
-	defender.ClearModifiers
+
 	
 	logfile.puts "----------------#{charger.name} Charges #{defender.name}--------------------------"
 	## get all stats
@@ -34,11 +34,15 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 	attacker_victories = 0
 
 	(1..iterations).each do |iter|
+		### Clear all modifiers, reset damage, and define the number of rounds this fight will go
 		charger.ClearModifiers
 		defender.ClearModifiers
+		charger.ApplyModifiers
+		defender.ApplyModifiers
+		
 		dmg_to_charger = 0
 		dmg_to_defender = 0
-		rounds = 10
+		rounds = 12
 		
 
 		logfile.puts "--------------Beginning Duel Number #{iter} of #{iterations} -----------------------"

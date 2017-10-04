@@ -156,7 +156,8 @@ class ModelWithWeapons
 	end
 	
 	def ApplyModifiers
-		
+		stats = base_stats.clone
+		rules = base_rules.clone
 		
 		rule_modifiers.each do |rule_arr|
 			unless rule_arr == nil

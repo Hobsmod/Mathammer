@@ -2,8 +2,8 @@ require_relative 'Dice.rb'
 
 
 def CastPowersWithDenier(caster,denier,range,logfile)
-	self_mortals = 0
-	mortals = 0
+	perils = Array.new()
+	mortals = Array.new()
 	
 	## Get the number of casts, denials and respective bonuses
 	casts = caster.rules.grep(/Psyker - \d/).map!{ |n| n[-1]}.max.to_i
@@ -44,13 +44,17 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 			### Check if caster suffered perils of the warp
 			if test == [1,1] or test == [6,6]
 				d3 = rand(1..3)
-				self_mortals = self_mortals + d3
+				perils.push(d3)
 				logfile.puts "#{caster.name} suffers peril of the warp and takes #{d3} mortal wounds"
 			end
 			
 			
 			if (test.inject(:+) + cast_bonus) < charge
 				logfile.puts "That's not high enough to cast this power"
+				puts "#{caster.base_stats}"
+				puts "#{caster.stats}"
+				puts "#{caster.stat_modifiers}"
+				puts "Cast Failed"
 				next
 			end
 			
@@ -87,7 +91,7 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 				power.rules[mode].grep(/Mortals/).each do |string|
 					rule = string.split(' - ')
 					dmg = RollDice(rule[-1])
-					mortals = mortals + dmg
+					mortals.push(dmg)
 					logfile.puts "#{power.name} does #{rule[-1]} mortal wounds for a total of #{dmg}" 
 				end
 			end
@@ -96,5 +100,40 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 		end
 	end
 	
-	return mortals, self_mortals
+	#### Check if caster or denier has rule that halves incoming damaged
+	if denier.hasRule?('Damage - Halved') == true && mortals.size > 0
+		mortals.map! { |r| r ? (r.to_f / 2).ceil : r}
+		logfile.puts "#{denier.name} halves all damage (rounding up) so he only takes #{mortals} mortal wounds"
+	end
+	
+	if caster.hasRule?('Damage - Halved') == true && perils.size > 0
+		perils.map! { |r| r ? (r.to_f / 2).ceil : r}
+		logfile.puts "#{caster.name} halves all damage (rounding up) so he only takes #{mortals} mortal wounds"
+	end
+	
+	tot_mortals = mortals.inject(:+).to_i
+	tot_perils = perils.inject(:+).to_i
+	
+	### Take FNP saves for mortal wounds
+	if denier.getFNP().any?	&& tot_mortals >= 1
+		denier.getFNP().each do |fnp|
+			logfile.puts "#{denier.name} has a 'Feel No Pain' ability that lets them ignores wounds on a #{fnp.to_i}+"
+			rolls = Array.new(tot_mortals) {rand (1..6)}
+			logfile.puts "#{denier.name} rolls #{rolls}"
+			rolls.delete_if {|x| x >= fnp}
+			tot_mortals = rolls.size
+		end
+	end
+	
+	if caster.getFNP().any?	&& tot_mortals >= 1
+		caster.getFNP().each do |fnp|
+			logfile.puts "#{caster.name} has a 'Feel No Pain' ability that lets them ignores wounds on a #{fnp.to_i}+"
+			rolls = Array.new(tot_mortals) {rand (1..6)}
+			logfile.puts "#{caster.name} rolls #{rolls}"
+			rolls.delete_if {|x| x >= fnp}
+			tot_mortals = rolls.size
+		end
+	end
+	
+	return tot_mortals, tot_perils
 end
