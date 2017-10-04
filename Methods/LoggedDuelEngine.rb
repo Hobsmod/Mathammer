@@ -182,7 +182,7 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 			next
 		end
 		
-		
+		##### Defenders Turns are Even
 		(1..rounds).each do |round|
 			logfile.puts " ----------------- Begin Round #{round}! -----------------------------"
 			
@@ -213,7 +213,7 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 						logfile.puts "#{defender.name} took #{cast_results[0]} damage from psychic powers and has #{atk_wounds - dmg_to_charger} wounds left"
 					end
 					if cast_results[1] > 0
-						logfile.puts "#{charger.name} took #{cast_results[1]} damage from perils and has #{def_wounds - dmg_to_defender} wounds left"
+						logfile.puts "#{charger.name} took #{cast_results[1]} damage from psychich attacks and has #{def_wounds - dmg_to_defender} wounds left"
 					end
 					#### Check if anyone has won
 					if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds

@@ -163,6 +163,24 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 						logfile.puts "The Caster's leadership of #{cast_ld} + a d6 roll of #{caster_roll} is less than the target's leadership of #{denier_ld} + #{denier_roll} so #{denier.name} takes no damage" 
 					end
 				end
+				
+				power.rules[mode].grep(/Trait - Subtract/).each do |string|
+					rule = string.split(' - ')
+					trait = denier.stats[rule[2]]
+					d = rule[3][-1].to_i
+					roll = RollDice(rule[3])
+					dmg = RollDice(rule[-1])
+					
+					if (trait - roll) < 0
+						wounds = (trait - roll) * -1
+						logfile.puts "The target takes  mortal wounds equal to it's movement (#{trait}) minus #{rule[3]} (#{roll}), for a total of  #{wounds} damage"
+						mortals.push(wounds)
+					elsif (trait - roll) >= 0
+						logfile.puts "The target takes mortal wounds equal to it's movement (#{trait}) minus #{rule[3]} (#{roll}), for a total of  0 damage"
+					end
+				end
+				
+				
 			end
 			
 			

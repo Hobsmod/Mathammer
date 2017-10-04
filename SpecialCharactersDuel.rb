@@ -105,6 +105,11 @@ hero_hash['Watch Captain Artemis'] = Unit2.new()
 hero_hash['Watch Captain Artemis'].addModels(imp_ind_1, imp_ind_wep, 'Watch Captain Artemis', 1, [],[] )
 hero_hash['Roboute Guilliman'] = Unit2.new()
 hero_hash['Roboute Guilliman'].addModels(space_marine_codex, sm_wep, 'Roboute Guilliman', 1, [],[] )
+hero_hash['Njal Stormcaller'] = Unit2.new()
+hero_hash['Njal Stormcaller'].addModels(imp_ind_1, imp_ind_wep, 'Njal Stormcaller', 1, [],[] )
+hero_hash['Njal Stormcaller'].getModels[0].addGear(imp_ind_wep, ['Jaws of the World Wolf','Tempests Wrath'])
+
+
 
 out_file.print "Attacker,"
 ## Apply Auras and gear to update each model

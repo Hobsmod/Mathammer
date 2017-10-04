@@ -302,3 +302,6 @@ Shield of Sanguinius,Standard,0,12,Psychic - Buff - 6,0,0,0,0,Psychic - Add Rule
 Unleash Rage,Standard,0,12,Psychic - Buff - 6,0,0,0,0,Psychic - Add Stat - 2 - Attacks - 1
 Mind Worm, Standard,0,12,Psychic - Debuff - Smite - 6,0,0,0,0,Psychic - Add Rule - 1 - Always Strikes Last, Mortals - 1
 Aversion, Standard,0,12,Psychic - Debuff - 6,0,0,0,0,Psychic - Add Rule - 2 - Modifier - All - Hits - -1
+Storm Caller,Standard,0,6,Psychic - Buff - Aura - 6,0,0,0,0,Psychic - Add Rule - 2 - In Cover
+Tempests Wrath,Standard,0,18,Psychic - Debuff - 6,0,0,0,0,Psychic - Add Rule - 2 - Modifier - All - Hits - -1
+Jaws of the World Wolf,Standard,0,18,Psychic - Trait - Subtract - 6,0,0,0,0,Trait - Subtract - M - 2D6 - Mortals - 1
