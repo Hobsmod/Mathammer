@@ -187,4 +187,5 @@ The Emperors Sword,Melee,0,0,Melee,0,+2,-4,3,Rend - Fights - Mortal Wounds - D3
 Veil of Time,Augment,0,18,Psychic - Buff - 6,0,0,0,0,Psychic - Add Rule - 2 - Always Strikes First,
 Might of Heroes,Augment,0,6,Psychic - Buff - 6,0,0,0,0,Psychic - Add Stat - 2 - Attacks - 1, Psychic - Add Stat - 2 - Strength - 1, Psychic - Add Stat - 2 - Toughness - 1
 Null Zone, Augment,0,8,Psychic - Buff - 6,0,0,0,0,Psychic - Add Rule - 2 - Null Zone,
-Smite,Standard,0,18,Psychic - Smite - 5,0,0,0,0,Mortals - D3
+Smite,Standard,0,18,Psychic - Smite - 5,0,0,0,0,Overcast - 10 - Mortals - D6 - D3
+Psychic Scourge,Standard,0,18,Psychic - Trait - Compare - 6,0,0,0,0,Trait - Compare - Ld - D6 - D3 - 1
