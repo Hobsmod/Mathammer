@@ -33,7 +33,7 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 			# Get the Power Warp Charge
 			charge = power.getType(mode)[-1].to_i
 			test = [ rand(1..6), rand(1..6) ]
-			logfile.puts "#{caster.name} tries to cast #{power.name} and rolled #{test}" 
+			logfile.puts "#{caster.name} tries to cast #{power.name} and rolled #{test} + #{cast_bonus}" 
 			
 			### Reroll the test if the psycker has the relevant rule
 			if (test.inject(:+) + cast_bonus) < charge && caster.hasRule?('Psyker - Reroll')
@@ -160,20 +160,30 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 					rule = string.split(' - ')
 					trait = rule[2]
 					d = rule[3][-1].to_i
-					cast_ld = caster.stats[trait].to_i
-					denier_ld = denier.stats[trait].to_i
+					cast_trait = caster.stats[trait].to_i
+					denier_trait = denier.stats[trait].to_i
 					caster_roll = rand(1..d)
 					denier_roll = rand(1..d)
-					dmg = RollDice(rule[-2])
-					tie_dmg = RollDice(rule[-1])
-					if (cast_ld + caster_roll) > (denier_ld + denier_roll)
-						logfile.puts "The Caster's leadership of #{cast_ld} + a d6 roll of #{caster_roll} is greater than the target's leadership of #{denier_ld} + #{denier_roll} so #{denier.name} takes #{dmg} mortal wounds" 
+					
+					if rule[-1] == 'Difference'
+						dmg = (cast_trait + caster_roll) - (denier_trait + denier_roll)
+						tie_dmg = (cast_trait + caster_roll) - (denier_trait + denier_roll)
+						if dmg < 0
+							dmg = 0 
+							tie_dmg = 0
+						end
+					else
+						dmg = RollDice(rule[-2])
+						tie_dmg = RollDice(rule[-1])
+					end
+					if (cast_trait + caster_roll) > (denier_trait + denier_roll)
+						logfile.puts "The Caster's #{rule[2]} of #{cast_trait} + a d6 roll of #{caster_roll} is greater than the target's leadership of #{denier_trait} + #{denier_roll} so #{denier.name} takes #{dmg} mortal wounds" 
 						mortals.push(dmg)
-					elsif (cast_ld + caster_roll) == (denier_ld + denier_roll)
-						logfile.puts "The Caster's leadership of #{cast_ld} + a d6 roll of #{caster_roll} ties the targets leadership of #{denier_ld} + #{denier_roll} so #{denier.name} takes #{tie_dmg} mortal wounds" 
+					elsif (cast_trait + caster_roll) == (denier_trait + denier_roll)
+						logfile.puts "The Caster's #{rule[2]} of #{cast_trait} + a d6 roll of #{caster_roll} ties the targets leadership of #{denier_trait} + #{denier_roll} so #{denier.name} takes #{tie_dmg} mortal wounds" 
 						mortals.push(tie_dmg)
-					elsif (cast_ld + caster_roll) < (denier_ld + denier_roll)
-						logfile.puts "The Caster's leadership of #{cast_ld} + a d6 roll of #{caster_roll} is less than the target's leadership of #{denier_ld} + #{denier_roll} so #{denier.name} takes no damage" 
+					elsif (cast_trait + caster_roll) < (denier_trait + denier_roll)
+						logfile.puts "The Caster's #{rule[2]} of #{cast_trait} + a d6 roll of #{caster_roll} is less than the target's leadership of #{denier_trait} + #{denier_roll} so #{denier.name} takes no damage" 
 					end
 				end
 				

@@ -16,18 +16,18 @@ gkcodex = Hash.new{}
 draigo_stats = [5,2,2,4,4,7,5,9,2]
 draigo_gear = ['The Titansword','Storm Bolter','Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
 draigo_cost = 240
-draigo_rules = ['Invulnerable - 3', 'Aura - 6 - Reroll - All - Hits - All', 'Deepstrike', 'Psyker - 2', 'Deny - 2',]
+draigo_rules = ['Invulnerable - 3', 'Aura - 6 - Reroll - All - Hits - All', 'Deepstrike', 'Psyker - 2','Psyker - Bonus - 1', 'Deny - 2',]
 gkcodex['Lord Kaldor Draigo'] = CodexEntry.new(draigo_stats, draigo_gear, draigo_rules, draigo_cost, character)
 
 valdus_stats = [5,2,2,4,4,6,5,9,2]
 valdus_gear = ['Maleus Argyrum','Storm Bolter','Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
 valdus_cost = 190
-valdus_rules = ['Invulnerable - 4', 'Psyker - 3', 'Deny - 3', 'Aura - 6 - Reroll - All - Hits - 1']
+valdus_rules = ['Invulnerable - 4', 'Psyker - Bonus - 1','Psyker - 3', 'Deny - 3', 'Aura - 6 - Reroll - All - Hits - 1']
 gkcodex['Grand Master Voldus'] = CodexEntry.new(valdus_stats, valdus_gear, valdus_rules, valdus_cost, character)
 
 gm_stats = [5,2,2,4,4,6,5,9,2]
 gm_gear = ['Nemesis Force Halberd', 'Storm Bolter','Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
-gm_rules = ['Invulnerable - 4', 'Rites of Battle', 'Psyker - 2', 'Smite', 'Deep Strike']
+gm_rules = ['Invulnerable - 4', 'Rites of Battle','Psyker - Bonus - 1', 'Psyker - 2', 'Smite', 'Deep Strike']
 gm_cost = 160
 gkcodex['Grand Master'] = CodexEntry.new(gm_stats, gm_gear, gm_rules, gm_cost, character)
 
@@ -40,24 +40,24 @@ gkcodex['Grand Master in Dreadknight'] = CodexEntry.new(gm_dread_stats, gm_dread
 
 crowe_stats = [6, 2, 2, 4, 4, 5, 5, 8, 2,]
 crowe_gear = ['Black Blade of Antwyr', 'Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
-crowe_rules = ['Invulnerable - 4', 'Psyker - 2', 'Deny - 1', 'Deep Strike', 'Reroll - Fight - All - All']
+crowe_rules = ['Invulnerable - 4', 'Psyker - 2', 'Deny - 1','Psyker - Bonus - 1', 'Deep Strike', 'Reroll - Fight - All - All']
 crowe_cost = 125
 gkcodex['Castellan Crowe'] = CodexEntry.new(crowe_stats, crowe_gear, crowe_rules, crowe_cost, character)
 
 
 stern_stats = [5,2,2,4,4,6,4,9,2]
 stern_gear = ['Nemesis Force Sword','Storm Bolter','Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
-stern_rules = ['Invulnerable - 4', 'Psyker - 2', 'Deny - 1']
+stern_rules = ['Invulnerable - 4', 'Psyker - 2', 'Psyker - Bonus - 1','Deny - 1']
 stern_cost = 157
 gkcodex['Brother-Captain Stern'] = CodexEntry.new(stern_stats, stern_gear, stern_rules, stern_cost, character)
 
-bro_cpt_rules = ['Invulnerable - 4', 'Minor Smite','Psychic Locus','Psyker - 1']
+bro_cpt_rules = ['Invulnerable - 4', 'Minor Smite','Psychic Locus','Psyker - Bonus - 1','Psyker - 1']
 bro_cpt_cost = 150
 gkcodex['Brother-Captain'] = CodexEntry.new(gm_stats, gm_gear, bro_cpt_rules, bro_cpt_cost, character)
 
 lib_stats = [5,2,2,4,4,5,3,9,2]
 lib_rules = ['Psyker - 2', 'Invulnerable - 5', 'Minor Smite', 'Deny - 1']
-lib_gear = ['Nemesis Warding Stave','Frag Grenade', 'Krak Grenade', 'Psykout Grenade', 'Psyker - 1']
+lib_gear = ['Nemesis Warding Stave','Frag Grenade', 'Krak Grenade', 'Psykout Grenade','Psyker - Bonus - 1', 'Psyker - 1']
 lib_cost = 157
 gkcodex['Librarian'] = CodexEntry.new(lib_stats, lib_gear, lib_rules, lib_cost, character)
 
@@ -70,18 +70,18 @@ gkcodex['Techmarine'] = CodexEntry.new(tech_stats, tech_gear, tech_rules, tech_c
 
 chap_stats = [5,2,2,4,4,5,3,9,2]
 chap_gear = ['Crozius Arcanum', 'Storm Bolter','Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
-chap_rules = ['Invulnerable - 4', 'Minor Smite', 'Psyker - 1']
+chap_rules = ['Invulnerable - 4', 'Minor Smite', 'Psyker - Bonus - 1','Psyker - 1']
 chap_cost = 144
 gkcodex['Chaplain'] = CodexEntry.new(chap_stats, chap_gear, chap_rules, chap_cost, character)
 
 bro_champ_stats = [6,2,2,4,4,4,4,8,2]
-bro_champ_rules = ['Invulnerable - 4', 'Heroic Sacrifice', 'Minor Smite','Psyker - 1']
+bro_champ_rules = ['Invulnerable - 4', 'Heroic Sacrifice', 'Minor Smite','Psyker - Bonus - 1','Psyker - 1']
 bro_champ_cost = 113
 gkcodex['Brotherhood Champion'] = CodexEntry.new(bro_champ_stats, stern_gear, bro_champ_rules, bro_champ_cost, character)
 
 terminator_stats = [5,3,3,4,4,2,2,7,2]
 terminator_sergeant_stats = [5,3,3,4,4,2,3,8,2]
-terminator_rules = ['ATSKNF','Invulnerable-5','Deepstrike','Minor Smite','Psyker - 1']
+terminator_rules = ['ATSKNF','Invulnerable-5','Deepstrike','Minor Smite','Psyker - Bonus - 1','Psyker - 1']
 terminator_cost = 46
 gkcodex['Grey Knight Terminator'] = CodexEntry.new(terminator_stats, stern_gear, 
 terminator_rules, terminator_cost, infantry)
@@ -89,7 +89,7 @@ gkcodex['Terminator Justicar'] = CodexEntry.new(terminator_sergeant_stats, stern
  terminator_rules, terminator_cost, infantry)
  
 strike_stats = [6, 3, 3, 4, 4, 1, 1, 7, 3]
-strike_rules = ['ATSKNF','Minor Smite','Psyker - 1']
+strike_rules = ['ATSKNF','Minor Smite','Psyker - Bonus - 1','Psyker - 1']
 strike_cost = 19
 sergeant_stats = [6, 3, 3, 4, 4, 1, 2, 8, 3]
 gkcodex['Grey Knight'] = CodexEntry.new(strike_stats, stern_gear, strike_rules, strike_cost, infantry)
@@ -97,12 +97,12 @@ gkcodex['Justicar'] = CodexEntry.new(sergeant_stats, stern_gear, strike_rules, s
 
 apoth_stats = [5,2,3,4,4,5,4,8,2]
 apoth_gear = ['Nemesis Force Sword','Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
-apoth_rules = ['ATSKNF','Invulnerable-5','Minor Smite','Psyker - 1','Nathecium']
+apoth_rules = ['ATSKNF','Invulnerable-5','Minor Smite','Psyker - Bonus - 1','Psyker - 1','Nathecium']
 apoth_cost = 90
 gkcodex['Apothecary'] = CodexEntry.new(apoth_stats, apoth_gear, apoth_rules, apoth_cost, character)
 
 bro_anc_gear = ['Storm Bolter','Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
-bro_anc_rules = ['ATSKNF','Invulnerable-5','Minor Smite','Psyker - 1','Aura - Attack - 1']
+bro_anc_rules = ['ATSKNF','Invulnerable-5','Minor Smite','Psyker - Bonus - 1','Psyker - 1','Aura - Attack - 1']
 bro_anc_cost = 128
 bro_anc_stats = [5,3,3,4,4,5,3,8,2]
 gkcodex['Brotherhood Ancient'] = CodexEntry.new(bro_anc_stats, bro_anc_gear, bro_anc_rules, bro_anc_cost, character)
@@ -114,23 +114,23 @@ gkcodex['Paladin'] = CodexEntry.new(pal_stats, stern_gear, terminator_rules, pal
 gkcodex['Paragon'] = CodexEntry.new(par_stats, stern_gear, terminator_rules, pal_cost, infantry)
 
 pal_anc_gear = ['Storm Bolter','Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
-pal_anc_rules = ['ATSKNF','Invulnerable-5','Minor Smite','Psyker - 1','Aura - Attack - 1']
+pal_anc_rules = ['ATSKNF','Invulnerable-5','Minor Smite','Psyker - Bonus - 1','Psyker - 1','Aura - Attack - 1']
 pal_anc_cost = 128
 pal_anc_stats = [5,3,3,4,4,5,3,8,2]
 gkcodex['Paladin Ancient'] = CodexEntry.new(pal_anc_stats, pal_anc_gear, pal_anc_rules, pal_anc_cost, infantry)
 
-pure_rules = ['ATSKNF','Purifying Flame','Psyker - 1']
+pure_rules = ['ATSKNF','Purifying Flame','Psyker - Bonus - 1','Psyker - 1']
 pure_cost = 26
 gkcodex['Purifier'] = CodexEntry.new(strike_stats, stern_gear, pure_rules, strike_cost, infantry)
 gkcodex['Knight of Flame'] = CodexEntry.new(sergeant_stats, stern_gear, pure_rules, strike_cost, infantry)
 
 dreadnought_stats = [6,3,3,6,7,8,4,8,3]
 dreadnought_gear = ['Assault Cannon', 'Storm Bolter', 'Dreadnought Close Combat Weapon']
-dreadnought_rules = ['Smoke Launchers','Psyker - 1', 'Minor Smite']
+dreadnought_rules = ['Smoke Launchers','Psyker - 1','Psyker - Bonus - 1', 'Minor Smite']
 gkcodex['Dreadnought'] = CodexEntry.new(dreadnought_stats, dreadnought_gear, dreadnought_rules, 87, vehicle)
 
 ven_dread_stats = [6,2,2,6,7,8,4,8,3]
-ven_dread_rules = ['FNP - 6','Psyker - 1', 'Minor Smite']
+ven_dread_rules = ['FNP - 6','Psyker - 1','Psyker - Bonus - 1', 'Minor Smite']
 gkcodex['Venerable Dreadnought'] = CodexEntry.new(ven_dread_stats, dreadnought_gear, ven_dread_rules, 110, vehicle)
 
 inter_stats = [12, 3, 3, 4, 4, 1, 1, 7, 3]
@@ -143,7 +143,7 @@ gkcodex['Purgator Justicar'] = CodexEntry.new(sergeant_stats, stern_gear, strike
 
 nem_dread_stats = [8,3,3,6,6,12,4,8,2]
 new_dread_gear = ['Dreadfist','Dreadfist']
-new_dread_rules = ['Invulnerable-5','Minor Smite','Psyker - 1','Deep Strike']
+new_dread_rules = ['Invulnerable-5','Minor Smite','Psyker - Bonus - 1','Psyker - 1','Deep Strike']
 gkcodex['Nemesis Dreadknight'] = CodexEntry.new(nem_dread_stats, new_dread_gear, new_dread_rules, 130, vehicle)
 
 land_raider = [10,6,3,8,8,16,6,9,2]

@@ -85,17 +85,21 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 			end
 		end
 	end
-			
-			
-	if modifier != 0
-		rolls.map!{|x| x + modifier}
-		logfile.puts "After modifiers the rolls are #{rolls}"
-	end
-	
+		
+	#### Count 1's for plasma overheating
 	if wep.hasRule?(mode,'Overheat') && rolls.include?(1)
 		self_wounds = shooter.stats['W']
 		logfile.puts "#{shooter.name}'s #{wep.name} overheated doing #{self_wounds} wounds to them" 
 	end
+			
+	if modifier != 0
+		rolls.delete_if{|x| x == 1}
+		logfile.puts "Natural 1's are removed leaving #{rolls}"
+		rolls.map!{|x| x + modifier}
+		logfile.puts "After modifiers the rolls are #{rolls}"
+	end
+	
+	
 	
 	
 	hits = rolls.count{|x| x >= to_hit }
@@ -104,11 +108,6 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 	
 	logfile.puts "#{shooter.name} needs #{to_hit} to hit, for a total of #{hits} hits"
 	
-	#### Count 1's for plasma overheating
-	if wep.hasRule?(mode,'Overheat') && rolls.include?(1)
-		self_wounds = shooter.stats['W']
-		logfile.puts "#{shooter.name}'s #{wep.name} overheated doing #{self_wounds} wounds to them" 
-	end
 	
 	##Count sixes and fives in case other rules use them, eventually add possibility of self wounding with plasma
 	sixes = rolls.count(6)
@@ -261,13 +260,22 @@ def RollShootingSaves(wounds, target, shooter, weapon, mode, range, logfile)
 	norm_saves = wounds[0]
 	fives = 0
 	rends = 0
-	
+	modifier = 0
 	mod_save = save - ap 
 	logfile.puts "#{target.name} has a save of #{save}+, but #{weapon.name} has an AP of #{ap} so the modified save is #{mod_save}+"
 	
 	if mod_save > invuln
 		mod_save = invuln
 		logfile.puts "#{target.name}'s Invulnerable save of #{invuln}+ is higher so he will use that instead"
+		if target.rules.grep(/Modifier - Invulnerable/).size > 0
+			target.rules.grep(/Modifier - Invulnerable/).each do |rule|
+				rule_arr = rule.split(' - ')
+				if rule_arr[-2] == 'All' or rule_arr[-2] == 'Shooting'
+					modifier = modifier + rule_arr[-1].to_i
+					logfile.puts "#{target.name} gets to add 1 to their invulnerable saving throws"
+				end
+			end
+		end
 	end
 	
 	
@@ -296,8 +304,14 @@ def RollShootingSaves(wounds, target, shooter, weapon, mode, range, logfile)
 	
 	
 	rolls = Array.new(norm_saves) {rand(1..6)}
+	logfile.puts "#{target.name} rolls #{rolls} for their saves"
+	if modifier != 0
+		rolls.map!{|x| x + modifier}
+		logfile.puts "After modifiers the rolls are #{rolls}"
+	end
+	
 	fails = rolls.count {|x| x < mod_save}
-	logfile.puts "#{target.name} rolls #{rolls}, resulting in #{fails} failed saves"
+	logfile.puts "This results in #{fails} failed saves"
 	
 	
 	

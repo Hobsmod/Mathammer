@@ -117,7 +117,7 @@ hero_hash['Lord Kaldor Draigo'].getModels[0].addGear(gk_wep, ['Rites of Banishme
 
 hero_hash['Grand Master Voldus'] = Unit2.new()
 hero_hash['Grand Master Voldus'].addModels(gk_codex, gk_wep, 'Grand Master Voldus', 1, [],[] )
-hero_hash['Grand Master Voldus'].getModels[0].addGear(gk_wep, ['Rites of Banishment','Hammerhand'])
+hero_hash['Grand Master Voldus'].getModels[0].addGear(gk_wep, ['Sanctuary','Vortex of Doom','Psychic Scourge'])
 
 hero_hash['Castellan Crowe'] = Unit2.new()
 hero_hash['Castellan Crowe'].addModels(gk_codex, gk_wep, 'Castellan Crowe', 1, [],[] )
@@ -136,7 +136,7 @@ hero_hash.each do |key, value|
 	out_file.print "#{key},"
 end
 
-puts "#{hero_hash['Lord Kaldor Draigo'].getModels[0].rules}"
+
 
 
 out_file.print "\n"
@@ -152,7 +152,7 @@ hero_hash.each do |key, value|
 		if key == key2
 			next
 		end
-		odds = Duel(sm_wep,value,value2,5000,log_file)
+		odds = Duel(sm_wep,value,value2,4,log_file)
 		if key == key2
 			#puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
 		else 

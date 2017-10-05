@@ -22,6 +22,7 @@ Lord Kaldor Draigo: !ruby/object:CodexEntry
   - Aura - 6 - Reroll - All - Hits - All
   - Deepstrike
   - Psyker - 2
+  - Psyker - Bonus - 1
   - Deny - 2
   cost: 240
   keywords: &1
@@ -49,6 +50,7 @@ Grand Master Voldus: !ruby/object:CodexEntry
   - Psykout Grenade
   rules:
   - Invulnerable - 4
+  - Psyker - Bonus - 1
   - Psyker - 3
   - Deny - 3
   - Aura - 6 - Reroll - All - Hits - 1
@@ -75,6 +77,7 @@ Grand Master: !ruby/object:CodexEntry
   rules: &2
   - Invulnerable - 4
   - Rites of Battle
+  - Psyker - Bonus - 1
   - Psyker - 2
   - Smite
   - Deep Strike
@@ -123,6 +126,7 @@ Castellan Crowe: !ruby/object:CodexEntry
   - Invulnerable - 4
   - Psyker - 2
   - Deny - 1
+  - Psyker - Bonus - 1
   - Deep Strike
   - Reroll - Fight - All - All
   cost: 125
@@ -147,8 +151,9 @@ Brother-Captain Stern: !ruby/object:CodexEntry
   - Psykout Grenade
   rules:
   - Invulnerable - 4
-  - Minor Smite
-  - Psyker - 1
+  - Psyker - 2
+  - Psyker - Bonus - 1
+  - Deny - 1
   cost: 157
   keywords: *1
 Brother-Captain: !ruby/object:CodexEntry
@@ -168,6 +173,7 @@ Brother-Captain: !ruby/object:CodexEntry
   - Invulnerable - 4
   - Minor Smite
   - Psychic Locus
+  - Psyker - Bonus - 1
   - Psyker - 1
   cost: 150
   keywords: *1
@@ -188,6 +194,7 @@ Librarian: !ruby/object:CodexEntry
   - Frag Grenade
   - Krak Grenade
   - Psykout Grenade
+  - Psyker - Bonus - 1
   - Psyker - 1
   rules:
   - Psyker - 2
@@ -244,6 +251,7 @@ Chaplain: !ruby/object:CodexEntry
   rules:
   - Invulnerable - 4
   - Minor Smite
+  - Psyker - Bonus - 1
   - Psyker - 1
   cost: 144
   keywords: *1
@@ -264,6 +272,7 @@ Brotherhood Champion: !ruby/object:CodexEntry
   - Invulnerable - 4
   - Heroic Sacrifice
   - Minor Smite
+  - Psyker - Bonus - 1
   - Psyker - 1
   cost: 113
   keywords: *1
@@ -285,6 +294,7 @@ Grey Knight Terminator: !ruby/object:CodexEntry
   - Invulnerable-5
   - Deepstrike
   - Minor Smite
+  - Psyker - Bonus - 1
   - Psyker - 1
   cost: 46
   keywords: &6
@@ -324,6 +334,7 @@ Grey Knight: !ruby/object:CodexEntry
   rules: &7
   - ATSKNF
   - Minor Smite
+  - Psyker - Bonus - 1
   - Psyker - 1
   cost: 19
   keywords: *6
@@ -364,6 +375,7 @@ Apothecary: !ruby/object:CodexEntry
   - ATSKNF
   - Invulnerable-5
   - Minor Smite
+  - Psyker - Bonus - 1
   - Psyker - 1
   - Nathecium
   cost: 90
@@ -389,6 +401,7 @@ Brotherhood Ancient: !ruby/object:CodexEntry
   - ATSKNF
   - Invulnerable-5
   - Minor Smite
+  - Psyker - Bonus - 1
   - Psyker - 1
   - Aura - Attack - 1
   cost: 128
@@ -446,6 +459,7 @@ Paladin Ancient: !ruby/object:CodexEntry
   - ATSKNF
   - Invulnerable-5
   - Minor Smite
+  - Psyker - Bonus - 1
   - Psyker - 1
   - Aura - Attack - 1
   cost: 128
@@ -466,6 +480,7 @@ Purifier: !ruby/object:CodexEntry
   rules: &8
   - ATSKNF
   - Purifying Flame
+  - Psyker - Bonus - 1
   - Psyker - 1
   cost: 19
   keywords: *6
@@ -504,6 +519,7 @@ Dreadnought: !ruby/object:CodexEntry
   rules:
   - Smoke Launchers
   - Psyker - 1
+  - Psyker - Bonus - 1
   - Minor Smite
   cost: 87
   keywords: *9
@@ -523,6 +539,7 @@ Venerable Dreadnought: !ruby/object:CodexEntry
   rules:
   - FNP - 6
   - Psyker - 1
+  - Psyker - Bonus - 1
   - Minor Smite
   cost: 110
   keywords: *9
@@ -608,6 +625,7 @@ Nemesis Dreadknight: !ruby/object:CodexEntry
   rules:
   - Invulnerable-5
   - Minor Smite
+  - Psyker - Bonus - 1
   - Psyker - 1
   - Deep Strike
   cost: 130

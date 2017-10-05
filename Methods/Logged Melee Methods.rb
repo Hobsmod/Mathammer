@@ -212,11 +212,12 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	end
 	
 	if attacker.rules.grep(/Modifier/).size> 0
+		
 		attacker.rules.grep(/Modifier/).each do |rule|
 			string = rule.split(' - ')
 			if (string[-2] == 'Hits' or string[-2] == 'All') &&
 				(string[-3] == 'Fight' or string[-3] == 'All')
-				
+				logfile.puts "#{attacker.rules}"
 				modifier = modifier + string[-1].to_i
 				logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to hit"
 			end
@@ -230,10 +231,11 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	# Apply modifiers
 	
 	if modifier != 0
-		rolls.map! { |n| n + modifier}
+		rolls.delete_if{|x| x == 1}
+		logfile.puts "Natural 1's are removed leaving #{rolls}"
+		rolls.map!{|x| x + modifier}
 		logfile.puts "After modifiers the rolls are #{rolls}"
 	end
-	
 	
 	
 	
@@ -574,14 +576,19 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 				(string[-3] == 'Fight' or string[-3] == 'All')
 				
 				modifier = modifier + string[-1].to_i
-				logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to hit"
+				logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to wound"
 			end
 		end
 	end
+
+	
 	if modifier != 0
-		rolls.map!{|roll| roll + modifier}
+		rolls.delete_if{|x| x == 1}
+		logfile.puts "Natural 1's are removed leaving #{rolls}"
+		rolls.map!{|x| x + modifier}
 		logfile.puts "After modifiers the rolls are #{rolls}"
 	end
+	
 	
 	### prepare array to return
 	sixes = rolls.count(6)
@@ -628,6 +635,7 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 	self_wound = wounds[4]
 	norm_saves = wounds[0]
 	fives = 0
+	modifier = 0 
 	
 	mod_save = save - ap 
 	logfile.puts "#{target.name} has a save of #{save}+, but #{attacker.name}'s #{weapon.name} has an AP of #{ap} so the modified save is #{mod_save}+"
@@ -638,6 +646,18 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 		else
 			logfile.puts "#{attacker.name} has the Null Zone ability so no invulnerable save may be used"
 		end
+		
+		### Check for modifiers to invulnerable saves
+		if target.rules.grep(/Modifier - Invulnerable/).size > 0 && attacker.hasRule?('Null Zone') == false
+			target.rules.grep(/Modifier - Invulnerable/).each do |rule|
+				rule_arr = rule.split(' - ')
+				if rule_arr[-2] == 'All' or rule_arr[-2] == 'Fight'
+					modifier = modifier + rule_arr[-1].to_i
+					logfile.puts "#{target.name} gets to add 1 to their invulnerable saving throws"
+				end
+			end
+		end
+		
 	end
 	
 	
@@ -668,8 +688,14 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 	
 	
 	rolls = Array.new(norm_saves) {rand(1..6)}
-	logfile.puts "#{target.name} rolls #{rolls}"
+	logfile.puts "#{target.name} rolls #{rolls} for their saves"
+	if modifier != 0
+		rolls.map!{|x| x + modifier}
+		logfile.puts "After modifiers the rolls are #{rolls}"
+	end
 	
+	fails = rolls.count {|x| x < mod_save}
+	logfile.puts "This results in #{fails} failed saves"
 	
 	rolls.delete_if {|x| x >= mod_save}
 	failed_6s_5s = [rolls.size,rends,fives,mortals,self_wound]
