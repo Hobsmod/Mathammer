@@ -1,7 +1,7 @@
 require_relative '..\Classes\Model.rb'
 require_relative '..\Classes\Unit.rb'
 require_relative '..\Classes\Weapon.rb'
-require_relative 'Dice.rb'
+require_relative 'LoggedDice.rb'
 
 def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 	## First things first, just check if we are out of range

@@ -1,6 +1,6 @@
-require_relative 'Methods\DuelEngine.rb'
+require_relative 'Methods\LoggedDuelEngine.rb'
 require_relative 'Methods\LoadFromCSV.rb'
-require_relative 'Methods\PsykerMethods.rb'
+require_relative 'Methods\LoggedPsykerMethods.rb'
 require_relative 'Classes\Targets.rb'
 require 'yaml'
 require_relative 'Classes\Unit.rb'

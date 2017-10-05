@@ -1,4 +1,4 @@
-require_relative 'Dice.rb'
+require_relative 'LoggedDice.rb'
 
 
 def CastPowersWithDenier(caster,denier,range,logfile)

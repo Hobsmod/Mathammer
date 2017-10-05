@@ -1,7 +1,7 @@
 require_relative '..\Classes\Model.rb'
 require_relative '..\Classes\Unit.rb'
 require_relative '..\Classes\Weapon.rb'
-require_relative 'Dice.rb'
+require_relative 'LoggedDice.rb'
 
 
 
