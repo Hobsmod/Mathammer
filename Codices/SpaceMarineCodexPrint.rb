@@ -67,7 +67,7 @@ spacemarinecodex['Marneus Calgar'] = CodexEntry.new(calgar_stats, calgar_gear, c
 ##Chief Librarian Tigerius
 tigerius_stats = [6,3,3,4,4,4,3,9,3]
 tigerius_gear = ['Rod of Tigerius','Bolt Pistol','Frag Grenade','Krak Grenade','Librarius Discipline']
-tigerius_rules = ['Character','Deny - 2','Deny - Bonus - 1','Psyker - Reroll','-1 Hit Buff','Psyker - 2', 'Librarius Discipline - 3']
+tigerius_rules = ['Deny - 2','Deny - Bonus - 1','Psyker - Reroll','Hard to Hit - Shooting - 1','Psyker - 2', 'Librarius Discipline - 3']
 spacemarinecodex['Chief Librarian Tigerius'] = CodexEntry.new(tigerius_stats, tigerius_gear, tigerius_rules, tigerius_cost, character)
 
 ##Chaplain Cassius
@@ -117,10 +117,12 @@ grimaldus_gear = ['Crozius Arcanum','Plasma Pistol','Frag Grenade','Krak Grenade
 grimaldus_rules = ['Invulnerable - 4','Aura - 6 - Reroll - Fight - Hits - All','Aura - 6 - Rend - Fight - Extra Attack']
 spacemarinecodex['Chaplain Grimaldus'] = CodexEntry.new(grimaldus_stats, grimaldus_gear, grimaldus_rules, grimaldus_cost, character)
 
+moondrakkan_stats = [14,2,2,4,5,6,4,9,3]
 khan_stats = [6,2,2,4,4,5,4,9,3]
 khan_gear = ['Moonfang','Bolt Pistol','Frag Grenade','Krak Grenade']
 khan_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - 1','Aura - 6 - Charge - Strength - 1']
-spacemarinecodex['Korsarro Khan'] = CodexEntry.new(khan_stats, khan_gear, khan_rules, khan_cost, character+ ['White Scars'])
+spacemarinecodex['Korsarro Khan'] = CodexEntry.new(khan_stats, khan_gear, khan_rules, khan_cost, character + ['White Scars'])
+spacemarinecodex['Korsarro Khan on Moondrakkan'] = CodexEntry.new(khan_stats, khan_gear, khan_rules, khan_cost, character + ['White Scars'])
 
 vulkan_stats = [6,2,2,4,4,5,4,9,2]
 vulkan_gear = ['Gauntlet of the Forge','Spear of Vulkan','Bolt Pistol','Frag Grenade','Krak Grenade']

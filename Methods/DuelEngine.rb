@@ -1,7 +1,7 @@
-require_relative 'Logged Melee Methods.rb'
-require_relative 'LoggedShootingMethods.rb'
+require_relative 'Melee Methods.rb'
+require_relative 'ShootingMethods.rb'
 require_relative '../Classes/Weapon.rb'
-require_relative 'LoggedOverwatch.rb'
+require_relative 'Overwatch.rb'
 require_relative 'Dice.rb'
 
 def Duel(wep_hash,charger,defender,iterations,logfile)

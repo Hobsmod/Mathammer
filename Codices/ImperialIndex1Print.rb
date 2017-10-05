@@ -131,6 +131,9 @@ watch_veteran_cost = 19
 watch_master_cost = 130
 artemis_cost = 130
 
+
+
+
 dante_stats = [12,3,3,4,4,6,6,9,2]
 dante_gear = ['Axe Mortalis','Inferno Pistol','Frag Grenade','Krak Grenade']
 dante_rules = ['Invulnerable - 4','Aura - 6 - Reroll - All - Hits - All','Fear - 1', 'Deepstrike']

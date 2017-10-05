@@ -160,6 +160,8 @@ Maleus Argyrum,Melee,0,0,Melee,0,*2,-3,3
 Black Blade of Antwyr,Melee,0,0,Melee,0,0,0,1,Rend - Fight - Extra Attack,
 Nemesis Force Sword,Melee,0,0,Melee,0,0,-3,D3
 Rites of Banishment,Psychic,0,12,Psychic - Smite - 5,0,0,0,0,Keyword - Daemons - Mortals - D3 - 1
+Zone of Banishment,Psychic,0,6,Psychic - Smite - 5,0,0,0,0,Keyword - Daemons - Mortals - 3 - 1
+Purifying Flames,Standard,0,3,Psychic - Smite - 5,0,0,0,0,Overcast - 5 - Mortals - D6 - D6
 Vortex of Doom,Psychic,0,12,Psychic - Smite - 8,0,0,0,0,Overcast - 12 - Mortals - D6 - D3
 Hammerhand,Psychic,0,12,Psychic - Buff - 6,0,0,0,0,Psychic - Add Rule - 2 - Modifier - All - Wounds - 1
 Psychic Scourge,Standard,0,18,Psychic - Trait - Compare - 6,0,0,0,0,Trait - Compare - Ld - D6 - Difference

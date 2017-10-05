@@ -1,7 +1,7 @@
 require_relative '..\Classes\Model.rb'
 require_relative '..\Classes\Unit.rb'
 require_relative '..\Classes\Weapon.rb'
-require_relative 'LoggedDice.rb'
+require_relative 'Dice.rb'
 
 def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 	## First things first, just check if we are out of range
@@ -86,20 +86,25 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 		end
 	end
 		
-	#### Count 1's for plasma overheating
-	if wep.hasRule?(mode,'Overheat') && rolls.include?(1)
-		self_wounds = shooter.stats['W']
-		#logfile.puts "#{shooter.name}'s #{wep.name} overheated doing #{self_wounds} wounds to them" 
-	end
+	
 			
 	if modifier != 0
-		rolls.delete_if{|x| x == 1}
-		#logfile.puts "Natural 1's are removed leaving #{rolls}"
 		rolls.map!{|x| x + modifier}
 		#logfile.puts "After modifiers the rolls are #{rolls}"
 	end
 	
 	
+	
+	#### Count 1's for plasma overheating
+	if wep.hasRule?(mode,'Overheat') && rolls.count{|x| x >= 1} >= 1
+		self_wounds = shooter.stats['W']
+		#logfile.puts "#{shooter.name}'s #{wep.name} overheated doing #{self_wounds} wounds to them" 
+	end
+	
+	if modifier != 0 && rolls.include?(modifier + 1) == true
+		#logfile.puts "Rolls of #{modifier + 1} were originally natural ones and fail leaving: #{rolls}"
+		rolls.delete_if{ |x| x == (modifier + 1)}
+	end
 	
 	
 	hits = rolls.count{|x| x >= to_hit }

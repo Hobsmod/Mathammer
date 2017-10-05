@@ -73,6 +73,7 @@ class ModelWithWeapons
 		### Take rules that are on wargear and add them to the model
 		gear_rules = Array.new()
 		@gear.each do |item|
+			puts item.name
 			item.getFiretypes.each do |mode|
 				gear_rules = gear_rules + item.rules[mode].grep(/Gear/)
 			end

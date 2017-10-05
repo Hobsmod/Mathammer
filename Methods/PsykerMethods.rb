@@ -27,7 +27,7 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 	#logfile.puts "Casts: #{casts}, Denials: #{denials}, Caster Bonus: #{cast_bonus}, Deny Bonus #{deny_bonus}"
 	caster.getPowers.each do |power|
 		power.getFiretypes.each do |mode|
-			if casts <= 0
+			if casts <= 0 or power.getRange(mode) < range
 				next
 			end
 			# Get the Power Warp Charge

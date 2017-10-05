@@ -138,7 +138,8 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 		#logfile.puts "#{attacker.name}'s abilities and weapons give them #{bonus_attacks} extra attacks against characters for a total of #{rolled_bonus_attacks}"
 		attacks = attacks + rolled_bonus_attacks.inject(0){|sum,x| sum + x }
 	end
-			
+		
+	## Calculate extra attacks for charging
 	if (attacker.rules().grep(/Charge - Attacks/).size + weapon.rules[mode].grep(/Charge - Attacks/).size) > 0 && charged == true
 		duelist_array = attacker.rules().grep(/Charge - Attacks/) + weapon.rules[mode].grep(/Charge - Attacks/)
 		bonus_attacks = Array.new()
@@ -159,43 +160,15 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	rolls = Array.new(attacks) {rand(1..6).to_i}
 	#logfile.puts "#{attacker.name}'s rolls to hit are #{rolls} "
 	
+	
 	# Reroll failed hits
-
 	if (attacker.rules().grep(/Reroll/).size + weapon.rules[mode].grep(/Reroll/).size) > 0 && rolls.count{ |n| n < to_hit} > 0
 		rolls = RerollFightHits(attacker, target, weapon, mode, rolls, to_hit, logfile)
 	end
 	
 	
-
-	
-	sixes = rolls.count(6)
-	
-	# check if those rolls generate any additional attacks
-	extra_rolls = Array.new()
-	if (weapon.hasRule?(mode, 'Rend - Fight - Extra Attack') or attacker.hasRule?('Rend - Fight - Extra Attack') == true) && sixes > 0 
-		#logfile.puts "#{attacker.name} generates an additional attack for every natural six, they rolled #{rolls} giving them #{sixes} more attacks"
-		rend_rolls = Array.new(sixes) {rand(1..6)}
-		extra_rolls = extra_rolls + rend_rolls
-		#logfile.puts "Those extra attacks rolled #{extra_rolls}"
-	end
-	if extra_rolls.size > 0 && rolls.count{ |n| n < to_hit} > 0 && (attacker.rules().grep(/Reroll/).size + weapon.rules[mode].grep(/Reroll/).size) > 0
-		extra_rolls = RerollFightHits(attacker,target,weapon,mode,extra_rolls,to_hit,logfile)
-	end
-	
-	
-	
-	rolls = rolls + extra_rolls
-	
-	### Count Natural 5's and 6's
-	sixes = rolls.count(6)
-	fives = rolls.count(5)
-	
-	
-	
-	### Calculate Modifiers
-	modifier = 0
-	
-	
+	### Calculate to hit modifiers
+	modifier = 0 
 	if weapon.hasRule?(mode, 'Unwieldy')
 		#logfile.puts "#{weapon.name} has a -1 to hit in combat"
 		modifier = modifier - 1
@@ -210,9 +183,8 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 		#logfile.puts "#{attacker.name} add's 1 to their hit rolls in Close combat"
 		modifier = modifier + 1
 	end
-	
+
 	if attacker.rules.grep(/Modifier/).size> 0
-		
 		attacker.rules.grep(/Modifier/).each do |rule|
 			string = rule.split(' - ')
 			if (string[-2] == 'Hits' or string[-2] == 'All') &&
@@ -223,24 +195,47 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 			end
 		end
 	end
-			
-	if rolls.include?('1') == true && modifer =! 0
-		rolls.delete_if {|x| x == 1}
-		#logfile.puts "All ones fail and are removed leaving #{rolls}"
-	end
-	# Apply modifiers
 	
+	### Apply Modifiers
 	if modifier != 0
-		rolls.delete_if{|x| x == 1}
-		#logfile.puts "Natural 1's are removed leaving #{rolls}"
-		rolls.map!{|x| x + modifier}
+		rolls.map!{|x| x + modifier.to_i}
 		#logfile.puts "After modifiers the rolls are #{rolls}"
 	end
+	sixes = rolls.count{|x| x.to_i >= 6}
+	ones = rolls.count{|x| x.to_i <= 1}
+	fives = rolls.count{|x| x.to_i >= 5}
+
 	
+	# check if those rolls generate any additional attacks
+	extra_rolls = Array.new()
+	if (weapon.hasRule?(mode, 'Rend - Fight - Extra Attack') or attacker.hasRule?('Rend - Fight - Extra Attack') == true) && sixes > 0 
+		#logfile.puts "#{attacker.name} generates an additional attack for every natural six, they rolled #{rolls} giving them #{sixes} more attacks"
+		rend_rolls = Array.new(sixes) {rand(1..6).to_i}
+		extra_rolls = extra_rolls + rend_rolls
+		#logfile.puts "Those extra attacks rolled #{extra_rolls}"
+	end
 	
+	## Reroll extra attacks if able
+	if extra_rolls.size > 0 && rolls.count{ |n| n < to_hit} > 0 && (attacker.rules().grep(/Reroll/).size + weapon.rules[mode].grep(/Reroll/).size) > 0
+		extra_rolls = RerollFightHits(attacker,target,weapon,mode,extra_rolls,to_hit,logfile)
+	end
 	
+	## Apply modifier to extra rolls
+	if modifier != 0
+		extra_rolls = extra_rolls.map!{|x| x + modifier.to_i}
+	end
+	
+	### add extra rolls and regular rolls
+	rolls = rolls + extra_rolls
+	sixes = rolls.count{|x| x >= 6}
+	ones = rolls.count{|x| x <= 1}
+	fives = rolls.count{|x| x >= 5}
+	if  modifier =! 0 && rolls.include?(1 + modifier) == true
+		rolls.delete_if {|x| x == (1 + modifier)}
+		#logfile.puts "All values of #{(1 + modifier)} were originally natural ones and are removed leaving #{rolls}"
+	end
 		
-	rolls.delete_if {|x| x < to_hit}
+	rolls.delete_if {|x| x.to_i < to_hit}
 	#logfile.puts "#{attacker.name} needs #{to_hit} to hit resulting in #{rolls.size} hits"
 	
 	hits_6s_5s = [rolls.size,sixes,fives,mortals,self_wounds]
