@@ -154,6 +154,7 @@ Brother-Captain Stern: !ruby/object:CodexEntry
   - Psyker - 2
   - Psyker - Bonus - 1
   - Deny - 1
+  - Reroll - Saves - All - Single
   cost: 157
   keywords: *1
 Brother-Captain: !ruby/object:CodexEntry

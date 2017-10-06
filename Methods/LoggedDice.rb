@@ -396,7 +396,77 @@ def RerollOnes(rolls)
 	return rolls
 end
 
+def RerollSaves(attacker, defender, rolls, save, invuln, logfile)
+	reroll_what = Array.new{}
+	if attacker.rules.grep(/Reroll - Invulnerable - Success/).size > 0 && invuln? == true
+		reroll_what.push('Success')
+	end
 	
+	if defender.rules.grep(/Reroll - Saves - All/).size > 0
+		defender.rules.grep(/Reroll - Saves - All/).each do |rule|
+			reroll_what.push(rule.split(' - ')[-1])
+		end
+	end
+	
+	if defender.rules.grep(/Reroll - Saves - Invulnerable/).size > 0 && invuln? == true
+		defender.rules.grep(/Reroll - Saves - Invulnerable/).each do |rule|
+			reroll_what.push(rule.split(' - ')[-1])
+		end
+	end
+	
+	rolls2 = Array.new()
+	
+	if reroll_what.include?('Success')
+		rolls2 = Array.new(rolls.count{|x| x >= save})
+		rolls.delete_if{|x| x < save}
+		logfile.puts "#{attacker.name} forces sucessful saves to be rerolled"
+	end
+	
+	if reroll_what.include?('All')
+		rolls = RerollAll(rolls, save)
+		logfile.puts "{defender.name} gets to reroll all failed saves"
+		
+	elsif reroll_what.include?('Single') && reroll_what.include?('1')
+		
+		tot_mod = 0
+		rolls.each_index do |n|
+			if rolls[n].to_i == 1
+				rolls[n] = rand(1..6)
+			elsif	
+				rolls[n] < save && tot_mod < 1
+				rolls[n] = rand(1..6)
+				tot_mod = 1
+			end
+		end
+		
+	logfile.puts "#{defender.name} gets to reroll all 1's and a single failed save"
+	
+	elsif reroll_what.include?('1')
+		
+		rolls = RerollOnes(rolls)
+		logfile.puts "#{defender.name} gets to reroll all 1's "
+		
+	elsif reroll_what.include?('Single')
+		
+		tot_mod = 0
+		rolls.each_index do |n|
+			if	
+				rolls[n] < save && tot_mod < 1
+				rolls[n] = rand(1..6)
+				tot_mod = 1
+			end
+		end
+		
+		logfile.puts "#{defender.name} gets to reroll a single save"
+	end
+	
+	rolls = rolls + rolls2
+	logfile.puts "After rerolls the save rolls are #{rolls}"
+	
+	
+	return rolls
+	
+end	
 	
 	
 	

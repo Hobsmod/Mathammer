@@ -47,7 +47,7 @@ gkcodex['Castellan Crowe'] = CodexEntry.new(crowe_stats, crowe_gear, crowe_rules
 
 stern_stats = [5,2,2,4,4,6,4,9,2]
 stern_gear = ['Nemesis Force Sword','Storm Bolter','Frag Grenade', 'Krak Grenade', 'Psykout Grenade']
-stern_rules = ['Invulnerable - 4', 'Psyker - 2', 'Psyker - Bonus - 1','Deny - 1']
+stern_rules = ['Invulnerable - 4', 'Psyker - 2', 'Psyker - Bonus - 1','Deny - 1','Reroll - Saves - All - Single']
 stern_cost = 157
 gkcodex['Brother-Captain Stern'] = CodexEntry.new(stern_stats, stern_gear, stern_rules, stern_cost, character)
 

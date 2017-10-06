@@ -181,7 +181,7 @@ imp_index_1['Sanguinary Priest on Bike'] = CodexEntry.new(sang_priest_bike_stats
 
 corbulo_stats = [6,2,2,4,4,5,4,9,3]
 corbulo_gear = ['Heavens Teeth','Bolt Pistol','Frag Grenade','Krak Grenade']
-corbulo_rules = ['Aura - 6 - Strength - 1','Healing - D3','Aura - 6 - Rend - Fight - Extra Attack']
+corbulo_rules = ['Aura - 6 - Strength - 1','Healing - D3','Aura - 6 - Rend - Fight - Extra Attack','Reroll - Saves - All - Single']
 imp_index_1['Brother Corbulo'] = CodexEntry.new(corbulo_stats, corbulo_gear, corbulo_rules, corbulo_cost, character)
 
 sang_grd_anc_stats = [12,3,3,4,4,4,3,9,2]

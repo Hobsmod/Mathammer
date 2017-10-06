@@ -1,7 +1,7 @@
 require_relative '..\Classes\Model.rb'
 require_relative '..\Classes\Unit.rb'
 require_relative '..\Classes\Weapon.rb'
-require_relative 'Dice.rb'
+require_relative 'LoggedDice.rb'
 
 
 
@@ -11,6 +11,8 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 	shots = CalcDiceAvg(weapon.getShots(mode)).to_f
 	attacks = attacks + shots
 	#logfile.puts "#{attacker.name} has #{attacks} attacks, and gets #{shots} bonus attacks from his weapon #{weapon.name} in #{mode} mode."
+	mortals = 0.0 
+	
 	
 	### Calculate Extra Attacks for Duelist and Charging
 	if (attacker.rules().grep(/Duelist - Attacks/).size + weapon.rules[mode].grep(/Duelist - Attacks/).size) > 0 && target.hasKeyword('Character')
@@ -27,7 +29,8 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 		#logfile.puts "#{attacker.name}'s abilities and weapons give them #{bonus_attacks} extra attacks against characters for a total of #{rolled_bonus_attacks}"
 		attacks = attacks + rolled_bonus_attacks.inject(0){|sum,x| sum + x }
 	end
-			
+	
+
 	
 	## Calculate Modifiers
 	modifier = 1.0
@@ -45,6 +48,35 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 	## Calculate Prob
 	prob = (6.0 - (ws - modifier)) / 6.0
 	
+	
+	
+	### take into account the posibility of abilities that trigger on rolling a six
+	if attacker.rules.grep(/Rend - Hits - Fight/).size > 0
+		attacker.rules.grep(/Rend - Hits - Fight/).each do |string|
+			rule = string.split(' - ')
+			if rule[-3] == 'Mortals'
+				mortals = mortals + ((attacks / 6) * RollDice(rule[-1]))
+			end
+		
+			if rule[-2] == 'Extra Attacks'
+				attacks = attacks + (attacks * (1 / 6))
+			end
+				
+		end
+	end
+			
+	if weapon.rules[mode].grep(/Rend - Hits/).size > 0
+		weapon.rules[mode].grep(/Rend - Hits/).each do |string|
+			rule = string.split(' - ')
+			if rule[-3] == 'Mortals'
+				mortals = mortals + ((attacks / 6) * RollDice(rule[-1]))
+			end
+			if rule[-2] == 'Extra Attacks'
+				attacks = attacks + (attacks * (1 / 6))
+			end
+				
+		end
+	end
 	
 	# Begin to Calculate Rerolls
 	### Determine what we are rerolling
@@ -109,7 +141,7 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 	hits = prob * attacks
 	#logfile.puts "He gets #{hits} hits"
 
-	return hits
+	return hits, mortals
 end
 
 def RollHits(attacker,target,weapon,mode, charged, logfile)
@@ -189,7 +221,6 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 			string = rule.split(' - ')
 			if (string[-2] == 'Hits' or string[-2] == 'All') &&
 				(string[-3] == 'Fight' or string[-3] == 'All')
-				#logfile.puts "#{attacker.rules}"
 				modifier = modifier + string[-1].to_i
 				#logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to hit"
 			end
@@ -230,7 +261,7 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	sixes = rolls.count{|x| x >= 6}
 	ones = rolls.count{|x| x <= 1}
 	fives = rolls.count{|x| x >= 5}
-	if  modifier =! 0 && rolls.include?(1 + modifier) == true
+	if  modifier > 0 && rolls.include?(1 + modifier) == true
 		rolls.delete_if {|x| x == (1 + modifier)}
 		#logfile.puts "All values of #{(1 + modifier)} were originally natural ones and are removed leaving #{rolls}"
 	end
@@ -249,6 +280,10 @@ def CalcWounds(hits,attacker,target,weapon,mode,logfile)
 	str = 0.0
 	str_add = Array.new()
 	str_mult = 1.0
+	mortals = hits[1]
+	hits = hits[0]
+	
+	
 	
 	if weapon.stats[mode]['S'][0] == '*'
 		if RollDice(weapon.stats[mode]['S'][1..-1]).to_i > str_mult
@@ -347,7 +382,7 @@ def CalcWounds(hits,attacker,target,weapon,mode,logfile)
 	end
 	wounds = prob * hits
 	#logfile.puts "#{attacker.name} causes #{wounds} wounds"
-	return wounds
+	return wounds, mortals
 end
 
 def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
@@ -520,48 +555,7 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 	end
 	
 
-	##### Handle Mortal Wounds caused by rolling 6's
-	
-
-	sixes = rolls.count(6)
-	
-	if weapon.rules[mode].select{|rule| rule.match(/Rend - Mortal Wounds/)}.length > 0 && sixes > 0
-		rule_array = weapon.rules[mode].select{|rule| rule.match(/Rend - Mortal Wounds/)}[0].split(' - ')
-		
-		if sixes >= 1
-			#logfile.puts "#{rolls}"
-			#logfile.puts "#{attacker.name} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
-			mortal_array = Array.new()
-			(1..sixes).each do
-				bonus = RollDice(rule_array[-1])
-				mortal_array.push(bonus)
-			end
-			#logfile.puts "This causes #{mortal_array} mortal wounds"
-			mortals = mortals + mortal_array
-		end
-		if rule_array.include? 'Replace'
-			rolls.delete_if {|x| x == 6}
-			#logfile.puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
-		end
-	end
-	
-	if attacker.rules().select{|rule| rule.match(/Rend - Mortal Wounds/)}.length > 0 && sixes > 0
-		rule_array = attacker.rules().select{|rule| rule.match(/Rend - Mortal Wounds/)}[0].split(' - ')
-		if sixes >= 1
-			#logfile.puts "#{attacker.name} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
-			(1..sixes).each do
-				bonus = RollDice(rule_array[-1])
-				mortal_array.push(bonus)
-			end
-			#logfile.puts "This causes #{mortal_array} mortal wounds"
-			mortals = mortals + mortal_array
-		end
-		if rule_array.include? 'Replace'
-			rolls.delete_if {|x| x == 6}
-			#logfile.puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
-		end
-	end
-	
+	### Apply modifiers
 	modifier = 0
 	
 	if attacker.rules.grep(/Modifier/).size> 0
@@ -575,19 +569,68 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 			end
 		end
 	end
-
+	
 	
 	if modifier != 0
-		rolls.delete_if{|x| x == 1}
-		#logfile.puts "Natural 1's are removed leaving #{rolls}"
 		rolls.map!{|x| x + modifier}
 		#logfile.puts "After modifiers the rolls are #{rolls}"
 	end
 	
+	sixes = rolls.count{|x| x >= 6}
+	
+	if weapon.rules[mode].select{|rule| rule.match(/Rend - Wounds/)}.length > 0 && sixes > 0
+		rule_array = weapon.rules[mode].select{|rule| rule.match(/Rend - Wounds/)}[0].split(' - ')
+		
+		#### Account for weapons that do mortal wounds on the roll of a six
+		if rule_array[-3] == 'Mortals' && sixes >= 1
+			#logfile.puts "#{attacker.name} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
+			mortal_array = Array.new()
+			(1..sixes).each do
+				bonus = RollDice(rule_array[-1])
+				mortal_array.push(bonus)
+			end
+			#logfile.puts "This causes #{mortal_array} mortal wounds"
+			mortals = mortals + mortal_array
+		end
+		### If the weapon has replace remove all these rolls since it does mortal damage instead
+		if rule_array.include? 'Replace'
+			rolls.delete_if {|x| x >= 6}
+			#logfile.puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
+		end
+	end
+	
+	if attacker.rules.grep(/Rend - Fight - Wounds/).size > 0 && sixes > 0
+		attacker.rules.grep(/Rend - Fight - Wounds/).each do |string|
+			rule = string.split(' - ')
+			if rule[-3] = 'Mortals'
+				#logfile.puts "#{attacker.name} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
+				(1..sixes).each do
+					bonus = RollDice(rule_array[-1])
+					mortal_array.push(bonus)
+				end
+				#logfile.puts "This causes #{mortal_array} mortal wounds"
+				mortals = mortals + mortal_array
+			end
+		
+			if rule_array.include? 'Replace'
+				rolls.delete_if {|x| x >= 6}
+				#logfile.puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
+			end
+		end
+	end
+	
+
+
+	
+
 	
 	### prepare array to return
 	sixes = rolls.count(6)
 	fives = rolls.count(5)
+	if modifier > 0 && rolls.include?(1 + modifier)
+		rolls.delete_if {|x| x = (1 + modifier)}
+		#logfile.puts "Rolls of #{1 + modifier} are deleted since they were originally natural 1's"
+	end
 	rolls.delete_if {|x| x < to_wound}
 	wounds_6s_5s = [rolls.size,sixes,fives,mortals,self_wounds]
 	return wounds_6s_5s
@@ -597,7 +640,8 @@ end
 
 
 def CalcSaves(wounds, attacker, target, weapon, firetype,logfile)
-	
+	mortals = wounds[1]
+	wounds = wounds[0]
 	ap = CalcDiceAvg(weapon.stats[firetype]['AP']).to_f
 	save = target.stats['Sv'].to_f
 	invuln = target.getInvuln.to_f
@@ -617,7 +661,7 @@ def CalcSaves(wounds, attacker, target, weapon, firetype,logfile)
 	#logfile.puts "#{target.name} has a #{prob} chance of failing their save"
 	failed_saves = wounds * prob
 	#logfile.puts "#{target.name} failed #{failed_saves} saves"
-	return failed_saves
+	return failed_saves, mortals
 	
 end
 
@@ -625,17 +669,26 @@ end
 def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 	ap = RollDice(weapon.stats[mode]['AP']).to_i
 	save = target.stats['Sv'].to_i
-	invuln = target.getInvuln.to_i
 	mortals = wounds[3]
 	self_wound = wounds[4]
 	norm_saves = wounds[0]
 	fives = 0
 	modifier = 0 
+	invuln = target.getInvuln.to_i
+	is_invuln = false
+	
+	
+	
 	
 	mod_save = save - ap 
 	#logfile.puts "#{target.name} has a save of #{save}+, but #{attacker.name}'s #{weapon.name} has an AP of #{ap} so the modified save is #{mod_save}+"
+	
+	
+	
+	
 	if mod_save > invuln
 		unless attacker.hasRule?('Null Zone') == true
+			is_invuln = true
 			mod_save = invuln
 			#logfile.puts "#{target.name}'s Invulnerable save of #{invuln}+ is higher so he will use that instead"
 		else
@@ -652,7 +705,14 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 				end
 			end
 		end
-		
+	end
+	
+	
+	rolls = Array.new(norm_saves) {rand(1..6)}
+	#logfile.puts "#{target.name} rolls #{rolls} for their saves"
+	
+	if attacker.rules.grep(/Reroll - Saves/).grep(/Success/).size > 0 or target.rules.grep(/Reroll - Saves/).size > 0
+		RerollSaves(attacker, target, rolls, mod_save, is_invuln)
 	end
 	
 	
@@ -662,6 +722,9 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 		norm_saves = norm_saves - wounds[1]
 		rend_rolls = Array.new(wounds[1]) {rand(1..6)}
 		#logfile.puts "#{target.name} rolls #{rend_rolls}"
+		if attacker.rules.grep(/Reroll - Saves/).grep(/Success/).size > 0 or target.rules.grep(/Reroll - Saves/).size > 0
+			RerollSaves(attacker, target, rend_rolls, mod_save, is_invuln)
+		end
 		rend_rolls.delete_if {|x| x >= mod_save}
 		rends = rend_roll.size
 		#logfile.puts "#{target.name} failed  #{rends} rolls that do extra damage"
@@ -673,6 +736,9 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 		norm_saves = norm_saves - wounds[1]
 		rend_rolls = Array.new(wounds[1]) {rand(1..6)}
 		#logfile.puts "#{target.name} rolls #{rend_rolls}"
+		if attacker.rules.grep(/Reroll - Saves/).grep(/Success/).size > 0 or target.rules.grep(/Reroll - Saves/).size > 0
+			RerollSaves(attacker, target, rend_rolls, mod_save, is_invuln)
+		end
 		rend_rolls.delete_if {|x| x >= mod_save}
 		rends = rend_rolls.size
 		#logfile.puts "#{target.name} failed  #{rends} rolls that do extra damage"
@@ -681,9 +747,6 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 	
 	
 	
-	
-	rolls = Array.new(norm_saves) {rand(1..6)}
-	#logfile.puts "#{target.name} rolls #{rolls} for their saves"
 	if modifier != 0
 		rolls.map!{|x| x + modifier}
 		#logfile.puts "After modifiers the rolls are #{rolls}"
@@ -706,7 +769,8 @@ def CalcDamage(felt_wounds, attacker, target, weapon, mode,logfile)
 	end
 	sv = target.stats['Sv']
 	fnp = target.getFNP()
-
+	mortals = felt_wounds[1]
+	felt_wounds = felt_wounds[0]
 	d = CalcDiceAvg(weapon.stats[mode]['D'])
 	
 	wounds = target.stats['W'].to_f
@@ -716,7 +780,10 @@ def CalcDamage(felt_wounds, attacker, target, weapon, mode,logfile)
 		d = 2
 	end
 	
-	dmg = d * felt_wounds
+	if mortals > 0 
+		#logfile.puts "This weapon also does #{mortals} mortal wounds"
+	end
+	dmg = (d * felt_wounds) + mortals
 	
 	if target.getFNP().any?
 		target.getFNP().each do |fnp|

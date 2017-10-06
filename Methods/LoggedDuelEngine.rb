@@ -182,7 +182,7 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 			next
 		end
 		
-		##### Defenders Turns are Even
+		##### Attackers turns are odd
 		(1..rounds).each do |round|
 			logfile.puts " ----------------- Begin Round #{round}! -----------------------------"
 			

@@ -230,6 +230,7 @@ Brother Corbulo: !ruby/object:CodexEntry
   - Aura - 6 - Strength - 1
   - Healing - D3
   - Aura - 6 - Rend - Fight - Extra Attack
+  - Reroll - Saves - All - Single
   cost: 94
   keywords: *1
 Sanguinary Guard Ancient: !ruby/object:CodexEntry
@@ -627,7 +628,8 @@ Ezekiel: !ruby/object:CodexEntry
   - Invulnerable - 4
   - Aura - 6 - Fight Back - 0
   - Psyker - 2
-  - Deny - 1
+  - Deny - Bonus - 1
+  - Deny - 2
   cost: 145
   keywords: *1
 Deathwing Apothecary: !ruby/object:CodexEntry

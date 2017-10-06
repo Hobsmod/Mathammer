@@ -95,7 +95,7 @@ def RerollFightHits(attacker, defender, weapon,mode, rolls, to_suceed, logfile)
 	if reroll_what.include?('All') == true
 		
 		rolls = RerollAll(rolls, to_suceed)
-		#logfile.puts "#{attacker.name} gets to reroll all their misses and now rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all their misses and now rolled #{rolls}"
 		
 	elsif reroll_what.include?('Single') == true && reroll_what.include?('1') == true
 		
@@ -110,13 +110,13 @@ def RerollFightHits(attacker, defender, weapon,mode, rolls, to_suceed, logfile)
 			end
 		end
 		
-		#logfile.puts "#{attacker.name} gets to reroll all their ones and a single miss, now they rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all their ones and a single miss, now they rolled #{rolls}"
 		
 	elsif reroll_what.include?('1') == true
 		
 		rolls = RerollOnes(rolls)
 		
-		#logfile.puts "#{attacker.name} gets to reroll all their 1's and now rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all their 1's and now rolled #{rolls}"
 		
 	elsif reroll_what.include?('Single') == true
 		tot_mod = 0
@@ -127,7 +127,7 @@ def RerollFightHits(attacker, defender, weapon,mode, rolls, to_suceed, logfile)
 				tot_mod = 1
 			end
 		end
-		#logfile.puts "#{attacker.name} gets to reroll a single miss, now they rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll a single miss, now they rolled #{rolls}"
 	end
 	
 	
@@ -160,7 +160,7 @@ def RerollShootingHits(attacker, defender, weapon,mode, rolls, to_suceed, logfil
 	if reroll_what.include?('All') == true
 		
 		rolls = RerollAll(rolls, to_suceed)
-		#logfile.puts "#{attacker.name} gets to reroll all their misses and now rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all their misses and now rolled #{rolls}"
 		
 	elsif reroll_what.include?('Single') == true && reroll_what.include?('1') == true
 		
@@ -175,13 +175,13 @@ def RerollShootingHits(attacker, defender, weapon,mode, rolls, to_suceed, logfil
 			end
 		end
 		
-		#logfile.puts "#{attacker.name} gets to reroll all their ones and a single miss, now they rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all their ones and a single miss, now they rolled #{rolls}"
 		
 	elsif reroll_what.include?('1') == true
 		
 		rolls = RerollOnes(rolls)
 		
-		#logfile.puts "#{attacker.name} gets to reroll all their 1's and now rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all their 1's and now rolled #{rolls}"
 		
 	elsif reroll_what.include?('Single') == true
 		tot_mod = 0
@@ -192,7 +192,7 @@ def RerollShootingHits(attacker, defender, weapon,mode, rolls, to_suceed, logfil
 				tot_mod = 1
 			end
 		end
-		#logfile.puts "#{attacker.name} gets to reroll a single miss, now they rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll a single miss, now they rolled #{rolls}"
 	end
 	
 	
@@ -221,7 +221,7 @@ def CalcRerollFightHits(attacker, defender, weapon,mode, attacks, to_suceed, log
 	if reroll_what.include?('All') == true
 		
 		to_suceed = to_suceed + ((1.0 - to_succeed) * to_succeed)
-		#logfile.puts "#{attacker.name} gets to reroll all their misses and now rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all their misses and now rolled #{rolls}"
 		
 	elsif reroll_what.include?('Single') == true && reroll_what.include?('1') == true
 		
@@ -232,13 +232,13 @@ def CalcRerollFightHits(attacker, defender, weapon,mode, attacks, to_suceed, log
 		end
 		
 		
-		#logfile.puts "#{attacker.name} gets to reroll all their ones and a single miss, now they rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all their ones and a single miss, now they rolled #{rolls}"
 		
 	elsif reroll_what.include?('1') == true
 		
 		rolls = RerollOnes(rolls)
 		
-		#logfile.puts "#{attacker.name} gets to reroll all their 1's and now rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all their 1's and now rolled #{rolls}"
 		
 	elsif reroll_what.include?('Single') == true
 		tot_mod = 0
@@ -249,7 +249,7 @@ def CalcRerollFightHits(attacker, defender, weapon,mode, attacks, to_suceed, log
 				tot_mod = 1
 			end
 		end
-		#logfile.puts "#{attacker.name} gets to reroll a single miss, now they rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll a single miss, now they rolled #{rolls}"
 	end
 	
 	
@@ -284,7 +284,7 @@ def RerollFightWounds(attacker, defender, weapon, mode, rolls, to_suceed,logfile
 
 	if reroll_what.include?('All')
 		rolls = RerollAll(rolls, to_suceed)
-		#logfile.puts "#{attacker.name} gets to reroll all dice that didn't wound and now rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all dice that didn't wound and now rolled #{rolls}"
 		
 	elsif reroll_what.include?('Single') && reroll_what.include?('1')
 		
@@ -299,12 +299,12 @@ def RerollFightWounds(attacker, defender, weapon, mode, rolls, to_suceed,logfile
 			end
 		end
 		
-	#logfile.puts "#{attacker.name} gets to reroll all 1's and a single failed wound roll, now they rolled #{rolls}"
+	##logfile.puts "#{attacker.name} gets to reroll all 1's and a single failed wound roll, now they rolled #{rolls}"
 	
 	elsif reroll_what.include?('1')
 		
 		rolls = RerollOnes(rolls)
-		#logfile.puts "#{attacker.name} gets to reroll all 1's producing #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all 1's producing #{rolls}"
 		
 	elsif reroll_what.include?('Single')
 		
@@ -317,7 +317,7 @@ def RerollFightWounds(attacker, defender, weapon, mode, rolls, to_suceed,logfile
 			end
 		end
 		
-		#logfile.puts "#{attacker.name} gets to reroll a single attempt to wound producing: #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll a single attempt to wound producing: #{rolls}"
 	end
 	
 	return rolls
@@ -347,7 +347,7 @@ def RerollShootingWounds(attacker, defender, weapon, mode, rolls, to_suceed, log
 
 	if reroll_what.include?('All')
 		rolls = RerollAll(rolls, to_suceed)
-		#logfile.puts "#{attacker.name} gets to reroll all dice that didn't wound and now rolled #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all dice that didn't wound and now rolled #{rolls}"
 		
 	elsif reroll_what.include?('Single') && reroll_what.include?('1')
 		
@@ -362,12 +362,12 @@ def RerollShootingWounds(attacker, defender, weapon, mode, rolls, to_suceed, log
 			end
 		end
 		
-	#logfile.puts "#{attacker.name} gets to reroll all 1's and a single failed wound roll, now they rolled #{rolls}"
+	##logfile.puts "#{attacker.name} gets to reroll all 1's and a single failed wound roll, now they rolled #{rolls}"
 	
 	elsif reroll_what.include?('1')
 		
 		rolls = RerollOnes(rolls)
-		#logfile.puts "#{attacker.name} gets to reroll all 1's producing #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll all 1's producing #{rolls}"
 		
 	elsif reroll_what.include?('Single')
 		
@@ -380,7 +380,7 @@ def RerollShootingWounds(attacker, defender, weapon, mode, rolls, to_suceed, log
 			end
 		end
 		
-		#logfile.puts "#{attacker.name} gets to reroll a single attempt to wound producing: #{rolls}"
+		##logfile.puts "#{attacker.name} gets to reroll a single attempt to wound producing: #{rolls}"
 	end
 	
 	return rolls
@@ -396,7 +396,77 @@ def RerollOnes(rolls)
 	return rolls
 end
 
+def RerollSaves(attacker, defender, rolls, save, invuln, logfile)
+	reroll_what = Array.new{}
+	if attacker.rules.grep(/Reroll - Invulnerable - Success/).size > 0 && invuln? == true
+		reroll_what.push('Success')
+	end
 	
+	if defender.rules.grep(/Reroll - Saves - All/).size > 0
+		defender.rules.grep(/Reroll - Saves - All/).each do |rule|
+			reroll_what.push(rule.split(' - ')[-1])
+		end
+	end
+	
+	if defender.rules.grep(/Reroll - Saves - Invulnerable/).size > 0 && invuln? == true
+		defender.rules.grep(/Reroll - Saves - Invulnerable/).each do |rule|
+			reroll_what.push(rule.split(' - ')[-1])
+		end
+	end
+	
+	rolls2 = Array.new()
+	
+	if reroll_what.include?('Success')
+		rolls2 = Array.new(rolls.count{|x| x >= save})
+		rolls.delete_if{|x| x < save}
+		##logfile.puts "#{attacker.name} forces sucessful saves to be rerolled"
+	end
+	
+	if reroll_what.include?('All')
+		rolls = RerollAll(rolls, save)
+		##logfile.puts "{defender.name} gets to reroll all failed saves"
+		
+	elsif reroll_what.include?('Single') && reroll_what.include?('1')
+		
+		tot_mod = 0
+		rolls.each_index do |n|
+			if rolls[n].to_i == 1
+				rolls[n] = rand(1..6)
+			elsif	
+				rolls[n] < save && tot_mod < 1
+				rolls[n] = rand(1..6)
+				tot_mod = 1
+			end
+		end
+		
+	##logfile.puts "#{defender.name} gets to reroll all 1's and a single failed save"
+	
+	elsif reroll_what.include?('1')
+		
+		rolls = RerollOnes(rolls)
+		##logfile.puts "#{defender.name} gets to reroll all 1's "
+		
+	elsif reroll_what.include?('Single')
+		
+		tot_mod = 0
+		rolls.each_index do |n|
+			if	
+				rolls[n] < save && tot_mod < 1
+				rolls[n] = rand(1..6)
+				tot_mod = 1
+			end
+		end
+		
+		##logfile.puts "#{defender.name} gets to reroll a single save"
+	end
+	
+	rolls = rolls + rolls2
+	#logfile.puts "After rerolls the save rolls are #{rolls}"
+	
+	
+	return rolls
+	
+end	
 	
 	
 	

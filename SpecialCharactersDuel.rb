@@ -55,13 +55,11 @@ hero_hash['Chaplain Grimaldus'] = Unit2.new()
 hero_hash['Chaplain Grimaldus'].addModels(space_marine_codex, sm_wep, 'Chaplain Grimaldus', 1, [],[] )
 hero_hash['Korsarro Khan'] = Unit2.new()
 hero_hash['Korsarro Khan'].addModels(space_marine_codex, sm_wep, 'Korsarro Khan', 1, [],[] )
-hero_hash['Korsarro Khan'].getModels[0].addBaseRule('Impact - Mortal Wounds - 1 - 4')
 hero_hash['Korsarro Khan on Moondrakkan'] = Unit2.new()
 hero_hash['Korsarro Khan on Moondrakkan'].addModels(space_marine_codex, sm_wep, 'Korsarro Khan', 1, [],[] )
-hero_hash['Korsarro Khan on Moondrakkan'].getModels[0].addBaseRule('Impact - Mortal Wounds - 1 - 4')
 hero_hash['Vulkan Hestan'] = Unit2.new()
 hero_hash['Vulkan Hestan'].addModels(space_marine_codex, sm_wep, 'Vulkan Hestan', 1, [],[] )
-hero_hash['Vulkan Hestan'].getModels[0].addBaseRule(['Reroll - All - All - Single','Strength - 1'])
+hero_hash['Vulkan Hestan'].getModels[0].addBaseRule(['Reroll - All - All - Single'])
 hero_hash['Kayvaan Shrike'] = Unit2.new()
 hero_hash['Kayvaan Shrike'].addModels(space_marine_codex, sm_wep, 'Kayvaan Shrike', 1, [],[] )
 
@@ -203,7 +201,7 @@ hero_hash.each do |key, value|
 		if key == key2
 			next
 		end
-		odds = Duel(sm_wep,value,value2,1000,log_file)
+		odds = Duel(sm_wep,value,value2,2000,log_file)
 		if key == key2
 			#puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
 		else 

@@ -669,17 +669,26 @@ end
 def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 	ap = RollDice(weapon.stats[mode]['AP']).to_i
 	save = target.stats['Sv'].to_i
-	invuln = target.getInvuln.to_i
 	mortals = wounds[3]
 	self_wound = wounds[4]
 	norm_saves = wounds[0]
 	fives = 0
 	modifier = 0 
+	invuln = target.getInvuln.to_i
+	is_invuln = false
+	
+	
+	
 	
 	mod_save = save - ap 
 	logfile.puts "#{target.name} has a save of #{save}+, but #{attacker.name}'s #{weapon.name} has an AP of #{ap} so the modified save is #{mod_save}+"
+	
+	
+	
+	
 	if mod_save > invuln
 		unless attacker.hasRule?('Null Zone') == true
+			is_invuln = true
 			mod_save = invuln
 			logfile.puts "#{target.name}'s Invulnerable save of #{invuln}+ is higher so he will use that instead"
 		else
@@ -696,7 +705,14 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 				end
 			end
 		end
-		
+	end
+	
+	
+	rolls = Array.new(norm_saves) {rand(1..6)}
+	logfile.puts "#{target.name} rolls #{rolls} for their saves"
+	
+	if attacker.rules.grep(/Reroll - Saves/).grep(/Success/).size > 0 or target.rules.grep(/Reroll - Saves/).size > 0
+		RerollSaves(attacker, target, rolls, mod_save, is_invuln, logfile)
 	end
 	
 	
@@ -706,6 +722,9 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 		norm_saves = norm_saves - wounds[1]
 		rend_rolls = Array.new(wounds[1]) {rand(1..6)}
 		logfile.puts "#{target.name} rolls #{rend_rolls}"
+		if attacker.rules.grep(/Reroll - Saves/).grep(/Success/).size > 0 or target.rules.grep(/Reroll - Saves/).size > 0
+			RerollSaves(attacker, target, rend_rolls, mod_save, is_invuln, logfile)
+		end
 		rend_rolls.delete_if {|x| x >= mod_save}
 		rends = rend_roll.size
 		logfile.puts "#{target.name} failed  #{rends} rolls that do extra damage"
@@ -717,6 +736,9 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 		norm_saves = norm_saves - wounds[1]
 		rend_rolls = Array.new(wounds[1]) {rand(1..6)}
 		logfile.puts "#{target.name} rolls #{rend_rolls}"
+		if attacker.rules.grep(/Reroll - Saves/).grep(/Success/).size > 0 or target.rules.grep(/Reroll - Saves/).size > 0
+			RerollSaves(attacker, target, rend_rolls, mod_save, is_invuln, logfile)
+		end
 		rend_rolls.delete_if {|x| x >= mod_save}
 		rends = rend_rolls.size
 		logfile.puts "#{target.name} failed  #{rends} rolls that do extra damage"
@@ -725,9 +747,6 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 	
 	
 	
-	
-	rolls = Array.new(norm_saves) {rand(1..6)}
-	logfile.puts "#{target.name} rolls #{rolls} for their saves"
 	if modifier != 0
 		rolls.map!{|x| x + modifier}
 		logfile.puts "After modifiers the rolls are #{rolls}"
