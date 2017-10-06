@@ -1,7 +1,7 @@
 require_relative '..\Classes\Model.rb'
 require_relative '..\Classes\Unit.rb'
 require_relative '..\Classes\Weapon.rb'
-require_relative 'LoggedDice.rb'
+require_relative 'Dice.rb'
 
 
 
@@ -10,7 +10,7 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 	ws = attacker.stats['WS']
 	shots = CalcDiceAvg(weapon.getShots(mode)).to_f
 	attacks = attacks + shots
-	#logfile.puts "#{attacker.name} has #{attacks} attacks, and gets #{shots} bonus attacks from his weapon #{weapon.name} in #{mode} mode."
+	##logfile.puts "#{attacker.name} has #{attacks} attacks, and gets #{shots} bonus attacks from his weapon #{weapon.name} in #{mode} mode."
 	mortals = 0.0 
 	
 	
@@ -26,7 +26,7 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 		bonus_attacks.each do |n|
 			rolled_bonus_attacks.push(CalcDiceAvg(n))
 		end
-		#logfile.puts "#{attacker.name}'s abilities and weapons give them #{bonus_attacks} extra attacks against characters for a total of #{rolled_bonus_attacks}"
+		##logfile.puts "#{attacker.name}'s abilities and weapons give them #{bonus_attacks} extra attacks against characters for a total of #{rolled_bonus_attacks}"
 		attacks = attacks + rolled_bonus_attacks.inject(0){|sum,x| sum + x }
 	end
 	
@@ -37,12 +37,12 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 	
 	if weapon.hasRule?(mode,'Unwieldy')
 		modifier = modifier - 1.0
-		#logfile.puts "#{attacker.name}'s #{weapon.name} is unwieldy so he has a -1 to hit"
+		##logfile.puts "#{attacker.name}'s #{weapon.name} is unwieldy so he has a -1 to hit"
 	end
 	
 	if target.hasRule?('Hard to Hit - Fight - 1')
 		modifier = modifier - 1.0
-		#logfile.puts "#{attacker.name}'s #{weapon.name} is unwieldy so he has a -1 to hit"
+		##logfile.puts "#{attacker.name}'s #{weapon.name} is unwieldy so he has a -1 to hit"
 	end
 	
 	## Calculate Prob
@@ -101,7 +101,7 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 	if reroll_what.include?('All') == true
 		
 		prob = prob + ((1.0 - prob) * prob)
-		#logfile.puts "#{attacker.name} gets to reroll all their misses making the new probability #{prob}"
+		##logfile.puts "#{attacker.name} gets to reroll all their misses making the new probability #{prob}"
 		
 	elsif reroll_what.include?('Single') == true && reroll_what.include?('1') == true
 		
@@ -114,7 +114,7 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 		hits = hits + (total_ones * prob)
 		hits = hits + (misses_not_ones * prob)
 		
-		#logfile.puts "#{attacker.name} gets to reroll all their ones and a single miss, giving them a total of  #{hits}"
+		##logfile.puts "#{attacker.name} gets to reroll all their ones and a single miss, giving them a total of  #{hits}"
 		return hits
 		
 	elsif reroll_what.include?('1') == true
@@ -122,7 +122,7 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 		
 		prob = prob + (prob * (1.0 / 6.0))
 		
-		#logfile.puts "#{attacker.name} gets to reroll all their 1's making the new probability of hitting #{prob}"
+		##logfile.puts "#{attacker.name} gets to reroll all their 1's making the new probability of hitting #{prob}"
 		
 	elsif reroll_what.include?('Single') == true
 		
@@ -132,14 +132,14 @@ def CalcHits(attacker,target,weapon,mode,logfile)
 		end
 		
 		hits = (prob * attacks) + (misses * prob)
-		#logfile.puts "#{attacker.name} gets to reroll a single miss so they git #{hits} hits"
+		##logfile.puts "#{attacker.name} gets to reroll a single miss so they git #{hits} hits"
 		return hits
 	end
 	
 	
 
 	hits = prob * attacks
-	#logfile.puts "He gets #{hits} hits"
+	##logfile.puts "He gets #{hits} hits"
 
 	return hits, mortals
 end
@@ -153,7 +153,7 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	hits = 0
 	mortals = Array.new()
 	self_wounds = 0
-	#logfile.puts "#{attacker.name} has #{RollDice(attacker.stats['A']).to_i} attacks, and gets #{shots} bonus attacks from his weapon" 
+	##logfile.puts "#{attacker.name} has #{RollDice(attacker.stats['A']).to_i} attacks, and gets #{shots} bonus attacks from his weapon" 
 	
 	## Calculate extra attacks for duelist
 	if (attacker.rules.grep(/Duelist - Attacks/).size + weapon.rules[mode].grep(/Duelist - Attacks/).size) > 0 && target.hasKeyword('Character')
@@ -167,7 +167,7 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 		bonus_attacks.each do |n|
 			rolled_bonus_attacks.push(RollDice(n))
 		end
-		#logfile.puts "#{attacker.name}'s abilities and weapons give them #{bonus_attacks} extra attacks against characters for a total of #{rolled_bonus_attacks}"
+		##logfile.puts "#{attacker.name}'s abilities and weapons give them #{bonus_attacks} extra attacks against characters for a total of #{rolled_bonus_attacks}"
 		attacks = attacks + rolled_bonus_attacks.inject(0){|sum,x| sum + x }
 	end
 		
@@ -183,14 +183,14 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 		bonus_attacks.each do |n|
 			rolled_bonus_attacks.push(RollDice(n))
 		end
-		#logfile.puts "#{attacker.name}'s abilities and weapons give them #{bonus_attacks} extra attacks when charging for a total of: #{rolled_bonus_attacks}"
+		##logfile.puts "#{attacker.name}'s abilities and weapons give them #{bonus_attacks} extra attacks when charging for a total of: #{rolled_bonus_attacks}"
 		attacks = attacks + rolled_bonus_attacks.inject(0){|sum,x| sum + x }
 	end
 	
 	
 	# Roll the Dice
 	rolls = Array.new(attacks) {rand(1..6).to_i}
-	#logfile.puts "#{attacker.name}'s rolls to hit are #{rolls} "
+	##logfile.puts "#{attacker.name}'s rolls to hit are #{rolls} "
 	
 	
 	# Reroll failed hits
@@ -202,17 +202,17 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	### Calculate to hit modifiers
 	modifier = 0 
 	if weapon.hasRule?(mode, 'Unwieldy')
-		#logfile.puts "#{weapon.name} has a -1 to hit in combat"
+		##logfile.puts "#{weapon.name} has a -1 to hit in combat"
 		modifier = modifier - 1
 	end
 	
 	if target.hasRule?('Hard to Hit - Fight - 1')
-		#logfile.puts "Attacks targetting #{target.name} in combat have a -1 to hit"
+		##logfile.puts "Attacks targetting #{target.name} in combat have a -1 to hit"
 		modifier = modifier - 1
 	end
 	
 	if attacker.hasRule?('Add - All - Hits - 1') or attacker.hasRule?('Add - Fight - Hits - 1') or attacker.hasRule?('Add - All - All - 1')
-		#logfile.puts "#{attacker.name} add's 1 to their hit rolls in Close combat"
+		##logfile.puts "#{attacker.name} add's 1 to their hit rolls in Close combat"
 		modifier = modifier + 1
 	end
 
@@ -222,7 +222,7 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 			if (string[-2] == 'Hits' or string[-2] == 'All') &&
 				(string[-3] == 'Fight' or string[-3] == 'All')
 				modifier = modifier + string[-1].to_i
-				#logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to hit"
+				##logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to hit"
 			end
 		end
 	end
@@ -230,7 +230,7 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	### Apply Modifiers
 	if modifier != 0
 		rolls.map!{|x| x + modifier.to_i}
-		#logfile.puts "After modifiers the rolls are #{rolls}"
+		##logfile.puts "After modifiers the rolls are #{rolls}"
 	end
 	sixes = rolls.count{|x| x.to_i >= 6}
 	ones = rolls.count{|x| x.to_i <= 1}
@@ -240,10 +240,10 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	# check if those rolls generate any additional attacks
 	extra_rolls = Array.new()
 	if (weapon.hasRule?(mode, 'Rend - Fight - Extra Attack') or attacker.hasRule?('Rend - Fight - Extra Attack') == true) && sixes > 0 
-		#logfile.puts "#{attacker.name} generates an additional attack for every natural six, they rolled #{rolls} giving them #{sixes} more attacks"
+		##logfile.puts "#{attacker.name} generates an additional attack for every natural six, they rolled #{rolls} giving them #{sixes} more attacks"
 		rend_rolls = Array.new(sixes) {rand(1..6).to_i}
 		extra_rolls = extra_rolls + rend_rolls
-		#logfile.puts "Those extra attacks rolled #{extra_rolls}"
+		##logfile.puts "Those extra attacks rolled #{extra_rolls}"
 	end
 	
 	## Reroll extra attacks if able
@@ -263,11 +263,11 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	fives = rolls.count{|x| x >= 5}
 	if  modifier > 0 && rolls.include?(1 + modifier) == true
 		rolls.delete_if {|x| x == (1 + modifier)}
-		#logfile.puts "All values of #{(1 + modifier)} were originally natural ones and are removed leaving #{rolls}"
+		##logfile.puts "All values of #{(1 + modifier)} were originally natural ones and are removed leaving #{rolls}"
 	end
 		
 	rolls.delete_if {|x| x.to_i < to_hit}
-	#logfile.puts "#{attacker.name} needs #{to_hit} to hit resulting in #{rolls.size} hits"
+	##logfile.puts "#{attacker.name} needs #{to_hit} to hit resulting in #{rolls.size} hits"
 	
 	hits_6s_5s = [rolls.size,sixes,fives,mortals,self_wounds]
 	return hits_6s_5s
@@ -289,13 +289,13 @@ def CalcWounds(hits,attacker,target,weapon,mode,logfile)
 		if RollDice(weapon.stats[mode]['S'][1..-1]).to_i > str_mult
 			str_mult = RollDice(weapon.stats[mode]['S'][1..-1]).to_i
 		end
-		#logfile.puts "#{attacker.name} has a strength of #{user_str} and his weapon multiples his strength by  #{ weapon.stats[mode]['S'][1]}"
+		##logfile.puts "#{attacker.name} has a strength of #{user_str} and his weapon multiples his strength by  #{ weapon.stats[mode]['S'][1]}"
 	elsif
 		bonus = RollDice(weapon.stats[mode]['S'][1..-1]).to_i
 		str_add.push(bonus)
-		#logfile.puts "#{attacker.name}'s #{weapon.name} increases his strength by  #{bonus}"
+		##logfile.puts "#{attacker.name}'s #{weapon.name} increases his strength by  #{bonus}"
 	else
-		#logfile.puts "Don't know what to do with weapon strength of #{weapon.stats[mode]['S'][0]}"
+		##logfile.puts "Don't know what to do with weapon strength of #{weapon.stats[mode]['S'][0]}"
 		abort
 	end
 
@@ -308,13 +308,13 @@ def CalcWounds(hits,attacker,target,weapon,mode,logfile)
 			if mult > str_mult
 				str_mult = mult
 			end
-			#logfile.puts "#{weapon.name} multiplies #{attacker.name}'s strength by  #{mult} when fighting characters"
+			##logfile.puts "#{weapon.name} multiplies #{attacker.name}'s strength by  #{mult} when fighting characters"
 		elsif duel_bonus
 			bonus = RollDice(duel_bonus)
 			str_add.push(bonus)
-			#logfile.puts "#{attacker.name}'s #{weapon.name} increases his strength by  #{bonus}"
+			##logfile.puts "#{attacker.name}'s #{weapon.name} increases his strength by  #{bonus}"
 		else
-			#logfile.puts "Don't know what to do with weapon strength of #{getS(mode)[0]}"
+			##logfile.puts "Don't know what to do with weapon strength of #{getS(mode)[0]}"
 			abort
 		end	
 	end
@@ -328,13 +328,13 @@ def CalcWounds(hits,attacker,target,weapon,mode,logfile)
 			if bonus > str_mult
 				str_mult = bonus
 			end
-			#logfile.puts "#{attacker.name} multiples his strength by  #{str_mult} when fighting characters"
+			##logfile.puts "#{attacker.name} multiples his strength by  #{str_mult} when fighting characters"
 		elsif duel_bonus
 			bonus = RollDice(duel_bonus)
 			str_add.push(bonus)
-			#logfile.puts "#{attacker.name}'s abilities increase strength by  #{bonus} when fighting a character"
+			##logfile.puts "#{attacker.name}'s abilities increase strength by  #{bonus} when fighting a character"
 		else
-			#logfile.puts "Don't know what to do with weapon strength of #{duel_bonus}"
+			##logfile.puts "Don't know what to do with weapon strength of #{duel_bonus}"
 			abort
 		end	
 	end
@@ -344,18 +344,18 @@ def CalcWounds(hits,attacker,target,weapon,mode,logfile)
 	if weapon.stats[mode]['S'][0] != '*'
 		bonus = CalcDiceAvg(weapon.stats[mode]['S'][1..-1]).to_f
 		str = user_str + bonus
-		#logfile.puts "#{attacker.name}'s #{weapon.name} increases their strength by #{bonus}, for  a total of #{str}"
+		##logfile.puts "#{attacker.name}'s #{weapon.name} increases their strength by #{bonus}, for  a total of #{str}"
 	end
 	
 	str = user_str * str_mult.to_i
 	if str_mult.to_i > 1	
-		#logfile.puts "#{attacker.name()} has a strength of #{user_str} which is multiplied by #{str_mult} for a total of #{str}"
+		##logfile.puts "#{attacker.name()} has a strength of #{user_str} which is multiplied by #{str_mult} for a total of #{str}"
 	end
 	str_add.each do |add|
 		str = str + add.to_i
 	end
 	if str_add.size > 0
-		#logfile.puts "The following modifiers are added to strength #{str_add} for a final strength of #{str}"
+		##logfile.puts "The following modifiers are added to strength #{str_add} for a final strength of #{str}"
 	end
 	
 	
@@ -372,16 +372,16 @@ def CalcWounds(hits,attacker,target,weapon,mode,logfile)
 	end
 	
 	
-	#logfile.puts "#{attacker.name} has an effective strength of #{str} and his target has a toughness of #{tough}, giving a #{prob} chance of wounding" 
+	##logfile.puts "#{attacker.name} has an effective strength of #{str} and his target has a toughness of #{tough}, giving a #{prob} chance of wounding" 
 	if weapon.hasRule?(mode, 'Reroll - Wounds - All') or attacker.hasRule?('Reroll - All - Wounds - All') or attacker.hasRule?('Reroll - Fight - Wounds - All')
 		prob = prob + ((1 - prob) * prob)
-		#logfile.puts "#{attacker.name} can reroll wounds so their chances improve to #{prob}"
+		##logfile.puts "#{attacker.name} can reroll wounds so their chances improve to #{prob}"
 	elsif weapon.hasRule?(mode, 'Reroll - Wounds - 1') or attacker.hasRule?('Reroll - All - Wounds - 1') or attacker.hasRule?('Reroll - Fight - Wounds - 1')
 		prob = prob +((1 / 6) * prob)
-		#logfile.puts "#{attacker.name} can reroll 1's to wound so their chances improve to #{prob}"
+		##logfile.puts "#{attacker.name} can reroll 1's to wound so their chances improve to #{prob}"
 	end
 	wounds = prob * hits
-	#logfile.puts "#{attacker.name} causes #{wounds} wounds"
+	##logfile.puts "#{attacker.name} causes #{wounds} wounds"
 	return wounds, mortals
 end
 
@@ -390,14 +390,14 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 	tough = target.stats['T'].to_i
 	wounds = 0
 	mortals = hits[3]
-	#logfile.puts mortals
+	##logfile.puts mortals
 	self_wounds = hits[4]
 	hits = hits[0]
 	
 	combined_rules = attacker.rules() + weapon.rules[mode]
 	
 	if (combined_rules.grep(/Rend - Autohit/).size > 0 ) && hits[1] > 0 
-		#logfile.puts "#{attacker.name} generates an extra hit for every six they rolled, and they rolled #{hits[1]} sixes"
+		##logfile.puts "#{attacker.name} generates an extra hit for every six they rolled, and they rolled #{hits[1]} sixes"
 		hits = hits + hits[1]
 	end
 	
@@ -415,13 +415,13 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 		if RollDice(weapon.stats[mode]['S'][1..-1]).to_i > str_mult
 			str_mult = RollDice(weapon.stats[mode]['S'][1..-1]).to_i
 		end
-		#logfile.puts "#{attacker.name} has a strength of #{user_str} and his weapon multiples his strength by  #{ weapon.stats[mode]['S'][1]}"
+		##logfile.puts "#{attacker.name} has a strength of #{user_str} and his weapon multiples his strength by  #{ weapon.stats[mode]['S'][1]}"
 	elsif
 		bonus = RollDice(weapon.stats[mode]['S'][1..-1]).to_i
 		str_add.push(bonus)
-		#logfile.puts "#{attacker.name}'s #{weapon.name} increases his strength by  #{bonus}"
+		##logfile.puts "#{attacker.name}'s #{weapon.name} increases his strength by  #{bonus}"
 	else
-		#logfile.puts "Don't know what to do with weapon strength of #{getS(mode)[0]}"
+		##logfile.puts "Don't know what to do with weapon strength of #{getS(mode)[0]}"
 		abort
 	end
 
@@ -435,13 +435,13 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 			if mult > str_mult
 				str_mult = mult
 			end
-			#logfile.puts "#{weapon.name} multiplies #{attacker.name}'s strength by  #{mult} when fighting characters"
+			##logfile.puts "#{weapon.name} multiplies #{attacker.name}'s strength by  #{mult} when fighting characters"
 		elsif duel_bonus
 			bonus = RollDice(duel_bonus)
 			str_add.push(bonus)
-			#logfile.puts "#{attacker.name}'s #{weapon.name} increases his strength by  #{bonus}"
+			##logfile.puts "#{attacker.name}'s #{weapon.name} increases his strength by  #{bonus}"
 		else
-			#logfile.puts "Don't know what to do with weapon strength of #{getS(mode)[0]}"
+			##logfile.puts "Don't know what to do with weapon strength of #{getS(mode)[0]}"
 			abort
 		end	
 	end
@@ -455,13 +455,13 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 			if bonus > str_mult
 				str_mult = bonus
 			end
-			#logfile.puts "#{attacker.name} multiples his strength by  #{str_mult} when fighting characters"
+			##logfile.puts "#{attacker.name} multiples his strength by  #{str_mult} when fighting characters"
 		elsif duel_bonus
 			bonus = RollDice(duel_bonus)
 			str_add.push(bonus)
-			#logfile.puts "#{attacker.name}'s abilities increase strength by  #{bonus} when fighting a character"
+			##logfile.puts "#{attacker.name}'s abilities increase strength by  #{bonus} when fighting a character"
 		else
-			#logfile.puts "Don't know what to do with weapon strength of #{duel_bonus}"
+			##logfile.puts "Don't know what to do with weapon strength of #{duel_bonus}"
 			abort
 		end	
 	end
@@ -476,13 +476,13 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 			if mult > str_mult
 				str_mult = mult
 			end
-			#logfile.puts "#{attacker.name}'s weapon multiplies his strength when charging by #{charge_bonus}"
+			##logfile.puts "#{attacker.name}'s weapon multiplies his strength when charging by #{charge_bonus}"
 		elsif charge_bonus
 			bonuse = RollDice(charge_bonus)
 			str_add.push(bonus)
-			#logfile.puts "#{attacker.name}'s weapon adds #{bonus} to his strength when charging"
+			##logfile.puts "#{attacker.name}'s weapon adds #{bonus} to his strength when charging"
 		else
-			#logfile.puts "Don't know what to do with weapon strength of #{charge_bonus}"
+			##logfile.puts "Don't know what to do with weapon strength of #{charge_bonus}"
 			abort
 		end	
 	end
@@ -495,26 +495,26 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 			if mult > str_mult
 				str_mult = mult
 			end
-			#logfile.puts "#{attacker.name} has an ability that multiplies his strength when charging by #{charge_bonus}"
+			##logfile.puts "#{attacker.name} has an ability that multiplies his strength when charging by #{charge_bonus}"
 		elsif charge_bonus
 			bonuse = RollDice(charge_bonus)
 			str_add.push(bonus)
-			#logfile.puts "#{attacker.name} has an ability that adds #{bonus} to his strength when charging"
+			##logfile.puts "#{attacker.name} has an ability that adds #{bonus} to his strength when charging"
 		else
-			#logfile.puts "Don't know what to do with weapon strength of #{charge_bonus}"
+			##logfile.puts "Don't know what to do with weapon strength of #{charge_bonus}"
 			abort
 		end	
 	end
 	
 	str = user_str * str_mult.to_i
 	if str_mult.to_i > 1	
-		#logfile.puts "#{attacker.name()} has a strength of #{user_str} which is multiplied by #{str_mult} for a total of #{str}"
+		##logfile.puts "#{attacker.name()} has a strength of #{user_str} which is multiplied by #{str_mult} for a total of #{str}"
 	end
 	str_add.each do |add|
 		str = str + add.to_i
 	end
 	if str_add.size > 0
-		#logfile.puts "The following modifiers are added to strength #{str_add} for a final strength of #{str}"
+		##logfile.puts "The following modifiers are added to strength #{str_add} for a final strength of #{str}"
 	end
 		
 	
@@ -530,7 +530,7 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 		to_wound = 5
 	end
 	
-	#logfile.puts "#{target.name} has a toughness of #{tough} so #{attacker.name} needs #{to_wound}'s to wound"
+	##logfile.puts "#{target.name} has a toughness of #{tough} so #{attacker.name} needs #{to_wound}'s to wound"
 	
 	## Check Poison
 	if (combined_rules.grep(/Poison/).size > 0 ) && target.hasKeyword('Vehicle') == false
@@ -542,14 +542,14 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 			end
 		end
 		to_wound = poison_val
-		#logfile.puts "However, #{attacker.name} always wounds on #{to_wound} unless targetting vehicles"
+		##logfile.puts "However, #{attacker.name} always wounds on #{to_wound} unless targetting vehicles"
 	end
 	
 	### Roll & Reroll
 	
 	
 	rolls = Array.new(hits) {rand(1..6)}
-	#logfile.puts  "#{attacker.name} rolled #{rolls}"
+	##logfile.puts  "#{attacker.name} rolled #{rolls}"
 	if (attacker.rules().grep(/Reroll/).size + weapon.rules[mode].grep(/Reroll/).size) > 0 && rolls.count{ |n| n < to_wound} > 0
 		rolls = RerollFightWounds(attacker, target, weapon, mode, rolls, to_wound, logfile)
 	end
@@ -565,7 +565,7 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 				(string[-3] == 'Fight' or string[-3] == 'All')
 				
 				modifier = modifier + string[-1].to_i
-				#logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to wound"
+				##logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to wound"
 			end
 		end
 	end
@@ -573,7 +573,7 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 	
 	if modifier != 0
 		rolls.map!{|x| x + modifier}
-		#logfile.puts "After modifiers the rolls are #{rolls}"
+		##logfile.puts "After modifiers the rolls are #{rolls}"
 	end
 	
 	sixes = rolls.count{|x| x >= 6}
@@ -583,19 +583,19 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 		
 		#### Account for weapons that do mortal wounds on the roll of a six
 		if rule_array[-3] == 'Mortals' && sixes >= 1
-			#logfile.puts "#{attacker.name} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
+			##logfile.puts "#{attacker.name} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
 			mortal_array = Array.new()
 			(1..sixes).each do
 				bonus = RollDice(rule_array[-1])
 				mortal_array.push(bonus)
 			end
-			#logfile.puts "This causes #{mortal_array} mortal wounds"
+			##logfile.puts "This causes #{mortal_array} mortal wounds"
 			mortals = mortals + mortal_array
 		end
 		### If the weapon has replace remove all these rolls since it does mortal damage instead
 		if rule_array.include? 'Replace'
 			rolls.delete_if {|x| x >= 6}
-			#logfile.puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
+			##logfile.puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
 		end
 	end
 	
@@ -603,18 +603,18 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 		attacker.rules.grep(/Rend - Fight - Wounds/).each do |string|
 			rule = string.split(' - ')
 			if rule[-3] = 'Mortals'
-				#logfile.puts "#{attacker.name} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
+				##logfile.puts "#{attacker.name} rolled #{sixes} 6's each of which does #{rule_array[-1]} mortal wounds"
 				(1..sixes).each do
 					bonus = RollDice(rule_array[-1])
 					mortal_array.push(bonus)
 				end
-				#logfile.puts "This causes #{mortal_array} mortal wounds"
+				##logfile.puts "This causes #{mortal_array} mortal wounds"
 				mortals = mortals + mortal_array
 			end
 		
 			if rule_array.include? 'Replace'
 				rolls.delete_if {|x| x >= 6}
-				#logfile.puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
+				##logfile.puts "Sixes that cause mortal wounds are removed leaving #{rolls}"
 			end
 		end
 	end
@@ -629,7 +629,7 @@ def RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
 	fives = rolls.count(5)
 	if modifier > 0 && rolls.include?(1 + modifier)
 		rolls.delete_if {|x| x = (1 + modifier)}
-		#logfile.puts "Rolls of #{1 + modifier} are deleted since they were originally natural 1's"
+		##logfile.puts "Rolls of #{1 + modifier} are deleted since they were originally natural 1's"
 	end
 	rolls.delete_if {|x| x < to_wound}
 	wounds_6s_5s = [rolls.size,sixes,fives,mortals,self_wounds]
@@ -646,10 +646,10 @@ def CalcSaves(wounds, attacker, target, weapon, firetype,logfile)
 	save = target.stats['Sv'].to_f
 	invuln = target.getInvuln.to_f
 	mod_save = save - ap 
-	#logfile.puts "#{attacker.name}'s #{weapon.name} has an AP of #{ap} so #{target.name}'s save of #{save} becomes #{mod_save}"
+	##logfile.puts "#{attacker.name}'s #{weapon.name} has an AP of #{ap} so #{target.name}'s save of #{save} becomes #{mod_save}"
 	if mod_save > invuln
 		mod_save = invuln
-		#logfile.puts "#{target.name}'s invulnerable save of #{invuln} is better, so they will use that instead"
+		##logfile.puts "#{target.name}'s invulnerable save of #{invuln} is better, so they will use that instead"
 	end
 	if mod_save >= 7.0
 		prob = 1.0
@@ -658,9 +658,9 @@ def CalcSaves(wounds, attacker, target, weapon, firetype,logfile)
 		prob = (mod_save - 1) / 6
 	end
 	
-	#logfile.puts "#{target.name} has a #{prob} chance of failing their save"
+	##logfile.puts "#{target.name} has a #{prob} chance of failing their save"
 	failed_saves = wounds * prob
-	#logfile.puts "#{target.name} failed #{failed_saves} saves"
+	##logfile.puts "#{target.name} failed #{failed_saves} saves"
 	return failed_saves, mortals
 	
 end
@@ -681,7 +681,7 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 	
 	
 	mod_save = save - ap 
-	#logfile.puts "#{target.name} has a save of #{save}+, but #{attacker.name}'s #{weapon.name} has an AP of #{ap} so the modified save is #{mod_save}+"
+	##logfile.puts "#{target.name} has a save of #{save}+, but #{attacker.name}'s #{weapon.name} has an AP of #{ap} so the modified save is #{mod_save}+"
 	
 	
 	
@@ -690,9 +690,9 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 		unless attacker.hasRule?('Null Zone') == true
 			is_invuln = true
 			mod_save = invuln
-			#logfile.puts "#{target.name}'s Invulnerable save of #{invuln}+ is higher so he will use that instead"
+			##logfile.puts "#{target.name}'s Invulnerable save of #{invuln}+ is higher so he will use that instead"
 		else
-			#logfile.puts "#{attacker.name} has the Null Zone ability so no invulnerable save may be used"
+			##logfile.puts "#{attacker.name} has the Null Zone ability so no invulnerable save may be used"
 		end
 		
 		### Check for modifiers to invulnerable saves
@@ -701,7 +701,7 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 				rule_arr = rule.split(' - ')
 				if rule_arr[-2] == 'All' or rule_arr[-2] == 'Fight'
 					modifier = modifier + rule_arr[-1].to_i
-					#logfile.puts "#{target.name} gets to add 1 to their invulnerable saving throws"
+					##logfile.puts "#{target.name} gets to add 1 to their invulnerable saving throws"
 				end
 			end
 		end
@@ -709,39 +709,39 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 	
 	
 	rolls = Array.new(norm_saves) {rand(1..6)}
-	#logfile.puts "#{target.name} rolls #{rolls} for their saves"
+	##logfile.puts "#{target.name} rolls #{rolls} for their saves"
 	
 	if attacker.rules.grep(/Reroll - Saves/).grep(/Success/).size > 0 or target.rules.grep(/Reroll - Saves/).size > 0
-		RerollSaves(attacker, target, rolls, mod_save, is_invuln)
+		RerollSaves(attacker, target, rolls, mod_save, is_invuln, logfile)
 	end
 	
 	
 	if attacker.rules().select{|rule| rule.match(/Rend - Damage/)}.length > 0 
 		rule_array = attacker.rules().select{|rule| rule.match(/Rend - Damage/)}[0].split(' - ')
-		#logfile.puts "#{attacker.name}rolled #{wounds[1]} 6's to wound, these do extra damage and will be saved seperately"
+		##logfile.puts "#{attacker.name}rolled #{wounds[1]} 6's to wound, these do extra damage and will be saved seperately"
 		norm_saves = norm_saves - wounds[1]
 		rend_rolls = Array.new(wounds[1]) {rand(1..6)}
-		#logfile.puts "#{target.name} rolls #{rend_rolls}"
+		##logfile.puts "#{target.name} rolls #{rend_rolls}"
 		if attacker.rules.grep(/Reroll - Saves/).grep(/Success/).size > 0 or target.rules.grep(/Reroll - Saves/).size > 0
-			RerollSaves(attacker, target, rend_rolls, mod_save, is_invuln)
+			RerollSaves(attacker, target, rend_rolls, mod_save, is_invuln, logfile)
 		end
 		rend_rolls.delete_if {|x| x >= mod_save}
 		rends = rend_roll.size
-		#logfile.puts "#{target.name} failed  #{rends} rolls that do extra damage"
+		##logfile.puts "#{target.name} failed  #{rends} rolls that do extra damage"
 	end
 	
 	if weapon.rules[mode].select{|rule| rule.match(/Rend - Damage/)}.length > 0
 		rule_array = weapon.rules[mode].select{|rule| rule.match(/Rend - Damage/)}[0].split(' - ')
-		#logfile.puts "#{attacker.name} rolled #{wounds[1]} 6's to wound, these do extra damage and will be saved seperately"
+		##logfile.puts "#{attacker.name} rolled #{wounds[1]} 6's to wound, these do extra damage and will be saved seperately"
 		norm_saves = norm_saves - wounds[1]
 		rend_rolls = Array.new(wounds[1]) {rand(1..6)}
-		#logfile.puts "#{target.name} rolls #{rend_rolls}"
+		##logfile.puts "#{target.name} rolls #{rend_rolls}"
 		if attacker.rules.grep(/Reroll - Saves/).grep(/Success/).size > 0 or target.rules.grep(/Reroll - Saves/).size > 0
-			RerollSaves(attacker, target, rend_rolls, mod_save, is_invuln)
+			RerollSaves(attacker, target, rend_rolls, mod_save, is_invuln, logfile)
 		end
 		rend_rolls.delete_if {|x| x >= mod_save}
 		rends = rend_rolls.size
-		#logfile.puts "#{target.name} failed  #{rends} rolls that do extra damage"
+		##logfile.puts "#{target.name} failed  #{rends} rolls that do extra damage"
 	end
 	
 	
@@ -749,11 +749,11 @@ def RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
 	
 	if modifier != 0
 		rolls.map!{|x| x + modifier}
-		#logfile.puts "After modifiers the rolls are #{rolls}"
+		##logfile.puts "After modifiers the rolls are #{rolls}"
 	end
 	
 	fails = rolls.count {|x| x < mod_save}
-	#logfile.puts "This results in #{fails} failed saves"
+	##logfile.puts "This results in #{fails} failed saves"
 	
 	rolls.delete_if {|x| x >= mod_save}
 	failed_6s_5s = [rolls.size,rends,fives,mortals,self_wound]
@@ -781,7 +781,7 @@ def CalcDamage(felt_wounds, attacker, target, weapon, mode,logfile)
 	end
 	
 	if mortals > 0 
-		#logfile.puts "This weapon also does #{mortals} mortal wounds"
+		##logfile.puts "This weapon also does #{mortals} mortal wounds"
 	end
 	dmg = (d * felt_wounds) + mortals
 	
@@ -798,7 +798,7 @@ def CalcDamage(felt_wounds, attacker, target, weapon, mode,logfile)
 		dmg = wounds
 	end
 	
-	#logfile.puts "#{weapon.name} in #{mode} mode would do #{dmg} wounds on average"
+	##logfile.puts "#{weapon.name} in #{mode} mode would do #{dmg} wounds on average"
 	return dmg
 	
 end
@@ -809,19 +809,19 @@ def RollDamage(felt_wounds, attacker, target, weapon, mode,charged,logfile)
 	fnp = target.getFNP()
 	tot_wounds = 0
 	if felt_wounds[0] > 0 
-		#logfile.puts "Each of #{attacker.name}'s Attacks do #{weapon.getD(mode)} damage"
+		##logfile.puts "Each of #{attacker.name}'s Attacks do #{weapon.getD(mode)} damage"
 	end
 	if mortals.size > 0
-		#logfile.puts "There are also #{mortals} mortal wounds"
+		##logfile.puts "There are also #{mortals} mortal wounds"
 	end
 	
 	if attacker.rules().select{|rule| rule.match(/Impact - Mortal Wounds/)}.length > 0 && charged == true
 		rule_array = attacker.rules().select{|rule| rule.match(/Impact - Mortal Wounds/)}[0].split(' - ')
-		#logfile.puts "#{attacker.name} does #{rule_array[2]} additional mortal wounds on a #{rule_array[3]} when charging"
+		##logfile.puts "#{attacker.name} does #{rule_array[2]} additional mortal wounds on a #{rule_array[3]} when charging"
 		impact_rolls = Array.new(RollDice(rule_array[2])) {rand(1..6).to_i}
-		#logfile.puts "#{attacker.name} rolled #{impact_rolls}"
+		##logfile.puts "#{attacker.name} rolled #{impact_rolls}"
 		impact_rolls.delete_if {|x| x < rule_array[3].to_i}
-		#logfile.puts "This caused #{impact_rolls.size} mortal wounds!"
+		##logfile.puts "This caused #{impact_rolls.size} mortal wounds!"
 		mortals.push(impact_rolls.size)
 	end
 	dmg_rolls = Array.new()
@@ -829,9 +829,9 @@ def RollDamage(felt_wounds, attacker, target, weapon, mode,charged,logfile)
 	
 	if attacker.rules().select{|rule| rule.match(/Rend - Damage/)}.length > 0 && charged == true
 		rule_array = attacker.rules().select{|rule| rule.match(/Rend - Damage/)}[0].split(' - ')
-		#logfile.puts "#{attacker.name} does #{rule_array[2]} damage for each of their #{felt_wounds[1]} unsaved wound rolls of six" 
+		##logfile.puts "#{attacker.name} does #{rule_array[2]} damage for each of their #{felt_wounds[1]} unsaved wound rolls of six" 
 		rend_rolls = Array.new(felt_wounds[1]) {RollDice(rule_array[2])}
-		#logfile.puts "This does a total of #{rend_rolls} damage"
+		##logfile.puts "This does a total of #{rend_rolls} damage"
 		mortals.push(rend_rolls)
 	end
 		
@@ -851,16 +851,16 @@ def RollDamage(felt_wounds, attacker, target, weapon, mode,charged,logfile)
 	
 	if (weapon.hasRule?(mode,'Damage - Psyker - 1') or attacker.hasRule?('Damage - Psyker - 1')) && target.hasKeyword('Psyker') == true
 		dmg_rolls.map!{ |d| d + 1 }
-		#logfile.puts "This weapon does  1 extra damage to psykers giving a total of #{dmg_rolls}"
+		##logfile.puts "This weapon does  1 extra damage to psykers giving a total of #{dmg_rolls}"
 	end
 	if felt_wounds[0] > 0 
-		#logfile.puts "#{attacker.name}'s Attacks do #{dmg_rolls} respectively"
+		##logfile.puts "#{attacker.name}'s Attacks do #{dmg_rolls} respectively"
 	end
 	
 	
 	if target.hasRule?('Damage - Halved') == true && dmg_rolls.size > 0
 			dmg_rolls = dmg_rolls.map! { |r| r ? (r.to_f / 2).ceil : r}
-		#logfile.puts "#{target.name} halves all damage (rounding up) so he only takes #{dmg_rolls}"
+		##logfile.puts "#{target.name} halves all damage (rounding up) so he only takes #{dmg_rolls}"
 	end
 	if (target.rules.grep(/Damage - Reduced - Fight/).size + target.rules.grep(/Damage - Reduced - All/).size) > 0 && dmg_rolls.size > 0
 		dmg_rule = target.rules.grep(/Damage - Reduced - Fight/)
@@ -873,7 +873,7 @@ def RollDamage(felt_wounds, attacker, target, weapon, mode,charged,logfile)
 				dmg_rolls[n] = 1
 			end
 		end
-		#logfile.puts "All damage to #{target.name} is reduced by #{dmg_rule[0].split(' - ')[-1]} leaving #{dmg_rolls}"
+		##logfile.puts "All damage to #{target.name} is reduced by #{dmg_rule[0].split(' - ')[-1]} leaving #{dmg_rolls}"
 	end
 	
 	tot_wounds = dmg_rolls.inject(:+).to_i
@@ -884,9 +884,9 @@ def RollDamage(felt_wounds, attacker, target, weapon, mode,charged,logfile)
 	## Roll FNP
 	if target.getFNP().any?	
 		target.getFNP().each do |fnp|
-			#logfile.puts "#{target.name} has a 'Feel No Pain' ability that lets them ignores wounds on a #{fnp.to_i}+"
+			##logfile.puts "#{target.name} has a 'Feel No Pain' ability that lets them ignores wounds on a #{fnp.to_i}+"
 			rolls = Array.new(tot_wounds) {rand (1..6)}
-			#logfile.puts "#{target.name} rolls #{rolls}"
+			##logfile.puts "#{target.name} rolls #{rolls}"
 			rolls.delete_if {|x| x >= fnp}
 			
 			tot_wounds = rolls.size
@@ -898,14 +898,14 @@ def RollDamage(felt_wounds, attacker, target, weapon, mode,charged,logfile)
 	#Calculate Final Damage
 	if tot_wounds >= wounds && weapon.hasRule?(mode, 'Overflow') == false
 		tot_wounds = wounds
-		#logfile.puts "#{target.name} only has #{wounds} wounds to lose"
+		##logfile.puts "#{target.name} only has #{wounds} wounds to lose"
 	end
 	
 	
 	
 	
 	
-	#logfile.puts "#{target.name} takes #{tot_wounds} wounds"
+	##logfile.puts "#{target.name} takes #{tot_wounds} wounds"
 	
 	tot_wounds
 	return tot_wounds
@@ -915,9 +915,9 @@ end
 def RollMeleeWeapon(attacker,target,weapon,mode,charged,logfile)
 	hits = RollHits(attacker,target,weapon,mode,charged,logfile)
 	wounds = RollWounds(hits,attacker,target,weapon,mode,charged,logfile)
-	#logfile.puts "#{attacker.name} got #{wounds[0]} wounds"
+	##logfile.puts "#{attacker.name} got #{wounds[0]} wounds"
 	saves = RollSaves(wounds, attacker, target, weapon, mode,charged,logfile)
-	#logfile.puts "#{target.name} failed #{saves[0]} saves"
+	##logfile.puts "#{target.name} failed #{saves[0]} saves"
 	dmg = RollDamage(saves, attacker, target, weapon, mode,charged,logfile)
 	return dmg
 end
@@ -925,7 +925,7 @@ end
 def OptMeleeWeapon(attacker,target,logfile)
 	average = 0.0
 	weapon = ''
-	#logfile.puts "Calculating  #{attacker.name}'s optimal weapon and weapon mode when fighting #{target.name}"
+	##logfile.puts "Calculating  #{attacker.name}'s optimal weapon and weapon mode when fighting #{target.name}"
 	firetype = ''
 	num_melee = 0
 	attacker.gear.each do |gear|
@@ -939,7 +939,7 @@ def OptMeleeWeapon(attacker,target,logfile)
 	if num_melee == 0
 		gen_wep_hash = LoadWeapons('Methods\genericwep.csv')
 		attacker.addGear(gen_wep_hash, ['Close Combat Weapon'])
-		#logfile.puts "#{attacker.name} has no melee weapons so we added a Close Combat Weapon"
+		##logfile.puts "#{attacker.name} has no melee weapons so we added a Close Combat Weapon"
 	end
 	
 	if num_melee == 1
@@ -950,7 +950,7 @@ def OptMeleeWeapon(attacker,target,logfile)
 				end
 				weapon = gear
 				firetype = mode
-				#logfile.puts "#{attacker.name} only has one melee weapon with one attack mode so they will use #{weapon.name} in #{mode} mode "
+				##logfile.puts "#{attacker.name} only has one melee weapon with one attack mode so they will use #{weapon.name} in #{mode} mode "
 			end
 		end
 	else
@@ -970,7 +970,7 @@ def OptMeleeWeapon(attacker,target,logfile)
 				end
 			end
 		end
-		#logfile.puts "The Optimal Weapon for #{attacker.name} is #{weapon.name} in #{firetype} mode"
+		##logfile.puts "The Optimal Weapon for #{attacker.name} is #{weapon.name} in #{firetype} mode"
 	end
 	return [weapon, firetype]
 end		
