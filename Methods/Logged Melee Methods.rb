@@ -189,7 +189,6 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 			string = rule.split(' - ')
 			if (string[-2] == 'Hits' or string[-2] == 'All') &&
 				(string[-3] == 'Fight' or string[-3] == 'All')
-				logfile.puts "#{attacker.rules}"
 				modifier = modifier + string[-1].to_i
 				logfile.puts "#{attacker.name} has a rule which gives them a #{string[-1]} modifier to hit"
 			end
@@ -230,7 +229,7 @@ def RollHits(attacker,target,weapon,mode, charged, logfile)
 	sixes = rolls.count{|x| x >= 6}
 	ones = rolls.count{|x| x <= 1}
 	fives = rolls.count{|x| x >= 5}
-	if  modifier =! 0 && rolls.include?(1 + modifier) == true
+	if  modifier > 0 && rolls.include?(1 + modifier) == true
 		rolls.delete_if {|x| x == (1 + modifier)}
 		logfile.puts "All values of #{(1 + modifier)} were originally natural ones and are removed leaving #{rolls}"
 	end

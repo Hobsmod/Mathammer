@@ -85,18 +85,18 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 		if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds
 			#logfile.puts "The defender, #{defender.name} won!"
 			defender_victories = defender_victories + 1.0
-			break
+			next
 		end
 		if dmg_to_defender >= def_wounds && dmg_to_charger < atk_wounds
 			#logfile.puts "The charger, #{charger.name} won!"
 			attacker_victories = attacker_victories + 1.0
-			break
+			next
 		end
 		if dmg_to_defender >= def_wounds && dmg_to_charger >= atk_wounds
 			#logfile.puts "Both Characters were killed, this is counted as a half - victory"
 			defender_victories = defender_victories + 0.5
 			attacker_victories = attacker_victories + 0.5
-			break
+			next
 		end
 		
 		
@@ -122,18 +122,18 @@ def Duel(wep_hash,charger,defender,iterations,logfile)
 		if dmg_to_charger >= atk_wounds && dmg_to_defender < def_wounds
 			#logfile.puts "The defender, #{defender.name} won!"
 			defender_victories = defender_victories + 1.0
-			break
+			next
 		end
 		if dmg_to_defender >= def_wounds && dmg_to_charger < atk_wounds
 			#logfile.puts "The charger, #{charger.name} won!"
 			attacker_victories = attacker_victories + 1.0
-			break
+			next
 		end
 		if dmg_to_defender >= def_wounds && dmg_to_charger >= atk_wounds
 			#logfile.puts "Both Characters were killed, this is counted as a half - victory"
 			defender_victories = defender_victories + 0.5
 			attacker_victories = attacker_victories + 0.5
-			break
+			next
 		end
 	
 		

@@ -178,7 +178,7 @@ The Shield Eternal,Gear,0,0,Gear,0,0,0,0,Gear - Invulnerable - 3, Gear - Damage 
 The Armor Indomitus,Gear,0,0,Gear,0,0,0,0,Gear - One Round - Invulnerable - 3, Gear - Damage - Halved
 Teeth of Terra,Melee,0,0,Melee,D3,1,-2,2,
 The Burning Blade,Melee,0,0,Melee,0,2,-5,1
-The Fist of Vengance,Melee,0,0,Melee,0,*2,-3,3
+The Fist of Vengance,Melee,12,0,Melee,0,*2,-3,3
 The Sanctic Halo,Gear,0,0,Gear,0,0,0,0,Gear - Invulnerable - 3,Deny - 1
 The Salamanders Mantle,Gear,0,0,Gear,0,0,0,0,Gear - Toughness - 1
 The Axe of Medusa,Melee,0,0,Melee,0,2,-3,2,

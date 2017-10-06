@@ -195,7 +195,7 @@ hero_hash.each do |key, value|
 		if key == key2
 			next
 		end
-		odds = Duel(sm_wep,value,value2,4,log_file)
+		odds = Duel(sm_wep,value,value2,3,log_file)
 		if key == key2
 			#puts "If #{key} charges #{key2}, the charging #{key} wins #{odds * 100}% of the time"
 		else 

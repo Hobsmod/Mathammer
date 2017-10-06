@@ -96,7 +96,7 @@ def RollShootingHits(target,shooter,wep,mode,range,moved,logfile)
 	
 	
 	#### Count 1's for plasma overheating
-	if wep.hasRule?(mode,'Overheat') && rolls.count{|x| x >= 1} >= 1
+	if wep.hasRule?(mode,'Overheat') && rolls.count{|x| x <= 1} >= 1
 		self_wounds = shooter.stats['W']
 		logfile.puts "#{shooter.name}'s #{wep.name} overheated doing #{self_wounds} wounds to them" 
 	end

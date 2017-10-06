@@ -126,7 +126,7 @@ spacemarinecodex['Korsarro Khan on Moondrakkan'] = CodexEntry.new(khan_stats, kh
 
 vulkan_stats = [6,2,2,4,4,5,4,9,2]
 vulkan_gear = ['Gauntlet of the Forge','Spear of Vulkan','Bolt Pistol','Frag Grenade','Krak Grenade']
-vulkan_rules = ['Invulnerable - 3','Aura - 6 - Reroll - All - Hits - 1','Forgefather']
+vulkan_rules = ['Invulnerable - 3','Aura - 6 - Reroll - All - Hits - 1','Reroll - Forgefather']
 spacemarinecodex['Vulkan Hestan'] = CodexEntry.new(vulkan_stats, vulkan_gear, vulkan_rules, vulkan_cost, character)
 
 shrike_stats = [12,2,2,4,4,5,5,9,2]

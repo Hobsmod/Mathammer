@@ -150,6 +150,10 @@ def RerollShootingHits(attacker, defender, weapon,mode, rolls, to_suceed, logfil
 			reroll_what.push(rule_split[-1])
 			
 		end
+		
+		if rule[-1] == 'Forgefather' && (weapon.name =~ /Flame/ or weapon.name =~ /Melta/ or weapon.name == 'Gauntlet of the Forge')
+			reroll_what.push('All')
+		end
 	end
 	
 	
@@ -271,6 +275,9 @@ def RerollFightWounds(attacker, defender, weapon, mode, rolls, to_suceed,logfile
 			
 			reroll_what.push(rule_split[-1])
 			
+		end
+		if rule[-1] == 'Forgefather' && (weapon.name =~ /Flame/ or weapon.name =~ /Melta/ or weapon.name == 'Gauntlet of the Forge')
+			reroll_what.push('All')
 		end
 	end
 	

@@ -36,9 +36,20 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 			logfile.puts "#{caster.name} tries to cast #{power.name} and rolled #{test} + #{cast_bonus}" 
 			
 			### Reroll the test if the psycker has the relevant rule
-			if (test.inject(:+) + cast_bonus) < charge && caster.hasRule?('Psyker - Reroll')
+			cast_value = test.inject(:+) + cast_bonus
+			if denier.hasRule?('Null Zone') == true && range <= 6
+				cast_value = cast_value / 2
+				logfile.puts "#{denier.name} has the Null Zone rule which halves the results of all psychic tests"
+			end
+			
+			if (cast_value) < charge && caster.hasRule?('Psyker - Reroll')
 				test = [ rand(1..6), rand(1..6) ]
 				logfile.puts "#{caster.name} gets to reroll failed psychic tests and now rolled #{test} + #{cast_bonus}"
+				cast_value = test.inject(:+) + cast_bonus
+				if denier.hasRule?('Null Zone') == true && range <= 6
+					cast_value = cast_value / 2
+					logfile.puts "#{denier.name} has the Null Zone rule which halves the results of all psychic tests"
+				end
 			end
 			
 			### Check if caster suffered perils of the warp
@@ -49,7 +60,7 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 			end
 			
 			
-			if (test.inject(:+) + cast_bonus) < charge
+			if (cast_value) < charge
 				logfile.puts "That's not high enough to cast this power"
 				next
 			end
@@ -59,11 +70,11 @@ def CastPowersWithDenier(caster,denier,range,logfile)
 			## Attempt to deny
 			if denials.to_i > 0 
 				deny_test = [rand(1..6), rand(1..6)]
-				if (deny_test.inject(:+) + deny_bonus) > (test.inject(:+) + cast_bonus)
-					logfile.puts "#{denier.name} attempts to deny and rolls #{deny_test} + #{deny_bonus}, which suceeds"
+				if (deny_test.inject(:+) + deny_bonus) > (cast_value)
+					logfile.puts "#{denier.name} attempts to deny the witch and rolls #{deny_test} + #{deny_bonus}, which suceeds"
 					next
 				else
-					logfile.puts "#{denier.name} attempts to deny and rolls #{deny_test} + #{deny_bonus}, which fails"
+					logfile.puts "#{denier.name} attempts to deny the witch and rolls #{deny_test} + #{deny_bonus}, which fails"
 				end
 				denials = denials - 1
 			end
